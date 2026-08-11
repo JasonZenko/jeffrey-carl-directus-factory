@@ -10,8 +10,8 @@ indexing are untouched.
 - Noindex site: https://jeffrey-carl-review.pages.dev/
 - Public repository: https://github.com/JasonZenko/jeffrey-carl-directus-factory
 - Directus: https://weomcms.foundryworks.ai/admin/ (`jeffrey-carl-dmd`)
-- Green build/audit CI: https://github.com/JasonZenko/jeffrey-carl-directus-factory/actions/runs/31496886525
-- Green Git-triggered preview deployment: https://github.com/JasonZenko/jeffrey-carl-directus-factory/actions/runs/31496886567
+- Green build/audit CI: https://github.com/JasonZenko/jeffrey-carl-directus-factory/actions/runs/31505174770
+- Green Git-triggered preview deployment: https://github.com/JasonZenko/jeffrey-carl-directus-factory/actions/runs/31505174816
 
 The original 18/18 browser matrix proved technical rendering only; it did not
 prove visual fidelity and was correctly rejected during human review. The

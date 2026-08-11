@@ -39,7 +39,13 @@
     "local_directus_connected_passed": 18,
     "content_receipts_after_rebuild": "78/78",
     "browser_checks_after_rebuild": "18/18",
-    "hosted_status": "pending_git_deployment"
+    "hosted_status": "green",
+    "hosted_verified_at": "2026-08-11T15:11:41Z",
+    "hosted_content_receipts": "78/78",
+    "hosted_browser_checks": "18/18",
+    "hosted_visual_checks": "18/18",
+    "build_audit_run": 31505174770,
+    "git_deployment_run": 31505174816
   },
-  "status": "visual_rebuild_green_local_pending_hosted_acceptance"
+  "status": "complete_hosted_content_browser_visual_acceptance_green"
 }
