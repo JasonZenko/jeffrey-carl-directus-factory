@@ -52,7 +52,111 @@ const COMPONENT_TYPE_BY_COLLECTION: Record<string, string> = {
   weo_component_forms: 'form',
 };
 
-function componentHtml(componentType: string, component: Record<string, any>): string {
+function decodeHtml(value: string): string {
+  return value.replace(/&(#x[0-9a-f]+|#\d+|amp|quot|apos|lt|gt|nbsp);/gi, (entity, code) => {
+    const named: Record<string, string> = {
+      amp: '&', quot: '"', apos: "'", lt: '<', gt: '>', nbsp: '\u00a0',
+    };
+    const key = String(code).toLowerCase();
+    if (named[key] !== undefined) return named[key];
+    const number = key.startsWith('#x')
+      ? Number.parseInt(key.slice(2), 16)
+      : Number.parseInt(key.slice(1), 10);
+    return Number.isFinite(number) ? String.fromCodePoint(number) : entity;
+  });
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function escapeAttribute(value: string): string {
+  return escapeHtml(value).replace(/"/g, '&quot;');
+}
+
+function plainText(value: string): string {
+  return decodeHtml(value.replace(/<[^>]*>/g, '')).replace(/\s+/g, ' ').trim();
+}
+
+function boundText(existingHtml: string, value: unknown): string {
+  if (typeof value !== 'string') return existingHtml;
+  return plainText(existingHtml) === value.replace(/\s+/g, ' ').trim()
+    ? existingHtml
+    : escapeHtml(value);
+}
+
+function bindAttribute(attributes: string, name: string, value: unknown): string {
+  if (typeof value !== 'string') return attributes;
+  const matcher = new RegExp(`(\\s${name}\\s*=\\s*)(["'])(.*?)\\2`, 'i');
+  const match = matcher.exec(attributes);
+  if (match && decodeHtml(match[3]) === value) return attributes;
+  if (match) {
+    return attributes.replace(matcher, `${match[1]}"${escapeAttribute(value)}"`);
+  }
+  return `${attributes} ${name}="${escapeAttribute(value)}"`;
+}
+
+function bindFeatureGrid(component: Record<string, any>): string {
+  const items = [...(component.items ?? [])].sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0));
+  let itemIndex = 0;
+  return String(component.source_html ?? '').replace(
+    /<a\b([^>]*)>([\s\S]*?)<\/a>/gi,
+    (anchor, attributes: string, body: string) => {
+      if (!/\bclass\s*=\s*["'][^"']*\bTPcta\b/i.test(attributes)) return anchor;
+      const item = items[itemIndex++];
+      if (!item) return anchor;
+      let nextAttributes = bindAttribute(attributes, 'href', item.link_url);
+      nextAttributes = bindAttribute(nextAttributes, 'title', item.description);
+      const nextBody = body.replace(
+        /(<h3\b[^>]*>)([\s\S]*?)(<\/h3>)/i,
+        (_heading, open: string, text: string, close: string) =>
+          `${open}${boundText(text, item.title ?? item.link_label)}${close}`,
+      );
+      return `<a${nextAttributes}>${nextBody}</a>`;
+    },
+  );
+}
+
+function bindTestimonials(component: Record<string, any>): string {
+  const item = [...(component.items ?? [])]
+    .sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0))[0];
+  let html = String(component.source_html ?? '');
+  html = html.replace(
+    /(<h2\b[^>]*>)([\s\S]*?)(<\/h2>)/i,
+    (_heading, open: string, text: string, close: string) =>
+      `${open}${boundText(text, component.heading)}${close}`,
+  );
+  if (item) {
+    html = html.replace(
+      /(<div\b(?=[^>]*\bdata-aos=["']fade-down["'])[^>]*>)([\s\S]*?)(<\/div>)/i,
+      (_quote, open: string, text: string, close: string) =>
+        `${open}${boundText(text, item.quote)}${close}`,
+    );
+  }
+  return html;
+}
+
+function bindTeamGrid(component: Record<string, any>): string {
+  const members = [...(component.members ?? [])].sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0));
+  let memberIndex = 0;
+  return String(component.source_html ?? '').replace(
+    /(<h2\b[^>]*>)([\s\S]*?)(<\/h2>\s*<br\b[^>]*>)([\s\S]*?)(<br\b[^>]*>\s*<a\b)([^>]*\bclass=["'][^"']*\bTPbtn-primary\b[^"']*["'][^>]*>)([\s\S]*?)(<\/a>)/gi,
+    (memberHtml, open: string, heading: string, afterHeading: string, bio: string,
+      anchorOpen: string, anchorAttributes: string, label: string, anchorClose: string) => {
+      const member = members[memberIndex++];
+      if (!member) return memberHtml;
+      const nextHeading = boundText(heading, `Meet ${member.name}`);
+      const nextBio = boundText(bio, member.bio);
+      const nextAttributes = bindAttribute(anchorAttributes.slice(0, -1), 'href', member.profile_url);
+      return `${open}${nextHeading}${afterHeading}${nextBio}${anchorOpen}${nextAttributes}>${label}${anchorClose}`;
+    },
+  );
+}
+
+export function componentHtml(componentType: string, component: Record<string, any>): string {
   if (!component) return '';
   switch (componentType) {
     case 'hero':
@@ -66,8 +170,11 @@ function componentHtml(componentType: string, component: Record<string, any>): s
       return typeof paragraphs === 'string' ? paragraphs : '';
     }
     case 'feature_grid':
+      return bindFeatureGrid(component);
     case 'testimonials':
+      return bindTestimonials(component);
     case 'team_grid':
+      return bindTeamGrid(component);
     case 'embed':
     case 'form':
       return component.source_html ?? '';

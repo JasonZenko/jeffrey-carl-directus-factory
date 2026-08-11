@@ -51,6 +51,9 @@ The process missed a fourth release dimension: **authoring fidelity**.
 - Organised the sidebar into Website Content, Page Components and Operations &
   Evidence; hid child and technical collections from normal navigation.
 - Updated the connected build adapter to read the native Builder.
+- Bound feature-card, testimonial and team-member child fields back into the
+  preserved source presentation, so nested edits change the connected build
+  without sacrificing the frozen layout.
 - Added offline semantic tests and a live blocking authoring verifier to both
   CI and preview-deploy workflows.
 - Reconciled the restricted Directus build credential in Keychain and GitHub
@@ -80,13 +83,18 @@ The remaining component distribution is 44 Heroes and 9 Calls to Action, for
   distribution, 168 feature items, 21 testimonial items and 42 team members.
 - Restricted build token resolves every polymorphic parent and nested child.
 - Directus-connected Astro build: 79 outputs generated successfully.
-- Repository tests: 25/25 passed.
+- Repository tests: 29/29 passed, including nested-field binding tests.
 - Strict content audit: 78/78 routes passed.
 - Browser matrix: 18/18 passed.
 - Visual fidelity: 18/18 passed.
 - Authenticated editor UI: Page Content visible; homepage contains two Feature
   Grids, Testimonials and Team Grid; legacy paths and orphan child collections
   absent.
+- Live nested round trips: a Feature Item title, Testimonial Item quote and Team
+  Member name were each temporarily edited in Directus, appeared in connected
+  homepage builds, then were reverted and confirmed absent from the identical
+  clean rebuild. No marker was deployed. See
+  `../directus-nested-roundtrip.json`.
 - Indexing remained disabled; every page remains noindex/nofollow.
 
 Screenshot: `homepage-editor-final.png` (authenticated final editor state).
@@ -97,4 +105,5 @@ No future Directus transfer is accepted on frontend evidence alone. The
 factory contract now blocks release unless native Builder relationships,
 semantic component distribution, nested child records, editor folders and the
 restricted build-policy read all pass alongside content, browser and visual
-fidelity.
+fidelity. Nested records must also pass a field-to-render binding test; record
+counts alone are not accepted as proof that the fields are authoritative.

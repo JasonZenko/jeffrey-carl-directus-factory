@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-08-11T20:41:17.575Z",
+  "status": "passed",
+  "site": "jeffrey-carl-dmd",
+  "target_page": "/p/dentist-Albany-OR-Home-p466.asp",
+  "proofs": [
+    {
+      "component_family": "feature_grid",
+      "nested_collection": "weo_component_feature_items",
+      "nested_item_id": "6e69a563-985a-4014-a5b3-c7fc6f589a9e",
+      "field": "title",
+      "marker": "[FEATURE ITEM AUTHORING PROOF]",
+      "edit_reached_connected_build": true,
+      "revert_reached_connected_build": true,
+      "marked_build_sha256": "a6c6cfcd0fce4986e1b01f002dfe2eabee9e2cca2cf38d91a0a96b4a797d6fcb",
+      "clean_build_sha256": "7ac050548a193028a8a2c448edea36490bfe4491ef49f818cf841789206035ef"
+    },
+    {
+      "component_family": "testimonials",
+      "nested_collection": "weo_component_testimonial_items",
+      "nested_item_id": 1,
+      "field": "quote",
+      "marker": "[TESTIMONIAL ITEM AUTHORING PROOF]",
+      "edit_reached_connected_build": true,
+      "revert_reached_connected_build": true,
+      "marked_build_sha256": "8b122f65f8abdb85b41ec4ebeda6cdd40fe92338067676008cff5845243c7ac5",
+      "clean_build_sha256": "7ac050548a193028a8a2c448edea36490bfe4491ef49f818cf841789206035ef"
+    },
+    {
+      "component_family": "team_grid",
+      "nested_collection": "weo_component_team_members",
+      "nested_item_id": 1,
+      "field": "name",
+      "marker": "[TEAM MEMBER AUTHORING PROOF]",
+      "edit_reached_connected_build": true,
+      "revert_reached_connected_build": true,
+      "marked_build_sha256": "509a9febdad6c36bf1d9989d26380d5a21c2aac9553a6785581cef92e56467d3",
+      "clean_build_sha256": "7ac050548a193028a8a2c448edea36490bfe4491ef49f818cf841789206035ef"
+    }
+  ],
+  "deployed_with_marker": false,
+  "conclusion": "Real edits to nested Feature Item, Testimonial Item and Team Member records each reached the connected homepage build. Every value was then exactly reverted and all three markers were absent from the same clean build hash."
+}

@@ -34,7 +34,7 @@ python3 qa/browser_matrix.py --target http://127.0.0.1:4321
 python3 qa/visual_fidelity.py --target http://127.0.0.1:4321
 ```
 
-Expected: 78/78 route receipts green, 25/25 tests passing, 18/18 technical
+Expected: 78/78 route receipts green, 29/29 tests passing, 18/18 technical
 browser checks and 18/18 visual-fidelity checks across six page families at
 desktop, tablet and mobile.
 
@@ -76,7 +76,10 @@ uses the Text + Media rich-text body. Feature grids, testimonials and team
 grids create ordered second-level child records. Embeds and form sections use
 their own component collections. The immutable `source_html` field is hidden
 provenance used to preserve exact legacy presentation; it is not the editor's
-primary content field.
+primary content field. The connected adapter binds Feature Item, Testimonial
+Item and Team Member authoring values into that preserved presentation. The
+unit suite proves those second-level fields affect rendered HTML and leaves
+already-synchronised source markup byte-for-byte unchanged.
 
 The authoring verifier blocks handoff unless the live site contains exactly 78
 pages, 508 native Builder rows, the expected semantic component distribution,
@@ -122,5 +125,8 @@ header for local/CI audits.
 - A real Directus marker edit was built, blocked by the independent auditor,
   reverted in Directus and rebuilt to 78/78 green. See
   `receipts/directus-roundtrip.json`.
+- Separate live Feature Item, Testimonial Item and Team Member edits were built,
+  observed on the homepage, reverted and rebuilt clean without deployment. See
+  `receipts/directus-nested-roundtrip.json`.
 - Explicit approval remains required for production, DNS or indexing. Do not
   flip `indexing_enabled`, point DNS, or publish forms without it.

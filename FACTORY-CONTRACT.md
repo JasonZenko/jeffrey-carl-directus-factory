@@ -62,6 +62,7 @@ Frontend fidelity is necessary but not sufficient. Before a migration can pass:
 - Legacy `content_sections` and `structured_blocks` editor paths must be hidden.
 - Hero, feature grid, testimonial, team, embed and form sections must remain typed components, never rich-text carriers.
 - Repeated cards, quotes, steps, questions, people and images must exist as ordered child records inside their parent component.
+- Nested editorial fields must be authoritative: a child-field edit must change the connected render while unchanged records preserve the source presentation.
 - Rich text is reserved for ordinary narrative Text + Media content.
 - Website Content, Page Components and Operations & Evidence must be organised as separate editor folders.
 - A restricted build credential must resolve every polymorphic component and nested child record.
@@ -93,4 +94,5 @@ Failed routes return to Kimi with structured findings. The independent auditor r
 - Desktop, tablet and mobile checks across all six families.
 - Accessibility, keyboard, internal links, assets, forms-no-send safety, performance and edit-roundtrip checks.
 - Machine-readable source, build, audit and timing receipts committed.
+- A real nested child edit→connected build→exact revert receipt for each newly introduced composite family.
 - Explicit approval remains required for production, DNS or indexing.
