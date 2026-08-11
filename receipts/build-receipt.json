@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-11T13:20:27.678Z",
+  "generated_at": "2026-08-11T13:33:33.613Z",
   "dist": "site/dist",
   "routes_expected": 78,
   "routes_emitted": 78,
   "routes_missing": [],
   "files": 183,
-  "bytes": 4949815,
-  "pages_sha256": "b71a8ba898e410ec6336110febf0c1f5db5c290accefa4e2ea61f870a8176e07",
+  "bytes": 4949813,
+  "pages_sha256": "a40a63f8c9c913f4b8576f8e95f41a1656187ea08b7549571a93e483e8ab687f",
   "noindex": {
     "meta_robots": true,
     "robots_txt": true,

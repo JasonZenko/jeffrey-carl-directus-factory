@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-11T13:06:42.909472+00:00",
+  "generated_at": "2026-08-11T13:28:17.374211+00:00",
   "extractor": "kimi-extract-1.0.0",
-  "elapsed_seconds": 2.629,
+  "elapsed_seconds": 1.298,
   "routes": 78,
   "article_bands": 142,
   "blocks": 508,
@@ -24,6 +24,6 @@
   "outputs_sha256": {
     "site.json": "b11e6e97d5367380f827c23301c41eae243c008ab48695d7dbf8d3f4c3d3f609",
     "templates.json": "35c1a317ceb8a01823914b566129d4fd329d05c066c2b84b0dd3288e3163834c",
-    "pages.json": "b71a8ba898e410ec6336110febf0c1f5db5c290accefa4e2ea61f870a8176e07"
+    "pages.json": "a40a63f8c9c913f4b8576f8e95f41a1656187ea08b7549571a93e483e8ab687f"
   }
 }

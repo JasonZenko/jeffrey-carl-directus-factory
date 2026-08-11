@@ -329,7 +329,10 @@ def main():
 
     for page in pages_manifest:
         page_url = page["sitemapUrl"]
-        soup = BeautifulSoup((FREEZE / page["localPath"]).read_bytes(), "html.parser")
+        soup = BeautifulSoup(
+            (FREEZE / page["localPath"]).read_text(encoding="utf-8"),
+            "html.parser",
+        )
         route = urlparse(page["finalUrl"]).path
         family = page["templateFamily"]
         template_slug, template_name, page_type = FAMILY_TO_TEMPLATE[family]
@@ -398,11 +401,17 @@ def main():
         })
 
     home_soup = BeautifulSoup(
-        (FREEZE / pages_manifest[0]["localPath"]).read_bytes(), "html.parser")
+        (FREEZE / pages_manifest[0]["localPath"]).read_text(encoding="utf-8"),
+        "html.parser",
+    )
     home_page = next(p for p in pages_out if p["family"] == "home")
     chrome = extract_chrome(
-        BeautifulSoup((FREEZE / next(p for p in pages_manifest if "Home" in p["localPath"])["localPath"]).read_bytes(),
-                      "html.parser"),
+        BeautifulSoup(
+            (FREEZE / next(
+                p for p in pages_manifest if "Home" in p["localPath"]
+            )["localPath"]).read_text(encoding="utf-8"),
+            "html.parser",
+        ),
         next(p for p in pages_manifest if "Home" in p["localPath"])["sitemapUrl"],
         asset_by_url)
     site_record = {

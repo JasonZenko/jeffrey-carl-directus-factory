@@ -41,7 +41,7 @@ asset_by_final = {item["finalUrl"]: item for item in assets}
 contracts = []
 for page in pages:
     page_path = FREEZE / page["localPath"]
-    soup = BeautifulSoup(page_path.read_bytes(), "html.parser")
+    soup = BeautifulSoup(page_path.read_text(encoding="utf-8"), "html.parser")
     articles = soup.select("[id^='ArtID']")
     if not articles:
         raise RuntimeError(f"No source article bands found for {page['sitemapUrl']}")
