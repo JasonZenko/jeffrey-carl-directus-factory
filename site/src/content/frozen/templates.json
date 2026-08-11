@@ -7,21 +7,31 @@
     "blocks": [
       {
         "sort": 1,
-        "component_type": "hero",
+        "component_type": "feature_grid",
         "required": false
       },
       {
         "sort": 2,
-        "component_type": "text_media",
+        "component_type": "testimonials",
         "required": false
       },
       {
         "sort": 3,
-        "component_type": "cta",
+        "component_type": "team_grid",
         "required": false
       },
       {
         "sort": 4,
+        "component_type": "text_media",
+        "required": false
+      },
+      {
+        "sort": 5,
+        "component_type": "cta",
+        "required": false
+      },
+      {
+        "sort": 6,
         "component_type": "embed",
         "required": false
       }
@@ -147,16 +157,31 @@
       },
       {
         "sort": 2,
-        "component_type": "text_media",
+        "component_type": "feature_grid",
         "required": false
       },
       {
         "sort": 3,
-        "component_type": "cta",
+        "component_type": "testimonials",
         "required": false
       },
       {
         "sort": 4,
+        "component_type": "team_grid",
+        "required": false
+      },
+      {
+        "sort": 5,
+        "component_type": "text_media",
+        "required": false
+      },
+      {
+        "sort": 6,
+        "component_type": "cta",
+        "required": false
+      },
+      {
+        "sort": 7,
         "component_type": "embed",
         "required": false
       }

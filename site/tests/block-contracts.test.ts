@@ -74,4 +74,45 @@ describe('block contracts', () => {
       expect(page.robots_follow).toBe(false);
     }
   });
+
+  it('preserves semantic components and their double-nested child records', () => {
+    const counts: Record<string, number> = {};
+    let featureItems = 0;
+    let testimonialItems = 0;
+    let teamMembers = 0;
+    for (const page of pages) {
+      for (const block of page.blocks) {
+        counts[block.type] = (counts[block.type] ?? 0) + 1;
+        if (block.type === 'feature_grid') featureItems += block.component.items?.length ?? 0;
+        if (block.type === 'testimonials') testimonialItems += block.component.items?.length ?? 0;
+        if (block.type === 'team_grid') teamMembers += block.component.members?.length ?? 0;
+      }
+    }
+    expect(counts).toEqual({
+      hero: 44,
+      text_media: 360,
+      cta: 9,
+      embed: 10,
+      feature_grid: 42,
+      testimonials: 21,
+      team_grid: 21,
+      form: 1,
+    });
+    expect(featureItems).toBe(168);
+    expect(testimonialItems).toBe(21);
+    expect(teamMembers).toBe(42);
+  });
+
+  it('does not flatten known homepage composites into rich text', () => {
+    const homepage = pages.find((page) => page.family === 'home');
+    expect(homepage?.blocks.map((block) => block.type)).toEqual([
+      'feature_grid', 'feature_grid', 'testimonials', 'team_grid',
+    ]);
+    for (const page of pages.filter((item) => item.family === 'location')) {
+      const types = page.blocks.map((block) => block.type);
+      expect(types.filter((type) => type === 'feature_grid'), page.legacy_path).toHaveLength(2);
+      expect(types.filter((type) => type === 'testimonials'), page.legacy_path).toHaveLength(1);
+      expect(types.filter((type) => type === 'team_grid'), page.legacy_path).toHaveLength(1);
+    }
+  });
 });

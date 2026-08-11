@@ -20,7 +20,9 @@ tablet and mobile, preserves the source video/icon composition, and rejects
 the former generic redesign. Current acceptance requires all three receipts:
 78/78 exact-content routes, 18/18 technical browser checks and 18/18 visual
 fidelity checks. The CMS contains 78 pages and 508 ordered native blocks with
-zero orphan components.
+zero orphan components. A fourth blocking gate verifies the live Directus
+authoring model: native M2A Builder, semantic component types, nested child
+records and the organised editor workspace.
 
 ## Layout
 
@@ -36,17 +38,19 @@ zero orphan components.
 
 ## Content model
 
-Every page is decomposed into ordered, typed blocks (`hero`, `text_media`,
-`cta`, `embed`, `form` are exercised by this content; the remaining palette
-modules ship for template completeness). Each block carries:
+Every page is decomposed into ordered, typed blocks. This estate exercises 44
+heroes, 360 Text + Media blocks, 42 feature grids, 21 testimonial groups, 21
+team grids, 10 embeds, 9 CTAs and one form. The structured parents contain
+168 feature items, 21 testimonial items and 42 team members. Each block carries:
 
 - `html` — the governed, source-derived fragment (assets rewritten to managed
   paths, internal links to path-only, forms neutered)
 - `component` — structured fields mirroring the native Directus component record
 - `provenance` — source URL, source page sha256, article band id, fragment sha256
 
-Ordinary flow content stays in governed rich text; structured blocks are used
-only where the source pattern is unambiguous. No whole-page HTML/JSON blobs.
+Ordinary flow content stays in governed rich text; hero, feature, testimonial,
+team, embed and form content uses dedicated fields and nested records. No
+whole-page HTML/JSON blobs.
 Every source article band renders as `<article data-source-article="ArtIDn">`
 inside `<main data-fidelity-root>`; header/nav/footer stay outside.
 
@@ -55,7 +59,7 @@ inside `<main data-fidelity-root>`; header/nav/footer stay outside.
 ```sh
 python3 scripts/extract.py            # deterministic extraction + offline contract reconciliation
 cd site && npm ci && npm run build    # static build of all 78 routes
-npm test                              # 22 contract/route/provenance/noindex/build tests
+npm test                              # 25 contract/route/provenance/noindex/build tests
 node scripts/serve.mjs                # serve dist at http://127.0.0.1:4321
 node scripts/build_receipt.mjs        # receipts/build-receipt.json
 python3 auditor/audit_rendered.py --target http://127.0.0.1:4321 --strict
@@ -77,6 +81,7 @@ Import (idempotent, dry-run supported):
 ```sh
 DIRECTUS_SERVER_TOKEN=... node scripts/directus_import.mjs --dry-run
 DIRECTUS_SERVER_TOKEN=... node scripts/directus_import.mjs
+DIRECTUS_BUILD_TOKEN=... node scripts/verify_directus_authoring.mjs
 ```
 
 The completed Directus import contains 78 pages, 508 ordered native blocks,

@@ -54,6 +54,20 @@ Use the smallest correct native block:
 
 Ordinary headings, paragraphs, lists and inline links remain together in governed rich text until the source introduces a genuinely different semantic or visual block. Whole-page HTML/JSON blobs are forbidden. Every block must retain source provenance.
 
+### CMS authoring acceptance
+
+Frontend fidelity is necessary but not sufficient. Before a migration can pass:
+
+- `weo_pages.content` must be the visible native Directus M2A Builder.
+- Legacy `content_sections` and `structured_blocks` editor paths must be hidden.
+- Hero, feature grid, testimonial, team, embed and form sections must remain typed components, never rich-text carriers.
+- Repeated cards, quotes, steps, questions, people and images must exist as ordered child records inside their parent component.
+- Rich text is reserved for ordinary narrative Text + Media content.
+- Website Content, Page Components and Operations & Evidence must be organised as separate editor folders.
+- A restricted build credential must resolve every polymorphic component and nested child record.
+
+The blocking contract is enforced offline by the semantic block tests and against the live CMS by `scripts/verify_directus_authoring.mjs`. A visually accurate frontend cannot waive this gate.
+
 ## Route gate
 
 Each of the 78 frozen routes must pass:
@@ -67,6 +81,7 @@ Each of the 78 frozen routes must pass:
 7. Exact metadata evidence.
 8. Zero unsupported additions.
 9. Valid Directus page, template and ordered block relationships.
+10. Valid native Builder types, nested child counts and editor presentation.
 
 Failed routes return to Kimi with structured findings. The independent auditor reruns after repair.
 

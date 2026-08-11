@@ -37,7 +37,7 @@ PUBLIC_ASSETS = SITE / "public" / "assets"
 RECEIPTS = ROOT / "receipts"
 CONTRACT = ROOT / "auditor" / "source-contract.json"
 
-EXTRACTOR_VERSION = "kimi-extract-1.0.0"
+EXTRACTOR_VERSION = "foundry-semantic-extract-2.0.0"
 SOURCE_HOSTS = {"jeffreycarldmd.com", "www.jeffreycarldmd.com"}
 
 FAMILY_TO_TEMPLATE = {
@@ -52,12 +52,12 @@ FAMILY_TO_TEMPLATE = {
 # Block blueprints per template family (labels only; global Directus template
 # definitions are looked up by slug at import time and never modified).
 TEMPLATE_BLOCKS = {
-    "homepage": ["hero", "text_media", "cta", "embed"],
+    "homepage": ["feature_grid", "testimonials", "team_grid", "text_media", "cta", "embed"],
     "service-treatment": ["hero", "text_media", "cta", "embed"],
     "about-team": ["hero", "text_media", "cta"],
     "resource-article": ["hero", "text_media", "cta", "form"],
     "contact-conversion": ["hero", "text_media", "cta", "form"],
-    "location-practice": ["hero", "text_media", "cta", "embed"],
+    "location-practice": ["hero", "feature_grid", "testimonials", "team_grid", "text_media", "cta", "embed"],
 }
 
 
@@ -181,7 +181,12 @@ def transform_fragment(nodes, page_url, asset_by_url, stats):
 
 
 def classify(segment, text, images, embeds, links, headings, html, is_first_segment):
-    """Smallest correct block. Conservative: anything ambiguous is text_media."""
+    """Map source patterns to the smallest honest native component.
+
+    Rich text is deliberately the fallback, not the universal carrier. The
+    repeated home/location composites are stable source patterns and therefore
+    become typed parents with ordered child records.
+    """
     soup = BeautifulSoup(html, "html.parser")
     if soup.find("form"):
         form = soup.find("form")
@@ -207,6 +212,70 @@ def classify(segment, text, images, embeds, links, headings, html, is_first_segm
             "image_alt": first_img["alt"] if first_img else None,
             "primary_cta_label": first_link["label"] if first_link else None,
             "primary_cta_url": first_link["href"] if first_link else None,
+            "source_html": html,
+        }
+    feature_links = soup.select("a.TPcta")
+    if feature_links and soup.find("svg"):
+        items = []
+        for index, anchor in enumerate(feature_links):
+            item_heading = anchor.find(re.compile(r"^h[1-6]$"))
+            icon = anchor.find("svg")
+            title = normalize_text(item_heading.get_text(" ", strip=True) if item_heading else anchor.get_text(" ", strip=True))
+            items.append({
+                "sort": index + 1,
+                "title": title,
+                "description": normalize_text(anchor.get("title")),
+                "link_label": title,
+                "link_url": anchor.get("href") or "",
+                "icon_svg": str(icon) if icon else None,
+            })
+        remainder = BeautifulSoup(html, "html.parser")
+        for row in remainder.select(".TPcta-row, .TPctas"):
+            row.decompose()
+        return "feature_grid", {
+            "heading": headings[0]["text"] if headings else None,
+            "intro": normalize_text(remainder.get_text(" ", strip=True)),
+            "variant": "primary-with-intro" if soup.select_one(".TPcta-row") else "services",
+            "items": items,
+            "source_html": html,
+        }
+    if soup.select_one(".TPquote"):
+        quote_region = soup.select_one(".TPcol-xs-12") or soup
+        quote_copy = BeautifulSoup(str(quote_region), "html.parser")
+        for node in quote_copy.select("h1,h2,h3,h4,h5,h6,hr,.TPsocial"):
+            node.decompose()
+        quote = normalize_text(quote_copy.get_text(" ", strip=True))
+        return "testimonials", {
+            "heading": headings[0]["text"] if headings else "Patient testimonial",
+            "intro": None,
+            "items": [{"sort": 1, "quote": quote, "name": "Patient review", "role": None, "rating": 5}],
+            "source_html": html,
+        }
+    profile_rows = [row for row in soup.select(".TProw") if row.find("h2") and row.find("img")]
+    if len(profile_rows) >= 2:
+        members = []
+        for index, row in enumerate(profile_rows):
+            name_node = row.find("h2")
+            image_node = row.find("img")
+            profile_link = row.find("a", href=True)
+            body = BeautifulSoup(str(row), "html.parser")
+            for node in body.select("h1,h2,h3,h4,h5,h6,img,a.TPbtn"):
+                node.decompose()
+            raw_name = normalize_text(name_node.get_text(" ", strip=True))
+            members.append({
+                "sort": index + 1,
+                "name": re.sub(r"^Meet\s+", "", raw_name, flags=re.I),
+                "role": "Dentist",
+                "bio": normalize_text(body.get_text(" ", strip=True)),
+                "image": image_node.get("src") if image_node else None,
+                "image_alt": normalize_text(image_node.get("alt") if image_node else ""),
+                "profile_url": profile_link.get("href") if profile_link else None,
+            })
+        return "team_grid", {
+            "heading": headings[0]["text"] if headings else "Meet the dentists",
+            "intro": None,
+            "members": members,
+            "source_html": html,
         }
     if (headings and headings[0]["level"] in ("h2", "h3") and links
             and not images and not soup.find(["svg", "table", "ul", "ol", "img"])
@@ -218,6 +287,7 @@ def classify(segment, text, images, embeds, links, headings, html, is_first_segm
             "primary_url": links[0]["href"],
             "secondary_label": links[1]["label"] if len(links) > 1 else None,
             "secondary_url": links[1]["href"] if len(links) > 1 else None,
+            "source_html": html,
         }
     heading = headings[0]["text"] if headings else None
     first_img = images[0] if images else None
@@ -232,6 +302,7 @@ def classify(segment, text, images, embeds, links, headings, html, is_first_segm
         "image": first_img["managed_path"] if first_img else None,
         "image_alt": first_img["alt"] if first_img else None,
         "image_position": position,
+        "source_html": html,
     }
 
 

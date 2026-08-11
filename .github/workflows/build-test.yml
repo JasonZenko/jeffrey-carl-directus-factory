@@ -47,6 +47,12 @@ jobs:
         working-directory: site
         run: npm test
 
+      - name: Verify live Directus authoring contract
+        run: node scripts/verify_directus_authoring.mjs
+        env:
+          DIRECTUS_URL: https://weomcms.foundryworks.ai
+          DIRECTUS_BUILD_TOKEN: ${{ secrets.DIRECTUS_SERVER_TOKEN }}
+
       - name: Serve built site
         run: PORT=4321 node scripts/serve.mjs &
 

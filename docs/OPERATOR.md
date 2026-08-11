@@ -34,7 +34,7 @@ python3 qa/browser_matrix.py --target http://127.0.0.1:4321
 python3 qa/visual_fidelity.py --target http://127.0.0.1:4321
 ```
 
-Expected: 78/78 route receipts green, 22/22 tests passing, 18/18 technical
+Expected: 78/78 route receipts green, 25/25 tests passing, 18/18 technical
 browser checks and 18/18 visual-fidelity checks across six page families at
 desktop, tablet and mobile.
 
@@ -55,24 +55,33 @@ modify global template definitions.
 
 ```sh
 export DIRECTUS_SERVER_TOKEN=...        # never commit this
+export DIRECTUS_ADMIN_PASSWORD=...      # only for schema/presentation repair
+node scripts/repair_directus_authoring.mjs          # dry-run
+node scripts/repair_directus_authoring.mjs --apply  # native Builder + editor organisation
 node scripts/directus_import.mjs --dry-run   # validate the plan
 node scripts/directus_import.mjs             # execute
+DIRECTUS_BUILD_TOKEN="$DIRECTUS_SERVER_TOKEN" node scripts/verify_directus_authoring.mjs
 ```
 
 Creates/updates: one `weo_sites` record (indexing disabled), managed assets
 (`directus_files` + `weo_media_assets` with sha256), 78 `weo_pages` with
-template FK, native component records with ordered `weo_page_blocks`
-relationships, mirrored `weo_page_sections` rows carrying per-block
+template FK, native component records with ordered `weo_page_builder` M2A
+relationships, rollback-only `weo_page_blocks` relationships, mirrored `weo_page_sections` rows carrying per-block
 provenance, navigation items, the internal link graph, one draft `weo_forms`
 record (legacy provider; stays draft until an approved embed URL exists), and
 a `weo_migration_runs` receipt.
 
-Type carriers: `hero` → `weo_component_heroes`, `cta` → `weo_component_ctas`,
-`text_media` → `weo_component_text_media`. `embed` and `form` have no FK slot
-in the block palette; they are carried as governed rich text in
-`weo_component_text_media` with the exact type preserved in the
-`internal_name` suffix (`<blockId>::<type>`), which the build adapter uses to
-recover the frozen contract types.
+The importer uses all semantic component collections directly. Ordinary copy
+uses the Text + Media rich-text body. Feature grids, testimonials and team
+grids create ordered second-level child records. Embeds and form sections use
+their own component collections. The immutable `source_html` field is hidden
+provenance used to preserve exact legacy presentation; it is not the editor's
+primary content field.
+
+The authoring verifier blocks handoff unless the live site contains exactly 78
+pages, 508 native Builder rows, the expected semantic component distribution,
+168 feature items, 21 testimonial items and 42 team members. It also checks
+that the restricted build policy resolves the polymorphic and nested records.
 
 ## 4. Connected vs disconnected builds
 
@@ -80,7 +89,7 @@ recover the frozen contract types.
   `site/src/content/frozen/`.
 - Connected: set `DIRECTUS_URL` and `DIRECTUS_SERVER_TOKEN` (server-only, no
   `PUBLIC_` prefix; build-time only). The adapter in `site/src/lib/directus.ts`
-  maps native page/template/block relationships into the identical typed
+  maps native page/template/Builder relationships into the identical typed
   contracts. Once configured, any fetch or mapping failure stops the build;
   there is no stale-content fallback in the connected release lane.
 

@@ -6,7 +6,8 @@
  *   - one weo_sites record (slug: jeffrey-carl-dmd), noindex flags set
  *   - managed assets (directus_files + weo_media_assets rows with sha256)
  *   - all 78 weo_pages rows with template FK (looked up, never created)
- *   - native component records + ordered weo_page_blocks relationships
+ *   - native component records + ordered native Directus Builder relationships
+ *   - rollback-only weo_page_blocks relationships for migration traceability
  *   - mirrored weo_page_sections rows carrying per-block provenance
  *   - weo_navigation_items, weo_internal_links, draft weo_forms
  *   - a weo_migration_runs receipt row
@@ -56,6 +57,8 @@ const COMPONENT_COLLECTION_BY_CARRIER = {
   stats: 'weo_component_stats',
   gallery: 'weo_component_galleries',
   team_grid: 'weo_component_team_grids',
+  embed: 'weo_component_embeds',
+  form: 'weo_component_forms',
 };
 
 const sha256 = (data) => createHash('sha256').update(data).digest('hex');
@@ -139,6 +142,7 @@ function componentPayload(block) {
           image_alt: c.image_alt,
           primary_cta_label: c.primary_cta_label,
           primary_cta_url: c.primary_cta_url,
+          source_html: c.source_html ?? block.html,
         },
       };
     case 'cta':
@@ -153,6 +157,7 @@ function componentPayload(block) {
           primary_url: c.primary_url,
           secondary_label: c.secondary_label,
           secondary_url: c.secondary_url,
+          source_html: c.source_html ?? block.html,
         },
       };
     case 'text_media':
@@ -163,27 +168,78 @@ function componentPayload(block) {
           ...base,
           heading: c.heading,
           paragraphs: c.paragraphs ?? [block.html],
+          body_html: (c.paragraphs ?? [block.html]).join(''),
           image_alt: c.image_alt,
           image_position: c.image_position,
+          source_html: c.source_html ?? block.html,
         },
       };
-    // The Directus block palette has no embed/form FK; both are carried as
-    // governed rich text in weo_component_text_media with the exact type
-    // preserved in the internal_name suffix, mirroring the frozen contract.
+    case 'feature_grid':
+      return {
+        collection: 'weo_component_feature_grids',
+        carrier: 'feature_grid',
+        payload: {...base, heading: c.heading, intro: c.intro, variant: c.variant, source_html: c.source_html ?? block.html},
+      };
+    case 'testimonials':
+      return {
+        collection: 'weo_component_testimonials',
+        carrier: 'testimonials',
+        payload: {...base, heading: c.heading, intro: c.intro, source_html: c.source_html ?? block.html},
+      };
+    case 'team_grid':
+      return {
+        collection: 'weo_component_team_grids',
+        carrier: 'team_grid',
+        payload: {...base, heading: c.heading, intro: c.intro, source_html: c.source_html ?? block.html},
+      };
     case 'embed':
       return {
-        collection: 'weo_component_text_media',
-        carrier: 'text_media',
-        payload: { ...base, heading: c.heading ?? null, paragraphs: [block.html] },
+        collection: 'weo_component_embeds',
+        carrier: 'embed',
+        payload: {...base, heading: c.heading ?? null, provider: c.provider, embed_url: c.embed_url, source_html: c.source_html ?? c.html ?? block.html},
       };
     case 'form':
       return {
-        collection: 'weo_component_text_media',
-        carrier: 'text_media',
-        payload: { ...base, heading: c.heading ?? null, paragraphs: [block.html] },
+        collection: 'weo_component_forms',
+        carrier: 'form',
+        payload: {...base, heading: c.heading ?? c.name, form_name: c.name, provider: c.provider, external_id: c.external_id, source_action: c.source_action, source_html: c.source_html ?? c.html ?? block.html},
       };
     default:
       throw new Error(`no component mapping for block type ${block.type}`);
+  }
+}
+
+async function createComponentChildren(block, componentId, assetFileByKey) {
+  const component = block.component;
+  if (block.type === 'feature_grid') {
+    for (const item of component.items ?? []) {
+      await api('POST', '/items/weo_component_feature_items', {
+        status: 'published', feature_grid: componentId, sort: item.sort,
+        title: item.title, description: item.description,
+        link_label: item.link_label, link_url: item.link_url, icon_svg: item.icon_svg,
+      });
+      tally('feature_items', 'created');
+    }
+  }
+  if (block.type === 'testimonials') {
+    for (const item of component.items ?? []) {
+      await api('POST', '/items/weo_component_testimonial_items', {
+        testimonial: componentId, sort: item.sort, quote: item.quote,
+        name: item.name, role: item.role, rating: item.rating,
+      });
+      tally('testimonial_items', 'created');
+    }
+  }
+  if (block.type === 'team_grid') {
+    for (const item of component.members ?? []) {
+      const imageKey = typeof item.image === 'string' ? item.image.split('/').pop() : null;
+      await api('POST', '/items/weo_component_team_members', {
+        team_grid: componentId, sort: item.sort, name: item.name, role: item.role,
+        bio: item.bio, image: imageKey ? assetFileByKey.get(imageKey) ?? null : null,
+        image_alt: item.image_alt, profile_url: item.profile_url,
+      });
+      tally('team_members', 'created');
+    }
   }
 }
 
@@ -338,8 +394,13 @@ async function main() {
     let pageId = pageIdByPath.get(page.legacy_path);
     if (pageId) {
       // Re-import relationships deterministically.
+      const oldBuilderRows = await apiList(
+        `/items/weo_page_builder?filter[page][_eq]=${pageId}&limit=-1&fields=id`);
+      if (oldBuilderRows.length) {
+        await api('DELETE', '/items/weo_page_builder', { keys: oldBuilderRows.map((b) => b.id) });
+      }
       const oldBlocks = await apiList(
-        `/items/weo_page_blocks?filter[page][_eq]=${pageId}&limit=-1&fields=id,component_type,hero,text_media,feature_grid,process,faq,cta,testimonials,stats,gallery,team_grid`);
+        `/items/weo_page_blocks?filter[page][_eq]=${pageId}&limit=-1&fields=id,component_type,hero,text_media,feature_grid,process,faq,cta,testimonials,stats,gallery,team_grid,embed,form`);
       if (oldBlocks.length) {
         await api('DELETE', `/items/weo_page_blocks`, { keys: oldBlocks.map((b) => b.id) });
         for (const oldBlock of oldBlocks) {
@@ -375,14 +436,23 @@ async function main() {
       }
       const component = (await api('POST', `/items/${collection}`, payload)).data;
       tally('components', 'created');
-      await api('POST', '/items/weo_page_blocks', {
+      await createComponentChildren(block, component.id, assetFileByKey);
+      const pageBlock = (await api('POST', '/items/weo_page_blocks', {
         status: 'published',
         page: pageId,
         sort: block.sort,
         component_type: carrier,
         [carrier]: component.id,
-      });
+      })).data;
       tally('page_blocks', 'created');
+      await api('POST', '/items/weo_page_builder', {
+        id: pageBlock.id,
+        page: pageId,
+        sort: block.sort,
+        collection,
+        item: component.id,
+      });
+      tally('page_builder', 'created');
       await api('POST', '/items/weo_page_sections', {
         page: pageId,
         source_key: block.id,
@@ -462,9 +532,9 @@ async function main() {
   // 7. Immutable migration run receipt.
   await api('POST', '/items/weo_migration_runs', {
     site: siteId,
-    run_key: `kimi-k3-${new Date().toISOString()}`,
+    run_key: `foundry-semantic-v2-${new Date().toISOString()}`,
     status: 'completed',
-    orchestrator_version: 'kimi-extract-1.0.0',
+    orchestrator_version: 'foundry-semantic-extract-2.0.0',
     source_snapshot_sha256: sha256(readFileSync(join(FROZEN, 'pages.json'))),
     summary: {
       routes: pages.length,

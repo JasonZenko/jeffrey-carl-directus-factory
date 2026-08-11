@@ -1,15 +1,18 @@
 {
-  "generated_at": "2026-08-11T16:47:06.237434+00:00",
-  "extractor": "kimi-extract-1.0.0",
-  "elapsed_seconds": 1.678,
+  "generated_at": "2026-08-11T20:25:53.057101+00:00",
+  "extractor": "foundry-semantic-extract-2.0.0",
+  "elapsed_seconds": 1.818,
   "routes": 78,
   "article_bands": 142,
   "blocks": 508,
   "block_types": {
     "hero": 44,
-    "text_media": 444,
+    "text_media": 360,
     "cta": 9,
     "embed": 10,
+    "feature_grid": 42,
+    "testimonials": 21,
+    "team_grid": 21,
     "form": 1
   },
   "assets_copied": 101,
@@ -23,7 +26,7 @@
   },
   "outputs_sha256": {
     "site.json": "d8ec8bcd186a998e6faf91699d0cc69ab81452e16df81a35d13e7c7257af130b",
-    "templates.json": "35c1a317ceb8a01823914b566129d4fd329d05c066c2b84b0dd3288e3163834c",
-    "pages.json": "a40a63f8c9c913f4b8576f8e95f41a1656187ea08b7549571a93e483e8ab687f"
+    "templates.json": "feb3b07571ebe74a1b969ecc500984a9fd1125eca8b3725729611508b15bdd79",
+    "pages.json": "3cc92eb14e79feed614c7bc651e7fc0137aa1c44786bc7ff96f7e8ed92f7c32c"
   }
 }

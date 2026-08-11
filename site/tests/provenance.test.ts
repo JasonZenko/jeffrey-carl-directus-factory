@@ -16,7 +16,7 @@ describe('provenance', () => {
         expect(p.article_id, block.id).toMatch(/^ArtID\d+$/);
         expect(p.article_id, block.id).toBe(block.article_id);
         expect(p.fragment_sha256, block.id).toMatch(SHA256_RE);
-        expect(p.extractor, block.id).toBe('kimi-extract-1.0.0');
+        expect(p.extractor, block.id).toBe('foundry-semantic-extract-2.0.0');
         expect(p.band_index, block.id).toBeGreaterThanOrEqual(0);
         expect(p.block_index, block.id).toBeGreaterThanOrEqual(0);
       }

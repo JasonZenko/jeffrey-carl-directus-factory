@@ -11,7 +11,7 @@ import type {
  * Directus build adapter. Reads published content from the clean WEO master
  * using a server-only static token (DIRECTUS_SERVER_TOKEN — never prefixed
  * PUBLIC_, only read at build time on the server) and maps native
- * page/template/block relationships into the shared typed contracts.
+ * page/template/native Builder relationships into the shared typed contracts.
  *
  * Block types are recovered from the component internal_name suffix
  * (`<blockId>::<type>`) written by scripts/directus_import.mjs, and block
@@ -37,6 +37,21 @@ async function api<T>(path: string, token: string): Promise<T> {
 
 const BLOCK_TYPE_SUFFIX = /::([a-z_]+)$/;
 
+const COMPONENT_TYPE_BY_COLLECTION: Record<string, string> = {
+  weo_component_heroes: 'hero',
+  weo_component_text_media: 'text_media',
+  weo_component_feature_grids: 'feature_grid',
+  weo_component_processes: 'process',
+  weo_component_faqs: 'faq',
+  weo_component_ctas: 'cta',
+  weo_component_testimonials: 'testimonials',
+  weo_component_stats: 'stats',
+  weo_component_galleries: 'gallery',
+  weo_component_team_grids: 'team_grid',
+  weo_component_embeds: 'embed',
+  weo_component_forms: 'form',
+};
+
 function componentHtml(componentType: string, component: Record<string, any>): string {
   if (!component) return '';
   switch (componentType) {
@@ -45,12 +60,19 @@ function componentHtml(componentType: string, component: Record<string, any>): s
     case 'cta':
       return component.body ?? '';
     case 'text_media': {
+      if (typeof component.body_html === 'string') return component.body_html;
       const paragraphs = component.paragraphs;
       if (Array.isArray(paragraphs)) return paragraphs.join('');
       return typeof paragraphs === 'string' ? paragraphs : '';
     }
+    case 'feature_grid':
+    case 'testimonials':
+    case 'team_grid':
+    case 'embed':
+    case 'form':
+      return component.source_html ?? '';
     default:
-      return component.body ?? component.html ?? '';
+      return component.body ?? component.source_html ?? component.html ?? '';
   }
 }
 
@@ -67,8 +89,19 @@ export async function getDirectusContent(): Promise<ContentBundle> {
     api<DirectusList<any>>(
       `/items/weo_pages?filter[site][_eq]=${siteRow.id}&filter[status][_eq]=published&limit=-1&fields=*,template.*`, token),
     api<DirectusList<any>>(
-      `/items/weo_page_blocks?filter[page][site][_eq]=${siteRow.id}&limit=-1&sort=sort` +
-      '&fields=*,hero.*,text_media.*,feature_grid.*,process.*,faq.*,cta.*,testimonials.*,stats.*,gallery.*,team_grid.*', token),
+      `/items/weo_page_builder?filter[page][site][_eq]=${siteRow.id}&limit=-1&sort=sort` +
+      '&fields=id,page,sort,collection,' +
+      'item:weo_component_heroes.*,' +
+      'item:weo_component_text_media.*,' +
+      'item:weo_component_feature_grids.*,item:weo_component_feature_grids.items.*,' +
+      'item:weo_component_processes.*,item:weo_component_processes.steps.*,' +
+      'item:weo_component_faqs.*,item:weo_component_faqs.items.*,' +
+      'item:weo_component_ctas.*,' +
+      'item:weo_component_testimonials.*,item:weo_component_testimonials.items.*,' +
+      'item:weo_component_stats.*,' +
+      'item:weo_component_galleries.*,item:weo_component_galleries.items.*,' +
+      'item:weo_component_team_grids.*,item:weo_component_team_grids.members.*,' +
+      'item:weo_component_embeds.*,item:weo_component_forms.*', token),
     api<DirectusList<any>>(
       `/items/weo_page_sections?filter[page][site][_eq]=${siteRow.id}&limit=-1&sort=sort&fields=*`, token),
     api<DirectusList<any>>(
@@ -84,8 +117,8 @@ export async function getDirectusContent(): Promise<ContentBundle> {
 
   const blocksByPage = new Map<string, Block[]>();
   for (const row of blockRows.data) {
-    const componentType: string = row.component_type;
-    const component = row[componentType] ?? null;
+    const componentType = COMPONENT_TYPE_BY_COLLECTION[row.collection] ?? row.collection;
+    const component = row.item ?? null;
     const internalName: string = component?.internal_name ?? '';
     const suffix = BLOCK_TYPE_SUFFIX.exec(internalName);
     const type = (suffix?.[1] ?? componentType) as BlockType;
