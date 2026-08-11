@@ -12,6 +12,7 @@
   "home_hero_image": "/assets/bd9b8d625009_www.jeffreycarldmd.com_tpn_c_C180_img_BKG-anibanner-c180.webp",
   "home_hero_video_id": "fLOLbodJq-o",
   "inner_hero_image": "/assets/368613f4079c_www.jeffreycarldmd.com_tpn_c_C180_ban_CandW-gen-bar.jpg",
+  "map_embed_url": "https://maps.google.com/maps?f=q&source=s_q&hl=en&z=15&t=m&iwloc=A&output=embed&q=Jeffrey+Carl+DMD+3120+Pacific+PL+SW+,+Albany+OR+97321",
   "navigation": [
     {
       "label": "Home",
@@ -21,17 +22,78 @@
     {
       "label": "About Us",
       "href": "/p/dentist-Albany-OR-About-Us-p65411.asp",
-      "target": ""
+      "target": "",
+      "children": [
+        {
+          "label": "Meet Dr. Jeffrey D. Carl",
+          "href": "/p/dentist-Albany-OR-Meet-Dr-Jeffrey-D-Carl-p508.asp",
+          "target": ""
+        },
+        {
+          "label": "Meet Dr. Austin J. Brunson",
+          "href": "/p/dentist-Albany-OR-Meet-Dr-Austin-J-Brunson-p66695.asp",
+          "target": ""
+        },
+        {
+          "label": "Tour Our Office",
+          "href": "/p/dentist-Albany-OR-Tour-Our-Office-p27073.asp",
+          "target": ""
+        }
+      ]
     },
     {
       "label": "Dental Services",
       "href": "/p/dentist-Albany-OR-Dental-Services-p66928.asp",
-      "target": ""
+      "target": "",
+      "children": [
+        {
+          "label": "Family Dentistry",
+          "href": "/p/dentist-Albany-OR-Family-Dentistry-p66929.asp",
+          "target": ""
+        },
+        {
+          "label": "Restorative Dentistry",
+          "href": "/p/dentist-Albany-OR-Restorative-Dentistry-p66930.asp",
+          "target": ""
+        },
+        {
+          "label": "Cosmetic Dentistry",
+          "href": "/p/dentist-Albany-OR-Cosmetic-Dentistry-p66931.asp",
+          "target": ""
+        },
+        {
+          "label": "Preventive Dentistry",
+          "href": "/p/dentist-Albany-OR-Preventive-Dentistry-p75431.asp",
+          "target": ""
+        },
+        {
+          "label": "Dental Implants",
+          "href": "/p/dentist-Albany-OR-Dental-Implants-p66935.asp",
+          "target": ""
+        },
+        {
+          "label": "Invisalign",
+          "href": "/p/dentist-Albany-OR-Invisalign-p66938.asp",
+          "target": ""
+        }
+      ]
     },
     {
       "label": "Patient Info",
       "href": "/p/dentist-Albany-OR-Patient-Info-p27244.asp",
-      "target": ""
+      "target": "",
+      "children": [
+        {
+          "label": "Patient Forms",
+          "href": "/p/dentist-Albany-OR-Patient-Forms-p27243.asp",
+          "target": ""
+        },
+        {
+          "label": "Reviews",
+          "href": "/p/dentist-Albany-OR-Reviews-p27239.asp",
+          "target": ""
+        }
+      ]
     },
     {
       "label": "Contact Us",

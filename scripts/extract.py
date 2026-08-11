@@ -237,6 +237,13 @@ def classify(segment, text, images, embeds, links, headings, html, is_first_segm
 
 def extract_chrome(home_soup, home_url, asset_by_url):
     """Header/footer chrome evidence from the frozen homepage (outside bands)."""
+    def nav_link(anchor):
+        return {
+            "label": normalize_text(anchor.get_text(" ", strip=True)),
+            "href": normalize_url(anchor.get("href"), home_url),
+            "target": anchor.get("target") or "",
+        }
+
     def region_links(region):
         out = []
         if not region:
@@ -255,13 +262,21 @@ def extract_chrome(home_soup, home_url, asset_by_url):
              or home_soup.find("a", href=re.compile(r"^tel:")))
     seen = set()
     nav = []
-    nav_anchors = nav_region.select(":scope > ul > li > a") if nav_region else []
-    for anchor in nav_anchors:
-        link = {
-            "label": normalize_text(anchor.get_text(" ", strip=True)),
-            "href": normalize_url(anchor.get("href"), home_url),
-            "target": anchor.get("target") or "",
-        }
+    nav_items = nav_region.select(":scope > ul > li") if nav_region else []
+    for item in nav_items:
+        anchor = item.find("a", recursive=False)
+        if not anchor:
+            continue
+        link = nav_link(anchor)
+        submenu = item.find("ul", recursive=False)
+        children = []
+        if submenu:
+            for child_item in submenu.find_all("li", recursive=False):
+                child_anchor = child_item.find("a", recursive=False)
+                if child_anchor:
+                    children.append(nav_link(child_anchor))
+        if children:
+            link["children"] = children
         key = (link["label"], link["href"])
         if key not in seen:
             seen.add(key)
@@ -279,6 +294,10 @@ def extract_chrome(home_soup, home_url, asset_by_url):
                         if "request" in link["label"].lower()
                         and "appointment" in link["label"].lower()), None)
     hero_video = home_soup.select_one(".TPyt-background[data-id]")
+    map_embed = footer.select_one("iframe.TPmap") if footer else None
+    map_embed_url = map_embed.get("src", "") if map_embed else ""
+    if map_embed_url.startswith("//"):
+        map_embed_url = f"https:{map_embed_url}"
     copyright_box = home_soup.select_one(".TPcopyrightBox")
 
     def managed_asset(fragment):
@@ -299,6 +318,7 @@ def extract_chrome(home_soup, home_url, asset_by_url):
         "home_hero_image": managed_asset("BKG-anibanner-c180.webp"),
         "home_hero_video_id": hero_video.get("data-id", "") if hero_video else "",
         "inner_hero_image": managed_asset("CandW-gen-bar.jpg"),
+        "map_embed_url": map_embed_url,
         "copyright": normalize_text(copyright_box.get_text(" ", strip=True)) if copyright_box else "",
     }
 
@@ -432,6 +452,7 @@ def main():
         "home_hero_image": chrome["home_hero_image"],
         "home_hero_video_id": chrome["home_hero_video_id"],
         "inner_hero_image": chrome["inner_hero_image"],
+        "map_embed_url": chrome["map_embed_url"],
         "navigation": chrome["navigation"],
         "footer": {
             "text": chrome["footer_text"],

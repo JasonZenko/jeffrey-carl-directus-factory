@@ -147,6 +147,7 @@ export async function getDirectusContent(): Promise<ContentBundle> {
     home_hero_image: siteRow.navigation?.home_hero_image ?? '',
     home_hero_video_id: siteRow.navigation?.home_hero_video_id ?? '',
     inner_hero_image: siteRow.navigation?.inner_hero_image ?? '',
+    map_embed_url: siteRow.navigation?.map_embed_url ?? '',
     navigation: (siteRow.navigation?.items ?? siteRow.navigation ?? []) as SiteRecord['navigation'],
     footer: siteRow.footer ?? { text: '', copyright: '', links: [] },
     homepage: siteRow.homepage ?? { legacy_path: '' },

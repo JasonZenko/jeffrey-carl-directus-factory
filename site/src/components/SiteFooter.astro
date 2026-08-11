@@ -1,22 +1,42 @@
 ---
-import type { SiteRecord } from '../lib/contracts';
+import type { PageRecord, SiteRecord } from '../lib/contracts';
 
 interface Props {
   site: SiteRecord;
+  page: PageRecord;
 }
 
-const { site } = Astro.props;
+const { site, page } = Astro.props;
 const email = site.footer.links.find((link) => /^mailto:/i.test(link.href));
 const facebook = site.footer.links.find((link) => /facebook/i.test(link.label));
 const google = site.footer.links.find((link) => /google/i.test(link.label));
+const copyrightLine = site.footer.copyright.match(/^.*?\bSitemap\b/)?.[0] ?? site.footer.copyright;
+const addressParts = site.address.match(/^(.*?SW),?\s+(Albany,\s*OR\s+\d{5})/i);
+const addressLineOne = addressParts?.[1] ?? site.address;
+const addressLineTwo = addressParts?.[2] ?? '';
 ---
 
 <footer class="site-footer" data-review-chrome>
+  {site.map_embed_url && (
+    <div class="site-footer__map">
+      <iframe
+        src={site.map_embed_url}
+        title={`Map showing ${site.name} at ${site.address}`}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  )}
   <div class="site-footer__inner">
     <div class="site-footer__identity">
       {site.logo && <img src={site.logo} alt={site.name} />}
       <h2>Contact Information</h2>
-      {site.address && <a href={google?.href || '#'}>{site.address}</a>}
+      {site.address && (
+        <a class="site-footer__address" href={google?.href || '#'}>
+          <span>{addressLineOne}</span>
+          {addressLineTwo && <span>{addressLineTwo}</span>}
+        </a>
+      )}
       {site.phone && <a href={site.phone_href}>{site.phone}</a>}
       {email && <a href={email.href}>{email.label}</a>}
       <h2>Follow Us</h2>
@@ -40,7 +60,11 @@ const google = site.footer.links.find((link) => /google/i.test(link.label));
     </div>
   </div>
   <div class="site-footer__copyright">
-    <p>{site.footer.copyright}</p>
-    <small>{site.name}, {site.address} · {site.phone}</small>
+    <p>{copyrightLine}</p>
+    <div class="site-footer__related">
+      <span>{page.title}</span>
+      <span>{page.meta_description}</span>
+      <span>{site.name}, {site.address} · {site.phone} · jeffreycarldmd.com</span>
+    </div>
   </div>
 </footer>

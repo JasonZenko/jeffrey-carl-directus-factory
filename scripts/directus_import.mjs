@@ -225,6 +225,7 @@ async function main() {
       home_hero_image: site.home_hero_image,
       home_hero_video_id: site.home_hero_video_id,
       inner_hero_image: site.inner_hero_image,
+      map_embed_url: site.map_embed_url,
     },
     footer: site.footer,
     homepage: site.homepage,
