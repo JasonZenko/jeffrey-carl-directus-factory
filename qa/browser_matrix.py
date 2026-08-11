@@ -6,6 +6,7 @@ import json
 import os
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urlparse
 
 from playwright.sync_api import sync_playwright
 
@@ -17,12 +18,34 @@ VIEWPORTS = {
     "mobile": {"width": 390, "height": 844},
 }
 
+IGNORED_THIRD_PARTY_CONSOLE_ERRORS = (
+    "Permissions policy violation: compute-pressure is not allowed in this document.",
+    "Failed to load resource: the server responded with a status of 404 ()",
+)
+
+
+def record_console_error(message, errors):
+    if message.type != "error":
+        return
+    if message.text in IGNORED_THIRD_PARTY_CONSOLE_ERRORS:
+        return
+    errors.append(message.text)
+
+
+def record_first_party_response_error(response, target_host, errors):
+    if response.status < 400:
+        return
+    if urlparse(response.url).netloc != target_host:
+        return
+    errors.append({"status": response.status, "url": response.url})
+
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--target", required=True)
     args = parser.parse_args()
     target = args.target.rstrip("/")
+    target_host = urlparse(target).netloc
     axe_path = ROOT / "site/node_modules/axe-core/axe.min.js"
     if not axe_path.exists():
         raise SystemExit("axe-core is missing; run npm ci in site/")
@@ -43,9 +66,11 @@ def main():
                 page = browser.new_page(viewport=viewport)
                 console_errors = []
                 page_errors = []
-                page.on("console", lambda message: console_errors.append(message.text)
-                        if message.type == "error" else None)
+                response_errors = []
+                page.on("console", lambda message: record_console_error(message, console_errors))
                 page.on("pageerror", lambda error: page_errors.append(str(error)))
+                page.on("response", lambda response: record_first_party_response_error(
+                    response, target_host, response_errors))
                 response = page.goto(f"{target}{route}", wait_until="networkidle")
                 page.add_script_tag(path=str(axe_path))
                 axe_violations = page.evaluate("""
@@ -78,6 +103,7 @@ def main():
                     "images_loaded": not evidence["brokenImages"],
                     "no_console_errors": not console_errors,
                     "no_page_errors": not page_errors,
+                    "no_first_party_http_errors": not response_errors,
                     "noindex": "noindex" in evidence["robots"],
                     "fidelity_root": evidence["fidelityRoot"],
                     "source_articles": evidence["articleCount"] >= 1,
@@ -96,6 +122,7 @@ def main():
                     "broken_images": evidence["brokenImages"],
                     "console_errors": console_errors,
                     "page_errors": page_errors,
+                    "first_party_http_errors": response_errors,
                     "accessibility_violations": axe_violations,
                 })
                 page.close()
