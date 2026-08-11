@@ -1,0 +1,15 @@
+---
+import type { PageRecord, SiteRecord } from '../lib/contracts';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  page: PageRecord;
+  site: SiteRecord;
+}
+
+const { page, site } = Astro.props;
+---
+
+<BaseLayout page={page} site={site} family="location">
+  <slot />
+</BaseLayout>

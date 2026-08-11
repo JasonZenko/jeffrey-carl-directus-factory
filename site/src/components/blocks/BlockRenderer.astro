@@ -1,0 +1,40 @@
+---
+import type { Block } from '../../lib/contracts';
+import Hero from './Hero.astro';
+import TextMedia from './TextMedia.astro';
+import FeatureGrid from './FeatureGrid.astro';
+import Process from './Process.astro';
+import Faq from './Faq.astro';
+import Cta from './Cta.astro';
+import Testimonials from './Testimonials.astro';
+import Stats from './Stats.astro';
+import Gallery from './Gallery.astro';
+import TeamGrid from './TeamGrid.astro';
+import Form from './Form.astro';
+import Embed from './Embed.astro';
+
+interface Props {
+  block: Block;
+}
+
+const { block } = Astro.props;
+
+const modules = {
+  hero: Hero,
+  text_media: TextMedia,
+  feature_grid: FeatureGrid,
+  process: Process,
+  faq: Faq,
+  cta: Cta,
+  testimonials: Testimonials,
+  stats: Stats,
+  gallery: Gallery,
+  team_grid: TeamGrid,
+  form: Form,
+  embed: Embed,
+} as const;
+
+const Module = modules[block.type] ?? TextMedia;
+---
+
+<Module block={block} />

@@ -1,0 +1,33 @@
+---
+import { getContent } from '../lib/content';
+
+const { site, pages, source } = await getContent();
+const sorted = [...pages].sort((a, b) => a.legacy_path.localeCompare(b.legacy_path));
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Review index — {site.name}</title>
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <main>
+      <h1>{site.name} — migration review surface</h1>
+      <p>
+        Noindex review build of {sorted.length} migrated routes.
+        Content source: {source === 'directus' ? 'Directus (published)' : 'frozen extraction'}.
+      </p>
+      <ul>
+        {sorted.map((page) => (
+          <li>
+            <a href={page.legacy_path}>{page.legacy_path}</a>
+            {' '}<small>({page.family})</small>
+          </li>
+        ))}
+      </ul>
+    </main>
+  </body>
+</html>

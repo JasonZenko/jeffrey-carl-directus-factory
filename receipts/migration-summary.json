@@ -1,0 +1,92 @@
+{
+  "benchmark": "jeffrey-carl-clean-directus-factory-v1",
+  "migration_agent": {
+    "harness": "Kimi Code CLI",
+    "version": "0.34.0",
+    "model": "kimi-code/k3"
+  },
+  "benchmark_started_at": "2026-08-11T11:41:17Z",
+  "migration_completed_at": "2026-08-11T12:33:51Z",
+  "elapsed_seconds": 3154,
+  "extraction": {
+    "extractor": "kimi-extract-1.0.0",
+    "elapsed_seconds": 3.059,
+    "deterministic": true,
+    "routes": 78,
+    "article_bands": 142,
+    "blocks": 508,
+    "block_types": {
+      "hero": 44,
+      "text_media": 444,
+      "cta": 9,
+      "embed": 10,
+      "form": 1
+    },
+    "assets_managed": 101,
+    "dropped_unevidenced_images": 21,
+    "offline_contract_reconciliation_mismatches": 0
+  },
+  "build": {
+    "pages_emitted": 79,
+    "routes_emitted": 78,
+    "routes_missing": 0,
+    "dist_files": 183,
+    "dist_bytes": 4949815
+  },
+  "tests": {
+    "framework": "vitest",
+    "files": 5,
+    "tests": 22,
+    "passed": 22,
+    "failed": 0
+  },
+  "audit": {
+    "auditor": "auditor/audit_rendered.py --strict",
+    "routes": 78,
+    "passed": 78,
+    "failed": 0,
+    "receipt": "auditor/fidelity-results.json"
+  },
+  "browser_qa": {
+    "families": 6,
+    "viewports": 3,
+    "checks": 18,
+    "passed": 18,
+    "failed": 0,
+    "wcag_standard": "WCAG 2.2 AA via axe-core",
+    "receipt": "qa/browser-matrix-results.json"
+  },
+  "noindex": {
+    "meta_robots": true,
+    "robots_txt": true,
+    "x_robots_tag_header": true,
+    "cloudflare_headers_file": true
+  },
+  "directus": {
+    "import_script": "scripts/directus_import.mjs",
+    "dry_run_validated": true,
+    "planned_records": {
+      "sites": 1,
+      "assets": 101,
+      "pages": 78,
+      "components": 508,
+      "page_blocks": 508,
+      "page_sections": 508,
+      "forms": 1,
+      "internal_links": 677,
+      "migration_runs": 1
+    },
+    "executed_against_master": true,
+    "target": "https://weomcms.foundryworks.ai",
+    "site_slug": "jeffrey-carl-dmd",
+    "pages": 78,
+    "ordered_blocks": 508,
+    "managed_assets": 101,
+    "templates": 6,
+    "orphan_components": 0,
+    "connected_build_passed": true,
+    "roundtrip_gate_passed": true,
+    "receipt": "receipts/directus-import.json"
+  },
+  "kimi_usage": "not exposed by the harness"
+}

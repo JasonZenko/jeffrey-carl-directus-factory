@@ -1,0 +1,31 @@
+{
+  "source": "https://jeffreycarldmd.com/",
+  "startedAt": "2026-08-11T11:42:33.373147+00:00",
+  "completedAt": "2026-08-11T11:44:24.084414+00:00",
+  "sitemapUrls": 78,
+  "pagesCaptured": 78,
+  "http200Pages": 78,
+  "non200Pages": 0,
+  "pageFailures": 0,
+  "assetRecords": 101,
+  "assetFailures": 1,
+  "assetBytes": 3488796,
+  "videoEmbedOccurrences": 12,
+  "uniqueVideoEmbedUrls": 11,
+  "hostedVideoFilesDownloaded": 0,
+  "thirdPartyOccurrences": 2250,
+  "uniqueThirdPartyUrls": 36,
+  "templateFamilies": {
+    "about-team": 4,
+    "service-detail": 47,
+    "conversion": 3,
+    "home": 1,
+    "patient-resource": 3,
+    "location": 20
+  },
+  "missingTitles": 0,
+  "missingDescriptions": 0,
+  "missingCanonicals": 0,
+  "zeroH1Pages": 0,
+  "multiH1Pages": 57
+}

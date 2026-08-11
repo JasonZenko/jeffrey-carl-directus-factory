@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: 
+ 
+Sitemap: https://jeffreycarldmd.com/sitemap.xml
+
+ 
+ 
+# [180] WEO MEDIA - 8/11/202644229AM

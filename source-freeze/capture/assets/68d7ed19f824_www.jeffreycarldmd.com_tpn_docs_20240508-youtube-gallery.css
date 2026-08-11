@@ -1,0 +1,104 @@
+/*--------------------------
+ Video Background Styling
+--------------------------*/
+
+/* .TPvideo-background */
+.TPvideo-background {
+  display: block;
+  height: 56.25vw;
+  max-height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* .TPvideo-overlay */
+.TPvideo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.TPvideo-overlay {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    visibility 0.5s linear;
+}
+
+.TPvideo-overlay::after {
+  background: rgba(0, 0, 0, 0.3);
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* .TPvideo-overlay-image */
+.TPvideo-overlay-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    visibility 0.5s linear;
+}
+
+.TPvideo-overlay-fadeOut {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* .TPvideo-overlay-text */
+.TPvideo-overlay-text {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1em;
+  z-index: 30;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateX(0) translateY(-50%);
+}
+@media (min-width: 1066.6666666667px) {
+  .TPvideo-overlay-text {
+    /*height: 600px;*/
+  }
+}
+.TPvideo-overlay-text h1 {
+  color: #ffffff;
+}
+
+/* .TPvideo-container */
+.TPvideo-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  transform: translateY(28.125vw);
+  pointer-events: none;
+}
+@media (min-width: 1066.6666666667px) {
+  .TPvideo-container {
+    transform: translateY(300px);
+  }
+}
+
+/* iframe */
+.TPvideo-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-28.125vw);
+}

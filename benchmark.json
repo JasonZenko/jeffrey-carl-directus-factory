@@ -1,0 +1,30 @@
+{
+  "benchmark": "jeffrey-carl-clean-directus-factory-v1",
+  "started_at": "2026-08-11T11:41:17Z",
+  "source": "https://jeffreycarldmd.com/",
+  "migration_agent": {
+    "harness": "Kimi Code CLI ACP",
+    "version": "0.34.0",
+    "model": "kimi-code/k3"
+  },
+  "auditor": "independent deterministic Node.js",
+  "expected_routes": 78,
+  "expected_page_families": 6,
+  "source_freeze": {
+    "started_at": "2026-08-11T11:42:33Z",
+    "completed_at": "2026-08-11T11:44:24Z",
+    "elapsed_seconds": 111,
+    "routes": 78,
+    "http_200": 78,
+    "assets": 101,
+    "asset_bytes": 3488796,
+    "video_embed_occurrences": 12,
+    "article_bands": 142,
+    "meaningful_links": 705,
+    "meaningful_images": 153,
+    "responsive_baselines": 18,
+    "baseline_failures": 0,
+    "baseline_horizontal_overflow": 0
+  },
+  "status": "local_acceptance_green_pending_hosted_receipt"
+}

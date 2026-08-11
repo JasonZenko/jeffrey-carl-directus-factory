@@ -1,0 +1,146 @@
+[
+  {
+    "type": "external",
+    "url": "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+  },
+  {
+    "type": "wistia",
+    "url": "https://fast.wistia.net/embed/iframe/03a71f1b51?playerColor=9c9c9c"
+  },
+  {
+    "type": "wistia",
+    "url": "https://fast.wistia.net/embed/iframe/09j5rb6qr0?playerColor=9c9c9c"
+  },
+  {
+    "type": "wistia",
+    "url": "https://fast.wistia.net/embed/iframe/2a6987e85a?playerColor=9c9c9c"
+  },
+  {
+    "type": "wistia",
+    "url": "https://fast.wistia.net/embed/iframe/6bu71qzudn?playerColor=9c9c9c"
+  },
+  {
+    "type": "wistia",
+    "url": "https://fast.wistia.net/embed/iframe/7zejtgjz1m?playerColor=9c9c9c"
+  },
+  {
+    "type": "wistia",
+    "url": "https://fast.wistia.net/embed/iframe/9314b05d1b?playerColor=9c9c9c"
+  },
+  {
+    "type": "wistia",
+    "url": "https://fast.wistia.net/embed/iframe/9yie6pjs36?playerColor=9c9c9c"
+  },
+  {
+    "type": "wistia",
+    "url": "https://fast.wistia.net/embed/iframe/ea8qm1ez8b?playerColor=9c9c9c"
+  },
+  {
+    "type": "wistia",
+    "url": "https://fast.wistia.net/embed/iframe/ev9iwtlk0w?playerColor=9c9c9c"
+  },
+  {
+    "type": "wistia",
+    "url": "https://fast.wistia.net/embed/iframe/pjr9eyxjjw?playerColor=9c9c9c"
+  },
+  {
+    "type": "wistia",
+    "url": "https://fast.wistia.net/embed/iframe/yroen5vxbm?playerColor=9c9c9c"
+  },
+  {
+    "type": "external",
+    "url": "https://fonts.googleapis.com/css?family=Forum%3A%2F%7CJost%3A%2F"
+  },
+  {
+    "type": "external",
+    "url": "https://fonts.googleapis.com/css?family=Playfair+Display"
+  },
+  {
+    "type": "external",
+    "url": "https://goo.gl/maps/gcXFmsDTPwHZqpxU8"
+  },
+  {
+    "type": "google",
+    "url": "https://maps.google.com/maps?f=q&hl=en&iwloc=A&output=embed&q=Jeffrey+Carl+DMD+3120+Pacific+PL+SW+%2C+Albany+OR+97321&source=s_q&t=m&z=15"
+  },
+  {
+    "type": "external",
+    "url": "https://use.fontawesome.com/6310c3c023.js"
+  },
+  {
+    "type": "external",
+    "url": "https://weomedia.com/"
+  },
+  {
+    "type": "facebook",
+    "url": "https://www.facebook.com/profile.php?id=100063457843341"
+  },
+  {
+    "type": "analytics",
+    "url": "https://www.googletagmanager.com/ns.html?id=GTM-54D622W"
+  },
+  {
+    "type": "analytics",
+    "url": "https://www.googletagmanager.com/ns.html?id=GTM-TNWBGWK"
+  },
+  {
+    "type": "analytics",
+    "url": "https://www.googletagmanager.com/ns.html?id=GTM-W4HQRD7"
+  },
+  {
+    "type": "external",
+    "url": "https://www.invisalign.com/"
+  },
+  {
+    "type": "external",
+    "url": "https://www.weo10.com/sys/showrecentedition.asp?C=180&E=124103"
+  },
+  {
+    "type": "external",
+    "url": "https://www.weo10.com/sys/showrecentedition.asp?C=180&E=124975"
+  },
+  {
+    "type": "external",
+    "url": "https://www.weo10.com/sys/showrecentedition.asp?C=180&E=125599"
+  },
+  {
+    "type": "external",
+    "url": "https://www.weo10.com/sys/showrecentedition.asp?C=180&E=126254"
+  },
+  {
+    "type": "external",
+    "url": "https://www.weo10.com/sys/showrecentedition.asp?C=180&E=127151"
+  },
+  {
+    "type": "external",
+    "url": "https://www.weo10.com/sys/showrecentedition.asp?C=180&E=127417"
+  },
+  {
+    "type": "external",
+    "url": "https://www.weo10.com/sys/showrecentedition.asp?C=180&E=128129"
+  },
+  {
+    "type": "external",
+    "url": "https://www.weo10.com/sys/showrecentedition.asp?C=180&E=128802"
+  },
+  {
+    "type": "external",
+    "url": "https://www.weo10.com/sys/showrecentedition.asp?C=180&E=129787"
+  },
+  {
+    "type": "external",
+    "url": "https://www.weo10.com/sys/showrecentedition.asp?C=180&E=130368"
+  },
+  {
+    "type": "external",
+    "url": "https://www.weo10.com/sys/showrecentedition.asp?C=180&E=131154"
+  },
+  {
+    "type": "external",
+    "url": "https://www.weo10.com/sys/showrecentedition.asp?C=180&E=131965"
+  },
+  {
+    "type": "external",
+    "url": "https://www.weo10.com/sys/showrecentedition.asp?C=180&E=132670"
+  }
+]

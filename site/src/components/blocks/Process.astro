@@ -1,0 +1,19 @@
+---
+import type { Block } from '../../lib/contracts';
+
+interface Props {
+  block: Block;
+}
+
+const { block } = Astro.props;
+---
+
+<section
+  class:list={['block', `block--${block.type}`]}
+  data-block-type="process"
+  data-block-id={block.id}
+  data-source-url={block.provenance.source_url}
+  data-fragment-sha256={block.provenance.fragment_sha256}
+>
+  <Fragment set:html={block.html} />
+</section>

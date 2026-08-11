@@ -1,0 +1,64 @@
+name: build-test-audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-test-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install auditor dependencies
+        run: pip install beautifulsoup4 requests
+
+      - name: Verify extraction determinism
+        run: |
+          python3 scripts/extract.py
+          git diff --exit-code -- site/src/content/frozen site/public/assets \
+            || (echo 'Extraction is not deterministic or frozen records are stale' && exit 1)
+
+      - name: Install site dependencies
+        working-directory: site
+        run: npm ci
+
+      - name: Build review site
+        working-directory: site
+        run: npm run build
+        env:
+          DIRECTUS_URL: https://weomcms.foundryworks.ai
+          DIRECTUS_SERVER_TOKEN: ${{ secrets.DIRECTUS_SERVER_TOKEN }}
+
+      - name: Run contract and build tests
+        working-directory: site
+        run: npm test
+
+      - name: Serve built site
+        run: PORT=4321 node scripts/serve.mjs &
+
+      - name: Independent fidelity audit (all 78 routes, strict)
+        run: |
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:4321/robots.txt > /dev/null && break; sleep 1; done
+          python3 auditor/audit_rendered.py --target http://127.0.0.1:4321 --strict
+          python3 qa/browser_matrix.py --target http://127.0.0.1:4321
+
+      - name: Upload audit receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fidelity-results
+          path: |
+            auditor/fidelity-results.json
+            qa/browser-matrix-results.json

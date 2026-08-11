@@ -1,0 +1,54 @@
+---
+import type { PageRecord } from '../../lib/contracts';
+import { getContent } from '../../lib/content';
+import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
+import Homepage from '../../layouts/Homepage.astro';
+import ServiceTreatment from '../../layouts/ServiceTreatment.astro';
+import AboutTeam from '../../layouts/AboutTeam.astro';
+import ResourceArticle from '../../layouts/ResourceArticle.astro';
+import ContactConversion from '../../layouts/ContactConversion.astro';
+import LocationPractice from '../../layouts/LocationPractice.astro';
+
+export async function getStaticPaths() {
+  const { pages } = await getContent();
+  return pages.map((page) => ({
+    params: { slug: page.legacy_path.replace(/^\/p\//, '') },
+    props: { page },
+  }));
+}
+
+interface Props {
+  page: PageRecord;
+}
+
+const { page } = Astro.props;
+const { site } = await getContent();
+
+const templates = {
+  homepage: Homepage,
+  'service-treatment': ServiceTreatment,
+  'about-team': AboutTeam,
+  'resource-article': ResourceArticle,
+  'contact-conversion': ContactConversion,
+  'location-practice': LocationPractice,
+} as const;
+
+const Template = templates[page.template as keyof typeof templates] ?? ServiceTreatment;
+
+const articles: { id: string; blocks: PageRecord['blocks'] }[] = [];
+for (const block of page.blocks) {
+  const last = articles[articles.length - 1];
+  if (!last || last.id !== block.article_id) {
+    articles.push({ id: block.article_id, blocks: [] });
+  }
+  articles[articles.length - 1].blocks.push(block);
+}
+---
+
+<Template page={page} site={site}>
+  {articles.map((article) => (
+    <article data-source-article={article.id}>
+      {article.blocks.map((block) => <BlockRenderer block={block} />)}
+    </article>
+  ))}
+</Template>

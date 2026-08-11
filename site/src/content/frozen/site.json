@@ -1,0 +1,74 @@
+{
+  "name": "Jeffrey Carl DMD",
+  "slug": "jeffrey-carl-dmd",
+  "source_url": "https://jeffreycarldmd.com/",
+  "status": "noindex-review",
+  "indexing_enabled": false,
+  "phone": "(541) 918-2361",
+  "phone_href": "tel:(541) 918-2361",
+  "address": "3120 Pacific PL SW, Albany, OR 97321-3568",
+  "appointment_path": "/p/dentist-Albany-OR-Request-Appointment-p65415.asp",
+  "logo": "/assets/c7c0bee1f6d9_www.jeffreycarldmd.com_tpn_c_C180_img_LGO-default-c180.webp",
+  "home_hero_image": "/assets/bd9b8d625009_www.jeffreycarldmd.com_tpn_c_C180_img_BKG-anibanner-c180.webp",
+  "inner_hero_image": "/assets/368613f4079c_www.jeffreycarldmd.com_tpn_c_C180_ban_CandW-gen-bar.jpg",
+  "navigation": [
+    {
+      "label": "Home",
+      "href": "/p/dentist-Albany-OR-Home-p466.asp",
+      "target": ""
+    },
+    {
+      "label": "About Us",
+      "href": "/p/dentist-Albany-OR-About-Us-p65411.asp",
+      "target": ""
+    },
+    {
+      "label": "Dental Services",
+      "href": "/p/dentist-Albany-OR-Dental-Services-p66928.asp",
+      "target": ""
+    },
+    {
+      "label": "Patient Info",
+      "href": "/p/dentist-Albany-OR-Patient-Info-p27244.asp",
+      "target": ""
+    },
+    {
+      "label": "Contact Us",
+      "href": "/p/dentist-Albany-OR-Contact-Us-p509.asp",
+      "target": ""
+    }
+  ],
+  "footer": {
+    "text": "Contact Information 3120 Pacific PL SW Albany, OR 97321 (541) 918-2361 office@jeffreycarldmd.com Follow Us Facebook social media icon Google social media icon Name: Email: Comment: Please enter the text you see:",
+    "links": [
+      {
+        "label": "3120 Pacific PL SW Albany, OR 97321",
+        "href": "https://goo.gl/maps/gcXFmsDTPwHZqpxU8",
+        "target": "_blank"
+      },
+      {
+        "label": "(541) 918-2361",
+        "href": "tel:(541) 918-2361",
+        "target": ""
+      },
+      {
+        "label": "office@jeffreycarldmd.com",
+        "href": "mailto:office@jeffreycarldmd.com ",
+        "target": "_blank"
+      },
+      {
+        "label": "Facebook social media icon",
+        "href": "https://www.facebook.com/profile.php?id=100063457843341",
+        "target": "_blank"
+      },
+      {
+        "label": "Google social media icon",
+        "href": "https://goo.gl/maps/gcXFmsDTPwHZqpxU8",
+        "target": "_blank"
+      }
+    ]
+  },
+  "homepage": {
+    "legacy_path": "/p/dentist-Albany-OR-Home-p466.asp"
+  }
+}

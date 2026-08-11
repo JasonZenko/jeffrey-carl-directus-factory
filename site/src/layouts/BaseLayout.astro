@@ -1,0 +1,62 @@
+---
+import type { PageRecord, SiteRecord } from '../lib/contracts';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/global.css';
+
+interface Props {
+  page: PageRecord;
+  site: SiteRecord;
+  family: string;
+}
+
+const { page, site, family } = Astro.props;
+const slugHeading = page.legacy_path
+  .replace(/^\/p\/dentist-(?:Albany-OR-)?/, '')
+  .replace(/-p\d+\.asp$/, '')
+  .replaceAll('-', ' ');
+const titleHeading = page.title.startsWith('http') ? slugHeading : page.title.split(' - ')[0];
+const lastSourceH1 = page.source_h1.at(-1) || '';
+const pageHeading = family === 'home'
+  ? (page.source_h1[0] || titleHeading)
+  : (/^Albany, OR$/i.test(lastSourceH1) ? titleHeading : (lastSourceH1 || titleHeading));
+const heroImage = family === 'home' ? site.home_hero_image : site.inner_hero_image;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{page.title}</title>
+    <meta name="description" content={page.meta_description} />
+    <link rel="canonical" href={page.canonical} />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#40523d" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    {page.schema_json.map((schema) => (
+      <script type="application/ld+json" set:html={schema} />
+    ))}
+  </head>
+  <body data-family={family} data-template={page.template}>
+    <SiteHeader site={site} />
+    <section
+      class:list={['page-hero', family === 'home' ? 'page-hero--home' : 'page-hero--inner']}
+      style={heroImage ? `--hero-image: url('${heroImage}')` : undefined}
+      data-review-chrome
+    >
+      <div class="page-hero__inner">
+        <h1>{pageHeading}</h1>
+        {family === 'home' && site.appointment_path && (
+          <a href={site.appointment_path}>Request an appointment</a>
+        )}
+      </div>
+    </section>
+    <main data-fidelity-root data-legacy-path={page.legacy_path}>
+      <slot />
+    </main>
+    <SiteFooter site={site} />
+  </body>
+</html>

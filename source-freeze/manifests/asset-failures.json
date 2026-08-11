@@ -1,0 +1,93 @@
+[
+  {
+    "url": "https://www.jeffreycarldmd.com/p/Logo URL",
+    "reason": "excluded-html-response",
+    "status": 200,
+    "referencedBy": [
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-Home-p466.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Aumsville-p72504.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Brownsville-p72494.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Corvallis-p72488.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Dallas-p72501.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Halsey-p72495.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Harrisburg-p72496.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Independence-p72500.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Jefferson-p72491.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Lebanon-p72489.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Lyons-p72506.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Millersburg-p72502.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Monroe-p72499.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Philomath-p72493.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Scio-p72498.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Shedd-p72497.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Stayton-p72505.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Sublimity-p72507.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Sweet-Home-p72492.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Tangent-p72490.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.jeffreycarldmd.com/p/dentist-Turner-p72503.asp",
+        "kind": "img[src]"
+      }
+    ]
+  }
+]

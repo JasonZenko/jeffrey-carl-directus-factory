@@ -1,0 +1,47 @@
+---
+import type { SiteRecord } from '../lib/contracts';
+
+interface Props {
+  site: SiteRecord;
+}
+
+const { site } = Astro.props;
+---
+
+<div class="review-bar" data-review-chrome>
+  <span>Noindex migration review</span>
+  <span>78 source-locked routes</span>
+</div>
+<header class="site-header" data-review-chrome>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href={site.homepage.legacy_path} aria-label={`${site.name} home`}>
+      {site.logo ? <img src={site.logo} alt={site.name} /> : <span>{site.name}</span>}
+    </a>
+    <div class="site-header__contact">
+      {site.address && <span>{site.address}</span>}
+      {site.phone && <a href={site.phone_href}>Call {site.phone}</a>}
+    </div>
+    {site.appointment_path && (
+      <a class="site-header__appointment" href={site.appointment_path}>Request an appointment</a>
+    )}
+  </div>
+  <div class="site-nav-wrap">
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        {site.navigation.map((item) => (
+          <li><a href={item.href || '#'} target={item.target || undefined}>{item.label || item.href}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <details class="mobile-nav">
+      <summary>Menu</summary>
+      <nav aria-label="Mobile primary">
+        <ul>
+          {site.navigation.map((item) => (
+            <li><a href={item.href || '#'} target={item.target || undefined}>{item.label || item.href}</a></li>
+          ))}
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>

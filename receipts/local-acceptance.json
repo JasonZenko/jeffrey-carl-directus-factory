@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-08-11T13:20:27Z",
+  "status": "passed",
+  "build_mode": "directus_connected_fail_closed",
+  "build": {
+    "routes_expected": 78,
+    "routes_emitted": 78,
+    "files": 183,
+    "bytes": 4949815
+  },
+  "tests": {
+    "files": 5,
+    "passed": 22,
+    "failed": 0
+  },
+  "fidelity": {
+    "passed": 78,
+    "failed": 0
+  },
+  "browser_matrix": {
+    "families": 6,
+    "viewports": 3,
+    "passed": 18,
+    "failed": 0,
+    "horizontal_overflow": 0,
+    "wcag_aa_violations": 0
+  },
+  "security": {
+    "npm_vulnerabilities": 0
+  },
+  "noindex": {
+    "meta": true,
+    "robots_txt": true,
+    "x_robots_tag": true
+  }
+}

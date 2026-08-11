@@ -1,0 +1,165 @@
+[
+  {
+    "slug": "homepage",
+    "name": "Homepage",
+    "family": "home",
+    "page_type": "homePage",
+    "blocks": [
+      {
+        "sort": 1,
+        "component_type": "hero",
+        "required": false
+      },
+      {
+        "sort": 2,
+        "component_type": "text_media",
+        "required": false
+      },
+      {
+        "sort": 3,
+        "component_type": "cta",
+        "required": false
+      },
+      {
+        "sort": 4,
+        "component_type": "embed",
+        "required": false
+      }
+    ]
+  },
+  {
+    "slug": "service-treatment",
+    "name": "Service / Treatment",
+    "family": "service-detail",
+    "page_type": "servicePage",
+    "blocks": [
+      {
+        "sort": 1,
+        "component_type": "hero",
+        "required": false
+      },
+      {
+        "sort": 2,
+        "component_type": "text_media",
+        "required": false
+      },
+      {
+        "sort": 3,
+        "component_type": "cta",
+        "required": false
+      },
+      {
+        "sort": 4,
+        "component_type": "embed",
+        "required": false
+      }
+    ]
+  },
+  {
+    "slug": "about-team",
+    "name": "About / Team",
+    "family": "about-team",
+    "page_type": "standardPage",
+    "blocks": [
+      {
+        "sort": 1,
+        "component_type": "hero",
+        "required": false
+      },
+      {
+        "sort": 2,
+        "component_type": "text_media",
+        "required": false
+      },
+      {
+        "sort": 3,
+        "component_type": "cta",
+        "required": false
+      }
+    ]
+  },
+  {
+    "slug": "resource-article",
+    "name": "Resource / Article",
+    "family": "patient-resource",
+    "page_type": "patientResourcePage",
+    "blocks": [
+      {
+        "sort": 1,
+        "component_type": "hero",
+        "required": false
+      },
+      {
+        "sort": 2,
+        "component_type": "text_media",
+        "required": false
+      },
+      {
+        "sort": 3,
+        "component_type": "cta",
+        "required": false
+      },
+      {
+        "sort": 4,
+        "component_type": "form",
+        "required": false
+      }
+    ]
+  },
+  {
+    "slug": "contact-conversion",
+    "name": "Contact / Conversion",
+    "family": "conversion",
+    "page_type": "standardPage",
+    "blocks": [
+      {
+        "sort": 1,
+        "component_type": "hero",
+        "required": false
+      },
+      {
+        "sort": 2,
+        "component_type": "text_media",
+        "required": false
+      },
+      {
+        "sort": 3,
+        "component_type": "cta",
+        "required": false
+      },
+      {
+        "sort": 4,
+        "component_type": "form",
+        "required": false
+      }
+    ]
+  },
+  {
+    "slug": "location-practice",
+    "name": "Location / Practice",
+    "family": "location",
+    "page_type": "standardPage",
+    "blocks": [
+      {
+        "sort": 1,
+        "component_type": "hero",
+        "required": false
+      },
+      {
+        "sort": 2,
+        "component_type": "text_media",
+        "required": false
+      },
+      {
+        "sort": 3,
+        "component_type": "cta",
+        "required": false
+      },
+      {
+        "sort": 4,
+        "component_type": "embed",
+        "required": false
+      }
+    ]
+  }
+]

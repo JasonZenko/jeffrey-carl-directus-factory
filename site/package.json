@@ -1,0 +1,19 @@
+{
+  "name": "jeffrey-carl-review-site",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "serve": "node ../scripts/serve.mjs",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "astro": "^7.2.0"
+  },
+  "devDependencies": {
+    "axe-core": "^4.13.0",
+    "vitest": "^3.2.4"
+  }
+}

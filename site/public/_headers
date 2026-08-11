@@ -1,0 +1,4 @@
+# Cloudflare Pages response headers: the review surface must never be indexed.
+/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-cache

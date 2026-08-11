@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "target_component_type": "text_media",
+  "target_page": "/p/dentist-Albany-OR-About-Us-p65411.asp",
+  "marker": "DIRECTUS ROUND TRIP PROOF 11 AUGUST 2026",
+  "sequence": [
+    {
+      "step": "baseline_connected_build",
+      "auditor": { "passed": 78, "failed": 0 }
+    },
+    {
+      "step": "marker_added_in_directus_and_connected_build",
+      "marker_rendered": true,
+      "auditor": { "passed": 77, "failed": 1 },
+      "blocked_route": "/p/dentist-Albany-OR-About-Us-p65411.asp"
+    },
+    {
+      "step": "marker_removed_in_directus_and_connected_rebuild",
+      "marker_rendered": false,
+      "auditor": { "passed": 78, "failed": 0 }
+    }
+  ],
+  "conclusion": "The CMS field reaches the rendered Astro site, unsupported content fails the independent gate, and an exact revert restores acceptance."
+}

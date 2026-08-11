@@ -1,0 +1,39 @@
+{
+  "target": "https://weomcms.foundryworks.ai",
+  "site_slug": "jeffrey-carl-dmd",
+  "status": "completed",
+  "indexing_enabled": false,
+  "source": "site/src/content/frozen",
+  "records": {
+    "sites": 1,
+    "pages": 78,
+    "components": 508,
+    "page_blocks": 508,
+    "page_sections": 508,
+    "managed_assets": 101,
+    "navigation_items": 5,
+    "forms_draft": 1,
+    "internal_links": 677,
+    "migration_runs": 1
+  },
+  "component_carriers": {
+    "heroes": 44,
+    "text_media": 455,
+    "ctas": 9,
+    "orphans": 0
+  },
+  "templates": [
+    "homepage",
+    "service-treatment",
+    "about-team",
+    "resource-article",
+    "contact-conversion",
+    "location-practice"
+  ],
+  "connected_build": {
+    "routes": 78,
+    "passed": 78,
+    "failed": 0,
+    "fail_closed": true
+  }
+}

@@ -1,0 +1,326 @@
+[
+  {
+    "family": "home",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-Home-p466.asp",
+    "viewport": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000
+    },
+    "status": 200,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "scrollHeight": 5181,
+    "h1Count": 1,
+    "title": "Dentists in Albany, OR",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/home-desktop-1440x1000.png"
+  },
+  {
+    "family": "home",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-Home-p466.asp",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "status": 200,
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "scrollHeight": 6923,
+    "h1Count": 1,
+    "title": "Dentists in Albany, OR",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/home-tablet-768x1024.png"
+  },
+  {
+    "family": "home",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-Home-p466.asp",
+    "viewport": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "status": 200,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 8786,
+    "h1Count": 1,
+    "title": "Dentists in Albany, OR",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/home-mobile-390x844.png"
+  },
+  {
+    "family": "about-team",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-About-Us-p65411.asp",
+    "viewport": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000
+    },
+    "status": 200,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "scrollHeight": 2570,
+    "h1Count": 2,
+    "title": "About Us - Jeffrey Carl, DMD - Albany OR",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/about-team-desktop-1440x1000.png"
+  },
+  {
+    "family": "about-team",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-About-Us-p65411.asp",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "status": 200,
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "scrollHeight": 3214,
+    "h1Count": 2,
+    "title": "About Us - Jeffrey Carl, DMD - Albany OR",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/about-team-tablet-768x1024.png"
+  },
+  {
+    "family": "about-team",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-About-Us-p65411.asp",
+    "viewport": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "status": 200,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 4085,
+    "h1Count": 2,
+    "title": "About Us - Jeffrey Carl, DMD - Albany OR",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/about-team-mobile-390x844.png"
+  },
+  {
+    "family": "service-detail",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-Aligners-vs-Braces-p80014.asp",
+    "viewport": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000
+    },
+    "status": 200,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "scrollHeight": 5239,
+    "h1Count": 2,
+    "title": "Aligners vs Braces - dentist Albany OR - Jeffrey Carl, DMD",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/service-detail-desktop-1440x1000.png"
+  },
+  {
+    "family": "service-detail",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-Aligners-vs-Braces-p80014.asp",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "status": 200,
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "scrollHeight": 6805,
+    "h1Count": 2,
+    "title": "Aligners vs Braces - dentist Albany OR - Jeffrey Carl, DMD",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/service-detail-tablet-768x1024.png"
+  },
+  {
+    "family": "service-detail",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-Aligners-vs-Braces-p80014.asp",
+    "viewport": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "status": 200,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 9990,
+    "h1Count": 2,
+    "title": "Aligners vs Braces - dentist Albany OR - Jeffrey Carl, DMD",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/service-detail-mobile-390x844.png"
+  },
+  {
+    "family": "patient-resource",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-Patient-Info-p27244.asp",
+    "viewport": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000
+    },
+    "status": 200,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "scrollHeight": 1846,
+    "h1Count": 2,
+    "title": "Patient Info - Jeffrey Carl, DMD",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/patient-resource-desktop-1440x1000.png"
+  },
+  {
+    "family": "patient-resource",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-Patient-Info-p27244.asp",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "status": 200,
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "scrollHeight": 2458,
+    "h1Count": 2,
+    "title": "Patient Info - Jeffrey Carl, DMD",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/patient-resource-tablet-768x1024.png"
+  },
+  {
+    "family": "patient-resource",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-Patient-Info-p27244.asp",
+    "viewport": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "status": 200,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 2809,
+    "h1Count": 2,
+    "title": "Patient Info - Jeffrey Carl, DMD",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/patient-resource-mobile-390x844.png"
+  },
+  {
+    "family": "conversion",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-Contact-Us-p509.asp",
+    "viewport": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000
+    },
+    "status": 200,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "scrollHeight": 2950,
+    "h1Count": 2,
+    "title": "Contact Us - Jeffrey Carl, DMD - Albany OR",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/conversion-desktop-1440x1000.png"
+  },
+  {
+    "family": "conversion",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-Contact-Us-p509.asp",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "status": 200,
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "scrollHeight": 3994,
+    "h1Count": 2,
+    "title": "Contact Us - Jeffrey Carl, DMD - Albany OR",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/conversion-tablet-768x1024.png"
+  },
+  {
+    "family": "conversion",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Albany-OR-Contact-Us-p509.asp",
+    "viewport": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "status": 200,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 4705,
+    "h1Count": 2,
+    "title": "Contact Us - Jeffrey Carl, DMD - Albany OR",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/conversion-mobile-390x844.png"
+  },
+  {
+    "family": "location",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Aumsville-p72504.asp",
+    "viewport": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000
+    },
+    "status": 200,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "scrollHeight": 5157,
+    "h1Count": 1,
+    "title": "Dentists Near Aumsville, OR | Jeffrey Carl, DMD",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/location-desktop-1440x1000.png"
+  },
+  {
+    "family": "location",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Aumsville-p72504.asp",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "status": 200,
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "scrollHeight": 6899,
+    "h1Count": 1,
+    "title": "Dentists Near Aumsville, OR | Jeffrey Carl, DMD",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/location-tablet-768x1024.png"
+  },
+  {
+    "family": "location",
+    "url": "https://www.jeffreycarldmd.com/p/dentist-Aumsville-p72504.asp",
+    "viewport": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "status": 200,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 8762,
+    "h1Count": 1,
+    "title": "Dentists Near Aumsville, OR | Jeffrey Carl, DMD",
+    "horizontalOverflow": false,
+    "errors": [],
+    "localPath": "capture/screenshots/location-mobile-390x844.png"
+  }
+]

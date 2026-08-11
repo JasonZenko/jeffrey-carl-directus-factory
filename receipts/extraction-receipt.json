@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-08-11T13:06:42.909472+00:00",
+  "extractor": "kimi-extract-1.0.0",
+  "elapsed_seconds": 2.629,
+  "routes": 78,
+  "article_bands": 142,
+  "blocks": 508,
+  "block_types": {
+    "hero": 44,
+    "text_media": 444,
+    "cta": 9,
+    "embed": 10,
+    "form": 1
+  },
+  "assets_copied": 101,
+  "dropped_unevidenced_images": 21,
+  "dropped_srcless_images": 0,
+  "contract_routes": 78,
+  "contract_reconciliation": {
+    "checked": 78,
+    "mismatches": 0,
+    "routes": []
+  },
+  "outputs_sha256": {
+    "site.json": "b11e6e97d5367380f827c23301c41eae243c008ab48695d7dbf8d3f4c3d3f609",
+    "templates.json": "35c1a317ceb8a01823914b566129d4fd329d05c066c2b84b0dd3288e3163834c",
+    "pages.json": "b71a8ba898e410ec6336110febf0c1f5db5c290accefa4e2ea61f870a8176e07"
+  }
+}
