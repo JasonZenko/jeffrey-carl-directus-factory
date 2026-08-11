@@ -43,10 +43,16 @@ def main():
     parser.add_argument("--target", required=True)
     args = parser.parse_args()
     target = args.target.rstrip("/")
-    executable = os.environ.get(
-        "PLAYWRIGHT_CHROMIUM_EXECUTABLE",
-        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-    )
+    executable = os.environ.get("PLAYWRIGHT_CHROMIUM_EXECUTABLE")
+    if not executable:
+        system_chrome = Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+        if system_chrome.exists():
+            executable = str(system_chrome)
+        else:
+            cache = Path.home() / "Library/Caches/ms-playwright"
+            installed = sorted(cache.glob("chromium_headless_shell-*/chrome-mac*/headless_shell"))
+            if installed:
+                executable = str(installed[-1])
     CAPTURES.mkdir(parents=True, exist_ok=True)
     results = []
 
