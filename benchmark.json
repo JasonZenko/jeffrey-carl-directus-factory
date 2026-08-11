@@ -26,5 +26,7 @@
     "baseline_failures": 0,
     "baseline_horizontal_overflow": 0
   },
-  "status": "local_acceptance_green_pending_hosted_receipt"
+  "completed_at": "2026-08-11T13:40:07Z",
+  "total_elapsed_seconds": 7130,
+  "status": "complete_hosted_acceptance_green"
 }

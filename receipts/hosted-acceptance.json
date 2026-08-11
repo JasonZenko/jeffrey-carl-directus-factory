@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-08-11T13:40:07Z",
+  "status": "passed",
+  "target": "https://jeffrey-carl-review.pages.dev",
+  "deployment": "https://e83988eb.jeffrey-carl-review.pages.dev",
+  "source": "directus_connected_fail_closed_build",
+  "fidelity": {
+    "routes": 78,
+    "passed": 78,
+    "failed": 0,
+    "receipt": "auditor/fidelity-results.json"
+  },
+  "browser_matrix": {
+    "families": 6,
+    "viewports": [1440, 768, 390],
+    "checks": 18,
+    "passed": 18,
+    "failed": 0,
+    "wcag_aa_violations": 0,
+    "horizontal_overflow_failures": 0,
+    "receipt": "qa/browser-matrix-results.json"
+  },
+  "headers": {
+    "x_robots_tag": "noindex, nofollow",
+    "meta_robots": "noindex, nofollow",
+    "robots_disallow_all": true
+  },
+  "ci": {
+    "build_test_audit": {
+      "status": "success",
+      "url": "https://github.com/JasonZenko/jeffrey-carl-directus-factory/actions/runs/31496886525"
+    },
+    "git_triggered_preview": {
+      "status": "success",
+      "url": "https://github.com/JasonZenko/jeffrey-carl-directus-factory/actions/runs/31496886567"
+    }
+  }
+}

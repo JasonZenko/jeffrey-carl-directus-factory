@@ -6,5 +6,6 @@ dist/
 !.env.example
 test-results/
 playwright-report/
+.wrangler/
 .DS_Store
 source-freeze/.capture-running

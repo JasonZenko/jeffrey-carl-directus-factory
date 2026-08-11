@@ -11,10 +11,22 @@ from urllib.parse import urljoin, urlparse, urlunparse
 
 import requests
 from bs4 import BeautifulSoup
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / "auditor" / "source-contract.json"
 RESULTS = ROOT / "auditor" / "fidelity-results.json"
+HTTP = requests.Session()
+HTTP.mount(
+    "https://",
+    HTTPAdapter(max_retries=Retry(
+        total=5,
+        backoff_factor=0.4,
+        status_forcelist=(500, 502, 503, 504, 522, 523, 524),
+        allowed_methods=("GET", "HEAD"),
+    )),
+)
 
 
 def normalize_text(value):
@@ -33,7 +45,7 @@ def normalize_url(value, base):
 
 
 def fetch_digest(url):
-    response = requests.get(url, timeout=30)
+    response = HTTP.get(url, timeout=30)
     response.raise_for_status()
     return hashlib.sha256(response.content).hexdigest()
 
@@ -49,7 +61,7 @@ results = []
 for expected in contract["contracts"]:
     url = urljoin(target + "/", expected["route"].lstrip("/"))
     try:
-        response = requests.get(url, timeout=40, headers={"Cache-Control": "no-cache"})
+        response = HTTP.get(url, timeout=40, headers={"Cache-Control": "no-cache"})
         status = response.status_code
         soup = BeautifulSoup(response.content, "html.parser")
         root = soup.select_one("[data-fidelity-root]")

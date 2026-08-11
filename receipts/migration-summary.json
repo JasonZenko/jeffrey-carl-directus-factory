@@ -8,6 +8,8 @@
   "benchmark_started_at": "2026-08-11T11:41:17Z",
   "migration_completed_at": "2026-08-11T12:33:51Z",
   "elapsed_seconds": 3154,
+  "hosted_acceptance_completed_at": "2026-08-11T13:40:07Z",
+  "total_source_to_hosted_seconds": 7130,
   "extraction": {
     "extractor": "kimi-extract-1.0.0",
     "elapsed_seconds": 3.059,
@@ -87,6 +89,18 @@
     "connected_build_passed": true,
     "roundtrip_gate_passed": true,
     "receipt": "receipts/directus-import.json"
+  },
+  "hosted": {
+    "preview": "https://jeffrey-carl-review.pages.dev/",
+    "repository": "https://github.com/JasonZenko/jeffrey-carl-directus-factory",
+    "fidelity_passed": 78,
+    "fidelity_failed": 0,
+    "browser_checks_passed": 18,
+    "browser_checks_failed": 0,
+    "git_build_ci": "https://github.com/JasonZenko/jeffrey-carl-directus-factory/actions/runs/31496886525",
+    "git_deploy_ci": "https://github.com/JasonZenko/jeffrey-carl-directus-factory/actions/runs/31496886567",
+    "noindex": true,
+    "receipt": "receipts/hosted-acceptance.json"
   },
   "kimi_usage": "not exposed by the harness"
 }

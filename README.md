@@ -5,6 +5,18 @@ A noindex Astro + Directus review implementation of all 78 frozen routes from
 `FACTORY-CONTRACT.md`. The live source site, DNS, forms, analytics and
 indexing are untouched.
 
+## Review surfaces
+
+- Noindex site: https://jeffrey-carl-review.pages.dev/
+- Public repository: https://github.com/JasonZenko/jeffrey-carl-directus-factory
+- Directus: https://weomcms.foundryworks.ai/admin/ (`jeffrey-carl-dmd`)
+- Green build/audit CI: https://github.com/JasonZenko/jeffrey-carl-directus-factory/actions/runs/31496886525
+- Green Git-triggered preview deployment: https://github.com/JasonZenko/jeffrey-carl-directus-factory/actions/runs/31496886567
+
+Hosted acceptance is green: 78/78 exact-content routes and 18/18 browser
+checks across all six page families at desktop, tablet and mobile. The CMS
+contains 78 pages and 508 ordered native blocks with zero orphan components.
+
 ## Layout
 
 - `source-freeze/` — immutable capture (78 pages, 101 assets) and manifests. Input only.
