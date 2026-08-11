@@ -6,26 +6,41 @@ interface Props {
 }
 
 const { site } = Astro.props;
+const email = site.footer.links.find((link) => /^mailto:/i.test(link.href));
+const facebook = site.footer.links.find((link) => /facebook/i.test(link.label));
+const google = site.footer.links.find((link) => /google/i.test(link.label));
 ---
 
 <footer class="site-footer" data-review-chrome>
   <div class="site-footer__inner">
     <div class="site-footer__identity">
       {site.logo && <img src={site.logo} alt={site.name} />}
-      <p class="site-footer__name">{site.name}</p>
-      {site.address && <p>{site.address}</p>}
+      <h2>Contact Information</h2>
+      {site.address && <a href={google?.href || '#'}>{site.address}</a>}
       {site.phone && <a href={site.phone_href}>{site.phone}</a>}
+      {email && <a href={email.href}>{email.label}</a>}
+      <h2>Follow Us</h2>
+      <div class="site-footer__social">
+        {facebook && <a href={facebook.href} target={facebook.target || undefined} aria-label="Facebook">f</a>}
+        {google && <a href={google.href} target={google.target || undefined} aria-label="Google business profile">G</a>}
+      </div>
     </div>
-    <nav aria-label="Footer">
-      <ul class="site-footer__links">
-        {site.navigation.map((item) => (
-          <li><a href={item.href || '#'} target={item.target || undefined}>{item.label || item.href}</a></li>
-        ))}
-      </ul>
-    </nav>
-    <div class="site-footer__review">
-      <strong>Noindex review build</strong>
-      <span>Forms and production integrations are disabled.</span>
+    <div class="site-footer__form" role="form" aria-label="Contact form preview">
+      <label>Name:<input type="text" readonly /></label>
+      <label>Email:<input type="email" readonly /></label>
+      <label>Comment:<textarea rows="4" readonly></textarea></label>
+      <label>Please enter the text you see:</label>
+      <div class="site-footer__captcha" role="img" aria-label="Verification image preview">
+        <img src="/assets/6c910a9ef18a_www.jeffreycarldmd.com_sys_images_subchk_65971743.png" alt="" />
+        <img src="/assets/71dac83fa275_www.jeffreycarldmd.com_sys_images_subchk_81877479.png" alt="" />
+        <img src="/assets/37fee65e1ca8_www.jeffreycarldmd.com_sys_images_subchk_41161474.png" alt="" />
+      </div>
+      <input type="text" readonly aria-label="Verification response" />
+      <button type="button" disabled>Submit</button>
     </div>
+  </div>
+  <div class="site-footer__copyright">
+    <p>{site.footer.copyright}</p>
+    <small>{site.name}, {site.address} · {site.phone}</small>
   </div>
 </footer>

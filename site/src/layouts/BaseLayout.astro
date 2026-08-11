@@ -11,16 +11,24 @@ interface Props {
 }
 
 const { page, site, family } = Astro.props;
+const isHomeLike = family === 'home' || family === 'location';
 const slugHeading = page.legacy_path
   .replace(/^\/p\/dentist-(?:Albany-OR-)?/, '')
   .replace(/-p\d+\.asp$/, '')
   .replaceAll('-', ' ');
 const titleHeading = page.title.startsWith('http') ? slugHeading : page.title.split(' - ')[0];
 const lastSourceH1 = page.source_h1.at(-1) || '';
-const pageHeading = family === 'home'
+const pageHeading = isHomeLike
   ? (page.source_h1[0] || titleHeading)
   : (/^Albany, OR$/i.test(lastSourceH1) ? titleHeading : (lastSourceH1 || titleHeading));
-const heroImage = family === 'home' ? site.home_hero_image : site.inner_hero_image;
+const homeHeadingMatch = pageHeading.match(/^(.*?)\s+&\s+(.*?)\s+(Your\s+.+)$/i);
+const homeHeadingLines = homeHeadingMatch
+  ? [homeHeadingMatch[1], `& ${homeHeadingMatch[2]}`]
+  : [pageHeading];
+const homeSubtitle = homeHeadingMatch?.[3] ?? '';
+const heroVideoUrl = site.home_hero_video_id
+  ? `https://www.youtube-nocookie.com/embed/${site.home_hero_video_id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${site.home_hero_video_id}&playsinline=1&modestbranding=1&rel=0`
+  : '';
 ---
 
 <!doctype html>
@@ -33,6 +41,7 @@ const heroImage = family === 'home' ? site.home_hero_image : site.inner_hero_ima
     <link rel="canonical" href={page.canonical} />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="theme-color" content="#40523d" />
+    <link rel="icon" type="image/png" href="/assets/003c9466c4d9_www.jeffreycarldmd.com_tpn_c_C180_img_favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Forum&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -42,18 +51,35 @@ const heroImage = family === 'home' ? site.home_hero_image : site.inner_hero_ima
   </head>
   <body data-family={family} data-template={page.template}>
     <SiteHeader site={site} />
-    <section
-      class:list={['page-hero', family === 'home' ? 'page-hero--home' : 'page-hero--inner']}
-      style={heroImage ? `--hero-image: url('${heroImage}')` : undefined}
-      data-review-chrome
-    >
-      <div class="page-hero__inner">
-        <h1>{pageHeading}</h1>
-        {family === 'home' && site.appointment_path && (
-          <a href={site.appointment_path}>Request an appointment</a>
+    {isHomeLike && (
+      <section
+        class="page-hero page-hero--home"
+        style={site.home_hero_image ? `--hero-image: url('${site.home_hero_image}')` : undefined}
+        data-review-chrome
+      >
+        {heroVideoUrl && (
+          <div class="page-hero__video" aria-hidden="true">
+            <iframe
+              src={heroVideoUrl}
+              title="Albany, Oregon landscape"
+              tabindex="-1"
+              loading="eager"
+              allow="autoplay; encrypted-media"
+            ></iframe>
+          </div>
         )}
-      </div>
-    </section>
+        <div class="page-hero__shade" aria-hidden="true"></div>
+        <div class="page-hero__inner">
+          <h1>
+            {homeHeadingLines.map((line) => <span>{line}</span>)}
+            {homeSubtitle && <strong>{homeSubtitle}</strong>}
+          </h1>
+          {site.appointment_path && (
+            <a href={site.appointment_path}>Request an appointment</a>
+          )}
+        </div>
+      </section>
+    )}
     <main data-fidelity-root data-legacy-path={page.legacy_path}>
       <slot />
     </main>

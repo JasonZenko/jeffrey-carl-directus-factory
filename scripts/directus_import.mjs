@@ -223,6 +223,7 @@ async function main() {
       appointment_path: site.appointment_path,
       logo: site.logo,
       home_hero_image: site.home_hero_image,
+      home_hero_video_id: site.home_hero_video_id,
       inner_hero_image: site.inner_hero_image,
     },
     footer: site.footer,

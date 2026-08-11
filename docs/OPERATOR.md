@@ -31,10 +31,12 @@ node scripts/serve.mjs &                      # http://127.0.0.1:4321
 node scripts/build_receipt.mjs
 python3 auditor/audit_rendered.py --target http://127.0.0.1:4321 --strict
 python3 qa/browser_matrix.py --target http://127.0.0.1:4321
+python3 qa/visual_fidelity.py --target http://127.0.0.1:4321
 ```
 
-Expected: 78/78 route receipts green, 22/22 tests passing, and 18/18 browser
-checks green across six page families at desktop, tablet and mobile.
+Expected: 78/78 route receipts green, 22/22 tests passing, 18/18 technical
+browser checks and 18/18 visual-fidelity checks across six page families at
+desktop, tablet and mobile.
 
 The auditor compares rendered routes against the frozen evidence: exact
 ordered copy, heading levels/text, links, image alt + byte hashes, embeds and
@@ -103,6 +105,11 @@ header for local/CI audits.
 - The automated browser matrix checks all six families at 1440, 768 and 390px
   for overflow, loaded images, console/page errors, noindex, source navigation,
   inert forms and axe-core WCAG 2.2 AA findings.
+- The separate visual-fidelity matrix compares the rendered opening viewport
+  with the 18 frozen screenshots using perceptual shape and colour thresholds,
+  checks whole-page length proportion, and asserts the source-backed video,
+  four-icon geometry and home-like location template. Technical cleanliness is
+  not accepted as visual proof.
 - A real Directus marker edit was built, blocked by the independent auditor,
   reverted in Directus and rebuilt to 78/78 green. See
   `receipts/directus-roundtrip.json`.

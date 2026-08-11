@@ -6,24 +6,45 @@ interface Props {
 }
 
 const { site } = Astro.props;
+const facebook = site.footer.links.find((link) => /facebook/i.test(link.label));
+const map = site.footer.links.find((link) => /3120 Pacific/i.test(link.label));
 ---
 
-<div class="review-bar" data-review-chrome>
-  <span>Noindex migration review</span>
-  <span>78 source-locked routes</span>
-</div>
 <header class="site-header" data-review-chrome>
-  <div class="site-header__inner">
+  <div class="site-header__mobile-actions" aria-label="Quick actions">
+    <a href={site.phone_href} aria-label={`Call ${site.phone}`}>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.7 15.7 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.56 3.6.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.56 3.58a1 1 0 0 1-.25 1.02L6.6 10.8Z"/></svg>
+      <span>{site.phone}</span>
+    </a>
+    <a href={map?.href || '#'} target={map?.target || undefined} aria-label="Open map">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
+      <span>Albany, OR</span>
+    </a>
+    <a href={site.appointment_path} aria-label="Request an appointment">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h2v2h6V2h2v2h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h3V2Zm13 8H4v10h16V10Zm-2-4H6v2h12V6Zm-7.2 11.2 5-5 1.4 1.4-6.4 6.4-3.5-3.5 1.4-1.4 2.1 2.1Z"/></svg>
+      <span>Request An Appointment</span>
+    </a>
+  </div>
+  <div class="site-header__inner" style={site.inner_hero_image ? `--inner-header-image: url('${site.inner_hero_image}')` : undefined}>
     <a class="site-header__brand" href={site.homepage.legacy_path} aria-label={`${site.name} home`}>
       {site.logo ? <img src={site.logo} alt={site.name} /> : <span>{site.name}</span>}
     </a>
-    <div class="site-header__contact">
-      {site.address && <span>{site.address}</span>}
-      {site.phone && <a href={site.phone_href}>Call {site.phone}</a>}
+    <div class="site-header__desktop-contact">
+      <div class="site-header__top-actions">
+        {site.appointment_path && (
+          <a class="site-header__appointment" href={site.appointment_path}>Request an appointment</a>
+        )}
+        {facebook && <a class="site-header__social" href={facebook.href} target={facebook.target || undefined} aria-label="Facebook">f</a>}
+        {map && <a class="site-header__social" href={map.href} target={map.target || undefined} aria-label="Google business profile">G</a>}
+      </div>
+      {site.address && <a class="site-header__address" href={map?.href || '#'} target={map?.target || undefined}>● {site.address}</a>}
+      {site.phone && (
+        <a class="site-header__phone" href={site.phone_href}>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.7 15.7 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.56 3.6.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.56 3.58a1 1 0 0 1-.25 1.02L6.6 10.8Z"/></svg>
+          {site.phone}
+        </a>
+      )}
     </div>
-    {site.appointment_path && (
-      <a class="site-header__appointment" href={site.appointment_path}>Request an appointment</a>
-    )}
   </div>
   <div class="site-nav-wrap">
     <nav class="site-nav" aria-label="Primary">
@@ -34,7 +55,7 @@ const { site } = Astro.props;
       </ul>
     </nav>
     <details class="mobile-nav">
-      <summary>Menu</summary>
+      <summary><span aria-hidden="true">☰</span><span class="sr-only">Open menu</span></summary>
       <nav aria-label="Mobile primary">
         <ul>
           {site.navigation.map((item) => (

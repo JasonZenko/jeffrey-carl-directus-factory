@@ -65,7 +65,7 @@ export async function getDirectusContent(): Promise<ContentBundle> {
 
   const [pageRows, blockRows, sectionRows, templateRows] = await Promise.all([
     api<DirectusList<any>>(
-      `/items/weo_pages?filter[site][_eq]=${siteRow.id}&filter[status][_eq]=published&limit=-1&fields=*`, token),
+      `/items/weo_pages?filter[site][_eq]=${siteRow.id}&filter[status][_eq]=published&limit=-1&fields=*,template.*`, token),
     api<DirectusList<any>>(
       `/items/weo_page_blocks?filter[page][site][_eq]=${siteRow.id}&limit=-1&sort=sort` +
       '&fields=*,hero.*,text_media.*,feature_grid.*,process.*,faq.*,cta.*,testimonials.*,stats.*,gallery.*,team_grid.*', token),
@@ -145,9 +145,10 @@ export async function getDirectusContent(): Promise<ContentBundle> {
     appointment_path: siteRow.navigation?.appointment_path ?? '',
     logo: siteRow.navigation?.logo ?? '',
     home_hero_image: siteRow.navigation?.home_hero_image ?? '',
+    home_hero_video_id: siteRow.navigation?.home_hero_video_id ?? '',
     inner_hero_image: siteRow.navigation?.inner_hero_image ?? '',
     navigation: (siteRow.navigation?.items ?? siteRow.navigation ?? []) as SiteRecord['navigation'],
-    footer: siteRow.footer ?? { text: '', links: [] },
+    footer: siteRow.footer ?? { text: '', copyright: '', links: [] },
     homepage: siteRow.homepage ?? { legacy_path: '' },
   };
 

@@ -9,3 +9,4 @@ playwright-report/
 .wrangler/
 .DS_Store
 source-freeze/.capture-running
+qa/visual/current/

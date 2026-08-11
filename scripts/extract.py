@@ -278,6 +278,8 @@ def extract_chrome(home_soup, home_url, asset_by_url):
     appointment = next((link for link in region_links(home_soup)
                         if "request" in link["label"].lower()
                         and "appointment" in link["label"].lower()), None)
+    hero_video = home_soup.select_one(".TPyt-background[data-id]")
+    copyright_box = home_soup.select_one(".TPcopyrightBox")
 
     def managed_asset(fragment):
         for source_url, record in asset_by_url.items():
@@ -295,7 +297,9 @@ def extract_chrome(home_soup, home_url, asset_by_url):
         "appointment_path": appointment["href"] if appointment else "",
         "logo": managed_asset("LGO-default-c180.webp"),
         "home_hero_image": managed_asset("BKG-anibanner-c180.webp"),
+        "home_hero_video_id": hero_video.get("data-id", "") if hero_video else "",
         "inner_hero_image": managed_asset("CandW-gen-bar.jpg"),
+        "copyright": normalize_text(copyright_box.get_text(" ", strip=True)) if copyright_box else "",
     }
 
 
@@ -426,9 +430,14 @@ def main():
         "appointment_path": chrome["appointment_path"],
         "logo": chrome["logo"],
         "home_hero_image": chrome["home_hero_image"],
+        "home_hero_video_id": chrome["home_hero_video_id"],
         "inner_hero_image": chrome["inner_hero_image"],
         "navigation": chrome["navigation"],
-        "footer": {"text": chrome["footer_text"], "links": chrome["footer_links"]},
+        "footer": {
+            "text": chrome["footer_text"],
+            "copyright": chrome["copyright"],
+            "links": chrome["footer_links"],
+        },
         "homepage": {"legacy_path": home_page["legacy_path"]},
     }
 

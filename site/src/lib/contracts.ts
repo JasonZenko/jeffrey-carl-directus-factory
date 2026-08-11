@@ -85,9 +85,10 @@ export interface SiteRecord {
   appointment_path: string;
   logo: string;
   home_hero_image: string;
+  home_hero_video_id: string;
   inner_hero_image: string;
   navigation: NavLink[];
-  footer: { text: string; links: NavLink[] };
+  footer: { text: string; copyright: string; links: NavLink[] };
   homepage: { legacy_path: string };
 }
 

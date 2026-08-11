@@ -1,0 +1,384 @@
+{
+  "generated_at": "2026-08-11T14:50:46.867274+00:00",
+  "target": "http://127.0.0.1:4322",
+  "contract": {
+    "difference_hash_max": 0.4,
+    "mean_colour_error_max": 0.22,
+    "page_length_ratio": [
+      0.67,
+      1.3
+    ],
+    "note": "Thresholds reject the former generic redesign while allowing browser font rasterisation differences."
+  },
+  "checks": 18,
+  "passed": 18,
+  "failed": 0,
+  "results": [
+    {
+      "family": "home",
+      "route": "/p/dentist-Albany-OR-Home-p466.asp",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true,
+        "source_video_bound": true,
+        "four_source_ctas": true,
+        "desktop_ctas_horizontal": true,
+        "mobile_ctas_vertical": true
+      },
+      "difference_hash_distance": 0.082031,
+      "mean_colour_error": 0.065699,
+      "source_scroll_height": 5181,
+      "rendered_scroll_height": 5257,
+      "height_ratio": 1.0147,
+      "capture": "qa/visual/current/home-desktop-1440x1000.png"
+    },
+    {
+      "family": "home",
+      "route": "/p/dentist-Albany-OR-Home-p466.asp",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true,
+        "source_video_bound": true,
+        "four_source_ctas": true,
+        "desktop_ctas_horizontal": true,
+        "mobile_ctas_vertical": true
+      },
+      "difference_hash_distance": 0.22168,
+      "mean_colour_error": 0.105618,
+      "source_scroll_height": 6923,
+      "rendered_scroll_height": 6197,
+      "height_ratio": 0.8951,
+      "capture": "qa/visual/current/home-tablet-768x1024.png"
+    },
+    {
+      "family": "home",
+      "route": "/p/dentist-Albany-OR-Home-p466.asp",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true,
+        "source_video_bound": true,
+        "four_source_ctas": true,
+        "desktop_ctas_horizontal": true,
+        "mobile_ctas_vertical": true
+      },
+      "difference_hash_distance": 0.388672,
+      "mean_colour_error": 0.211155,
+      "source_scroll_height": 8786,
+      "rendered_scroll_height": 7092,
+      "height_ratio": 0.8072,
+      "capture": "qa/visual/current/home-mobile-390x844.png"
+    },
+    {
+      "family": "about-team",
+      "route": "/p/dentist-Albany-OR-About-Us-p65411.asp",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true
+      },
+      "difference_hash_distance": 0.206055,
+      "mean_colour_error": 0.074742,
+      "source_scroll_height": 2570,
+      "rendered_scroll_height": 2343,
+      "height_ratio": 0.9117,
+      "capture": "qa/visual/current/about-team-desktop-1440x1000.png"
+    },
+    {
+      "family": "about-team",
+      "route": "/p/dentist-Albany-OR-About-Us-p65411.asp",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true
+      },
+      "difference_hash_distance": 0.393555,
+      "mean_colour_error": 0.152619,
+      "source_scroll_height": 3214,
+      "rendered_scroll_height": 2668,
+      "height_ratio": 0.8301,
+      "capture": "qa/visual/current/about-team-tablet-768x1024.png"
+    },
+    {
+      "family": "about-team",
+      "route": "/p/dentist-Albany-OR-About-Us-p65411.asp",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true
+      },
+      "difference_hash_distance": 0.300781,
+      "mean_colour_error": 0.116049,
+      "source_scroll_height": 4085,
+      "rendered_scroll_height": 3483,
+      "height_ratio": 0.8526,
+      "capture": "qa/visual/current/about-team-mobile-390x844.png"
+    },
+    {
+      "family": "service-detail",
+      "route": "/p/dentist-Albany-OR-Aligners-vs-Braces-p80014.asp",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true
+      },
+      "difference_hash_distance": 0.210938,
+      "mean_colour_error": 0.084509,
+      "source_scroll_height": 5239,
+      "rendered_scroll_height": 5351,
+      "height_ratio": 1.0214,
+      "capture": "qa/visual/current/service-detail-desktop-1440x1000.png"
+    },
+    {
+      "family": "service-detail",
+      "route": "/p/dentist-Albany-OR-Aligners-vs-Braces-p80014.asp",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true
+      },
+      "difference_hash_distance": 0.313477,
+      "mean_colour_error": 0.135214,
+      "source_scroll_height": 6805,
+      "rendered_scroll_height": 6412,
+      "height_ratio": 0.9422,
+      "capture": "qa/visual/current/service-detail-tablet-768x1024.png"
+    },
+    {
+      "family": "service-detail",
+      "route": "/p/dentist-Albany-OR-Aligners-vs-Braces-p80014.asp",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true
+      },
+      "difference_hash_distance": 0.271484,
+      "mean_colour_error": 0.099685,
+      "source_scroll_height": 9990,
+      "rendered_scroll_height": 8769,
+      "height_ratio": 0.8778,
+      "capture": "qa/visual/current/service-detail-mobile-390x844.png"
+    },
+    {
+      "family": "patient-resource",
+      "route": "/p/dentist-Albany-OR-Patient-Info-p27244.asp",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true
+      },
+      "difference_hash_distance": 0.244141,
+      "mean_colour_error": 0.077873,
+      "source_scroll_height": 1846,
+      "rendered_scroll_height": 1531,
+      "height_ratio": 0.8294,
+      "capture": "qa/visual/current/patient-resource-desktop-1440x1000.png"
+    },
+    {
+      "family": "patient-resource",
+      "route": "/p/dentist-Albany-OR-Patient-Info-p27244.asp",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true
+      },
+      "difference_hash_distance": 0.316406,
+      "mean_colour_error": 0.119436,
+      "source_scroll_height": 2458,
+      "rendered_scroll_height": 1664,
+      "height_ratio": 0.677,
+      "capture": "qa/visual/current/patient-resource-tablet-768x1024.png"
+    },
+    {
+      "family": "patient-resource",
+      "route": "/p/dentist-Albany-OR-Patient-Info-p27244.asp",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true
+      },
+      "difference_hash_distance": 0.27832,
+      "mean_colour_error": 0.10704,
+      "source_scroll_height": 2809,
+      "rendered_scroll_height": 2220,
+      "height_ratio": 0.7903,
+      "capture": "qa/visual/current/patient-resource-mobile-390x844.png"
+    },
+    {
+      "family": "conversion",
+      "route": "/p/dentist-Albany-OR-Contact-Us-p509.asp",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true
+      },
+      "difference_hash_distance": 0.165039,
+      "mean_colour_error": 0.069909,
+      "source_scroll_height": 2950,
+      "rendered_scroll_height": 2625,
+      "height_ratio": 0.8898,
+      "capture": "qa/visual/current/conversion-desktop-1440x1000.png"
+    },
+    {
+      "family": "conversion",
+      "route": "/p/dentist-Albany-OR-Contact-Us-p509.asp",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true
+      },
+      "difference_hash_distance": 0.231445,
+      "mean_colour_error": 0.123269,
+      "source_scroll_height": 3994,
+      "rendered_scroll_height": 2822,
+      "height_ratio": 0.7066,
+      "capture": "qa/visual/current/conversion-tablet-768x1024.png"
+    },
+    {
+      "family": "conversion",
+      "route": "/p/dentist-Albany-OR-Contact-Us-p509.asp",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true
+      },
+      "difference_hash_distance": 0.217773,
+      "mean_colour_error": 0.106854,
+      "source_scroll_height": 4705,
+      "rendered_scroll_height": 3928,
+      "height_ratio": 0.8349,
+      "capture": "qa/visual/current/conversion-mobile-390x844.png"
+    },
+    {
+      "family": "location",
+      "route": "/p/dentist-Aumsville-p72504.asp",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true,
+        "source_video_bound": true,
+        "four_source_ctas": true,
+        "desktop_ctas_horizontal": true,
+        "mobile_ctas_vertical": true
+      },
+      "difference_hash_distance": 0.360352,
+      "mean_colour_error": 0.147344,
+      "source_scroll_height": 5157,
+      "rendered_scroll_height": 5193,
+      "height_ratio": 1.007,
+      "capture": "qa/visual/current/location-desktop-1440x1000.png"
+    },
+    {
+      "family": "location",
+      "route": "/p/dentist-Aumsville-p72504.asp",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true,
+        "source_video_bound": true,
+        "four_source_ctas": true,
+        "desktop_ctas_horizontal": true,
+        "mobile_ctas_vertical": true
+      },
+      "difference_hash_distance": 0.25293,
+      "mean_colour_error": 0.131654,
+      "source_scroll_height": 6899,
+      "rendered_scroll_height": 6165,
+      "height_ratio": 0.8936,
+      "capture": "qa/visual/current/location-tablet-768x1024.png"
+    },
+    {
+      "family": "location",
+      "route": "/p/dentist-Aumsville-p72504.asp",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "top_perceptual_shape": true,
+        "top_mean_colour_error": true,
+        "page_length_proportion": true,
+        "no_invented_inner_hero": true,
+        "source_video_bound": true,
+        "four_source_ctas": true,
+        "desktop_ctas_horizontal": true,
+        "mobile_ctas_vertical": true
+      },
+      "difference_hash_distance": 0.363281,
+      "mean_colour_error": 0.214208,
+      "source_scroll_height": 8762,
+      "rendered_scroll_height": 7030,
+      "height_ratio": 0.8023,
+      "capture": "qa/visual/current/location-mobile-390x844.png"
+    }
+  ]
+}

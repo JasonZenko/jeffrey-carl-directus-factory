@@ -22,6 +22,8 @@ describe('build output', () => {
     for (const page of pages) {
       const html = readFileSync(join(DIST, page.legacy_path, 'index.html'), 'utf8');
       expect(html, page.legacy_path).toContain('data-fidelity-root');
+      expect(html, page.legacy_path).toContain(`data-family="${page.family}"`);
+      expect(html, page.legacy_path).toContain(`data-template="${page.template}"`);
       expect(html, page.legacy_path).toContain('<meta name="robots" content="noindex, nofollow"');
       const escapedTitle = page.title.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
       expect(html, page.legacy_path).toContain(`<title>${escapedTitle}</title>`);
