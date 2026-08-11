@@ -47,12 +47,15 @@ describe('build output', () => {
     expect(robots).toContain('Disallow: /');
   });
 
-  it.runIf(distReady)('review index lists all routes and is noindexed', () => {
+  it.runIf(distReady)('root renders the migrated homepage and is noindexed', () => {
     const html = readFileSync(join(DIST, 'index.html'), 'utf8');
-    expect(html).toContain('noindex');
-    for (const page of pages) {
-      expect(html).toContain(page.legacy_path);
-    }
+    expect(html).toContain('<meta name="robots" content="noindex, nofollow"');
+    expect(html).toContain('data-fidelity-root');
+    expect(html).toContain('data-family="home"');
+    expect(html).toContain('data-template="homepage"');
+    expect(html).toContain('fLOLbodJq-o');
+    expect(html.match(/class="TPcta"/g) ?? []).toHaveLength(4);
+    expect(html).not.toContain('migration review surface');
   });
 
   it.runIf(distReady)('no rendered page references the live source host in src/href', () => {
