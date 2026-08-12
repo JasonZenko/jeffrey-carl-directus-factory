@@ -1,0 +1,31 @@
+---
+import type { PearlRecordByBlock } from '../types';
+
+type Props = PearlRecordByBlock['split_image_content'];
+const { heading, body, image, image_alt, image_position, image_width, background_tone } = Astro.props;
+---
+
+<section class:list={['pearl-split', `pearl-split--${image_position}`, `pearl-split--${image_width}`, `pearl-split--${background_tone}`]} data-pearl-block="split_image_content">
+  <div class="pearl-split__media"><img src={image} alt={image_alt} loading="lazy" /></div>
+  <div class="pearl-split__copy">
+    {heading && <h2>{heading}</h2>}
+    <div class="pearl-prose" set:html={body} />
+  </div>
+</section>
+
+<style>
+  .pearl-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 620px; }
+  .pearl-split__media img { width: 100%; height: 100%; min-height: 620px; object-fit: cover; }
+  .pearl-split__copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(44px, 7vw, 110px); }
+  .pearl-split__copy h2 { margin-bottom: 24px; }
+  .pearl-split--right .pearl-split__media { order: 2; }
+  .pearl-split--light { background: var(--pearl-light); }
+  .pearl-split--brand { background: var(--pearl-forest); color: #fff; }
+  .pearl-split--wide { grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); }
+
+  @media (max-width: 800px) {
+    .pearl-split { grid-template-columns: 1fr; }
+    .pearl-split--right .pearl-split__media { order: 0; }
+    .pearl-split__media img { min-height: 420px; }
+  }
+</style>

@@ -15,7 +15,7 @@
   "implementation": {
     "directus_schema_plan": "template-adapters/pearl/directus/pearl-schema.mjs",
     "directus_provisioner": "template-adapters/pearl/directus/provision-pearl-schema.mjs",
-    "astro_components": "site/src/components/pearl/",
+    "astro_components": "site/src/components/pearl/blocks/",
     "preview_route": "/template-preview/pearl/",
     "qa_receipt": "template-adapters/pearl/receipts/fixture-qa.json"
   },
@@ -31,7 +31,7 @@
       "key": "main_hero",
       "label": "Main Hero",
       "directus": { "collection": "weo_pearl_main_heroes", "carrier_field": "pearl_main_hero" },
-      "renderer": "PearlMainHero.astro",
+      "renderer": "MainHero.astro",
       "fields": [
         { "name": "heading", "type": "string", "required": true, "authority": "directus" },
         { "name": "supporting_text", "type": "text", "required": false, "authority": "directus" },
@@ -52,7 +52,7 @@
       "key": "inner_hero_cta",
       "label": "Inner Hero + CTA",
       "directus": { "collection": "weo_pearl_inner_hero_ctas", "carrier_field": "pearl_inner_hero_cta" },
-      "renderer": "PearlInnerHeroCta.astro",
+      "renderer": "InnerHeroCta.astro",
       "fields": [
         { "name": "heading", "type": "string", "required": true, "authority": "directus" },
         { "name": "secondary_heading", "type": "string", "required": false, "authority": "directus" },
@@ -74,7 +74,7 @@
       "key": "flex_content_image",
       "label": "Flex Content + Image",
       "directus": { "collection": "weo_pearl_flex_content_images", "carrier_field": "pearl_flex_content_image" },
-      "renderer": "PearlFlexContentImage.astro",
+      "renderer": "FlexContentImage.astro",
       "fields": [
         { "name": "heading", "type": "string", "required": false, "authority": "directus" },
         { "name": "body", "type": "rich_text", "required": true, "authority": "directus" },
@@ -96,7 +96,7 @@
       "key": "split_image_content",
       "label": "Split Image Content",
       "directus": { "collection": "weo_pearl_split_image_contents", "carrier_field": "pearl_split_image_content" },
-      "renderer": "PearlSplitImageContent.astro",
+      "renderer": "SplitImageContent.astro",
       "fields": [
         { "name": "heading", "type": "string", "required": false, "authority": "directus" },
         { "name": "body", "type": "rich_text", "required": true, "authority": "directus" },
@@ -118,7 +118,7 @@
       "key": "patient_reviews",
       "label": "Patient Reviews",
       "directus": { "collection": "weo_pearl_patient_reviews", "carrier_field": "pearl_patient_reviews", "children": "weo_pearl_patient_review_items" },
-      "renderer": "PearlPatientReviews.astro",
+      "renderer": "PatientReviews.astro",
       "fields": [
         { "name": "heading", "type": "string", "required": false, "authority": "directus" },
         { "name": "intro", "type": "text", "required": false, "authority": "directus" },
@@ -142,7 +142,7 @@
       "key": "areas_served_links",
       "label": "Areas Served Links",
       "directus": { "collection": "weo_pearl_areas_served", "carrier_field": "pearl_areas_served", "children": "weo_pearl_area_links" },
-      "renderer": "PearlAreasServed.astro",
+      "renderer": "AreasServedLinks.astro",
       "fields": [
         { "name": "heading", "type": "string", "required": true, "authority": "directus" },
         { "name": "intro", "type": "text", "required": false, "authority": "directus" },
@@ -165,7 +165,7 @@
       "key": "icon_circles",
       "label": "Icon Circles",
       "directus": { "collection": "weo_pearl_icon_circles", "carrier_field": "pearl_icon_circles", "children": "weo_pearl_icon_circle_items" },
-      "renderer": "PearlIconCircles.astro",
+      "renderer": "IconCircles.astro",
       "fields": [
         { "name": "heading", "type": "string", "required": false, "authority": "directus" },
         { "name": "intro", "type": "text", "required": false, "authority": "directus" },
@@ -190,7 +190,7 @@
       "key": "highlight_quote",
       "label": "Highlight Quote",
       "directus": { "collection": "weo_pearl_highlight_quotes", "carrier_field": "pearl_highlight_quote" },
-      "renderer": "PearlHighlightQuote.astro",
+      "renderer": "HighlightQuote.astro",
       "fields": [
         { "name": "quote", "type": "text", "required": true, "authority": "directus" },
         { "name": "attribution", "type": "string", "required": false, "authority": "directus" },
@@ -208,7 +208,7 @@
       "key": "content_image",
       "label": "Content Image",
       "directus": { "collection": "weo_pearl_content_images", "carrier_field": "pearl_content_image" },
-      "renderer": "PearlContentImage.astro",
+      "renderer": "ContentImage.astro",
       "fields": [
         { "name": "image", "type": "file", "required": true, "authority": "directus" },
         { "name": "image_alt", "type": "string", "required": true, "authority": "directus" },

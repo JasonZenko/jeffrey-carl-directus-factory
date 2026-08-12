@@ -1,0 +1,25 @@
+---
+import type { PearlBlock } from '../types';
+import MainHero from './MainHero.astro';
+import InnerHeroCta from './InnerHeroCta.astro';
+import FlexContentImage from './FlexContentImage.astro';
+import SplitImageContent from './SplitImageContent.astro';
+import PatientReviews from './PatientReviews.astro';
+import AreasServedLinks from './AreasServedLinks.astro';
+import IconCircles from './IconCircles.astro';
+import HighlightQuote from './HighlightQuote.astro';
+import ContentImage from './ContentImage.astro';
+
+interface Props { block: PearlBlock; }
+const { block } = Astro.props;
+---
+
+{block.type === 'main_hero' && <MainHero {...block.item} />}
+{block.type === 'inner_hero_cta' && <InnerHeroCta {...block.item} />}
+{block.type === 'flex_content_image' && <FlexContentImage {...block.item} />}
+{block.type === 'split_image_content' && <SplitImageContent {...block.item} />}
+{block.type === 'patient_reviews' && <PatientReviews {...block.item} />}
+{block.type === 'areas_served_links' && <AreasServedLinks {...block.item} />}
+{block.type === 'icon_circles' && <IconCircles {...block.item} />}
+{block.type === 'highlight_quote' && <HighlightQuote {...block.item} />}
+{block.type === 'content_image' && <ContentImage {...block.item} />}

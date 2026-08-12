@@ -1,39 +1,9 @@
 ---
-import PearlMainHero from '../../components/pearl/PearlMainHero.astro';
-import PearlInnerHeroCta from '../../components/pearl/PearlInnerHeroCta.astro';
-import PearlFlexContentImage from '../../components/pearl/PearlFlexContentImage.astro';
-import PearlSplitImageContent from '../../components/pearl/PearlSplitImageContent.astro';
-import PearlPatientReviews from '../../components/pearl/PearlPatientReviews.astro';
-import PearlAreasServed from '../../components/pearl/PearlAreasServed.astro';
-import PearlIconCircles from '../../components/pearl/PearlIconCircles.astro';
-import PearlHighlightQuote from '../../components/pearl/PearlHighlightQuote.astro';
-import PearlContentImage from '../../components/pearl/PearlContentImage.astro';
+import BlockRenderer from '../../components/pearl/blocks/BlockRenderer.astro';
 import { pearlFixture } from '../../components/pearl/fixtures';
-import '../../styles/pearl.css';
+import BaseLayout from '../../layouts/pearl/BaseLayout.astro';
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex, nofollow" />
-    <title>Pearl template component workshop</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  </head>
-  <body class="pearl-preview" data-template-adapter="pearl" data-template-version="0.1.0">
-    <header class="pearl-workshop-bar"><strong>Pearl component workshop</strong><span>Source-backed fixtures · noindex · not client production</span></header>
-    <main>
-      <PearlMainHero {...pearlFixture.mainHero} />
-      <PearlIconCircles {...pearlFixture.iconCircles} />
-      <PearlFlexContentImage {...pearlFixture.flexContent} />
-      <PearlSplitImageContent {...pearlFixture.splitContent} />
-      <PearlPatientReviews {...pearlFixture.reviews} />
-      <PearlAreasServed {...pearlFixture.areas} />
-      <PearlHighlightQuote {...pearlFixture.highlightQuote} />
-      <PearlContentImage {...pearlFixture.contentImage} />
-      <PearlInnerHeroCta {...pearlFixture.innerHero} />
-    </main>
-  </body>
-</html>
+
+<BaseLayout title="Pearl template component workshop">
+  {pearlFixture.map((block) => <BlockRenderer block={block} />)}
+</BaseLayout>

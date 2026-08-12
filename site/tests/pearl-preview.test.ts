@@ -1,12 +1,13 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { PEARL_CHILD_FIELD_KEYS, PEARL_FIELD_KEYS } from '../src/components/pearl/types';
 import { REPO_ROOT, SITE_ROOT } from './helpers';
 
 const COMPONENTS = [
-  'PearlMainHero', 'PearlInnerHeroCta', 'PearlFlexContentImage',
-  'PearlSplitImageContent', 'PearlPatientReviews', 'PearlAreasServed',
-  'PearlIconCircles', 'PearlHighlightQuote', 'PearlContentImage',
+  'MainHero', 'InnerHeroCta', 'FlexContentImage',
+  'SplitImageContent', 'PatientReviews', 'AreasServedLinks',
+  'IconCircles', 'HighlightQuote', 'ContentImage',
 ];
 const BLOCKS = [
   'main_hero', 'inner_hero_cta', 'flex_content_image', 'split_image_content',
@@ -14,14 +15,40 @@ const BLOCKS = [
 ];
 
 describe('Pearl Astro fixture surface', () => {
-  it('implements every renderer named by the adapter manifest', () => {
+  it('implements every renderer named by the adapter manifest behind one block boundary', () => {
     const manifest = JSON.parse(readFileSync(
       join(REPO_ROOT, 'template-adapters/pearl/v0.1.0/manifest.json'), 'utf8'));
     expect(manifest.blocks.map((block: any) => block.renderer).sort())
       .toEqual(COMPONENTS.map((name) => `${name}.astro`).sort());
     for (const component of COMPONENTS) {
-      expect(existsSync(join(SITE_ROOT, `src/components/pearl/${component}.astro`)), component).toBe(true);
+      expect(existsSync(join(SITE_ROOT, `src/components/pearl/blocks/${component}.astro`)), component).toBe(true);
     }
+    expect(existsSync(join(SITE_ROOT, 'src/components/pearl/blocks/BlockRenderer.astro'))).toBe(true);
+  });
+
+  it('keeps component props identical to the Directus manifest fields', () => {
+    const manifest = JSON.parse(readFileSync(
+      join(REPO_ROOT, 'template-adapters/pearl/v0.1.0/manifest.json'), 'utf8'));
+    for (const block of manifest.blocks) {
+      expect([...PEARL_FIELD_KEYS[block.key as keyof typeof PEARL_FIELD_KEYS]], block.key)
+        .toEqual(block.fields.map((field: any) => field.name));
+      if (block.child_fields) {
+        expect([...PEARL_CHILD_FIELD_KEYS[block.key as keyof typeof PEARL_CHILD_FIELD_KEYS]], `${block.key}.children`)
+          .toEqual(block.child_fields.map((field: any) => field.name));
+      }
+    }
+  });
+
+  it('colocates each component visual treatment and keeps the shared stylesheet foundational', () => {
+    for (const component of COMPONENTS) {
+      const source = readFileSync(join(SITE_ROOT, `src/components/pearl/blocks/${component}.astro`), 'utf8');
+      expect(source, component).toContain('<style>');
+      expect(source, component).toContain(`PearlRecordByBlock[`);
+    }
+    const shared = readFileSync(join(SITE_ROOT, 'src/styles/pearl.css'), 'utf8');
+    expect(shared).not.toContain('.pearl-main-hero');
+    expect(shared).not.toContain('.pearl-split__copy');
+    expect(shared).not.toContain('.pearl-reviews__list');
   });
 
   it('builds one noindex workshop containing all nine component fixtures', () => {

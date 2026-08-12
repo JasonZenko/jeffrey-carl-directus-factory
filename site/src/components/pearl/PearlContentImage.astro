@@ -1,9 +1,0 @@
----
-import type { PearlImage } from './types';
-interface Props { image: PearlImage; caption?: string; width: 'content' | 'wide' | 'full'; alignment: 'left' | 'center' | 'right'; }
-const { image, caption, width, alignment } = Astro.props;
----
-<figure class:list={['pearl-content-image', `pearl-content-image--${width}`, `pearl-content-image--${alignment}`]} data-pearl-block="content_image">
-  <img src={image.src} alt={image.alt} />
-  {caption && <figcaption>{caption}</figcaption>}
-</figure>

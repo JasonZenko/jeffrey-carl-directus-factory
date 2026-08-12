@@ -1,9 +1,9 @@
 {
   "adapter": "pearl@0.1.0",
-  "generated_at": "2026-08-12T06:37:00Z",
-  "scope": "local schema plan and source-backed Astro component workshop",
+  "generated_at": "2026-08-12T12:12:18Z",
+  "scope": "Directus-shaped independent Astro component workshop",
   "directus": {
-    "mode": "dry-run",
+    "mode": "installed-inactive",
     "collections": 12,
     "fields": 104,
     "relations": 18,
@@ -13,8 +13,11 @@
     "route": "/template-preview/pearl/",
     "blocks_rendered": 9,
     "pages_built": 80,
-    "tests_passed": 45,
-    "tests_failed": 0
+    "tests_passed": 48,
+    "tests_failed": 0,
+    "component_props_match_manifest": true,
+    "component_styles_colocated": true,
+    "single_block_renderer_boundary": true
   },
   "browser_checks": [
     {
@@ -42,7 +45,6 @@
   ],
   "release_status": "not_active",
   "remaining_gates": [
-    "apply schema to isolated Pearl Directus install",
     "Dom editor and visual refinement",
     "positive, negative and collision source mapping fixtures",
     "source fidelity receipt",

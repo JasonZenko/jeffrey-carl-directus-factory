@@ -24,7 +24,10 @@ The manifest owns four things together: the Directus collection/field contract, 
 
 - `directus/pearl-schema.mjs` converts the manifest into an idempotent schema plan.
 - `directus/provision-pearl-schema.mjs` is dry-run by default. `--apply` requires an HTTPS `DIRECTUS_URL` and a separate `DIRECTUS_ADMIN_TOKEN`.
-- `site/src/components/pearl/` contains all nine working Astro renderers and source-backed fixtures.
+- `site/src/components/pearl/blocks/` contains nine independent CMS block renderers plus a single `BlockRenderer.astro` composition boundary.
+- Every renderer accepts the exact snake_case field names defined by its Directus collection. The locked field lists live in `site/src/components/pearl/types.ts` and are checked against this manifest in CI.
+- Component-specific structure and CSS are colocated inside each `.astro` file. `site/src/styles/pearl.css` now contains only the shared reset, typography, tokens and workshop shell.
+- Reusable primitives live in `site/src/components/pearl/ui/`; the template layout is isolated under `site/src/layouts/pearl/`; Directus collection bindings and design tokens live under `site/src/lib/pearl/`.
 - `/template-preview/pearl/` renders the complete component workshop with `noindex, nofollow` and no production form actions.
 
 Preview locally:

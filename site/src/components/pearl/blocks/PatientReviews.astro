@@ -1,0 +1,42 @@
+---
+import type { PearlRecordByBlock } from '../types';
+
+type Props = PearlRecordByBlock['patient_reviews'];
+const { heading, intro, reviews } = Astro.props;
+const orderedReviews = [...reviews].sort((a, b) => a.sort - b.sort);
+---
+
+<section class="pearl-section pearl-reviews" data-pearl-block="patient_reviews">
+  <div class="pearl-wrap">
+    <div class="pearl-heading-row">
+      {heading && <h2>{heading}</h2>}
+      {intro && <p>{intro}</p>}
+    </div>
+    <div class="pearl-reviews__list">
+      {orderedReviews.map((review) => (
+        <figure>
+          <blockquote>{review.quote}</blockquote>
+          <figcaption>
+            {review.name && <span>{review.name}</span>}
+            {review.rating && <span class="pearl-stars" aria-label={`${review.rating} out of 5 stars`}>{'★'.repeat(review.rating)}</span>}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pearl-reviews { background: var(--pearl-forest-deep); color: #fff; }
+  .pearl-heading-row { display: flex; justify-content: space-between; gap: 40px; align-items: end; margin-bottom: 48px; }
+  .pearl-heading-row > p { max-width: 48ch; margin: 0; color: #d5ddd3; }
+  .pearl-reviews__list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+  .pearl-reviews figure { margin: 0; padding: clamp(30px, 4vw, 52px); background: #fff; color: var(--pearl-ink); }
+  .pearl-reviews blockquote { margin: 0; font-family: 'Forum', Georgia, serif; font-size: clamp(1.55rem, 3vw, 2.25rem); line-height: 1.35; }
+  .pearl-reviews figcaption { display: flex; justify-content: space-between; gap: 16px; margin-top: 30px; font-size: 15px; font-weight: 700; }
+  .pearl-stars { color: #8b6415; letter-spacing: 2px; }
+
+  @media (max-width: 800px) {
+    .pearl-heading-row { align-items: flex-start; flex-direction: column; }
+  }
+</style>

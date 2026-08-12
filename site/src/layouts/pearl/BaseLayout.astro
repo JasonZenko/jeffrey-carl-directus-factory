@@ -1,0 +1,32 @@
+---
+import { pearlTokens } from '../../lib/pearl/tokens';
+import '../../styles/pearl.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Pearl template component workshop' } = Astro.props;
+const tokenStyle = Object.entries(pearlTokens)
+  .map(([name, value]) => `--pearl-${name.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)}:${value}`)
+  .join(';');
+---
+
+<!doctype html>
+<html lang="en" style={tokenStyle}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="pearl-preview" data-template-adapter="pearl" data-template-version="0.1.0">
+    <header class="pearl-workshop-bar"><strong>Pearl component workshop</strong><span>Source-backed fixtures · noindex · not client production</span></header>
+    <main><slot /></main>
+  </body>
+</html>

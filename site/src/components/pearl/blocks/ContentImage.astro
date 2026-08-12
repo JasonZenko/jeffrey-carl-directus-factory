@@ -1,0 +1,23 @@
+---
+import type { PearlRecordByBlock } from '../types';
+
+type Props = PearlRecordByBlock['content_image'];
+const { image, image_alt, caption, width, alignment } = Astro.props;
+---
+
+<figure class:list={['pearl-content-image', `pearl-content-image--${width}`, `pearl-content-image--${alignment}`]} data-pearl-block="content_image">
+  <img src={image} alt={image_alt} />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .pearl-content-image { margin-block: clamp(70px, 10vw, 130px); }
+  .pearl-content-image--content { width: min(calc(100% - 40px), 760px); }
+  .pearl-content-image--wide { width: min(calc(100% - 40px), var(--pearl-wrap)); }
+  .pearl-content-image--full { width: 100%; }
+  .pearl-content-image--left { margin-left: max(20px, calc((100vw - var(--pearl-wrap)) / 2)); }
+  .pearl-content-image--center { margin-inline: auto; }
+  .pearl-content-image--right { margin-left: auto; margin-right: max(20px, calc((100vw - var(--pearl-wrap)) / 2)); }
+  .pearl-content-image img { width: 100%; max-height: 720px; object-fit: cover; }
+  .pearl-content-image figcaption { margin-top: 12px; color: var(--pearl-muted); font-size: 15px; }
+</style>

@@ -39,7 +39,7 @@ describe('Pearl template adapter contract', () => {
     for (const block of manifest.blocks) {
       expect(block.directus.collection).toMatch(/^weo_pearl_[a-z_]+$/);
       expect(block.directus.carrier_field).toMatch(/^pearl_[a-z_]+$/);
-      expect(block.renderer).toMatch(/^Pearl[A-Z][A-Za-z]+\.astro$/);
+      expect(block.renderer).toMatch(/^[A-Z][A-Za-z]+\.astro$/);
       collections.add(block.directus.collection);
       carriers.add(block.directus.carrier_field);
       renderers.add(block.renderer);

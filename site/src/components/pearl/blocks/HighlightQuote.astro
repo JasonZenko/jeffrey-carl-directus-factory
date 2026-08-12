@@ -1,0 +1,20 @@
+---
+import type { PearlRecordByBlock } from '../types';
+
+type Props = PearlRecordByBlock['highlight_quote'];
+const { quote, attribution, tone } = Astro.props;
+---
+
+<section class:list={['pearl-quote', `pearl-quote--${tone}`]} data-pearl-block="highlight_quote">
+  <blockquote><span aria-hidden="true">“</span>{quote}</blockquote>
+  {attribution && <p>{attribution}</p>}
+</section>
+
+<style>
+  .pearl-quote { padding: clamp(70px, 12vw, 150px) max(20px, calc((100vw - 980px) / 2)); text-align: center; }
+  .pearl-quote blockquote { margin: 0; font-family: 'Forum', Georgia, serif; font-size: clamp(2.4rem, 5vw, 4.8rem); line-height: 1.14; text-wrap: balance; }
+  .pearl-quote blockquote span { color: var(--pearl-maroon); }
+  .pearl-quote p { margin: 28px 0 0; font-weight: 700; }
+  .pearl-quote--brand { background: var(--pearl-moss); color: #fff; }
+  .pearl-quote--dark { background: var(--pearl-forest-deep); color: #fff; }
+</style>
