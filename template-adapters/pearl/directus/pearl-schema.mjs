@@ -46,7 +46,7 @@ const baseCollection = (collection, label) => ({
 });
 
 const baseFields = (collection) => [
-  { collection, field: 'id', type: 'uuid', meta: { hidden: true, readonly: true, interface: 'input' }, schema: { is_primary_key: true, has_auto_increment: false } },
+  { collection, field: 'id', type: 'uuid', meta: { special: ['uuid'], hidden: true, readonly: true, interface: 'input' }, schema: { is_primary_key: true, is_nullable: false, has_auto_increment: false } },
   { collection, field: 'status', type: 'string', meta: { interface: 'select-dropdown', options: { choices: [
     { text: 'Published', value: 'published' }, { text: 'Draft', value: 'draft' }, { text: 'Archived', value: 'archived' },
   ] }, width: 'half' }, schema: { default_value: 'draft', is_nullable: false } },

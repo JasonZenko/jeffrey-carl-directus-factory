@@ -1,0 +1,40 @@
+{
+  "adapter": "pearl@0.1.0",
+  "applied_at": "2026-08-12T08:04:46+01:00",
+  "target": "https://weomcms.foundryworks.ai",
+  "change_scope": {
+    "collections": 12,
+    "fields": 104,
+    "relations": 18,
+    "content_records_created": 0
+  },
+  "verification": {
+    "second_apply_was_idempotent": true,
+    "pearl_tables": 12,
+    "pearl_uuid_primary_keys": 12,
+    "pearl_foreign_keys": 18,
+    "pearl_content_records": 0,
+    "existing_sites": 1,
+    "existing_pages": 78,
+    "existing_page_blocks": 508,
+    "dom_user": {
+      "email": "dfarrar@weomarketly.com",
+      "status": "active",
+      "role": "Administrator"
+    }
+  },
+  "safety": {
+    "backup_taken_before_apply": true,
+    "adapter_active": false,
+    "preview_urls_changed": false,
+    "deployment_changed": false,
+    "dns_changed": false,
+    "indexing_changed": false,
+    "forms_changed": false
+  },
+  "notes": [
+    "The first guarded apply exposed an integer primary-key default in Directus collection creation and stopped at the first page-block relation.",
+    "The empty partial Pearl schema was removed, UUID primary keys were made explicit at collection creation, a regression test was added and the corrected plan was applied from scratch.",
+    "GitHub repository access for Dom remains separate from Directus access and requires his confirmed GitHub username."
+  ]
+}

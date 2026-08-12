@@ -10,7 +10,7 @@
   },
   "activation": {
     "active": false,
-    "reason": "Schema plan and Astro fixtures are implemented. Activation waits for isolated Directus apply, Dom refinement, source mapping fixtures and all four release receipts."
+    "reason": "Schema and Astro fixtures are implemented, and the inactive empty schema is installed in the shared WEO master. Activation waits for Dom refinement, source mapping fixtures and all four release receipts."
   },
   "implementation": {
     "directus_schema_plan": "template-adapters/pearl/directus/pearl-schema.mjs",

@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { REPO_ROOT } from './helpers';
 import { buildPearlSchemaPlan, validatePearlSchemaPlan } from '../../template-adapters/pearl/directus/pearl-schema.mjs';
@@ -23,6 +24,22 @@ describe('Pearl Directus schema', () => {
       expect(carrier.type).toBe('uuid');
       expect(carrier.schema.is_nullable).toBe(true);
     }
+  });
+
+  it('declares UUID primary keys that match the existing page-block carriers', () => {
+    for (const collection of plan.collections) {
+      const primaryKey = plan.fields.find((field: any) =>
+        field.collection === collection.collection && field.field === 'id');
+      expect(primaryKey, collection.collection).toMatchObject({
+        type: 'uuid',
+        meta: { special: ['uuid'] },
+        schema: { is_primary_key: true, is_nullable: false, has_auto_increment: false },
+      });
+    }
+
+    const provisioner = `${REPO_ROOT}/template-adapters/pearl/directus/provision-pearl-schema.mjs`;
+    const source = readFileSync(provisioner, 'utf8');
+    expect(source).toContain("fields: [primaryKey]");
   });
 
   it('models repeated reviews, area links and icon circles as ordered child collections', () => {

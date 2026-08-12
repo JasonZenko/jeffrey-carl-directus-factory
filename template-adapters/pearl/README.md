@@ -45,7 +45,7 @@ node template-adapters/pearl/directus/provision-pearl-schema.mjs --json
 ## Activation sequence
 
 1. Review the field names and editor ergonomics with Dom.
-2. Review and apply the generated schema plan to the isolated Pearl Directus install.
+2. **Complete:** apply the generated schema plan to the shared WEO master as an inactive, empty Pearl namespace. See `receipts/directus-schema-apply-2026-08-12.json`.
 3. Visually refine each working Astro renderer with Dom at desktop and mobile sizes.
 4. Add positive, negative and collision mapping fixtures from the frozen Pearl source.
 5. Prove Directus edits reach Astro and revert cleanly.

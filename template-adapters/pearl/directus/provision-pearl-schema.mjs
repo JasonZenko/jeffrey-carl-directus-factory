@@ -39,7 +39,10 @@ for (const required of plan.requires) {
 
 for (const collection of plan.collections) {
   if (existingCollections.has(collection.collection)) continue;
-  await request('POST', '/collections', collection);
+  const idField = plan.fields.find((field) => field.collection === collection.collection && field.field === 'id');
+  if (!idField) throw new Error(`Primary key missing from schema plan: ${collection.collection}.id`);
+  const { collection: _collection, ...primaryKey } = idField;
+  await request('POST', '/collections', { ...collection, fields: [primaryKey] });
   existingCollections.add(collection.collection);
   console.log(`created collection ${collection.collection}`);
 }
