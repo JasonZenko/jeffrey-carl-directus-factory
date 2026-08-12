@@ -1,0 +1,52 @@
+{
+  "adapter": "pearl@0.1.0",
+  "generated_at": "2026-08-12T06:37:00Z",
+  "scope": "local schema plan and source-backed Astro component workshop",
+  "directus": {
+    "mode": "dry-run",
+    "collections": 12,
+    "fields": 104,
+    "relations": 18,
+    "live_schema_mutated": false
+  },
+  "astro": {
+    "route": "/template-preview/pearl/",
+    "blocks_rendered": 9,
+    "pages_built": 80,
+    "tests_passed": 45,
+    "tests_failed": 0
+  },
+  "browser_checks": [
+    {
+      "viewport": "desktop",
+      "width": 1440,
+      "status": 200,
+      "horizontal_overflow_pixels": 0,
+      "broken_images": 0,
+      "console_errors": 0,
+      "wcag_22_aa_violations": 0,
+      "noindex": true,
+      "pass": true
+    },
+    {
+      "viewport": "mobile",
+      "width": 390,
+      "status": 200,
+      "horizontal_overflow_pixels": 0,
+      "broken_images": 0,
+      "console_errors": 0,
+      "wcag_22_aa_violations": 0,
+      "noindex": true,
+      "pass": true
+    }
+  ],
+  "release_status": "not_active",
+  "remaining_gates": [
+    "apply schema to isolated Pearl Directus install",
+    "Dom editor and visual refinement",
+    "positive, negative and collision source mapping fixtures",
+    "source fidelity receipt",
+    "authoring fidelity receipt",
+    "field authority round-trip receipt"
+  ]
+}

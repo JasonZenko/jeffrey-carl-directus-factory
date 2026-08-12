@@ -2,7 +2,7 @@
   "adapter_id": "pearl",
   "template_name": "Pearl",
   "version": "0.1.0",
-  "status": "draft-contract",
+  "status": "working-fixtures",
   "based_on": {
     "source_site": "https://jeffreycarldmd.com/",
     "source_freeze": "source-freeze/manifests/capture-summary.json",
@@ -10,7 +10,14 @@
   },
   "activation": {
     "active": false,
-    "reason": "Contract-first slice. Directus schema, Astro renderers and mapping fixtures must pass all four gates before activation."
+    "reason": "Schema plan and Astro fixtures are implemented. Activation waits for isolated Directus apply, Dom refinement, source mapping fixtures and all four release receipts."
+  },
+  "implementation": {
+    "directus_schema_plan": "template-adapters/pearl/directus/pearl-schema.mjs",
+    "directus_provisioner": "template-adapters/pearl/directus/provision-pearl-schema.mjs",
+    "astro_components": "site/src/components/pearl/",
+    "preview_route": "/template-preview/pearl/",
+    "qa_receipt": "template-adapters/pearl/receipts/fixture-qa.json"
   },
   "mapping_policy": {
     "unknown": "manual_review",

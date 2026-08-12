@@ -1,0 +1,8 @@
+---
+interface Props { quote: string; attribution?: string; tone: 'light' | 'brand' | 'dark'; }
+const { quote, attribution, tone } = Astro.props;
+---
+<section class:list={['pearl-quote', `pearl-quote--${tone}`]} data-pearl-block="highlight_quote">
+  <blockquote><span aria-hidden="true">“</span>{quote}</blockquote>
+  {attribution && <p>{attribution}</p>}
+</section>

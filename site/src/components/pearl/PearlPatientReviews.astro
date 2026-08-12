@@ -1,0 +1,24 @@
+---
+import type { PearlReview } from './types';
+interface Props { heading?: string; intro?: string; reviews: PearlReview[]; }
+const { heading, intro, reviews } = Astro.props;
+---
+<section class="pearl-section pearl-reviews" data-pearl-block="patient_reviews">
+  <div class="pearl-wrap">
+    <div class="pearl-heading-row">
+      {heading && <h2>{heading}</h2>}
+      {intro && <p>{intro}</p>}
+    </div>
+    <div class="pearl-reviews__list">
+      {reviews.map((review) => (
+        <figure>
+          <blockquote>{review.quote}</blockquote>
+          <figcaption>
+            {review.name && <span>{review.name}</span>}
+            {review.rating && <span class="pearl-stars" aria-label={`${review.rating} out of 5 stars`}>{'★'.repeat(review.rating)}</span>}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

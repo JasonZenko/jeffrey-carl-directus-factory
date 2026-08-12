@@ -1,0 +1,11 @@
+---
+import type { PearlLink } from './types';
+interface Props { heading: string; intro?: string; areas: PearlLink[]; }
+const { heading, intro, areas } = Astro.props;
+---
+<section class="pearl-section pearl-areas" data-pearl-block="areas_served_links">
+  <div class="pearl-wrap pearl-areas__grid">
+    <div><h2>{heading}</h2>{intro && <p>{intro}</p>}</div>
+    <nav aria-label={heading}><ul>{areas.map((area) => <li><a href={area.url}>{area.label}<span aria-hidden="true">↗</span></a></li>)}</ul></nav>
+  </div>
+</section>
