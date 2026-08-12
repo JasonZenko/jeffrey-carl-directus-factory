@@ -24,12 +24,14 @@ blocks. These responsibilities must not be folded back together.
 ## Current status and boundaries
 
 - Work from branch `pearl-template-v0.1`.
-- Pearl currently renders source-backed fixtures at
-  `/template-preview/pearl/`.
-- The inactive, empty Pearl schema is installed on `cms.foundryworks.ai`.
+- Pearl renders canonical Directus records at `/template-preview/pearl/` when
+  `PEARL_CONTENT_MODE=connected`; explicit fixture mode remains available for
+  disconnected component development.
+- The canonical Pearl schema is installed on `weomcms.foundryworks.ai`.
 - The existing connected Jeffrey build and deployment use
   `weomcms.foundryworks.ai`.
-- Live Pearl Directus fetching and page hydration are not implemented yet.
+- Live Pearl Directus fetching is fail-closed and uses a dedicated
+  least-privilege server token.
 - Pull requests run CI, but feature branches do not automatically deploy.
 - A push to `main` runs the connected gates and the noindex Cloudflare preview
   deployment. Production, DNS, forms and indexing require separate approval.

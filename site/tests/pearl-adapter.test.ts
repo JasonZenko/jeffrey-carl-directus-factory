@@ -20,10 +20,11 @@ const EXPECTED_BLOCKS = [
 ];
 
 describe('Pearl template adapter contract', () => {
-  it('is versioned, isolated and inactive until implementation gates pass', () => {
+  it('is versioned, isolated and active only as the canonical review baseline', () => {
     expect(manifest.adapter_id).toBe('pearl');
     expect(manifest.version).toMatch(/^\d+\.\d+\.\d+$/);
-    expect(manifest.activation.active).toBe(false);
+    expect(manifest.activation.active).toBe(true);
+    expect(manifest.activation.reason).toContain('Production, DNS, forms and indexing remain inactive');
     expect(manifest.based_on.source_freeze).toBeTruthy();
   });
 

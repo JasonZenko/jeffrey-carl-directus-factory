@@ -129,6 +129,56 @@ export function buildPearlSchemaPlan(manifestPath = MANIFEST) {
     });
   }
 
+  const pearlCollections = manifest.blocks.map((block) => block.directus.collection);
+  plan.collections.push({
+    collection: 'weo_pearl_pages',
+    meta: {
+      icon: 'web',
+      note: 'Canonical Pearl template pages. Isolated from client and Jeffrey page records.',
+      singleton: false,
+      hidden: false,
+      archive_field: 'status',
+      archive_value: 'archived',
+      unarchive_value: 'draft',
+      display_template: '{{title}}',
+    },
+    schema: {},
+  });
+  plan.fields.push(...baseFields('weo_pearl_pages'));
+  plan.fields.push(
+    { collection: 'weo_pearl_pages', field: 'slug', type: 'string', meta: { interface: 'input', required: true }, schema: { is_nullable: false, is_unique: true } },
+    { collection: 'weo_pearl_pages', field: 'title', type: 'string', meta: { interface: 'input', required: true }, schema: { is_nullable: false } },
+    { collection: 'weo_pearl_pages', field: 'description', type: 'text', meta: { interface: 'input-multiline' }, schema: { is_nullable: true } },
+    { collection: 'weo_pearl_pages', field: 'robots_index', type: 'boolean', meta: { interface: 'boolean', readonly: true }, schema: { is_nullable: false, default_value: false } },
+    { collection: 'weo_pearl_pages', field: 'robots_follow', type: 'boolean', meta: { interface: 'boolean', readonly: true }, schema: { is_nullable: false, default_value: false } },
+    { collection: 'weo_pearl_pages', field: 'blocks', type: 'alias', meta: { special: ['m2a'], interface: 'list-m2a', display: 'related-values', options: { enableCreate: true, enableSelect: true, allowDuplicates: false }, note: 'Ordered native Pearl blocks.' }, schema: null },
+  );
+
+  plan.collections.push({
+    collection: 'weo_pearl_page_builder',
+    meta: { icon: 'account_tree', hidden: true, note: 'Pearl page Builder junction. Edit through Pearl Pages.' },
+    schema: {},
+  });
+  plan.fields.push(
+    { collection: 'weo_pearl_page_builder', field: 'id', type: 'uuid', meta: { special: ['uuid'], hidden: true, readonly: true, interface: 'input' }, schema: { is_primary_key: true, is_nullable: false, has_auto_increment: false } },
+    { collection: 'weo_pearl_page_builder', field: 'page', type: 'uuid', meta: { special: ['m2o'], interface: 'select-dropdown-m2o', hidden: true }, schema: { is_nullable: false } },
+    { collection: 'weo_pearl_page_builder', field: 'item', type: 'string', meta: { interface: 'input', hidden: true }, schema: { is_nullable: false } },
+    { collection: 'weo_pearl_page_builder', field: 'collection', type: 'string', meta: { interface: 'input', hidden: true }, schema: { is_nullable: false } },
+    { collection: 'weo_pearl_page_builder', field: 'sort', type: 'integer', meta: { interface: 'input', hidden: true }, schema: { is_nullable: true } },
+  );
+  plan.relations.push(
+    {
+      collection: 'weo_pearl_page_builder', field: 'item', related_collection: null,
+      meta: { one_allowed_collections: pearlCollections, one_collection_field: 'collection', junction_field: 'page' },
+      schema: null,
+    },
+    {
+      collection: 'weo_pearl_page_builder', field: 'page', related_collection: 'weo_pearl_pages',
+      meta: { one_field: 'blocks', junction_field: 'item', sort_field: 'sort', one_deselect_action: 'delete' },
+      schema: { on_delete: 'CASCADE' },
+    },
+  );
+
   return plan;
 }
 
@@ -145,7 +195,7 @@ export function validatePearlSchemaPlan(plan) {
     if (!fieldKeys.has(`${relation.collection}.${relation.field}`)) {
       errors.push(`relation without field ${relation.collection}.${relation.field}`);
     }
-    if (!collectionNames.has(relation.related_collection) && !plan.requires.includes(relation.related_collection)) {
+    if (relation.related_collection !== null && !collectionNames.has(relation.related_collection) && !plan.requires.includes(relation.related_collection)) {
       errors.push(`unknown related collection ${relation.related_collection}`);
     }
   }

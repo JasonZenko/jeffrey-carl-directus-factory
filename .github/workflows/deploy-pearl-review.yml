@@ -1,19 +1,12 @@
-name: deploy-preview
-
-# Credentialed noindex Cloudflare Pages preview deploy.
-# Secrets are referenced here but never committed:
-#   CLOUDFLARE_API_TOKEN  - Pages:Edit token for the review account
-#   CLOUDFLARE_ACCOUNT_ID - target account id
-# Directus-connected builds additionally need:
-#   DIRECTUS_SERVER_TOKEN - server-only static token for published content
+name: deploy-pearl-review
 
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [pearl-template-v0.1]
 
 jobs:
-  deploy-preview:
+  deploy-pearl-review:
     runs-on: ubuntu-latest
     environment: noindex-preview
     steps:
@@ -29,19 +22,13 @@ jobs:
           cache: npm
           cache-dependency-path: site/package-lock.json
 
-      - name: Install auditor dependencies
+      - name: Install dependencies
         run: |
           pip install -r requirements.txt
           python -m playwright install --with-deps chromium
+          cd site && npm ci
 
-      - name: Extract frozen content
-        run: python3 scripts/extract.py
-
-      - name: Install site dependencies
-        working-directory: site
-        run: npm ci
-
-      - name: Build review site
+      - name: Build connected Pearl review
         working-directory: site
         run: npm run build
         env:
@@ -51,27 +38,31 @@ jobs:
           PEARL_DIRECTUS_URL: https://weomcms.foundryworks.ai
           PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_DIRECTUS_TOKEN }}
 
-      - name: Run tests
-        working-directory: site
-        run: npm test
-
-      - name: Verify live Directus authoring contract
-        run: node scripts/verify_directus_authoring.mjs
+      - name: Run contracts and live connection proof
+        run: |
+          cd site && npm test
+          cd .. && node scripts/verify_pearl_connected.mjs
         env:
-          DIRECTUS_URL: https://weomcms.foundryworks.ai
-          DIRECTUS_BUILD_TOKEN: ${{ secrets.DIRECTUS_SERVER_TOKEN }}
+          PEARL_DIRECTUS_URL: https://weomcms.foundryworks.ai
+          PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_DIRECTUS_TOKEN }}
 
-      - name: Audit before deploy (strict)
+      - name: Accepted Jeffrey regression gates
         run: |
           PORT=4321 node scripts/serve.mjs &
           for i in $(seq 1 30); do curl -sf http://127.0.0.1:4321/robots.txt > /dev/null && break; sleep 1; done
+          curl -fsS http://127.0.0.1:4321/template-preview/pearl/ | grep -q 'data-template-adapter="pearl"'
           python3 auditor/audit_rendered.py --target http://127.0.0.1:4321 --strict
           python3 qa/browser_matrix.py --target http://127.0.0.1:4321
           python3 qa/visual_fidelity.py --target http://127.0.0.1:4321
 
-      - name: Deploy noindex preview to Cloudflare Pages
+      - name: Protect Pearl as the review root
+        run: |
+          cp site/dist/template-preview/pearl/index.html site/dist/index.html
+          grep -q 'data-template-adapter="pearl"' site/dist/index.html
+
+      - name: Deploy separate noindex Pearl review
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy site/dist --project-name=jeffrey-carl-review
+          command: pages deploy site/dist --project-name=pearl-template-review --branch=pearl-template-v0.1

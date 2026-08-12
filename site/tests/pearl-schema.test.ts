@@ -11,9 +11,9 @@ describe('Pearl Directus schema', () => {
     expect(validatePearlSchemaPlan(plan)).toEqual([]);
     expect(plan.adapter).toBe('pearl@0.1.0');
     expect(plan.requires).toEqual(['weo_page_blocks', 'directus_files']);
-    expect(plan.collections).toHaveLength(12);
-    expect(plan.fields).toHaveLength(104);
-    expect(plan.relations).toHaveLength(18);
+    expect(plan.collections).toHaveLength(14);
+    expect(plan.fields).toHaveLength(118);
+    expect(plan.relations).toHaveLength(20);
   });
 
   it('creates one component carrier per Pearl block on the existing page-block junction', () => {
@@ -54,9 +54,22 @@ describe('Pearl Directus schema', () => {
   it('keeps dry-run as the default and refuses apply without explicit credentials', () => {
     const script = `${REPO_ROOT}/template-adapters/pearl/directus/provision-pearl-schema.mjs`;
     const output = execFileSync('node', [script], { encoding: 'utf8' });
-    expect(output).toContain('Dry run: 12 collections, 104 fields, 18 relations');
+    expect(output).toContain('Dry run: 14 collections, 118 fields, 20 relations');
     expect(() => execFileSync('node', [script, '--apply'], {
       encoding: 'utf8', env: { PATH: process.env.PATH ?? '' }, stdio: 'pipe',
     })).toThrow();
+  });
+
+  it('keeps Pearl composition isolated in a native ordered M2A Builder', () => {
+    const itemRelation = plan.relations.find((item: any) =>
+      item.collection === 'weo_pearl_page_builder' && item.field === 'item');
+    const pageRelation = plan.relations.find((item: any) =>
+      item.collection === 'weo_pearl_page_builder' && item.field === 'page');
+    expect(itemRelation.meta.one_allowed_collections).toHaveLength(9);
+    expect(pageRelation).toMatchObject({
+      related_collection: 'weo_pearl_pages',
+      meta: { one_field: 'blocks', sort_field: 'sort', one_deselect_action: 'delete' },
+      schema: { on_delete: 'CASCADE' },
+    });
   });
 });

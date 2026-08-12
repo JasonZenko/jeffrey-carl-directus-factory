@@ -2,8 +2,14 @@
 import BlockRenderer from '../../components/pearl/blocks/BlockRenderer.astro';
 import { pearlFixture } from '../../components/pearl/fixtures';
 import BaseLayout from '../../layouts/pearl/BaseLayout.astro';
+import { getPearlPage } from '../../lib/pearl/directus';
+
+const connected = (process.env.PEARL_CONTENT_MODE ?? 'connected') === 'connected';
+const page = connected
+  ? await getPearlPage()
+  : { title: 'Pearl template component workshop', description: 'Explicit disconnected fixture mode', blocks: pearlFixture };
 ---
 
-<BaseLayout title="Pearl template component workshop">
-  {pearlFixture.map((block) => <BlockRenderer block={block} />)}
+<BaseLayout title={page.title} description={page.description}>
+  {page.blocks.map((block) => <BlockRenderer block={block} />)}
 </BaseLayout>

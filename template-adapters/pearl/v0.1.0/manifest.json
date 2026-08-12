@@ -2,15 +2,15 @@
   "adapter_id": "pearl",
   "template_name": "Pearl",
   "version": "0.1.0",
-  "status": "working-fixtures",
+  "status": "canonical-integration",
   "based_on": {
     "source_site": "https://jeffreycarldmd.com/",
     "source_freeze": "source-freeze/manifests/capture-summary.json",
     "review": "Dom Tab 4, 2026-08-12"
   },
   "activation": {
-    "active": false,
-    "reason": "Schema and Astro fixtures are implemented, and the inactive empty schema is installed in the shared WEO master. Activation waits for Dom refinement, source mapping fixtures and all four release receipts."
+    "active": true,
+    "reason": "Canonical Pearl records, native Builder composition and fail-closed Astro hydration are the approved review baseline. Production, DNS, forms and indexing remain inactive."
   },
   "implementation": {
     "directus_schema_plan": "template-adapters/pearl/directus/pearl-schema.mjs",
@@ -226,6 +226,12 @@
     }
   ],
   "page_blueprints": [
+    {
+      "key": "pearl_workshop",
+      "families": ["template-review"],
+      "allowed_blocks": ["main_hero", "inner_hero_cta", "flex_content_image", "split_image_content", "patient_reviews", "areas_served_links", "icon_circles", "highlight_quote", "content_image"],
+      "required_blocks": ["main_hero", "inner_hero_cta"]
+    },
     {
       "key": "pearl_home",
       "families": ["home"],

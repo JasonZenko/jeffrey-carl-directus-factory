@@ -42,6 +42,9 @@ jobs:
         env:
           DIRECTUS_URL: https://weomcms.foundryworks.ai
           DIRECTUS_SERVER_TOKEN: ${{ secrets.DIRECTUS_SERVER_TOKEN }}
+          PEARL_CONTENT_MODE: connected
+          PEARL_DIRECTUS_URL: https://weomcms.foundryworks.ai
+          PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_DIRECTUS_TOKEN }}
 
       - name: Run contract and build tests
         working-directory: site
@@ -52,6 +55,12 @@ jobs:
         env:
           DIRECTUS_URL: https://weomcms.foundryworks.ai
           DIRECTUS_BUILD_TOKEN: ${{ secrets.DIRECTUS_SERVER_TOKEN }}
+
+      - name: Verify canonical Pearl connection
+        run: node scripts/verify_pearl_connected.mjs
+        env:
+          PEARL_DIRECTUS_URL: https://weomcms.foundryworks.ai
+          PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_DIRECTUS_TOKEN }}
 
       - name: Serve built site
         run: PORT=4321 node scripts/serve.mjs &
