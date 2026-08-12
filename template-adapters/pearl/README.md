@@ -2,6 +2,8 @@
 
 This directory is the clean, client-independent contract for the Pearl design template. It does not contain Jeffrey Carl client records and it is deliberately inactive until the Directus schema, Astro renderers, mapping fixtures and editor round-trip receipts are complete.
 
+Developer handoff: [`DEVELOPER-WORKFLOW.md`](DEVELOPER-WORKFLOW.md) explains the component rules, Directus-to-Astro data flow, local workflow, pull-request gates and noindex deployment path step by step.
+
 ## Version 0.1.0
 
 The first contract covers the reusable blocks identified in Dom's Tab 4 review:
