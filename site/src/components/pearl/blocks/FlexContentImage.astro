@@ -3,11 +3,11 @@ import Button from '../ui/Button.astro';
 import type { PearlRecordByBlock, PearlVisualRef } from '../types';
 import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
 
-type Props = PearlRecordByBlock['flex_content_image'] & { visual?: PearlVisualRef };
+type Props = PearlRecordByBlock['feature_image_content'] & { visual?: PearlVisualRef };
 const { heading, body, image, image_alt, image_position, cta_label, cta_url, visual } = Astro.props;
 ---
 
-<section id="about" class:list={['pearl-section', 'pearl-flex', `pearl-flex--${image_position}`]} data-pearl-block="flex_content_image" data-directus={pearlVisualAttr(visual)}>
+<section id="about" class:list={['pearl-section', 'pearl-flex', `pearl-flex--${image_position}`]} data-pearl-block="feature_image_content" data-directus={pearlVisualAttr(visual)}>
   <div class="pearl-wrap pearl-flex__grid">
     <figure><img src={image} alt={image_alt} loading="lazy" /></figure>
     <div class="pearl-flex__content">

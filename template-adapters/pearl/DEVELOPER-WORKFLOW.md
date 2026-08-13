@@ -36,14 +36,15 @@ blocks. These responsibilities must not be folded back together.
 - Pearl renders canonical Directus records at `/template-preview/pearl/` when
   `PEARL_CONTENT_MODE=connected`; explicit fixture mode remains available for
   disconnected component development.
-- The canonical Pearl schema is installed on `weomcms.foundryworks.ai`.
+- The canonical Pearl schema and content are installed on the dedicated `pearlcms.foundryworks.ai` instance.
 - The existing connected Jeffrey build and deployment use
   `weomcms.foundryworks.ai`.
 - Live Pearl Directus fetching is fail-closed and uses a dedicated
   least-privilege server token.
 - Pull requests run CI, but feature branches do not automatically deploy.
-- A push to `main` runs the connected gates and the noindex Cloudflare preview
-  deployment. Production, DNS, forms and indexing require separate approval.
+- A push to `pearl-template-v0.1` runs the connected gates and deploys the
+  separate noindex Pearl Cloudflare review. Production, client DNS and indexing
+  require separate approval.
 
 Do not treat the fixture workshop as proof that live Pearl CMS content is
 already reaching Astro.
@@ -97,7 +98,7 @@ folder would create collisions and hidden coupling.
     silently fall back to generic Rich Text.
 12. Jeffrey components, layouts, routes and accepted audit criteria remain
     untouched while Pearl is developed.
-13. Global typography, colour and spacing belong in `weo_pearl_theme_settings`.
+13. Global typography, colour and spacing belong in `pearl_theme_settings`.
     Do not hard-code a per-block substitute for a theme token.
 14. Theme colours must pass `qa/pearl_reference_qa.py`; invalid hex values fall
     back to the canonical Pearl palette and inaccessible combinations block QA.
@@ -121,8 +122,9 @@ Open:
 http://localhost:4321/template-preview/pearl/
 ```
 
-The dev server is for component work. It does not connect Pearl to live
-Directus.
+Use `PEARL_CONTENT_MODE=fixture` for disconnected component work. Connected
+work requires `PEARL_DIRECTUS_URL=https://pearlcms.foundryworks.ai` and the
+least-privilege Pearl build token.
 
 ## Normal change workflow
 
@@ -282,9 +284,9 @@ The page layer receives an ordered array shaped like this:
 
 ```ts
 const blocks: PearlBlock[] = [
-  { type: 'main_hero', item: directusMainHeroRecord },
-  { type: 'icon_circles', item: directusIconCirclesRecord },
-  { type: 'flex_content_image', item: directusFlexRecord },
+  { type: 'main_hero_standard', item: directusMainHeroRecord },
+  { type: 'icon_feature_cards', item: directusIconCardsRecord },
+  { type: 'feature_image_content', item: directusFeatureRecord },
 ];
 ```
 
@@ -292,7 +294,7 @@ The page loops over the array and passes each item to `BlockRenderer`. The
 renderer selects the matching component. The component receives fields that
 match its Directus record exactly and renders its own HTML/CSS.
 
-The eventual connected Pearl adapter must therefore do only four things:
+The connected Pearl adapter therefore does only four things:
 
 1. fetch the page and its ordered Builder/M2A block rows;
 2. resolve each block's native Pearl collection and ordered children;
@@ -302,9 +304,7 @@ The eventual connected Pearl adapter must therefore do only four things:
 It must not rename fields, inject copy, substitute fixture data on failure or
 silently collapse an unknown collection into Rich Text.
 
-## Directus authoring flow after live wiring
-
-Once the connected adapter is implemented and approved:
+## Directus authoring flow
 
 1. An editor changes a native field in a Pearl component collection.
 2. The page Builder relationship determines block order.
@@ -316,8 +316,6 @@ Once the connected adapter is implemented and approved:
    the build. There is no connected-build fallback to fixtures.
 8. A field-authority round trip must prove the edit appears on the preview and
    an exact revert restores the accepted output.
-
-Until that adapter and round-trip receipt exist, use the fixture workshop only.
 
 ## Deployment flow
 
@@ -335,24 +333,18 @@ pearl/<change> -> pull request -> pearl-template-v0.1
 
 ### B. Noindex review deployment
 
-When the Pearl baseline and live CMS adapter are approved, open a separate PR:
-
-```text
-pearl-template-v0.1 -> pull request -> main
-```
-
-After merge to `main`:
+After a reviewed pull request merges into `pearl-template-v0.1`:
 
 1. `build-test.yml` reruns the connected build and all gates.
-2. `deploy-preview.yml` independently rebuilds and reruns the same gates.
+2. `deploy-pearl-review.yml` independently rebuilds and reruns the same gates.
 3. Only a green deployment job uploads `site/dist` to the
-   `jeffrey-carl-review` Cloudflare Pages project.
+   `pearl-template-review` Cloudflare Pages project.
 4. The preview remains protected by meta robots, `X-Robots-Tag` and
    `robots.txt` noindex controls.
 
 The GitHub environment needs these existing secrets:
 
-- `DIRECTUS_SERVER_TOKEN`;
+- `PEARL_DIRECTUS_TOKEN`;
 - `CLOUDFLARE_API_TOKEN`;
 - `CLOUDFLARE_ACCOUNT_ID`.
 

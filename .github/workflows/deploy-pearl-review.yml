@@ -33,7 +33,7 @@ jobs:
         run: npm run build
         env:
           PEARL_CONTENT_MODE: connected
-          PEARL_DIRECTUS_URL: https://weomcms.foundryworks.ai
+          PEARL_DIRECTUS_URL: https://pearlcms.foundryworks.ai
           PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_DIRECTUS_TOKEN }}
 
       - name: Run contracts and live connection proof
@@ -41,7 +41,7 @@ jobs:
           cd site && npm test
           cd .. && node scripts/verify_pearl_connected.mjs
         env:
-          PEARL_DIRECTUS_URL: https://weomcms.foundryworks.ai
+          PEARL_DIRECTUS_URL: https://pearlcms.foundryworks.ai
           PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_DIRECTUS_TOKEN }}
 
       - name: Accepted Jeffrey regression gates

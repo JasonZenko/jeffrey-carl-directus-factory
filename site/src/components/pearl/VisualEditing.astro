@@ -4,7 +4,7 @@
   const params = new URLSearchParams(window.location.search);
   if (params.get('visual-editing') === 'true') sessionStorage.setItem('pearl-visual-editing', 'true');
   if (sessionStorage.getItem('pearl-visual-editing') === 'true') {
-    apply({ directusUrl: 'https://weomcms.foundryworks.ai' }).catch((error) => {
+    apply({ directusUrl: 'https://pearlcms.foundryworks.ai' }).catch((error) => {
       console.error('Pearl Visual Editor failed to initialise', error);
     });
   }

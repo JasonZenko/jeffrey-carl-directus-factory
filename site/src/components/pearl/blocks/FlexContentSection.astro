@@ -1,0 +1,16 @@
+---
+import Button from '../ui/Button.astro';
+import type {PearlRecordByBlock, PearlVisualRef} from '../types';
+import {pearlVisualAttr} from '../../../lib/pearl/visual-editing';
+type Props = PearlRecordByBlock['flex_content_section'] & {visual?: PearlVisualRef};
+const {section_header, body_content, image, image_alt, image_position='right', cta_label, cta_url, visual} = Astro.props;
+---
+<section class:list={['pearl-section','pearl-flex-standard',`pearl-flex-standard--${image_position}`,{'pearl-flex-standard--text-only':!image}]} data-pearl-block="flex_content_section" data-directus={pearlVisualAttr(visual)}>
+  <div class="pearl-wrap pearl-flex-standard__grid">
+    <div>{section_header && <h2>{section_header}</h2>}<div class="pearl-prose" set:html={body_content}/>{cta_label && cta_url && <Button label={cta_label} url={cta_url}/>}</div>
+    {image && <img src={image} alt={image_alt ?? ''}/>}
+  </div>
+</section>
+<style>
+  .pearl-flex-standard{background:#fff}.pearl-flex-standard__grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,1fr);gap:clamp(30px,6vw,80px);align-items:start}.pearl-flex-standard img{width:100%;height:auto}.pearl-flex-standard--left img{order:-1}.pearl-flex-standard--text-only .pearl-flex-standard__grid{grid-template-columns:1fr}@media(max-width:800px){.pearl-flex-standard__grid{grid-template-columns:1fr}.pearl-flex-standard img{order:-1}}
+</style>

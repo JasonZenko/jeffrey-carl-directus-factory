@@ -1,124 +1,20 @@
-import { readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
-import { describe, expect, it } from 'vitest';
+import {describe,expect,it} from 'vitest';
+import {PEARL_FIELD_KEYS} from '../src/components/pearl/types';
+import {PEARL_COLLECTION_BY_BLOCK} from '../src/lib/pearl/directus';
 
-const manifest = JSON.parse(readFileSync(
-  resolve(process.cwd(), '../template-adapters/pearl/v0.1.0/manifest.json'),
-  'utf8',
-));
+const REQUIRED_COMMON=['inner_hero_standard','flex_content_section','highlight_links','image_gallery_grid','testimonial_list_standard'];
+const REQUIRED_HOMEPAGE=['main_hero_standard','icon_feature_cards','feature_image_content','highlight_snippet_quote'];
+const OPTIONAL=['cta_section_standard','contact_info_standard','areas_served_links','faq_dropdown','cherry_financing'];
 
-const EXPECTED_BLOCKS = [
-  'areas_served_links',
-  'content_image',
-  'flex_content_image',
-  'highlight_quote',
-  'icon_circles',
-  'inner_hero_cta',
-  'main_hero',
-  'patient_reviews',
-  'split_image_content',
-];
-
-describe('Pearl template adapter contract', () => {
-  it('is versioned, isolated and active only as the canonical review baseline', () => {
-    expect(manifest.adapter_id).toBe('pearl');
-    expect(manifest.version).toMatch(/^\d+\.\d+\.\d+$/);
-    expect(manifest.activation.active).toBe(true);
-    expect(manifest.activation.reason).toContain('Production, DNS, forms and indexing remain inactive');
-    expect(manifest.based_on.source_freeze).toBeTruthy();
-  });
-
-  it('defines the complete first Pearl block palette', () => {
-    const keys = manifest.blocks.map((block: any) => block.key).sort();
-    expect(keys).toEqual(EXPECTED_BLOCKS);
-  });
-
-  it('binds every block to a unique Directus carrier and Astro renderer', () => {
-    const collections = new Set<string>();
-    const carriers = new Set<string>();
-    const renderers = new Set<string>();
-    for (const block of manifest.blocks) {
-      expect(block.directus.collection).toMatch(/^weo_pearl_[a-z_]+$/);
-      expect(block.directus.carrier_field).toMatch(/^pearl_[a-z_]+$/);
-      expect(block.renderer).toMatch(/^[A-Z][A-Za-z]+\.astro$/);
-      collections.add(block.directus.collection);
-      carriers.add(block.directus.carrier_field);
-      renderers.add(block.renderer);
-    }
-    expect(collections.size).toBe(manifest.blocks.length);
-    expect(carriers.size).toBe(manifest.blocks.length);
-    expect(renderers.size).toBe(manifest.blocks.length);
-  });
-
-  it('makes every rendered field authoritative in Directus', () => {
-    for (const block of manifest.blocks) {
-      const fields = [...block.fields, ...(block.child_fields ?? [])];
-      expect(fields.length, block.key).toBeGreaterThan(0);
-      for (const field of fields) {
-        expect(field.authority, `${block.key}.${field.name}`).toBe('directus');
-        expect(typeof field.required, `${block.key}.${field.name}`).toBe('boolean');
-      }
-    }
-  });
-
-  it('makes the global theme library authoritative in Directus', () => {
-    expect(manifest.theme_settings.collection).toBe('weo_pearl_theme_settings');
-    expect(manifest.theme_settings.singleton).toBe(true);
-    expect(manifest.theme_settings.fields.length).toBeGreaterThanOrEqual(20);
-    for (const field of manifest.theme_settings.fields) {
-      expect(field.authority, `theme.${field.name}`).toBe('directus');
-    }
-  });
-
-  it('keeps images out of opaque Rich Text fields', () => {
-    for (const key of ['flex_content_image', 'split_image_content', 'content_image']) {
-      const block = manifest.blocks.find((item: any) => item.key === key);
-      const image = block.fields.find((field: any) => field.name === 'image');
-      const alt = block.fields.find((field: any) => field.name === 'image_alt');
-      expect(image?.type, key).toBe('file');
-      expect(image?.required, key).toBe(true);
-      expect(alt?.required, key).toBe(true);
-    }
-  });
-
-  it('fails closed when mapping evidence is unknown or ambiguous', () => {
-    expect(manifest.mapping_policy.unknown).toBe('manual_review');
-    expect(manifest.mapping_policy.ambiguous).toBe('manual_review');
-    expect(manifest.mapping_policy.rich_text_fallback_allowed).toBe(false);
-    for (const block of manifest.blocks) {
-      expect(block.mapping.confidence, block.key)
-        .toBeGreaterThanOrEqual(manifest.mapping_policy.minimum_auto_map_confidence);
-      expect(block.mapping.required_all.length, block.key).toBeGreaterThan(0);
-      expect(block.mapping.required_any.length, block.key).toBeGreaterThan(0);
-      expect(block.mapping.reject_if.length, block.key).toBeGreaterThan(0);
-    }
-  });
-
-  it('keeps mapping priority deterministic', () => {
-    const priorities = manifest.blocks.map((block: any) => block.mapping.priority);
-    expect(new Set(priorities).size).toBe(priorities.length);
-    expect(priorities).toEqual([...priorities].sort((a, b) => a - b));
-  });
-
-  it('allows only defined blocks in each page blueprint', () => {
-    const blockKeys = new Set(manifest.blocks.map((block: any) => block.key));
-    for (const blueprint of manifest.page_blueprints) {
-      expect(blueprint.families.length, blueprint.key).toBeGreaterThan(0);
-      for (const key of [...blueprint.allowed_blocks, ...blueprint.required_blocks]) {
-        expect(blockKeys.has(key), `${blueprint.key}.${key}`).toBe(true);
-      }
-      for (const key of blueprint.required_blocks) {
-        expect(blueprint.allowed_blocks, `${blueprint.key}.${key}`).toContain(key);
-      }
-    }
-  });
-
-  it('requires all four independent release gates', () => {
-    expect(manifest.release_gates.sort()).toEqual([
-      'authoring_fidelity',
-      'field_authority',
-      'frontend_fidelity',
-      'source_fidelity',
-    ]);
+describe('Pearl 1.0 official adapter contract',()=>{
+  it('defines exactly the approved 14-block library',()=>{expect(Object.keys(PEARL_COLLECTION_BY_BLOCK).sort()).toEqual([...REQUIRED_COMMON,...REQUIRED_HOMEPAGE,...OPTIONAL].sort());});
+  it('uses clean Pearl-only collection names',()=>{for(const collection of Object.values(PEARL_COLLECTION_BY_BLOCK)){expect(collection).toMatch(/^pearl_[a-z_]+$/);expect(collection).not.toContain('weo_');}});
+  it('binds every official block to a unique collection and field contract',()=>{expect(new Set(Object.values(PEARL_COLLECTION_BY_BLOCK)).size).toBe(14);expect(Object.keys(PEARL_FIELD_KEYS).sort()).toEqual(Object.keys(PEARL_COLLECTION_BY_BLOCK).sort());});
+  it('keeps required migration fields explicit',()=>{
+    expect(PEARL_FIELD_KEYS.inner_hero_standard).toContain('page_title');
+    expect(PEARL_FIELD_KEYS.flex_content_section).toContain('body_content');
+    expect(PEARL_FIELD_KEYS.highlight_links).toContain('links');
+    expect(PEARL_FIELD_KEYS.image_gallery_grid).toContain('images');
+    expect(PEARL_FIELD_KEYS.testimonial_list_standard).toContain('reviews');
   });
 });

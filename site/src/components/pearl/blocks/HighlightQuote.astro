@@ -2,7 +2,7 @@
 import type { PearlRecordByBlock, PearlVisualRef } from '../types';
 import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
 
-type Props = PearlRecordByBlock['highlight_quote'] & { visual?: PearlVisualRef };
+type Props = Record<string, any> & { visual?: PearlVisualRef };
 const { quote, attribution, tone, visual } = Astro.props;
 ---
 

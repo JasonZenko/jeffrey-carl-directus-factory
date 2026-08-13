@@ -1,0 +1,5 @@
+---
+import type {PearlRecordByBlock,PearlVisualRef} from '../types';import {pearlVisualAttr} from '../../../lib/pearl/visual-editing';type Props=PearlRecordByBlock['faq_dropdown']&{visual?:PearlVisualRef};const{section_heading,intro_text,items,visual}=Astro.props;const ordered=[...items].sort((a,b)=>a.sort-b.sort);
+---
+<section class="pearl-section pearl-faq" data-pearl-block="faq_dropdown" data-directus={pearlVisualAttr(visual)}><div class="pearl-wrap"><h2>{section_heading??'Frequently asked questions'}</h2>{intro_text&&<p>{intro_text}</p>}<div class="pearl-faq__list">{ordered.map(item=><details><summary>{item.question}</summary><div class="pearl-prose" set:html={item.answer}/></details>)}</div></div></section>
+<style>.pearl-faq{background:#fff}.pearl-faq__list{margin-top:30px;border-top:1px solid #cdd3ca}.pearl-faq details{border-bottom:1px solid #cdd3ca}.pearl-faq summary{padding:22px 4px;font-weight:700;cursor:pointer}.pearl-faq details>div{padding:0 4px 22px}</style>
