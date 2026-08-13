@@ -51,7 +51,7 @@ Color strategy: restrained-to-committed. Forest anchors the global chrome; moss 
 ## Responsive Behaviour
 
 - 390px is a first-class viewport.
-- Navigation wraps or scrolls without hiding links; no desktop-only hover dependency.
+- At 720px and below, navigation uses an accessible 48px burger disclosure with visible focus, Escape-to-close and a no-JavaScript visible fallback. Desktop navigation remains unchanged.
 - Media floats are neutralized under 760px and images become full-width.
 - Tables and embeds scroll or scale within the viewport.
 - Contact actions remain at least 44px high.

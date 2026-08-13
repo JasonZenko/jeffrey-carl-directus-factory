@@ -18,8 +18,19 @@ const { theme, visual } = Astro.props;
       {theme.address && <span>{theme.address}</span>}
       {theme.phone && <a href={`tel:${theme.phone.replace(/[^+\d]/g, '')}`}>{theme.phone}</a>}
     </div>
+    <button
+      class="pearl-menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="pearl-primary-navigation"
+      aria-label="Open navigation"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
   </div>
-  <nav aria-label="Pearl reference navigation">
+  <nav id="pearl-primary-navigation" aria-label="Pearl reference navigation">
     <div class="pearl-wrap">
       <a href="#top">home</a>
       <a href="#services">services</a>
@@ -30,10 +41,40 @@ const { theme, visual } = Astro.props;
 </header>
 
 <script>
-  const updatePearlHeader = () => {
-    const header = document.querySelector('.pearl-site-header');
-    header?.classList.toggle('pearl-site-header--scrolled', window.scrollY > 56);
-  };
+  const header = document.querySelector<HTMLElement>('.pearl-site-header');
+  const menuToggle = header?.querySelector<HTMLButtonElement>('.pearl-menu-toggle');
+  const navigation = header?.querySelector<HTMLElement>('#pearl-primary-navigation');
+  const mobileNavigation = window.matchMedia('(max-width: 720px)');
+
+  if (header && menuToggle && navigation) {
+    const setMenuState = (open: boolean, focusFirstLink = false) => {
+      const isOpen = mobileNavigation.matches && open;
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+      navigation.hidden = mobileNavigation.matches && !isOpen;
+      header.classList.toggle('pearl-site-header--menu-open', isOpen);
+      if (isOpen && focusFirstLink) navigation.querySelector<HTMLAnchorElement>('a')?.focus();
+    };
+
+    header.classList.add('pearl-site-header--menu-ready');
+    setMenuState(false);
+
+    menuToggle.addEventListener('click', () => {
+      setMenuState(menuToggle.getAttribute('aria-expanded') !== 'true', true);
+    });
+    navigation.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMenuState(false));
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        menuToggle.focus();
+      }
+    });
+    mobileNavigation.addEventListener('change', () => setMenuState(false));
+  }
+
+  const updatePearlHeader = () => header?.classList.toggle('pearl-site-header--scrolled', window.scrollY > 56);
   updatePearlHeader();
   window.addEventListener('scroll', updatePearlHeader, { passive: true });
 </script>
@@ -47,6 +88,7 @@ const { theme, visual } = Astro.props;
   .pearl-site-header__details { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 10px 22px; color: var(--pearl-muted); font-size: .88rem; }
   .pearl-site-header__details a { color: inherit; }
   .pearl-header-cta { padding: 7px 13px; background: var(--pearl-primary); color: #fff !important; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
+  .pearl-menu-toggle { display: none; }
   .pearl-site-header nav { background: var(--pearl-accent); }
   .pearl-site-header nav .pearl-wrap { min-height: 42px; display: flex; align-items: center; justify-content: flex-end; gap: 30px; }
   .pearl-site-header nav a { color: #fff; font-size: .86rem; font-weight: 600; text-decoration: none; }
@@ -58,11 +100,20 @@ const { theme, visual } = Astro.props;
   .pearl-site-header--scrolled .pearl-site-header__details > span { display: none; }
 
   @media (max-width: 720px) {
-    .pearl-site-header__top { min-height: 104px; }
+    .pearl-site-header__top { min-height: 104px; gap: 18px; }
     .pearl-brand { width: 142px; min-height: 118px; }
     .pearl-brand strong { font-size: 2.45rem; }
     .pearl-site-header__details span { display: none; }
-    .pearl-site-header nav .pearl-wrap { justify-content: flex-start; gap: 22px; overflow-x: auto; }
+    .pearl-site-header--menu-ready .pearl-menu-toggle { width: 48px; height: 48px; padding: 0; display: grid; place-content: center; gap: 5px; border: 0; border-radius: 50%; background: var(--pearl-accent); color: #fff; cursor: pointer; }
+    .pearl-menu-toggle span { width: 21px; height: 2px; display: block; border-radius: 999px; background: currentColor; transform-origin: center; transition: transform .24s cubic-bezier(.22,1,.36,1), opacity .16s ease; }
+    .pearl-menu-toggle:hover { background: var(--pearl-primary); }
+    .pearl-menu-toggle:focus-visible { outline: 3px solid var(--pearl-primary); outline-offset: 3px; }
+    .pearl-site-header--menu-open .pearl-menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .pearl-site-header--menu-open .pearl-menu-toggle span:nth-child(2) { opacity: 0; }
+    .pearl-site-header--menu-open .pearl-menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .pearl-site-header nav .pearl-wrap { min-height: auto; padding-block: 8px; display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+    .pearl-site-header nav a { min-height: 48px; display: flex; align-items: center; padding-inline: 4px; border-bottom: 1px solid rgb(255 255 255 / .22); font-size: 1rem; }
+    .pearl-site-header nav a:last-child { border-bottom: 0; }
   }
 
   @media (max-width: 480px) {
@@ -72,6 +123,7 @@ const { theme, visual } = Astro.props;
   @media (prefers-reduced-motion: reduce) {
     .pearl-site-header__top,
     .pearl-brand,
-    .pearl-brand strong { transition: none; }
+    .pearl-brand strong,
+    .pearl-menu-toggle span { transition: none; }
   }
 </style>

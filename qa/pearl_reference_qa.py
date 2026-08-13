@@ -70,6 +70,33 @@ def main():
                   footer: Boolean(document.querySelector('.pearl-site-footer')),
                 })
             """)
+            toggle = page.locator(".pearl-menu-toggle")
+            navigation = page.locator("#pearl-primary-navigation")
+            if name == "mobile":
+                navigation_evidence = {
+                    "toggle_visible": toggle.is_visible(),
+                    "closed_initially": not navigation.is_visible(),
+                }
+                toggle.click()
+                navigation_evidence.update({
+                    "expanded": toggle.get_attribute("aria-expanded") == "true",
+                    "close_label": toggle.get_attribute("aria-label") == "Close navigation",
+                    "opened": navigation.is_visible(),
+                    "link_count": navigation.locator("a").count(),
+                })
+                page.keyboard.press("Escape")
+                navigation_evidence.update({
+                    "escape_closed": not navigation.is_visible(),
+                    "focus_returned": page.evaluate(
+                        "document.activeElement?.classList.contains('pearl-menu-toggle')"
+                    ),
+                })
+            else:
+                navigation_evidence = {
+                    "toggle_hidden": not toggle.is_visible(),
+                    "navigation_visible": navigation.is_visible(),
+                    "link_count": navigation.locator("a").count(),
+                }
             checks = {
                 "status_200": bool(response and response.status == 200),
                 "no_horizontal_overflow": evidence["overflow"] <= 1,
@@ -84,6 +111,7 @@ def main():
                 ],
                 "theme_connected": evidence["theme"] == "#855d56",
                 "shared_chrome": evidence["header"] and evidence["footer"],
+                "responsive_navigation": all(navigation_evidence.values()),
                 "wcag_aa": not violations,
             }
             results.append({
@@ -96,6 +124,7 @@ def main():
                 "page_errors": page_errors,
                 "first_party_http_errors": response_errors,
                 "accessibility_violations": violations,
+                "navigation_evidence": navigation_evidence,
             })
             page.close()
         browser.close()
