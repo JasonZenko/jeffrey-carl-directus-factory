@@ -19,9 +19,14 @@ if (!theme || theme.status !== 'published' || !theme.heading_font || !theme.body
 }
 const rows = (await request('/items/weo_pearl_page_builder?filter[page][_eq]=' + page.id + '&fields=id,sort,collection,item&sort=sort&limit=-1')).data;
 const expected = [
-  'weo_pearl_main_heroes', 'weo_pearl_icon_circles', 'weo_pearl_flex_content_images',
-  'weo_pearl_split_image_contents', 'weo_pearl_patient_reviews', 'weo_pearl_areas_served',
-  'weo_pearl_highlight_quotes', 'weo_pearl_content_images', 'weo_pearl_inner_hero_ctas',
+  'weo_pearl_main_heroes',
+  'weo_pearl_icon_circles',
+  'weo_pearl_flex_content_images',
+  'weo_pearl_icon_circles',
+  'weo_pearl_patient_reviews',
+  'weo_pearl_flex_content_images',
+  'weo_pearl_areas_served',
+  'weo_pearl_inner_hero_ctas',
 ];
 if (rows.length !== expected.length || rows.some((row, index) => row.collection !== expected[index] || row.sort !== index + 1 || !row.item)) {
   throw new Error('Canonical Pearl Builder composition is incomplete or out of order');

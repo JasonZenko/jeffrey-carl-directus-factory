@@ -50,10 +50,10 @@
       "item": {
         "variant": "overlay",
         "items": [
-          { "icon": "site/public/assets/pearl-icon-preventative.svg", "title": "Preventative Dentistry", "url": "#services", "sort": 1 },
-          { "icon": "site/public/assets/pearl-icon-implant.svg", "title": "Dental Implants", "url": "#services", "sort": 2 },
-          { "icon": "site/public/assets/pearl-icon-invisalign.svg", "title": "Invisalign", "url": "#services", "sort": 3 },
-          { "icon": "site/public/assets/pearl-icon-emergency.svg", "title": "Emergency Dentistry", "url": "#services", "sort": 4 }
+          { "icon": "site/public/pearl/pearl-icon-preventative.svg", "title": "Preventative Dentistry", "url": "#services", "sort": 1 },
+          { "icon": "site/public/pearl/pearl-icon-implant.svg", "title": "Dental Implants", "url": "#services", "sort": 2 },
+          { "icon": "site/public/pearl/pearl-icon-invisalign.svg", "title": "Invisalign", "url": "#services", "sort": 3 },
+          { "icon": "site/public/pearl/pearl-icon-emergency.svg", "title": "Emergency Dentistry", "url": "#services", "sort": 4 }
         ]
       }
     },
@@ -63,7 +63,7 @@
       "item": {
         "heading": "Welcome to WEO Media",
         "body": "<p>Healthy smiles for healthy families start with professional family dentistry. At WEO Media, your bright, healthy smile is our top priority. Of course, you'll only smile if you're as happy with our service as you are with our dental treatment. That's why we take the time to listen to your needs and concerns. Not only do we listen to your concerns, but we use gentle, efficient cleaning techniques.</p>",
-        "image": "site/public/assets/pearl-welcome-doctor.webp",
+        "image": "site/public/pearl/pearl-welcome-doctor.webp",
         "image_alt": "Dentist welcoming a patient in a bright treatment room",
         "image_position": "left",
         "cta_label": "Learn more about us",
@@ -75,17 +75,17 @@
       "type": "icon_circles",
       "item": {
         "heading": "Our Services",
-        "background_image": "site/public/assets/pearl-services-background.jpg",
+        "background_image": "site/public/pearl/pearl-services-background.jpg",
         "variant": "services",
         "items": [
-          { "icon": "site/public/assets/pearl-icon-preventative.svg", "title": "Preventative Dentistry", "url": "#", "sort": 1 },
-          { "icon": "site/public/assets/pearl-icon-implant.svg", "title": "Dental Implants", "url": "#", "sort": 2 },
-          { "icon": "site/public/assets/pearl-icon-invisalign.svg", "title": "Invisalign", "url": "#", "sort": 3 },
-          { "icon": "site/public/assets/pearl-icon-emergency.svg", "title": "Emergency Dentistry", "url": "#", "sort": 4 },
-          { "icon": "site/public/assets/pearl-icon-preventative.svg", "title": "Preventative Dentistry", "url": "#", "sort": 5 },
-          { "icon": "site/public/assets/pearl-icon-implant.svg", "title": "Dental Implants", "url": "#", "sort": 6 },
-          { "icon": "site/public/assets/pearl-icon-invisalign.svg", "title": "Invisalign", "url": "#", "sort": 7 },
-          { "icon": "site/public/assets/pearl-icon-emergency.svg", "title": "Emergency Dentistry", "url": "#", "sort": 8 }
+          { "icon": "site/public/pearl/pearl-icon-preventative.svg", "title": "Preventative Dentistry", "url": "#", "sort": 1 },
+          { "icon": "site/public/pearl/pearl-icon-implant.svg", "title": "Dental Implants", "url": "#", "sort": 2 },
+          { "icon": "site/public/pearl/pearl-icon-invisalign.svg", "title": "Invisalign", "url": "#", "sort": 3 },
+          { "icon": "site/public/pearl/pearl-icon-emergency.svg", "title": "Emergency Dentistry", "url": "#", "sort": 4 },
+          { "icon": "site/public/pearl/pearl-icon-preventative.svg", "title": "Preventative Dentistry", "url": "#", "sort": 5 },
+          { "icon": "site/public/pearl/pearl-icon-implant.svg", "title": "Dental Implants", "url": "#", "sort": 6 },
+          { "icon": "site/public/pearl/pearl-icon-invisalign.svg", "title": "Invisalign", "url": "#", "sort": 7 },
+          { "icon": "site/public/pearl/pearl-icon-emergency.svg", "title": "Emergency Dentistry", "url": "#", "sort": 8 }
         ]
       }
     },
@@ -110,7 +110,7 @@
       "item": {
         "heading": "Meet the Doctor",
         "body": "<p>Dr. Amanda Pearl is a highly skilled dentist dedicated to providing exceptional dental care to her patients. She obtained her Doctor of Dental Medicine (DMD) degree and completed her training in dentistry. With a passion for dentistry, Dr. Pearl is committed to staying updated with the latest advancements in the field to offer the best treatment options for her patients. Her compassionate approach and expertise ensure that patients receive personalized care tailored to their individual needs.</p>",
-        "image": "site/public/assets/pearl-doctor-amanda.jpg",
+        "image": "site/public/pearl/pearl-doctor-amanda.jpg",
         "image_alt": "Dr. Amanda Pearl",
         "image_position": "right",
         "cta_label": "More about Dr. Amanda Pearl",
