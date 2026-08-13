@@ -36,6 +36,10 @@ describe('Pearl official block surface', () => {
     expect(html).toContain('data-template-adapter="pearl"');
     expect(html).toContain('data-template-version="1.0.0"');
     expect(html).toContain('class="pearl-site-header"');
+    expect(html).toContain('class="pearl-menu-toggle"');
+    expect(html).toContain('aria-controls="pearl-primary-navigation"');
+    expect(html).toContain('aria-expanded="false"');
+    expect(html).toContain('id="pearl-primary-navigation"');
     expect(html).toContain('class="pearl-site-footer"');
     expect([...html.matchAll(/data-pearl-block="([^"]+)"/g)].map(match=>match[1])).toEqual(HOMEPAGE_SEQUENCE);
   });
