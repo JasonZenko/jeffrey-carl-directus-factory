@@ -33,8 +33,7 @@ const tokenStyle = pearlThemeStyle(theme);
     <link href="https://fonts.googleapis.com/css2?family=Forum&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body class="pearl-preview" data-template-adapter="pearl" data-template-version="0.1.0">
-    <header class="pearl-workshop-bar" data-directus={pearlVisualAttr(themeVisual)}><strong>Pearl component workshop</strong><span>Theme Library · noindex · not client production</span></header>
-    <PearlHeader theme={theme} />
+    <PearlHeader theme={theme} visual={themeVisual} />
     <main id="top" data-directus={pearlVisualAttr(pageVisual)}><slot /></main>
     <PearlFooter theme={theme} />
     <VisualEditing />

@@ -12,8 +12,8 @@ describe('Pearl Directus schema', () => {
     expect(plan.adapter).toBe('pearl@0.1.0');
     expect(plan.requires).toEqual(['weo_page_blocks', 'directus_files']);
     expect(plan.collections).toHaveLength(15);
-    expect(plan.fields).toHaveLength(148);
-    expect(plan.relations).toHaveLength(20);
+    expect(plan.fields).toHaveLength(153);
+    expect(plan.relations).toHaveLength(21);
   });
 
   it('creates one component carrier per Pearl block on the existing page-block junction', () => {
@@ -55,7 +55,7 @@ describe('Pearl Directus schema', () => {
     const script = `${REPO_ROOT}/template-adapters/pearl/directus/provision-pearl-schema.mjs`;
     const source = readFileSync(script, 'utf8');
     const output = execFileSync('node', [script], { encoding: 'utf8' });
-    expect(output).toContain('Dry run: 15 collections, 148 fields, 20 relations');
+    expect(output).toContain('Dry run: 15 collections, 153 fields, 21 relations');
     expect(() => execFileSync('node', [script, '--apply'], {
       encoding: 'utf8', env: { PATH: process.env.PATH ?? '' }, stdio: 'pipe',
     })).toThrow();

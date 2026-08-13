@@ -3,39 +3,45 @@ import type { PearlRecordByBlock, PearlVisualRef } from '../types';
 import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
 
 type Props = PearlRecordByBlock['icon_circles'] & { visual?: PearlVisualRef };
-const { heading, intro, items, visual } = Astro.props;
+const { heading, intro, background_image, variant = 'overlay', items, visual } = Astro.props;
 const orderedItems = [...items].sort((a, b) => a.sort - b.sort);
+const sectionStyle = background_image ? `--pearl-icons-background:url('${background_image}')` : undefined;
 ---
 
-<section id="services" class="pearl-section pearl-icons" data-pearl-block="icon_circles" data-directus={pearlVisualAttr(visual)}>
+<section id={variant === 'services' ? 'services' : undefined} class:list={['pearl-section', 'pearl-icons', `pearl-icons--${variant}`]} style={sectionStyle} data-pearl-block="icon_circles" data-directus={pearlVisualAttr(visual)}>
   <div class="pearl-wrap">
-    <div class="pearl-heading-row">{heading && <h2>{heading}</h2>}{intro && <p>{intro}</p>}</div>
+    {(heading || intro) && <div class="pearl-heading-row">{heading && <h2>{heading}</h2>}{intro && <p>{intro}</p>}</div>}
     <ul class="pearl-icons__list">
-      {orderedItems.map((item) => <li><span class="pearl-icons__mark" aria-hidden="true">{item.icon.startsWith('http') ? <img src={item.icon} alt="" /> : item.icon}</span><h3>{item.url ? <a href={item.url}>{item.title}</a> : item.title}</h3>{item.body && <p>{item.body}</p>}</li>)}
+      {orderedItems.map((item) => <li><a class="pearl-icons__mark" href={item.url ?? '#'}><span aria-hidden="true">{item.icon.startsWith('http') ? <img src={item.icon} alt="" /> : item.icon}</span><strong>{item.title}</strong></a>{item.body && <p>{item.body}</p>}</li>)}
     </ul>
   </div>
 </section>
 
 <style>
-  .pearl-icons { position: relative; z-index: 2; margin-top: -78px; padding-top: 0; background: var(--pearl-secondary); }
-  .pearl-heading-row { display: flex; justify-content: center; gap: 40px; align-items: end; margin-bottom: 48px; text-align: center; }
-  .pearl-heading-row > p { max-width: 48ch; margin: 0; color: var(--pearl-muted); }
+  .pearl-icons { position: relative; z-index: 2; background: var(--pearl-secondary); }
+  .pearl-icons--overlay { margin-top: -108px; padding: 0 0 clamp(58px, 8vw, 94px); }
+  .pearl-icons--services { padding-block: clamp(70px, 9vw, 118px); background-image: linear-gradient(rgb(225 233 243 / .76), rgb(225 233 243 / .5)), var(--pearl-icons-background); background-position: center; background-size: cover; }
+  .pearl-heading-row { display: grid; justify-items: center; gap: 14px; margin-bottom: 48px; text-align: center; }
+  .pearl-heading-row > p { max-width: 58ch; margin: 0; color: var(--pearl-muted); }
   .pearl-icons__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(18px, 3vw, 40px); margin: 0; padding: 0; list-style: none; }
   .pearl-icons__list li { text-align: center; }
-  .pearl-icons__mark { display: grid; place-items: center; width: clamp(132px, 17vw, 210px); aspect-ratio: 1; margin: 0 auto 22px; border: 6px double rgb(255 255 255 / .78); border-radius: 50%; background: var(--pearl-circle); color: #fff; font-family: var(--pearl-font-heading); font-size: 2.4rem; }
+  .pearl-icons__mark { display: grid; place-content: center; justify-items: center; gap: 12px; width: clamp(148px, 17vw, 218px); aspect-ratio: 1; margin: 0 auto; border: 2px solid rgb(255 255 255 / .92); outline: 2px solid rgb(255 255 255 / .62); outline-offset: 6px; border-radius: 50%; background: var(--pearl-circle); color: #fff; text-align: center; text-decoration: none; transition: transform .25s cubic-bezier(.22,1,.36,1), background-color .2s ease-out; }
+  .pearl-icons__mark span { display: grid; place-items: center; width: 76px; height: 62px; }
   .pearl-icons__mark img { width: 100%; height: 100%; object-fit: contain; }
-  .pearl-icons h3 { max-width: 14ch; margin-inline: auto; font-family: var(--pearl-font-body); font-size: 1rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
-  .pearl-icons a { color: var(--pearl-ink); text-decoration: none; }
-  .pearl-icons a:hover { color: var(--pearl-primary); text-decoration: underline; text-underline-offset: 4px; }
+  .pearl-icons__mark strong { max-width: 14ch; font-family: var(--pearl-font-body); font-size: clamp(.72rem, 1.2vw, .92rem); font-weight: 700; letter-spacing: .045em; line-height: 1.25; text-transform: uppercase; }
+  .pearl-icons__mark:hover { background: color-mix(in srgb, var(--pearl-circle) 88%, #111); transform: translateY(-7px); }
+  .pearl-icons__list li > p { max-width: 24ch; margin: 18px auto 0; }
 
   @media (max-width: 800px) {
-    .pearl-icons { margin-top: -48px; }
-    .pearl-heading-row { align-items: flex-start; flex-direction: column; }
+    .pearl-icons--overlay { margin-top: -72px; }
     .pearl-icons__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
   @media (max-width: 480px) {
     .pearl-icons__list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 38px 14px; }
-    .pearl-icons__mark { width: min(38vw, 148px); }
+    .pearl-icons__mark { width: min(39vw, 152px); }
+    .pearl-icons__mark span { width: 58px; height: 48px; }
   }
+
+  @media (prefers-reduced-motion: reduce) { .pearl-icons__mark { transition: none; } }
 </style>

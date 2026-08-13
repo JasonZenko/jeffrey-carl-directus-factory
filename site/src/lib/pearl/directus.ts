@@ -27,6 +27,7 @@ const FILE_FIELDS: Partial<Record<keyof PearlRecordByBlock, readonly string[]>> 
   flex_content_image: ['image'],
   split_image_content: ['image'],
   content_image: ['image'],
+  icon_circles: ['background_image'],
 };
 
 const REQUIRED_FIELDS: Record<keyof PearlRecordByBlock, readonly string[]> = {

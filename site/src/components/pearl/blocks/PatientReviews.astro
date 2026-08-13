@@ -3,11 +3,12 @@ import type { PearlRecordByBlock, PearlVisualRef } from '../types';
 import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
 
 type Props = PearlRecordByBlock['patient_reviews'] & { visual?: PearlVisualRef };
-const { heading, intro, reviews, visual } = Astro.props;
+const { heading, intro, facebook_url, x_url, reviews, visual } = Astro.props;
 const orderedReviews = [...reviews].sort((a, b) => a.sort - b.sort);
 ---
 
 <section class="pearl-section pearl-reviews" data-pearl-block="patient_reviews" data-directus={pearlVisualAttr(visual)}>
+  <span class="pearl-reviews__quote pearl-reviews__quote--open" aria-hidden="true">“</span>
   <div class="pearl-wrap">
     <div class="pearl-heading-row">
       {heading && <h2>{heading}</h2>}
@@ -24,20 +25,28 @@ const orderedReviews = [...reviews].sort((a, b) => a.sort - b.sort);
         </figure>
       ))}
     </div>
+    {(facebook_url || x_url) && <nav class="pearl-reviews__social" aria-label="Social media">{facebook_url && <a href={facebook_url} aria-label="Facebook">f</a>}{x_url && <a href={x_url} aria-label="X">X</a>}</nav>}
   </div>
+  <span class="pearl-reviews__quote pearl-reviews__quote--close" aria-hidden="true">”</span>
 </section>
 
 <style>
-  .pearl-reviews { position: relative; background: var(--pearl-primary); color: var(--pearl-ink); text-align: center; }
-  .pearl-heading-row { display: flex; justify-content: center; gap: 40px; align-items: end; margin-bottom: 48px; }
-  .pearl-heading-row > p { max-width: 48ch; margin: 0; color: var(--pearl-ink); }
+  .pearl-reviews { position: relative; padding-block: clamp(92px, 11vw, 142px); background: var(--pearl-primary); color: #fff; text-align: center; overflow: visible; }
+  .pearl-heading-row { display: grid; justify-items: center; gap: 22px; margin-bottom: 18px; }
+  .pearl-heading-row h2 { max-width: 29ch; color: #fff; font-size: clamp(2rem, 3.6vw, 3.25rem); }
+  .pearl-heading-row > p { max-width: 68ch; margin: 0; color: #fff; }
   .pearl-reviews__list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
-  .pearl-reviews figure { margin: 0; padding: clamp(30px, 4vw, 52px); background: transparent; color: var(--pearl-ink); }
-  .pearl-reviews blockquote { margin: 0; font-family: 'Forum', Georgia, serif; font-size: clamp(1.55rem, 3vw, 2.25rem); line-height: 1.35; }
+  .pearl-reviews figure { margin: 0; padding: 20px clamp(0px, 4vw, 52px); background: transparent; color: #fff; }
+  .pearl-reviews blockquote { max-width: 75ch; margin: 0 auto; font-family: var(--pearl-font-body); font-size: clamp(1rem, 1.45vw, 1.2rem); line-height: 1.7; }
   .pearl-reviews figcaption { display: flex; justify-content: center; gap: 24px; margin-top: 30px; font-size: 15px; font-weight: 700; }
-  .pearl-stars { color: var(--pearl-ink); letter-spacing: 2px; }
+  .pearl-stars { color: #fff; letter-spacing: 2px; }
+  .pearl-reviews__quote { position: absolute; left: 50%; display: grid; place-items: center; width: 84px; height: 84px; border-radius: 50%; background: var(--pearl-primary); color: #fff; font-family: Georgia, serif; font-size: 5rem; line-height: 1; transform: translateX(-50%); }
+  .pearl-reviews__quote--open { top: 0; padding-top: 27px; transform: translate(-50%, -50%); }
+  .pearl-reviews__quote--close { bottom: 0; padding-top: 10px; transform: translate(-50%, 50%); }
+  .pearl-reviews__social { display: flex; justify-content: center; gap: 10px; margin-top: 28px; }
+  .pearl-reviews__social a { display: grid; place-items: center; width: 30px; height: 30px; background: #fff; color: var(--pearl-primary); font-family: Arial, sans-serif; font-weight: 700; text-decoration: none; }
 
   @media (max-width: 800px) {
-    .pearl-heading-row { align-items: flex-start; flex-direction: column; }
+    .pearl-reviews { padding-block: 88px; }
   }
 </style>

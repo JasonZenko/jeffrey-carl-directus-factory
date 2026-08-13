@@ -155,6 +155,8 @@
       "fields": [
         { "name": "heading", "type": "string", "required": false, "authority": "directus" },
         { "name": "intro", "type": "text", "required": false, "authority": "directus" },
+        { "name": "facebook_url", "type": "string", "required": false, "authority": "directus" },
+        { "name": "x_url", "type": "string", "required": false, "authority": "directus" },
         { "name": "reviews", "type": "o2m", "required": true, "authority": "directus" }
       ],
       "child_fields": [
@@ -179,6 +181,7 @@
       "fields": [
         { "name": "heading", "type": "string", "required": true, "authority": "directus" },
         { "name": "intro", "type": "text", "required": false, "authority": "directus" },
+        { "name": "variant", "type": "enum:list|location_bar", "required": true, "authority": "directus" },
         { "name": "areas", "type": "o2m", "required": true, "authority": "directus" }
       ],
       "child_fields": [
@@ -202,6 +205,8 @@
       "fields": [
         { "name": "heading", "type": "string", "required": false, "authority": "directus" },
         { "name": "intro", "type": "text", "required": false, "authority": "directus" },
+        { "name": "background_image", "type": "file", "required": false, "authority": "directus" },
+        { "name": "variant", "type": "enum:overlay|services", "required": true, "authority": "directus" },
         { "name": "items", "type": "o2m", "required": true, "authority": "directus" }
       ],
       "child_fields": [

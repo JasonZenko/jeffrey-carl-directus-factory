@@ -83,7 +83,7 @@ async function prepareBlock(block) {
   const childAlias = contract.fields.find((entry) => entry.type === 'o2m')?.name;
   const children = childAlias ? item[childAlias] ?? [] : [];
   if (childAlias) delete item[childAlias];
-  const internalName = `Pearl canonical · ${block.type}`;
+  const internalName = `Pearl canonical · ${block.key ?? block.type}`;
   const parent = await upsert(contract.directus.collection, 'internal_name', internalName, {
     ...item, status: 'published', internal_name: internalName,
   });

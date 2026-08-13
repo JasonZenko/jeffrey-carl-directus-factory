@@ -16,6 +16,7 @@ const {
 ---
 
 <section class="pearl-main-hero" data-pearl-block="main_hero" data-background-video-url={background_video_url} data-directus={pearlVisualAttr(visual)}>
+  {background_video_url && <video class="pearl-main-hero__video" autoplay muted loop playsinline preload="metadata"><source src={background_video_url} type="video/mp4" /></video>}
   {background_image && <img class="pearl-main-hero__image" src={background_image} alt="" />}
   <div class="pearl-main-hero__veil"></div>
   <div class="pearl-wrap pearl-main-hero__content">
@@ -26,14 +27,21 @@ const {
 </section>
 
 <style>
-  .pearl-main-hero { position: relative; min-height: min(620px, 70vh); display: grid; place-items: center; overflow: hidden; background: var(--pearl-secondary); color: var(--pearl-ink); text-align: center; }
+  .pearl-main-hero { position: relative; min-height: min(680px, 75vh); display: grid; place-items: center; overflow: hidden; background: var(--pearl-secondary); color: var(--pearl-ink); text-align: center; }
+  .pearl-main-hero__video,
   .pearl-main-hero__image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .pearl-main-hero__veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(255 255 255 / .2), rgb(225 233 243 / .58)); }
+  .pearl-main-hero__video + .pearl-main-hero__image { display: none; }
+  .pearl-main-hero__veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(255 255 255 / .16), rgb(225 233 243 / .42)); }
   .pearl-main-hero__content { position: relative; z-index: 1; display: grid; justify-items: center; padding-block: clamp(6rem, 12vw, 10rem); }
-  .pearl-main-hero__content h1 { max-width: 16ch; color: var(--pearl-ink); text-transform: uppercase; }
+  .pearl-main-hero__content h1 { max-width: 16ch; color: var(--pearl-ink); font-size: clamp(3rem, 6vw, 5.75rem); text-transform: none; }
   .pearl-main-hero__content p { max-width: 34ch; margin: 8px 0 0; font-family: var(--pearl-font-heading); font-size: clamp(1.25rem, 2vw, 1.65rem); }
 
   @media (max-width: 800px) {
     .pearl-main-hero { min-height: 540px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pearl-main-hero__video { display: none; }
+    .pearl-main-hero__video + .pearl-main-hero__image { display: block; }
   }
 </style>

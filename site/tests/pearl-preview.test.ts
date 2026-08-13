@@ -9,9 +9,9 @@ const COMPONENTS = [
   'SplitImageContent', 'PatientReviews', 'AreasServedLinks',
   'IconCircles', 'HighlightQuote', 'ContentImage',
 ];
-const BLOCKS = [
-  'main_hero', 'inner_hero_cta', 'flex_content_image', 'split_image_content',
-  'patient_reviews', 'areas_served_links', 'icon_circles', 'highlight_quote', 'content_image',
+const HOMEPAGE_SEQUENCE = [
+  'main_hero', 'icon_circles', 'flex_content_image', 'icon_circles',
+  'patient_reviews', 'flex_content_image', 'areas_served_links', 'inner_hero_cta',
 ];
 
 describe('Pearl Astro fixture surface', () => {
@@ -51,28 +51,26 @@ describe('Pearl Astro fixture surface', () => {
     expect(shared).not.toContain('.pearl-reviews__list');
   });
 
-  it('builds one noindex workshop containing all nine component fixtures', () => {
+  it('builds the approved noindex Pearl homepage while retaining all nine renderers in the library', () => {
     const output = join(SITE_ROOT, 'dist/template-preview/pearl/index.html');
     expect(existsSync(output), 'run npm run build before tests').toBe(true);
     const html = readFileSync(output, 'utf8');
     expect(html).toContain('<meta name="robots" content="noindex, nofollow"');
     expect(html).toContain('data-template-adapter="pearl"');
     expect(html).toContain('data-template-version="0.1.0"');
-    expect(html).toContain('not client production');
     expect(html).toContain('class="pearl-site-header"');
     expect(html).toContain('class="pearl-site-footer"');
     expect(html).toContain('--pearl-weight-h2:400');
-    for (const block of BLOCKS) {
-      expect(html, block).toContain(`data-pearl-block="${block}"`);
-    }
+    expect([...html.matchAll(/data-pearl-block="([^"]+)"/g)].map((match) => match[1]))
+      .toEqual(HOMEPAGE_SEQUENCE);
   });
 
   it('keeps image descriptions and navigation labels in the rendered fixture', () => {
     const html = readFileSync(join(SITE_ROOT, 'dist/template-preview/pearl/index.html'), 'utf8');
-    expect(html).toContain('alt="Dr. Jeffrey Carl reviewing a dental X-ray with a patient"');
-    expect(html).toContain('alt="Waiting room inside the Albany dental practice"');
-    expect(html).toContain('aria-label="Areas served"');
-    expect(html).toContain('aria-label="5 out of 5 stars"');
+    expect(html).toContain('alt="Dentist welcoming a patient in a bright treatment room"');
+    expect(html).toContain('alt="Dr. Amanda Pearl"');
+    expect(html).toContain('aria-label="Visit Pearl Dentistry"');
+    expect(html).toContain('aria-label="Social media"');
     expect(html).toMatch(/<a href="#top"[^>]*>home<\/a>/);
     expect(html).toMatch(/<a href="#services"[^>]*>services<\/a>/);
     expect(html).toMatch(/<a href="#about"[^>]*>about<\/a>/);

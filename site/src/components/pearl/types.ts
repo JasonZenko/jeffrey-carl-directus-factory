@@ -47,6 +47,8 @@ export interface PearlPatientReviewItem {
 export interface PearlPatientReviewsRecord {
   heading?: string;
   intro?: string;
+  facebook_url?: string;
+  x_url?: string;
   reviews: PearlPatientReviewItem[];
 }
 
@@ -59,6 +61,7 @@ export interface PearlAreaLinkItem {
 export interface PearlAreasServedLinksRecord {
   heading: string;
   intro?: string;
+  variant?: 'list' | 'location_bar';
   areas: PearlAreaLinkItem[];
 }
 
@@ -73,6 +76,8 @@ export interface PearlIconCircleItem {
 export interface PearlIconCirclesRecord {
   heading?: string;
   intro?: string;
+  background_image?: string;
+  variant?: 'overlay' | 'services';
   items: PearlIconCircleItem[];
 }
 
@@ -118,9 +123,9 @@ export const PEARL_FIELD_KEYS = {
   inner_hero_cta: ['heading', 'secondary_heading', 'body', 'image', 'image_alt', 'cta_label', 'cta_url'],
   flex_content_image: ['heading', 'body', 'image', 'image_alt', 'image_position', 'cta_label', 'cta_url'],
   split_image_content: ['heading', 'body', 'image', 'image_alt', 'image_position', 'image_width', 'background_tone'],
-  patient_reviews: ['heading', 'intro', 'reviews'],
-  areas_served_links: ['heading', 'intro', 'areas'],
-  icon_circles: ['heading', 'intro', 'items'],
+  patient_reviews: ['heading', 'intro', 'facebook_url', 'x_url', 'reviews'],
+  areas_served_links: ['heading', 'intro', 'variant', 'areas'],
+  icon_circles: ['heading', 'intro', 'background_image', 'variant', 'items'],
   highlight_quote: ['quote', 'attribution', 'tone'],
   content_image: ['image', 'image_alt', 'caption', 'width', 'alignment'],
 } as const satisfies Record<keyof PearlRecordByBlock, readonly string[]>;

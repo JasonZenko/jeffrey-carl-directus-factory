@@ -63,7 +63,7 @@ def main():
                   overflow: document.documentElement.scrollWidth - window.innerWidth,
                   brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.src),
                   blocks: document.querySelectorAll('[data-pearl-block]').length,
-                  blockTypes: new Set([...document.querySelectorAll('[data-pearl-block]')].map(node => node.dataset.pearlBlock)).size,
+                  blockSequence: [...document.querySelectorAll('[data-pearl-block]')].map(node => node.dataset.pearlBlock),
                   robots: document.querySelector('meta[name="robots"]')?.content || '',
                   theme: getComputedStyle(document.documentElement).getPropertyValue('--pearl-primary').trim(),
                   header: Boolean(document.querySelector('.pearl-site-header')),
@@ -78,8 +78,11 @@ def main():
                 "no_page_errors": not page_errors,
                 "no_first_party_http_errors": not response_errors,
                 "noindex": "noindex" in evidence["robots"],
-                "all_blocks": evidence["blocks"] >= 9 and evidence["blockTypes"] == 9,
-                "theme_connected": evidence["theme"] == "#a37871",
+                "approved_homepage_sequence": evidence["blocks"] == 8 and evidence["blockSequence"] == [
+                    "main_hero", "icon_circles", "flex_content_image", "icon_circles",
+                    "patient_reviews", "flex_content_image", "areas_served_links", "inner_hero_cta",
+                ],
+                "theme_connected": evidence["theme"] == "#855d56",
                 "shared_chrome": evidence["header"] and evidence["footer"],
                 "wcag_aa": not violations,
             }

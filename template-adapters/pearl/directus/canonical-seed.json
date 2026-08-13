@@ -12,131 +12,136 @@
     "body_scale": "standard",
     "heading_line_height": "standard",
     "body_line_height": "standard",
-    "primary_color": "#a37871",
-    "secondary_color": "#e1e9f3",
-    "accent_color": "#768495",
+    "primary_color": "#855d56",
+    "secondary_color": "#e6edf5",
+    "accent_color": "#596879",
     "ink_color": "#111111",
     "muted_color": "#53606d",
     "surface_color": "#ffffff",
-    "circle_color": "#768495",
+    "circle_color": "#596879",
     "spacing_scale": "standard",
     "content_width": "standard",
     "button_radius": "square",
     "appointment_label": "Request appointment",
-    "appointment_url": "/p/dentist-Albany-OR-Request-Appointment-p65415.asp",
+    "appointment_url": "#contact",
     "phone": "(888) 246-6909",
-    "address": "Albany, Oregon",
-    "email": "hello@example.com"
+    "address": "8625 SW Cascade Avenue, Suite 300 Beaverton, OR",
+    "email": "info@weomedia.com"
   },
   "page": {
     "slug": "pearl-component-workshop",
     "title": "Pearl template component workshop",
-    "description": "Canonical source-backed Pearl block composition for connected authoring and review."
+    "description": "The canonical editable Pearl dentistry template, recreated from the approved visual reference."
   },
   "blocks": [
     {
+      "key": "home-hero",
       "type": "main_hero",
       "item": {
-        "heading": "Jeffrey Carl DMD & Austin Brunson DMD",
-        "supporting_text": "Your Albany, OR Dentists",
+        "heading": "WEO Media",
+        "supporting_text": "Your Beaverton, OR Dentist",
         "background_image": "site/public/assets/bd9b8d625009_www.jeffreycarldmd.com_tpn_c_C180_img_BKG-anibanner-c180.webp",
-        "primary_cta_label": "Request an appointment",
-        "primary_cta_url": "/p/dentist-Albany-OR-Request-Appointment-p65415.asp"
+        "background_video_url": "https://a7lro1ml5j.wpdns.site/wp-content/uploads/2026/04/pearl_template_anibanner_v1-1080p.mp4"
       }
     },
     {
+      "key": "home-primary-services",
       "type": "icon_circles",
       "item": {
-        "heading": "Our services",
-        "intro": "The repeated Pearl service pattern has explicit ordered items.",
+        "variant": "overlay",
         "items": [
-          { "icon": "P", "title": "Preventative Dentistry", "url": "/p/dentist-Albany-OR-Family-Dentistry-p66929.asp", "sort": 1 },
-          { "icon": "R", "title": "Restorative Dentistry", "url": "/p/dentist-Albany-OR-Restorative-Dentistry-p66930.asp", "sort": 2 },
-          { "icon": "C", "title": "Cosmetic Dentistry", "url": "/p/dentist-Albany-OR-Cosmetic-Dentistry-p66931.asp", "sort": 3 },
-          { "icon": "I", "title": "Invisalign", "url": "/p/dentist-Albany-OR-Invisalign-p66938.asp", "sort": 4 }
+          { "icon": "site/public/assets/pearl-icon-preventative.svg", "title": "Preventative Dentistry", "url": "#services", "sort": 1 },
+          { "icon": "site/public/assets/pearl-icon-implant.svg", "title": "Dental Implants", "url": "#services", "sort": 2 },
+          { "icon": "site/public/assets/pearl-icon-invisalign.svg", "title": "Invisalign", "url": "#services", "sort": 3 },
+          { "icon": "site/public/assets/pearl-icon-emergency.svg", "title": "Emergency Dentistry", "url": "#services", "sort": 4 }
         ]
       }
     },
     {
+      "key": "home-welcome",
       "type": "flex_content_image",
       "item": {
-        "heading": "A conservative approach to care",
-        "body": "<p>Our conservative approach, combined with a friendly and knowledgeable staff, ensures that you’ll leave feeling confident about your dental health.</p>",
-        "image": "site/public/assets/0f07db3916d9_www.jeffreycarldmd.com_tpn_c_C180_img_Dr-Jeff-Carl-xray-review1.jpg",
-        "image_alt": "Dr. Jeffrey Carl reviewing a dental X-ray with a patient",
-        "image_position": "right"
-      }
-    },
-    {
-      "type": "split_image_content",
-      "item": {
-        "heading": "Care under one roof",
-        "body": "<p>In addition to general dental care, the practice offers Invisalign, cosmetic dentistry, implant restorations, and more.</p>",
-        "image": "site/public/assets/88453243399b_www.jeffreycarldmd.com_tpn_c_C180_img_IMG-Reception-c180.webp",
-        "image_alt": "Reception area inside the Albany dental practice",
+        "heading": "Welcome to WEO Media",
+        "body": "<p>Healthy smiles for healthy families start with professional family dentistry. At WEO Media, your bright, healthy smile is our top priority. Of course, you'll only smile if you're as happy with our service as you are with our dental treatment. That's why we take the time to listen to your needs and concerns. Not only do we listen to your concerns, but we use gentle, efficient cleaning techniques.</p>",
+        "image": "site/public/assets/pearl-welcome-doctor.webp",
+        "image_alt": "Dentist welcoming a patient in a bright treatment room",
         "image_position": "left",
-        "image_width": "half",
-        "background_tone": "light"
+        "cta_label": "Learn more about us",
+        "cta_url": "#about"
       }
     },
     {
+      "key": "home-all-services",
+      "type": "icon_circles",
+      "item": {
+        "heading": "Our Services",
+        "background_image": "site/public/assets/pearl-services-background.jpg",
+        "variant": "services",
+        "items": [
+          { "icon": "site/public/assets/pearl-icon-preventative.svg", "title": "Preventative Dentistry", "url": "#", "sort": 1 },
+          { "icon": "site/public/assets/pearl-icon-implant.svg", "title": "Dental Implants", "url": "#", "sort": 2 },
+          { "icon": "site/public/assets/pearl-icon-invisalign.svg", "title": "Invisalign", "url": "#", "sort": 3 },
+          { "icon": "site/public/assets/pearl-icon-emergency.svg", "title": "Emergency Dentistry", "url": "#", "sort": 4 },
+          { "icon": "site/public/assets/pearl-icon-preventative.svg", "title": "Preventative Dentistry", "url": "#", "sort": 5 },
+          { "icon": "site/public/assets/pearl-icon-implant.svg", "title": "Dental Implants", "url": "#", "sort": 6 },
+          { "icon": "site/public/assets/pearl-icon-invisalign.svg", "title": "Invisalign", "url": "#", "sort": 7 },
+          { "icon": "site/public/assets/pearl-icon-emergency.svg", "title": "Emergency Dentistry", "url": "#", "sort": 8 }
+        ]
+      }
+    },
+    {
+      "key": "home-review",
       "type": "patient_reviews",
       "item": {
-        "heading": "Patient reviews",
-        "intro": "A source-backed review rendered as an ordered child record.",
+        "heading": "This is hands down the best dental office I've ever been to.",
+        "facebook_url": "#",
+        "x_url": "#",
         "reviews": [
           {
-            "quote": "I have never been anything but impressed and appreciative for the staff and their treatment of me. Dr Carl is friendly, knowledgeable, and respectful.",
-            "name": "Patient review",
-            "rating": 5,
+            "quote": "I've been going to this office for years now, and always have a great experience. The staff is very friendly and upfront with the care they provide. Dr. Pearl is very gentle and easy to talk to about treatment that is needed. This is hands down the best dental office I've ever been to.",
             "sort": 1
           }
         ]
       }
     },
     {
+      "key": "home-doctor",
+      "type": "flex_content_image",
+      "item": {
+        "heading": "Meet the Doctor",
+        "body": "<p>Dr. Amanda Pearl is a highly skilled dentist dedicated to providing exceptional dental care to her patients. She obtained her Doctor of Dental Medicine (DMD) degree and completed her training in dentistry. With a passion for dentistry, Dr. Pearl is committed to staying updated with the latest advancements in the field to offer the best treatment options for her patients. Her compassionate approach and expertise ensure that patients receive personalized care tailored to their individual needs.</p>",
+        "image": "site/public/assets/pearl-doctor-amanda.jpg",
+        "image_alt": "Dr. Amanda Pearl",
+        "image_position": "right",
+        "cta_label": "More about Dr. Amanda Pearl",
+        "cta_url": "#about"
+      }
+    },
+    {
+      "key": "home-location",
       "type": "areas_served_links",
       "item": {
-        "heading": "Areas served",
-        "intro": "Direct links to local practice pages, independently editable and ordered in Directus.",
+        "heading": "Visit Pearl Dentistry",
+        "intro": "8625 SW Cascade Avenue, Suite 300 Beaverton, OR",
+        "variant": "location_bar",
         "areas": [
-          { "label": "Albany", "url": "/p/dentist-Albany-OR-Home-p466.asp", "sort": 1 },
-          { "label": "Corvallis", "url": "/p/dentist-Corvallis-p72488.asp", "sort": 2 },
-          { "label": "Lebanon", "url": "/p/dentist-Lebanon-p72489.asp", "sort": 3 },
-          { "label": "Jefferson", "url": "/p/dentist-Jefferson-p72491.asp", "sort": 4 },
-          { "label": "Sweet Home", "url": "/p/dentist-Sweet-Home-p72492.asp", "sort": 5 },
-          { "label": "Philomath", "url": "/p/dentist-Philomath-p72493.asp", "sort": 6 }
+          { "label": "Get directions", "url": "https://maps.google.com/?q=8625+SW+Cascade+Avenue+Beaverton+OR", "sort": 1 },
+          { "label": "Request appointment", "url": "#contact", "sort": 2 },
+          { "label": "Call (888) 246-6909", "url": "tel:8882466909", "sort": 3 }
         ]
       }
     },
     {
-      "type": "highlight_quote",
-      "item": {
-        "quote": "The final ten percent becomes repeatable when the template knows what every block is for.",
-        "attribution": "Pearl template implementation principle",
-        "tone": "brand"
-      }
-    },
-    {
-      "type": "content_image",
-      "item": {
-        "image": "site/public/assets/c0dbee68ebd7_www.jeffreycarldmd.com_tpn_c_C180_img_IMG-WaitRoom-c180.webp",
-        "image_alt": "Waiting room inside the Albany dental practice",
-        "caption": "Standalone images remain independently editable, with required alternative text.",
-        "width": "wide",
-        "alignment": "center"
-      }
-    },
-    {
+      "key": "home-contact-cta",
       "type": "inner_hero_cta",
       "item": {
-        "heading": "Welcome to Our Albany Dental Practice",
-        "secondary_heading": "Serving Greater Linn County",
-        "body": "<p>We take great pride in providing our patients with the highest standard of care.</p>",
+        "heading": "A healthier smile starts here",
+        "secondary_heading": "Pearl Dentistry",
+        "body": "<p>Friendly, professional dental care for the whole family.</p>",
         "image": "site/public/assets/a8657eecc5fc_www.jeffreycarldmd.com_tpn_c_C180_img_Dr-Jeff-Carl-office-front-01.jpg",
-        "image_alt": "The front of the Albany dental practice",
-        "cta_label": "Learn more about us",
-        "cta_url": "/p/dentist-Albany-OR-About-Us-p65411.asp"
+        "image_alt": "Pearl Dentistry practice",
+        "cta_label": "Request an appointment",
+        "cta_url": "#contact"
       }
     }
   ]
