@@ -1,8 +1,9 @@
 ---
 import Button from '../ui/Button.astro';
-import type { PearlRecordByBlock } from '../types';
+import type { PearlRecordByBlock, PearlVisualRef } from '../types';
+import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
 
-type Props = PearlRecordByBlock['main_hero'];
+type Props = PearlRecordByBlock['main_hero'] & { visual?: PearlVisualRef };
 const {
   heading,
   supporting_text,
@@ -10,10 +11,11 @@ const {
   background_video_url,
   primary_cta_label,
   primary_cta_url,
+  visual,
 } = Astro.props;
 ---
 
-<section class="pearl-main-hero" data-pearl-block="main_hero" data-background-video-url={background_video_url}>
+<section class="pearl-main-hero" data-pearl-block="main_hero" data-background-video-url={background_video_url} data-directus={pearlVisualAttr(visual)}>
   {background_image && <img class="pearl-main-hero__image" src={background_image} alt="" />}
   <div class="pearl-main-hero__veil"></div>
   <div class="pearl-wrap pearl-main-hero__content">

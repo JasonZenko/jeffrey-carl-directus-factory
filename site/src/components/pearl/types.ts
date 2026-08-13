@@ -102,8 +102,15 @@ export type PearlRecordByBlock = {
   content_image: PearlContentImageRecord;
 };
 
+export interface PearlVisualRef {
+  collection: string;
+  item: string | number;
+  fields?: string | string[];
+  mode?: 'drawer' | 'modal' | 'popover';
+}
+
 export type PearlBlock = {
-  [K in keyof PearlRecordByBlock]: { type: K; item: PearlRecordByBlock[K] }
+  [K in keyof PearlRecordByBlock]: { type: K; item: PearlRecordByBlock[K]; visual?: PearlVisualRef }
 }[keyof PearlRecordByBlock];
 
 export const PEARL_FIELD_KEYS = {

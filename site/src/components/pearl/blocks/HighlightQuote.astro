@@ -1,11 +1,12 @@
 ---
-import type { PearlRecordByBlock } from '../types';
+import type { PearlRecordByBlock, PearlVisualRef } from '../types';
+import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
 
-type Props = PearlRecordByBlock['highlight_quote'];
-const { quote, attribution, tone } = Astro.props;
+type Props = PearlRecordByBlock['highlight_quote'] & { visual?: PearlVisualRef };
+const { quote, attribution, tone, visual } = Astro.props;
 ---
 
-<section class:list={['pearl-quote', `pearl-quote--${tone}`]} data-pearl-block="highlight_quote">
+<section class:list={['pearl-quote', `pearl-quote--${tone}`]} data-pearl-block="highlight_quote" data-directus={pearlVisualAttr(visual)}>
   <blockquote><span aria-hidden="true">“</span>{quote}</blockquote>
   {attribution && <p>{attribution}</p>}
 </section>

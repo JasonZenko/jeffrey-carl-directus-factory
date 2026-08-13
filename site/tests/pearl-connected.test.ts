@@ -19,5 +19,9 @@ describe('connected Pearl adapter', () => {
     expect(html).toContain('https://weomcms.foundryworks.ai/assets/');
     expect(html).toContain('data-pearl-block="main_hero"');
     expect(html).toContain('data-pearl-block="inner_hero_cta"');
+    expect(html.match(/data-directus=/g)?.length).toBeGreaterThanOrEqual(11);
+    expect(html).toContain('collection:weo_pearl_theme_settings');
+    expect(html).toContain('collection:weo_pearl_main_heroes');
+    expect(html).toContain('VisualEditing.astro');
   });
 });

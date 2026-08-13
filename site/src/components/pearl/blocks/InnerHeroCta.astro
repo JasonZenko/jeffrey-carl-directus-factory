@@ -1,12 +1,13 @@
 ---
 import Button from '../ui/Button.astro';
-import type { PearlRecordByBlock } from '../types';
+import type { PearlRecordByBlock, PearlVisualRef } from '../types';
+import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
 
-type Props = PearlRecordByBlock['inner_hero_cta'];
-const { heading, secondary_heading, body, image, image_alt, cta_label, cta_url } = Astro.props;
+type Props = PearlRecordByBlock['inner_hero_cta'] & { visual?: PearlVisualRef };
+const { heading, secondary_heading, body, image, image_alt, cta_label, cta_url, visual } = Astro.props;
 ---
 
-<section class="pearl-inner-hero" data-pearl-block="inner_hero_cta">
+<section class="pearl-inner-hero" data-pearl-block="inner_hero_cta" data-directus={pearlVisualAttr(visual)}>
   {image && <img src={image} alt={image_alt ?? ''} />}
   <div class="pearl-inner-hero__veil"></div>
   <div class="pearl-wrap pearl-inner-hero__content">

@@ -1,12 +1,13 @@
 ---
-import type { PearlRecordByBlock } from '../types';
+import type { PearlRecordByBlock, PearlVisualRef } from '../types';
+import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
 
-type Props = PearlRecordByBlock['patient_reviews'];
-const { heading, intro, reviews } = Astro.props;
+type Props = PearlRecordByBlock['patient_reviews'] & { visual?: PearlVisualRef };
+const { heading, intro, reviews, visual } = Astro.props;
 const orderedReviews = [...reviews].sort((a, b) => a.sort - b.sort);
 ---
 
-<section class="pearl-section pearl-reviews" data-pearl-block="patient_reviews">
+<section class="pearl-section pearl-reviews" data-pearl-block="patient_reviews" data-directus={pearlVisualAttr(visual)}>
   <div class="pearl-wrap">
     <div class="pearl-heading-row">
       {heading && <h2>{heading}</h2>}

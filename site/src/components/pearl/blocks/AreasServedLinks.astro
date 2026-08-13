@@ -1,12 +1,13 @@
 ---
-import type { PearlRecordByBlock } from '../types';
+import type { PearlRecordByBlock, PearlVisualRef } from '../types';
+import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
 
-type Props = PearlRecordByBlock['areas_served_links'];
-const { heading, intro, areas } = Astro.props;
+type Props = PearlRecordByBlock['areas_served_links'] & { visual?: PearlVisualRef };
+const { heading, intro, areas, visual } = Astro.props;
 const orderedAreas = [...areas].sort((a, b) => a.sort - b.sort);
 ---
 
-<section class="pearl-section pearl-areas" data-pearl-block="areas_served_links">
+<section class="pearl-section pearl-areas" data-pearl-block="areas_served_links" data-directus={pearlVisualAttr(visual)}>
   <div class="pearl-wrap pearl-areas__grid">
     <div><h2>{heading}</h2>{intro && <p>{intro}</p>}</div>
     <nav aria-label={heading}><ul>{orderedAreas.map((area) => <li><a href={area.url}>{area.label}<span aria-hidden="true">↗</span></a></li>)}</ul></nav>

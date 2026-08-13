@@ -1,17 +1,22 @@
 ---
 import PearlFooter from '../../components/pearl/PearlFooter.astro';
 import PearlHeader from '../../components/pearl/PearlHeader.astro';
+import VisualEditing from '../../components/pearl/VisualEditing.astro';
+import type { PearlVisualRef } from '../../components/pearl/types';
 import type { PearlTheme } from '../../lib/pearl/theme';
 import { pearlThemeStyle } from '../../lib/pearl/theme';
+import { pearlVisualAttr } from '../../lib/pearl/visual-editing';
 import '../../styles/pearl.css';
 
 interface Props {
   title: string;
   description?: string;
   theme: PearlTheme;
+  pageVisual?: PearlVisualRef;
+  themeVisual?: PearlVisualRef;
 }
 
-const { title, description = 'Pearl template component workshop', theme } = Astro.props;
+const { title, description = 'Pearl template component workshop', theme, pageVisual, themeVisual } = Astro.props;
 const tokenStyle = pearlThemeStyle(theme);
 ---
 
@@ -28,9 +33,10 @@ const tokenStyle = pearlThemeStyle(theme);
     <link href="https://fonts.googleapis.com/css2?family=Forum&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body class="pearl-preview" data-template-adapter="pearl" data-template-version="0.1.0">
-    <header class="pearl-workshop-bar"><strong>Pearl component workshop</strong><span>Source-backed fixtures · noindex · not client production</span></header>
+    <header class="pearl-workshop-bar" data-directus={pearlVisualAttr(themeVisual)}><strong>Pearl component workshop</strong><span>Theme Library · noindex · not client production</span></header>
     <PearlHeader theme={theme} />
-    <main id="top"><slot /></main>
+    <main id="top" data-directus={pearlVisualAttr(pageVisual)}><slot /></main>
     <PearlFooter theme={theme} />
+    <VisualEditing />
   </body>
 </html>

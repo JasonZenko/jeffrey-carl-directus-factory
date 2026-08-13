@@ -1,11 +1,12 @@
 ---
-import type { PearlRecordByBlock } from '../types';
+import type { PearlRecordByBlock, PearlVisualRef } from '../types';
+import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
 
-type Props = PearlRecordByBlock['split_image_content'];
-const { heading, body, image, image_alt, image_position, image_width, background_tone } = Astro.props;
+type Props = PearlRecordByBlock['split_image_content'] & { visual?: PearlVisualRef };
+const { heading, body, image, image_alt, image_position, image_width, background_tone, visual } = Astro.props;
 ---
 
-<section class:list={['pearl-split', `pearl-split--${image_position}`, `pearl-split--${image_width}`, `pearl-split--${background_tone}`]} data-pearl-block="split_image_content">
+<section class:list={['pearl-split', `pearl-split--${image_position}`, `pearl-split--${image_width}`, `pearl-split--${background_tone}`]} data-pearl-block="split_image_content" data-directus={pearlVisualAttr(visual)}>
   <div class="pearl-split__media"><img src={image} alt={image_alt} loading="lazy" /></div>
   <div class="pearl-split__copy">
     {heading && <h2>{heading}</h2>}

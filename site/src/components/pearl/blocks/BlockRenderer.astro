@@ -14,12 +14,12 @@ interface Props { block: PearlBlock; }
 const { block } = Astro.props;
 ---
 
-{block.type === 'main_hero' && <MainHero {...block.item} />}
-{block.type === 'inner_hero_cta' && <InnerHeroCta {...block.item} />}
-{block.type === 'flex_content_image' && <FlexContentImage {...block.item} />}
-{block.type === 'split_image_content' && <SplitImageContent {...block.item} />}
-{block.type === 'patient_reviews' && <PatientReviews {...block.item} />}
-{block.type === 'areas_served_links' && <AreasServedLinks {...block.item} />}
-{block.type === 'icon_circles' && <IconCircles {...block.item} />}
-{block.type === 'highlight_quote' && <HighlightQuote {...block.item} />}
-{block.type === 'content_image' && <ContentImage {...block.item} />}
+{block.type === 'main_hero' && <MainHero {...block.item} visual={block.visual} />}
+{block.type === 'inner_hero_cta' && <InnerHeroCta {...block.item} visual={block.visual} />}
+{block.type === 'flex_content_image' && <FlexContentImage {...block.item} visual={block.visual} />}
+{block.type === 'split_image_content' && <SplitImageContent {...block.item} visual={block.visual} />}
+{block.type === 'patient_reviews' && <PatientReviews {...block.item} visual={block.visual} />}
+{block.type === 'areas_served_links' && <AreasServedLinks {...block.item} visual={block.visual} />}
+{block.type === 'icon_circles' && <IconCircles {...block.item} visual={block.visual} />}
+{block.type === 'highlight_quote' && <HighlightQuote {...block.item} visual={block.visual} />}
+{block.type === 'content_image' && <ContentImage {...block.item} visual={block.visual} />}

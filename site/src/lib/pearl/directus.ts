@@ -1,4 +1,4 @@
-import type { PearlBlock, PearlRecordByBlock } from '../../components/pearl/types';
+import { PEARL_FIELD_KEYS, type PearlBlock, type PearlRecordByBlock, type PearlVisualRef } from '../../components/pearl/types';
 import type { PearlTheme } from './theme';
 
 export const PEARL_COLLECTION_BY_BLOCK = {
@@ -50,6 +50,8 @@ export interface PearlPage {
   description?: string;
   blocks: PearlBlock[];
   theme: PearlTheme;
+  pageVisual?: PearlVisualRef;
+  themeVisual?: PearlVisualRef;
 }
 
 async function pearlApi<T>(path: string, token: string, directusUrl: string): Promise<T> {
@@ -77,6 +79,7 @@ function hydrateBlock(row: Record<string, any>, directusUrl: string): PearlBlock
   if (!type) throw new Error(`Unknown Pearl Builder collection: ${row.collection}`);
   if (!row.item || row.item.status !== 'published') throw new Error(`Pearl ${type} Builder item is missing or unpublished`);
   const item = structuredClone(row.item);
+  const itemId = item.id;
   delete item.id;
   delete item.status;
   delete item.internal_name;
@@ -98,7 +101,11 @@ function hydrateBlock(row: Record<string, any>, directusUrl: string): PearlBlock
       .sort((a: Record<string, any>, b: Record<string, any>) => Number(a.sort ?? 0) - Number(b.sort ?? 0));
   }
   requireFields(type, item);
-  return { type, item } as PearlBlock;
+  return {
+    type,
+    item,
+    visual: { collection: row.collection, item: itemId, fields: [...PEARL_FIELD_KEYS[type]], mode: 'drawer' },
+  } as PearlBlock;
 }
 
 export async function getPearlPage(slug = 'pearl-component-workshop'): Promise<PearlPage> {
@@ -107,7 +114,7 @@ export async function getPearlPage(slug = 'pearl-component-workshop'): Promise<P
   const directusUrl = process.env.PEARL_DIRECTUS_URL ?? process.env.DIRECTUS_URL ?? 'https://weomcms.foundryworks.ai';
   const [pages, themes] = await Promise.all([
     pearlApi<DirectusList<any>>(
-      `/items/weo_pearl_pages?filter[slug][_eq]=${encodeURIComponent(slug)}&limit=1&fields=slug,title,description,status,robots_index,robots_follow`,
+      `/items/weo_pearl_pages?filter[slug][_eq]=${encodeURIComponent(slug)}&limit=1&fields=id,slug,title,description,status,robots_index,robots_follow`,
       token,
       directusUrl,
     ),
@@ -122,6 +129,7 @@ export async function getPearlPage(slug = 'pearl-component-workshop'): Promise<P
   if (page.robots_index !== false || page.robots_follow !== false) throw new Error(`Pearl review page must remain noindex/nofollow: ${slug}`);
   const theme = themes.data;
   if (!theme || theme.status !== 'published') throw new Error('Published Pearl theme settings not found');
+  const themeId = theme.id;
   delete theme.id;
   delete theme.status;
   delete theme.internal_name;
@@ -145,5 +153,13 @@ export async function getPearlPage(slug = 'pearl-component-workshop'): Promise<P
   );
   if (rows.data.length === 0) throw new Error(`Pearl page has no Builder blocks: ${slug}`);
   const blocks = rows.data.map((row) => hydrateBlock(row, directusUrl));
-  return { slug: page.slug, title: page.title, description: page.description, blocks, theme };
+  return {
+    slug: page.slug,
+    title: page.title,
+    description: page.description,
+    blocks,
+    theme,
+    pageVisual: { collection: 'weo_pearl_pages', item: page.id, fields: ['title', 'description'], mode: 'drawer' },
+    themeVisual: { collection: 'weo_pearl_theme_settings', item: themeId, mode: 'drawer' },
+  };
 }
