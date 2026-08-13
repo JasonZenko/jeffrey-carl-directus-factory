@@ -10,8 +10,9 @@ describe('connected Pearl adapter',()=>{
     const{readFileSync}=await import('node:fs');const html=readFileSync('dist/template-preview/pearl/index.html','utf8');
     expect(html).toContain('https://pearlcms.foundryworks.ai/assets/');
     expect(html).toContain('data-pearl-block="main_hero_standard"');
-    expect(html).toContain('data-pearl-block="cta_section_standard"');
-    expect(html.match(/data-directus=/g)?.length).toBeGreaterThanOrEqual(10);
+    expect(html).toContain('data-pearl-block="contact_info_standard"');
+    expect(html).toContain('https://www.google.com/maps?q=');
+    expect(html.match(/data-directus=/g)?.length).toBeGreaterThanOrEqual(9);
     expect(html).toContain('collection:pearl_theme_settings');
     expect(html).toContain('collection:pearl_main_hero_standard');
     expect(html).toContain('VisualEditing.astro');

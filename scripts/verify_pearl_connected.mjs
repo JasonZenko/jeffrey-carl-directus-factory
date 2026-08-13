@@ -23,7 +23,6 @@ const expected = [
   'pearl_highlight_snippet_quote',
   'pearl_feature_image_content',
   'pearl_contact_info_standard',
-  'pearl_cta_section_standard',
 ];
 if (JSON.stringify(rows.map(row => row.collection)) !== JSON.stringify(expected)) throw new Error(`Pearl official component sequence mismatch: ${rows.map(row => row.collection).join(', ')}`);
 const denied = await fetch(`${base}/items/directus_users`, {headers: {Authorization: `Bearer ${token}`}});

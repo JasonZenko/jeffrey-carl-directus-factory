@@ -10,7 +10,7 @@ const COMPONENTS = [
 ];
 const HOMEPAGE_SEQUENCE = [
   'main_hero_standard','icon_feature_cards','feature_image_content','icon_feature_cards',
-  'highlight_snippet_quote','feature_image_content','contact_info_standard','cta_section_standard',
+  'highlight_snippet_quote','feature_image_content','contact_info_standard',
 ];
 
 describe('Pearl official block surface', () => {
