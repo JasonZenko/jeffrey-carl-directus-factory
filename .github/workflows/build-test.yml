@@ -41,7 +41,7 @@ jobs:
         run: npm run build
         env:
           PEARL_CONTENT_MODE: connected
-          PEARL_DIRECTUS_URL: https://weomcms.foundryworks.ai
+          PEARL_DIRECTUS_URL: https://pearlcms.foundryworks.ai
           PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_DIRECTUS_TOKEN }}
 
       - name: Run contract and build tests
@@ -57,7 +57,7 @@ jobs:
       - name: Verify canonical Pearl connection
         run: node scripts/verify_pearl_connected.mjs
         env:
-          PEARL_DIRECTUS_URL: https://weomcms.foundryworks.ai
+          PEARL_DIRECTUS_URL: https://pearlcms.foundryworks.ai
           PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_DIRECTUS_TOKEN }}
 
       - name: Serve built site

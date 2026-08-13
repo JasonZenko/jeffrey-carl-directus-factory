@@ -1,0 +1,5 @@
+---
+import type {PearlRecordByBlock,PearlVisualRef} from '../types';import {pearlVisualAttr} from '../../../lib/pearl/visual-editing';type Props=PearlRecordByBlock['areas_served_links']&{visual?:PearlVisualRef};const{section_heading,intro_text,areas,visual}=Astro.props;const ordered=[...areas].sort((a,b)=>a.sort-b.sort);
+---
+<section class="pearl-section pearl-areas-standard" data-pearl-block="areas_served_links" data-directus={pearlVisualAttr(visual)}><div class="pearl-wrap"><h2>{section_heading??'Areas served'}</h2>{intro_text&&<p>{intro_text}</p>}<ul>{ordered.map(area=><li><a href={area.link_url}>{area.link_label}</a></li>)}</ul></div></section>
+<style>.pearl-areas-standard{background:var(--pearl-secondary)}.pearl-areas-standard ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:30px 0 0;padding:0;list-style:none}.pearl-areas-standard a{display:block;padding:16px;background:#fff;color:var(--pearl-ink);font-weight:700;text-decoration:none}</style>

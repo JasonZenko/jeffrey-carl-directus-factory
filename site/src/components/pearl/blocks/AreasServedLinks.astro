@@ -2,7 +2,7 @@
 import type { PearlRecordByBlock, PearlVisualRef } from '../types';
 import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
 
-type Props = PearlRecordByBlock['areas_served_links'] & { visual?: PearlVisualRef };
+type Props = Record<string, any> & { visual?: PearlVisualRef };
 const { heading, intro, variant = 'list', areas, visual } = Astro.props;
 const orderedAreas = [...areas].sort((a, b) => a.sort - b.sort);
 ---
