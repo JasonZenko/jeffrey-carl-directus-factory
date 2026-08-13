@@ -61,6 +61,15 @@ describe('Pearl template adapter contract', () => {
     }
   });
 
+  it('makes the global theme library authoritative in Directus', () => {
+    expect(manifest.theme_settings.collection).toBe('weo_pearl_theme_settings');
+    expect(manifest.theme_settings.singleton).toBe(true);
+    expect(manifest.theme_settings.fields.length).toBeGreaterThanOrEqual(20);
+    for (const field of manifest.theme_settings.fields) {
+      expect(field.authority, `theme.${field.name}`).toBe('directus');
+    }
+  });
+
   it('keeps images out of opaque Rich Text fields', () => {
     for (const key of ['flex_content_image', 'split_image_content', 'content_image']) {
       const block = manifest.blocks.find((item: any) => item.key === key);

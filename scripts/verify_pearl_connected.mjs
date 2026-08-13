@@ -13,6 +13,10 @@ const page = (await request('/items/weo_pearl_pages?filter[slug][_eq]=pearl-comp
 if (!page || page.status !== 'published' || page.robots_index !== false || page.robots_follow !== false) {
   throw new Error('Canonical Pearl page is missing, unpublished or indexable');
 }
+const theme = (await request('/items/weo_pearl_theme_settings?fields=status,heading_font,body_font,h1_weight,h2_weight,h3_weight,primary_color,secondary_color,spacing_scale,content_width')).data;
+if (!theme || theme.status !== 'published' || !theme.heading_font || !theme.body_font || !theme.primary_color || !theme.secondary_color) {
+  throw new Error('Published Pearl Theme Library is missing or incomplete');
+}
 const rows = (await request('/items/weo_pearl_page_builder?filter[page][_eq]=' + page.id + '&fields=id,sort,collection,item&sort=sort&limit=-1')).data;
 const expected = [
   'weo_pearl_main_heroes', 'weo_pearl_icon_circles', 'weo_pearl_flex_content_images',
@@ -23,4 +27,4 @@ if (rows.length !== expected.length || rows.some((row, index) => row.collection 
   throw new Error('Canonical Pearl Builder composition is incomplete or out of order');
 }
 await request('/items/weo_pages?limit=1', 403);
-console.log(JSON.stringify({ ok: true, target: BASE, page: page.slug, blocks: rows.length, uniqueBlockTypes: new Set(rows.map((row) => row.collection)).size, jeffreyPagesDenied: true }, null, 2));
+console.log(JSON.stringify({ ok: true, target: BASE, page: page.slug, blocks: rows.length, uniqueBlockTypes: new Set(rows.map((row) => row.collection)).size, themeLibrary: true, jeffreyPagesDenied: true }, null, 2));

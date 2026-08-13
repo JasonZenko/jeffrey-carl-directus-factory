@@ -11,8 +11,8 @@ describe('Pearl Directus schema', () => {
     expect(validatePearlSchemaPlan(plan)).toEqual([]);
     expect(plan.adapter).toBe('pearl@0.1.0');
     expect(plan.requires).toEqual(['weo_page_blocks', 'directus_files']);
-    expect(plan.collections).toHaveLength(14);
-    expect(plan.fields).toHaveLength(118);
+    expect(plan.collections).toHaveLength(15);
+    expect(plan.fields).toHaveLength(148);
     expect(plan.relations).toHaveLength(20);
   });
 
@@ -53,11 +53,13 @@ describe('Pearl Directus schema', () => {
 
   it('keeps dry-run as the default and refuses apply without explicit credentials', () => {
     const script = `${REPO_ROOT}/template-adapters/pearl/directus/provision-pearl-schema.mjs`;
+    const source = readFileSync(script, 'utf8');
     const output = execFileSync('node', [script], { encoding: 'utf8' });
-    expect(output).toContain('Dry run: 14 collections, 118 fields, 20 relations');
+    expect(output).toContain('Dry run: 15 collections, 148 fields, 20 relations');
     expect(() => execFileSync('node', [script, '--apply'], {
       encoding: 'utf8', env: { PATH: process.env.PATH ?? '' }, stdio: 'pipe',
     })).toThrow();
+    expect(source).toContain('migrationSafeField');
   });
 
   it('keeps Pearl composition isolated in a native ordered M2A Builder', () => {
@@ -71,5 +73,17 @@ describe('Pearl Directus schema', () => {
       meta: { one_field: 'blocks', sort_field: 'sort', one_deselect_action: 'delete' },
       schema: { on_delete: 'CASCADE' },
     });
+  });
+
+  it('provides one governed singleton theme library for global typography, colour and spacing', () => {
+    const theme = plan.collections.find((item: any) => item.collection === 'weo_pearl_theme_settings');
+    expect(theme?.meta).toMatchObject({ singleton: true, icon: 'palette' });
+    const themeFields = plan.fields
+      .filter((field: any) => field.collection === 'weo_pearl_theme_settings')
+      .map((field: any) => field.field);
+    for (const field of [
+      'heading_font', 'body_font', 'h1_weight', 'h2_weight', 'h3_weight',
+      'primary_color', 'secondary_color', 'accent_color', 'spacing_scale', 'content_width',
+    ]) expect(themeFields).toContain(field);
   });
 });

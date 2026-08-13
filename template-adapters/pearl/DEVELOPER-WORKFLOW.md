@@ -16,6 +16,15 @@ Directus collection fields
   -> noindex Cloudflare preview
 ```
 
+Global design settings use a parallel path:
+
+```text
+Directus Pearl Theme Library singleton
+  -> validated PearlTheme contract
+  -> CSS custom properties on the document root
+  -> every block plus shared header/footer
+```
+
 Directus owns content. Each Astro block owns the HTML and component-specific
 CSS for one CMS block type. `BlockRenderer.astro` owns only the mapping from a
 block type to its component. A page owns only the ordered composition of
@@ -88,6 +97,10 @@ folder would create collisions and hidden coupling.
     silently fall back to generic Rich Text.
 12. Jeffrey components, layouts, routes and accepted audit criteria remain
     untouched while Pearl is developed.
+13. Global typography, colour and spacing belong in `weo_pearl_theme_settings`.
+    Do not hard-code a per-block substitute for a theme token.
+14. Theme colours must pass `qa/pearl_reference_qa.py`; invalid hex values fall
+    back to the canonical Pearl palette and inaccessible combinations block QA.
 
 ## First-time setup
 
@@ -240,11 +253,12 @@ PORT=4321 node scripts/serve.mjs &
 python3 auditor/audit_rendered.py --target http://127.0.0.1:4321 --strict
 python3 qa/browser_matrix.py --target http://127.0.0.1:4321
 python3 qa/visual_fidelity.py --target http://127.0.0.1:4321
+python3 qa/pearl_reference_qa.py --target http://127.0.0.1:4321/template-preview/pearl/
 ```
 
-Expected current results are 78/78 strict route fidelity, 18/18 browser checks
-and 18/18 visual checks. A failure blocks the pull request; do not weaken the
-auditor to make a change pass.
+Expected current results are 78/78 strict route fidelity, 18/18 browser checks,
+18/18 visual checks and 3/3 Pearl responsive/WCAG checks. A failure blocks the
+pull request; do not weaken the auditor to make a change pass.
 
 ### 9. Push and open a pull request
 

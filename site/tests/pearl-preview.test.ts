@@ -59,6 +59,9 @@ describe('Pearl Astro fixture surface', () => {
     expect(html).toContain('data-template-adapter="pearl"');
     expect(html).toContain('data-template-version="0.1.0"');
     expect(html).toContain('not client production');
+    expect(html).toContain('class="pearl-site-header"');
+    expect(html).toContain('class="pearl-site-footer"');
+    expect(html).toContain('--pearl-weight-h2:400');
     for (const block of BLOCKS) {
       expect(html, block).toContain(`data-pearl-block="${block}"`);
     }

@@ -53,6 +53,7 @@ async function ensureRead(collection, filter = {}) {
 }
 
 await ensureRead('weo_pearl_pages', { status: { _eq: 'published' } });
+await ensureRead('weo_pearl_theme_settings', { status: { _eq: 'published' } });
 await ensureRead('weo_pearl_page_builder', { page: { status: { _eq: 'published' } } });
 for (const collection of [
   'weo_pearl_main_heroes', 'weo_pearl_inner_hero_ctas', 'weo_pearl_flex_content_images',

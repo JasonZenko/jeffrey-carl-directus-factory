@@ -1,0 +1,33 @@
+---
+import type { PearlTheme } from '../../lib/pearl/theme';
+
+interface Props { theme: PearlTheme; }
+const { theme } = Astro.props;
+---
+
+<footer id="contact" class="pearl-site-footer">
+  <div class="pearl-wrap pearl-site-footer__grid">
+    <div class="pearl-footer-brand"><strong>{theme.brand_name}</strong>{theme.brand_descriptor && <span>{theme.brand_descriptor}</span>}</div>
+    <div>
+      <h2>Contact information</h2>
+      {theme.address && <p>{theme.address}</p>}
+      {theme.phone && <p><a href={`tel:${theme.phone.replace(/[^+\d]/g, '')}`}>{theme.phone}</a></p>}
+      {theme.email && <p><a href={`mailto:${theme.email}`}>{theme.email}</a></p>}
+    </div>
+    <nav aria-label="Footer navigation"><a href="#top">Home</a><a href="#services">Services</a><a href="#about">About</a></nav>
+  </div>
+  <div class="pearl-site-footer__legal"><div class="pearl-wrap">Pearl reference template · noindex review</div></div>
+</footer>
+
+<style>
+  .pearl-site-footer { padding-top: calc(86px * var(--pearl-spacing)); background: var(--pearl-secondary); color: var(--pearl-ink); }
+  .pearl-site-footer__grid { display: grid; grid-template-columns: 1.1fr 1fr .6fr; gap: 56px; padding-bottom: calc(80px * var(--pearl-spacing)); }
+  .pearl-footer-brand strong { display: block; font-family: var(--pearl-font-heading); font-size: 4rem; font-weight: 400; line-height: .9; }
+  .pearl-footer-brand span { display: block; margin-top: 12px; letter-spacing: .22em; text-transform: uppercase; }
+  .pearl-site-footer h2 { margin: 0 0 20px; font-family: var(--pearl-font-body); font-size: .82rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .pearl-site-footer p { margin: 0 0 10px; }
+  .pearl-site-footer a { color: inherit; text-underline-offset: 3px; }
+  .pearl-site-footer nav { display: flex; flex-direction: column; gap: 12px; }
+  .pearl-site-footer__legal { padding: 18px 0; background: var(--pearl-surface); font-size: .76rem; }
+  @media (max-width: 760px) { .pearl-site-footer__grid { grid-template-columns: 1fr; gap: 36px; } }
+</style>

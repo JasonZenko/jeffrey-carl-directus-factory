@@ -27,14 +27,14 @@ const orderedReviews = [...reviews].sort((a, b) => a.sort - b.sort);
 </section>
 
 <style>
-  .pearl-reviews { background: var(--pearl-forest-deep); color: #fff; }
-  .pearl-heading-row { display: flex; justify-content: space-between; gap: 40px; align-items: end; margin-bottom: 48px; }
-  .pearl-heading-row > p { max-width: 48ch; margin: 0; color: #d5ddd3; }
+  .pearl-reviews { position: relative; background: var(--pearl-primary); color: var(--pearl-ink); text-align: center; }
+  .pearl-heading-row { display: flex; justify-content: center; gap: 40px; align-items: end; margin-bottom: 48px; }
+  .pearl-heading-row > p { max-width: 48ch; margin: 0; color: var(--pearl-ink); }
   .pearl-reviews__list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
-  .pearl-reviews figure { margin: 0; padding: clamp(30px, 4vw, 52px); background: #fff; color: var(--pearl-ink); }
+  .pearl-reviews figure { margin: 0; padding: clamp(30px, 4vw, 52px); background: transparent; color: var(--pearl-ink); }
   .pearl-reviews blockquote { margin: 0; font-family: 'Forum', Georgia, serif; font-size: clamp(1.55rem, 3vw, 2.25rem); line-height: 1.35; }
-  .pearl-reviews figcaption { display: flex; justify-content: space-between; gap: 16px; margin-top: 30px; font-size: 15px; font-weight: 700; }
-  .pearl-stars { color: #8b6415; letter-spacing: 2px; }
+  .pearl-reviews figcaption { display: flex; justify-content: center; gap: 24px; margin-top: 30px; font-size: 15px; font-weight: 700; }
+  .pearl-stars { color: var(--pearl-ink); letter-spacing: 2px; }
 
   @media (max-width: 800px) {
     .pearl-heading-row { align-items: flex-start; flex-direction: column; }

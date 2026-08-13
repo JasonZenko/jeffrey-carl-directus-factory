@@ -18,16 +18,18 @@ const { label, url, tone = 'default' } = Astro.props;
     min-height: 48px;
     margin-top: 24px;
     padding: 11px 20px;
-    border: 2px solid var(--pearl-forest);
-    color: var(--pearl-forest);
+    border: 0;
+    border-radius: var(--pearl-button-radius);
+    background: var(--pearl-primary);
+    color: var(--pearl-ink);
     font-weight: 700;
     text-decoration: none;
     transition: background-color 180ms ease-out, color 180ms ease-out;
   }
 
-  .pearl-button:hover { background: var(--pearl-forest); color: #fff; }
-  .pearl-button--light { border-color: #fff; color: #fff; }
-  .pearl-button--light:hover { background: #fff; color: var(--pearl-forest-deep); }
+  .pearl-button:hover { background: var(--pearl-accent); color: var(--pearl-ink); }
+  .pearl-button--light { border: 1px solid #fff; background: transparent; color: #fff; }
+  .pearl-button--light:hover { background: #fff; color: var(--pearl-ink); }
 
   @media (prefers-reduced-motion: reduce) {
     .pearl-button { transition-duration: .01ms; }

@@ -6,7 +6,7 @@ type Props = PearlRecordByBlock['flex_content_image'];
 const { heading, body, image, image_alt, image_position, cta_label, cta_url } = Astro.props;
 ---
 
-<section class:list={['pearl-section', 'pearl-flex', `pearl-flex--${image_position}`]} data-pearl-block="flex_content_image">
+<section id="about" class:list={['pearl-section', 'pearl-flex', `pearl-flex--${image_position}`]} data-pearl-block="flex_content_image">
   <div class="pearl-wrap pearl-flex__grid">
     <figure><img src={image} alt={image_alt} loading="lazy" /></figure>
     <div class="pearl-flex__content">
@@ -18,11 +18,12 @@ const { heading, body, image, image_alt, image_position, cta_label, cta_url } = 
 </section>
 
 <style>
-  .pearl-flex__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(40px, 7vw, 100px); }
+  .pearl-flex { background: var(--pearl-secondary); }
+  .pearl-flex__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(38px, 5vw, 78px); }
   .pearl-flex figure { margin: 0; }
-  .pearl-flex figure img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .pearl-flex figure img { width: 100%; aspect-ratio: 4 / 3; border: 5px solid #fff; object-fit: cover; }
   .pearl-flex--right figure { order: 2; }
-  .pearl-flex__content h2 { margin-bottom: 24px; color: var(--pearl-forest); }
+  .pearl-flex__content h2 { margin-bottom: 20px; color: var(--pearl-ink); }
 
   @media (max-width: 800px) {
     .pearl-flex__grid { grid-template-columns: 1fr; }

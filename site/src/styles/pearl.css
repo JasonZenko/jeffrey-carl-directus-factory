@@ -1,10 +1,11 @@
 .pearl-preview {
   margin: 0;
-  background: var(--pearl-white);
+  background: var(--pearl-surface);
   color: var(--pearl-ink);
-  font-family: 'Jost', system-ui, sans-serif;
-  font-size: 18px;
-  line-height: 1.65;
+  font-family: var(--pearl-font-body);
+  font-size: var(--pearl-size-body);
+  font-weight: var(--pearl-weight-body);
+  line-height: var(--pearl-leading-body);
 }
 
 .pearl-preview * { box-sizing: border-box; }
@@ -12,19 +13,19 @@
 .pearl-preview a:focus-visible { outline: 3px solid #fff; outline-offset: 4px; box-shadow: 0 0 0 6px var(--pearl-maroon); }
 .pearl-preview h1,
 .pearl-preview h2,
-.pearl-preview h3 { display: block; margin: 0; font-family: 'Forum', Georgia, serif; font-weight: 400; letter-spacing: 0; line-height: 1.1; text-wrap: balance; }
-.pearl-preview h1 { color: inherit; font-size: clamp(3rem, 7vw, 5.5rem); }
-.pearl-preview h2 { color: inherit; font-size: clamp(2.2rem, 4.5vw, 3.8rem); }
-.pearl-preview h3 { color: inherit; font-size: clamp(1.35rem, 2vw, 1.7rem); }
+.pearl-preview h3 { display: block; margin: 0; font-family: var(--pearl-font-heading); letter-spacing: 0; line-height: var(--pearl-leading-heading); text-wrap: balance; }
+.pearl-preview h1 { color: inherit; font-size: clamp(3rem, 7vw, var(--pearl-size-h1-max)); font-weight: var(--pearl-weight-h1); }
+.pearl-preview h2 { color: inherit; font-size: clamp(2.2rem, 4.5vw, var(--pearl-size-h2-max)); font-weight: var(--pearl-weight-h2); }
+.pearl-preview h3 { color: inherit; font-size: clamp(1.35rem, 2vw, var(--pearl-size-h3-max)); font-weight: var(--pearl-weight-h3); }
 .pearl-preview p { text-wrap: pretty; }
 
 .pearl-wrap { width: min(calc(100% - 40px), var(--pearl-wrap)); margin-inline: auto; }
-.pearl-section { padding: clamp(4rem, 8vw, 7.5rem) 0; }
+.pearl-section { padding: calc(clamp(4rem, 8vw, 7.5rem) * var(--pearl-spacing)) 0; }
 .pearl-prose { max-width: 68ch; }
 .pearl-prose > :first-child { margin-top: 0; }
 .pearl-prose > :last-child { margin-bottom: 0; }
 
-.pearl-workshop-bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 14px max(20px, calc((100vw - var(--pearl-wrap)) / 2)); background: var(--pearl-forest-deep); color: #fff; font-size: 15px; }
+.pearl-workshop-bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 10px max(20px, calc((100vw - var(--pearl-wrap)) / 2)); background: var(--pearl-ink); color: #fff; font-size: 13px; }
 .pearl-workshop-bar strong { font-weight: 700; }
 .pearl-workshop-bar span { color: #d7ded4; }
 

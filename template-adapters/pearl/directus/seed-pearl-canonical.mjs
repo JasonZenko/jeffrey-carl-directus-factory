@@ -41,7 +41,7 @@ const api = (path, options = {}) => raw(path, { ...options, token });
 const blockContract = new Map(manifest.blocks.map((block) => [block.key, block]));
 
 async function upsert(collection, key, value, payload) {
-  const rows = await api(`/items/${collection}?filter[${key}][_eq]=${encodeURIComponent(value)}&limit=1`);
+  const rows = await api(`/items/${collection}?filter[${key}][_eq]=${encodeURIComponent(value)}&limit=1&fields=id,${encodeURIComponent(key)}`);
   if (rows[0]) return api(`/items/${collection}/${rows[0].id}`, { method: 'PATCH', body: payload });
   return api(`/items/${collection}`, { method: 'POST', body: payload });
 }
@@ -50,8 +50,12 @@ const mimeByExtension = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': '
 async function ensureFile(source) {
   const isIcon = source.length === 1;
   const filename = isIcon ? `pearl-service-${source.toLowerCase()}.svg` : basename(source);
-  const existing = await api(`/files?filter[filename_download][_eq]=${encodeURIComponent(filename)}&limit=1&fields=id`);
-  if (existing[0]) return existing[0].id;
+  const title = `Pearl canonical · ${filename}`;
+  const existing = await api(`/files?filter[filename_download][_eq]=${encodeURIComponent(filename)}&limit=1&fields=id,title`);
+  if (existing[0]) {
+    if (existing[0].title !== title) await api(`/files/${existing[0].id}`, { method: 'PATCH', body: { title } });
+    return existing[0].id;
+  }
   let bytes;
   let mime;
   if (isIcon) {
@@ -64,7 +68,7 @@ async function ensureFile(source) {
     mime = mimeByExtension[extname(path).toLowerCase()] ?? 'application/octet-stream';
   }
   const form = new FormData();
-  form.append('title', `Pearl canonical · ${filename}`);
+  form.append('title', title);
   form.append('file', new Blob([bytes], { type: mime }), filename);
   return (await api('/files', { method: 'POST', body: form })).id;
 }
@@ -111,6 +115,11 @@ const page = await upsert('weo_pearl_pages', 'slug', seed.page.slug, {
   robots_index: false,
   robots_follow: false,
 });
+await api(`/items/${manifest.theme_settings.collection}`, { method: 'PATCH', body: {
+  ...seed.theme,
+  status: 'published',
+  internal_name: 'Pearl canonical theme',
+} });
 const prepared = [];
 for (const block of seed.blocks) prepared.push(await prepareBlock(block));
 const rows = await api(`/items/weo_pearl_page_builder?filter[page][_eq]=${page.id}&limit=-1`);

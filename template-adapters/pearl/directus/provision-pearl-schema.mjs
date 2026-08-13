@@ -54,19 +54,36 @@ for (const collection of [...plan.requires, ...plan.collections.map((item) => it
 }
 for (const field of plan.fields) {
   const key = `${field.collection}.${field.field}`;
-  if (existingFields.has(key)) continue;
-  await request('POST', `/fields/${field.collection}`, field);
+  if (existingFields.has(key)) {
+    if (field.collection === 'weo_pearl_theme_settings' && field.field !== 'id') {
+      await request('PATCH', `/fields/${field.collection}/${field.field}`, { meta: field.meta });
+      console.log(`updated field ${key}`);
+    }
+    continue;
+  }
+  // Pearl can be upgraded after canonical rows exist. Directus cannot add a
+  // NOT NULL column to a populated table before the migration has seeded it,
+  // so UI-required fields are introduced nullable and remain fail-closed in
+  // the Astro contract. A later data migration may tighten the DB constraint.
+  const migrationSafeField = field.schema?.is_primary_key || field.schema?.is_nullable !== false
+    ? field
+    : { ...field, schema: { ...field.schema, is_nullable: true } };
+  await request('POST', `/fields/${field.collection}`, migrationSafeField);
   existingFields.add(key);
   console.log(`created field ${key}`);
 }
 
-const existingRelations = new Set((await request('GET', '/relations')).data.map((item) => `${item.collection}.${item.field}`));
+const existingRelations = new Map((await request('GET', '/relations')).data.map((item) => [`${item.collection}.${item.field}`, item]));
 for (const relation of plan.relations) {
   const key = `${relation.collection}.${relation.field}`;
-  if (existingRelations.has(key)) continue;
-  await request('POST', '/relations', relation);
-  existingRelations.add(key);
-  console.log(`created relation ${key}`);
+  if (existingRelations.has(key)) {
+    await request('PATCH', `/relations/${relation.collection}/${relation.field}`, { meta: relation.meta, schema: relation.schema });
+    console.log(`updated relation ${key}`);
+  } else {
+    await request('POST', '/relations', relation);
+    existingRelations.set(key, relation);
+    console.log(`created relation ${key}`);
+  }
 }
 
 console.log(`Pearl schema ready: ${plan.adapter}`);

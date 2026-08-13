@@ -14,12 +14,12 @@ const orderedAreas = [...areas].sort((a, b) => a.sort - b.sort);
 </section>
 
 <style>
-  .pearl-areas { background: var(--pearl-light); }
+  .pearl-areas { background: var(--pearl-secondary); }
   .pearl-areas__grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(50px, 10vw, 140px); }
   .pearl-areas__grid > div p { max-width: 42ch; color: var(--pearl-muted); }
   .pearl-areas ul { margin: 0; padding: 0; list-style: none; border-top: 1px solid #aab2a6; }
   .pearl-areas a { display: flex; justify-content: space-between; gap: 20px; min-height: 58px; align-items: center; border-bottom: 1px solid #aab2a6; color: var(--pearl-ink); font-weight: 700; text-decoration: none; }
-  .pearl-areas a:hover { color: var(--pearl-maroon); }
+  .pearl-areas a:hover { color: var(--pearl-primary); }
 
   @media (max-width: 800px) {
     .pearl-areas__grid { grid-template-columns: 1fr; }

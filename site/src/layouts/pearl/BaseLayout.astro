@@ -1,20 +1,22 @@
 ---
-import { pearlTokens } from '../../lib/pearl/tokens';
+import PearlFooter from '../../components/pearl/PearlFooter.astro';
+import PearlHeader from '../../components/pearl/PearlHeader.astro';
+import type { PearlTheme } from '../../lib/pearl/theme';
+import { pearlThemeStyle } from '../../lib/pearl/theme';
 import '../../styles/pearl.css';
 
 interface Props {
   title: string;
   description?: string;
+  theme: PearlTheme;
 }
 
-const { title, description = 'Pearl template component workshop' } = Astro.props;
-const tokenStyle = Object.entries(pearlTokens)
-  .map(([name, value]) => `--pearl-${name.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)}:${value}`)
-  .join(';');
+const { title, description = 'Pearl template component workshop', theme } = Astro.props;
+const tokenStyle = pearlThemeStyle(theme);
 ---
 
 <!doctype html>
-<html lang="en" style={tokenStyle}>
+<html lang="en-GB" style={tokenStyle}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,6 +29,8 @@ const tokenStyle = Object.entries(pearlTokens)
   </head>
   <body class="pearl-preview" data-template-adapter="pearl" data-template-version="0.1.0">
     <header class="pearl-workshop-bar"><strong>Pearl component workshop</strong><span>Source-backed fixtures · noindex · not client production</span></header>
-    <main><slot /></main>
+    <PearlHeader theme={theme} />
+    <main id="top"><slot /></main>
+    <PearlFooter theme={theme} />
   </body>
 </html>

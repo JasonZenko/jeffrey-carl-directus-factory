@@ -8,6 +8,7 @@ const MANIFEST = resolve(HERE, '../v0.1.0/manifest.json');
 const scalarType = (type) => {
   if (type === 'integer') return 'integer';
   if (type === 'text' || type === 'rich_text') return 'text';
+  if (type === 'color') return 'string';
   if (type === 'file' || type === 'file_or_svg') return 'uuid';
   return 'string';
 };
@@ -19,6 +20,10 @@ const fieldMeta = (field) => {
     required: field.required,
   };
   if (field.type === 'text') meta.interface = 'input-multiline';
+  if (field.type === 'color') {
+    meta.interface = 'select-color';
+    meta.note = 'Global Pearl theme colour. Use a six-digit hex value and confirm contrast in the noindex preview.';
+  }
   if (field.type === 'integer') meta.interface = 'input';
   if (field.type === 'file' || field.type === 'file_or_svg') {
     meta.interface = 'file-image';
@@ -71,6 +76,22 @@ const fileRelation = (collection, field) => ({
   meta: { one_field: null, sort_field: null },
   schema: { on_delete: 'SET NULL' },
 });
+
+const themeFieldNotes = {
+  heading_font: 'Approved global heading family. Updates H1, H2 and H3 across Pearl.',
+  body_font: 'Approved global body and interface family.',
+  h1_weight: 'Global H1 font weight.',
+  h2_weight: 'Global H2 font weight.',
+  h3_weight: 'Global H3 font weight.',
+  body_weight: 'Global body-copy font weight.',
+  heading_scale: 'Controls the complete H1/H2/H3 size scale.',
+  body_scale: 'Controls body-copy size across the template.',
+  heading_line_height: 'Controls heading line spacing across the template.',
+  body_line_height: 'Controls body-copy line spacing across the template.',
+  spacing_scale: 'Compact, standard or generous global section spacing.',
+  content_width: 'Standard or wide maximum content width.',
+  button_radius: 'Square, softly rounded or pill-shaped buttons.',
+};
 
 export function buildPearlSchemaPlan(manifestPath = MANIFEST) {
   const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
@@ -127,6 +148,30 @@ export function buildPearlSchemaPlan(manifestPath = MANIFEST) {
       collection: 'weo_page_blocks', field: block.directus.carrier_field, related_collection: parent,
       meta: { one_field: null }, schema: { on_delete: 'SET NULL' },
     });
+  }
+
+  const theme = manifest.theme_settings;
+  plan.collections.push({
+    collection: theme.collection,
+    meta: {
+      icon: 'palette',
+      note: 'Pearl Theme Library. One governed change updates every Pearl page.',
+      singleton: true,
+      hidden: false,
+      archive_field: 'status',
+      archive_value: 'archived',
+      unarchive_value: 'draft',
+      display_template: '{{brand_name}} theme',
+    },
+    schema: {},
+  });
+  plan.fields.push(...baseFields(theme.collection));
+  for (const field of theme.fields) {
+    const generated = normalField(theme.collection, field);
+    generated.meta.width = 'half';
+    generated.meta.note = themeFieldNotes[field.name]
+      ?? (field.type === 'color' ? 'Global theme colour. Confirm WCAG contrast in the noindex review.' : 'Global Pearl theme setting.');
+    plan.fields.push(generated);
   }
 
   const pearlCollections = manifest.blocks.map((block) => block.directus.collection);

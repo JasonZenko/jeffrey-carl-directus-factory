@@ -71,6 +71,7 @@ jobs:
           python3 auditor/audit_rendered.py --target http://127.0.0.1:4321 --strict
           python3 qa/browser_matrix.py --target http://127.0.0.1:4321
           python3 qa/visual_fidelity.py --target http://127.0.0.1:4321
+          python3 qa/pearl_reference_qa.py --target http://127.0.0.1:4321/template-preview/pearl/
 
       - name: Upload audit receipt
         if: always()

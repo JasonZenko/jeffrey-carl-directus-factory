@@ -1,4 +1,5 @@
 import type { PearlBlock, PearlRecordByBlock } from '../../components/pearl/types';
+import type { PearlTheme } from './theme';
 
 export const PEARL_COLLECTION_BY_BLOCK = {
   main_hero: 'weo_pearl_main_heroes',
@@ -41,12 +42,14 @@ const REQUIRED_FIELDS: Record<keyof PearlRecordByBlock, readonly string[]> = {
 };
 
 interface DirectusList<T> { data: T[] }
+interface DirectusItem<T> { data: T }
 
 export interface PearlPage {
   slug: string;
   title: string;
   description?: string;
   blocks: PearlBlock[];
+  theme: PearlTheme;
 }
 
 async function pearlApi<T>(path: string, token: string, directusUrl: string): Promise<T> {
@@ -102,14 +105,26 @@ export async function getPearlPage(slug = 'pearl-component-workshop'): Promise<P
   const token = process.env.PEARL_DIRECTUS_TOKEN;
   if (!token) throw new Error('PEARL_DIRECTUS_TOKEN is required for connected Pearl builds');
   const directusUrl = process.env.PEARL_DIRECTUS_URL ?? process.env.DIRECTUS_URL ?? 'https://weomcms.foundryworks.ai';
-  const pages = await pearlApi<DirectusList<any>>(
-    `/items/weo_pearl_pages?filter[slug][_eq]=${encodeURIComponent(slug)}&limit=1&fields=slug,title,description,status,robots_index,robots_follow`,
-    token,
-    directusUrl,
-  );
+  const [pages, themes] = await Promise.all([
+    pearlApi<DirectusList<any>>(
+      `/items/weo_pearl_pages?filter[slug][_eq]=${encodeURIComponent(slug)}&limit=1&fields=slug,title,description,status,robots_index,robots_follow`,
+      token,
+      directusUrl,
+    ),
+    pearlApi<DirectusItem<any>>(
+      '/items/weo_pearl_theme_settings?fields=*',
+      token,
+      directusUrl,
+    ),
+  ]);
   const page = pages.data[0];
   if (!page || page.status !== 'published') throw new Error(`Published Pearl page not found: ${slug}`);
   if (page.robots_index !== false || page.robots_follow !== false) throw new Error(`Pearl review page must remain noindex/nofollow: ${slug}`);
+  const theme = themes.data;
+  if (!theme || theme.status !== 'published') throw new Error('Published Pearl theme settings not found');
+  delete theme.id;
+  delete theme.status;
+  delete theme.internal_name;
 
   const fields = [
     'id', 'sort', 'collection',
@@ -130,8 +145,5 @@ export async function getPearlPage(slug = 'pearl-component-workshop'): Promise<P
   );
   if (rows.data.length === 0) throw new Error(`Pearl page has no Builder blocks: ${slug}`);
   const blocks = rows.data.map((row) => hydrateBlock(row, directusUrl));
-  if (new Set(blocks.map((block) => block.type)).size !== blocks.length) {
-    throw new Error(`Pearl page contains duplicate block types: ${slug}`);
-  }
-  return { slug: page.slug, title: page.title, description: page.description, blocks };
+  return { slug: page.slug, title: page.title, description: page.description, blocks, theme };
 }
