@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-13T14:46:32.020447+00:00",
-  "target": "http://127.0.0.1:4331",
+  "generated_at": "2026-08-13T14:55:34.319710+00:00",
+  "target": "http://127.0.0.1:4332",
   "contract": {
     "difference_hash_max": 0.4,
     "mean_colour_error_max": 0.22,
@@ -95,8 +95,8 @@
         "page_length_proportion": true,
         "no_invented_inner_hero": true
       },
-      "difference_hash_distance": 0.211914,
-      "mean_colour_error": 0.076603,
+      "difference_hash_distance": 0.207031,
+      "mean_colour_error": 0.074406,
       "source_scroll_height": 2570,
       "rendered_scroll_height": 2659,
       "height_ratio": 1.0346,
@@ -229,7 +229,7 @@
         "no_invented_inner_hero": true
       },
       "difference_hash_distance": 0.265625,
-      "mean_colour_error": 0.110258,
+      "mean_colour_error": 0.11026,
       "source_scroll_height": 2458,
       "rendered_scroll_height": 1979,
       "height_ratio": 0.8051,
