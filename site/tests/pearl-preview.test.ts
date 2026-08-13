@@ -73,5 +73,9 @@ describe('Pearl Astro fixture surface', () => {
     expect(html).toContain('alt="Waiting room inside the Albany dental practice"');
     expect(html).toContain('aria-label="Areas served"');
     expect(html).toContain('aria-label="5 out of 5 stars"');
+    expect(html).toMatch(/<a href="#top"[^>]*>home<\/a>/);
+    expect(html).toMatch(/<a href="#services"[^>]*>services<\/a>/);
+    expect(html).toMatch(/<a href="#about"[^>]*>about<\/a>/);
+    expect(html).toMatch(/<a href="#contact"[^>]*>contact<\/a>/);
   });
 });
