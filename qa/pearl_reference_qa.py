@@ -78,9 +78,9 @@ def main():
                 "no_page_errors": not page_errors,
                 "no_first_party_http_errors": not response_errors,
                 "noindex": "noindex" in evidence["robots"],
-                "approved_homepage_sequence": evidence["blocks"] == 8 and evidence["blockSequence"] == [
+                "approved_homepage_sequence": evidence["blocks"] == 7 and evidence["blockSequence"] == [
                     "main_hero_standard", "icon_feature_cards", "feature_image_content", "icon_feature_cards",
-                    "highlight_snippet_quote", "feature_image_content", "contact_info_standard", "cta_section_standard",
+                    "highlight_snippet_quote", "feature_image_content", "contact_info_standard",
                 ],
                 "theme_connected": evidence["theme"] == "#855d56",
                 "shared_chrome": evidence["header"] and evidence["footer"],

@@ -119,29 +119,12 @@
     },
     {
       "key": "home-location",
-      "type": "areas_served_links",
+      "type": "contact_info_standard",
       "item": {
         "heading": "Visit Pearl Dentistry",
-        "intro": "8625 SW Cascade Avenue, Suite 300 Beaverton, OR",
-        "variant": "location_bar",
-        "areas": [
-          { "label": "Get directions", "url": "https://maps.google.com/?q=8625+SW+Cascade+Avenue+Beaverton+OR", "sort": 1 },
-          { "label": "Request appointment", "url": "#contact", "sort": 2 },
-          { "label": "Call (888) 246-6909", "url": "tel:8882466909", "sort": 3 }
-        ]
-      }
-    },
-    {
-      "key": "home-contact-cta",
-      "type": "inner_hero_cta",
-      "item": {
-        "heading": "A healthier smile starts here",
-        "secondary_heading": "Pearl Dentistry",
-        "body": "<p>Friendly, professional dental care for the whole family.</p>",
-        "image": "site/public/assets/a8657eecc5fc_www.jeffreycarldmd.com_tpn_c_C180_img_Dr-Jeff-Carl-office-front-01.jpg",
-        "image_alt": "Pearl Dentistry practice",
-        "cta_label": "Request an appointment",
-        "cta_url": "#contact"
+        "address": "8625 SW Cascade Avenue, Suite 300 Beaverton, OR",
+        "phone": "(888) 246-6909",
+        "map_url": "https://maps.google.com/?q=8625+SW+Cascade+Avenue+Beaverton+OR"
       }
     }
   ]
