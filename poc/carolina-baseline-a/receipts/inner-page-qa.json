@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T14:31:51.113563+00:00",
+  "generated_at": "2026-08-14T15:10:16.567700+00:00",
   "target": "https://pearl-carolina-poc.pages.dev/template-preview/pearl",
   "checks": 4,
   "passed": 4,
@@ -10,7 +10,8 @@
       "pass": true,
       "checks": {
         "status_200": true,
-        "expected_components": true,
+        "baseline_components_preserved": true,
+        "approved_extensions_only": true,
         "has_source_h1": true,
         "no_horizontal_overflow": true,
         "images_loaded": true,
@@ -37,7 +38,8 @@
       "pass": true,
       "checks": {
         "status_200": true,
-        "expected_components": true,
+        "baseline_components_preserved": true,
+        "approved_extensions_only": true,
         "has_source_h1": true,
         "no_horizontal_overflow": true,
         "images_loaded": true,
@@ -63,7 +65,8 @@
       "pass": true,
       "checks": {
         "status_200": true,
-        "expected_components": true,
+        "baseline_components_preserved": true,
+        "approved_extensions_only": true,
         "has_source_h1": true,
         "no_horizontal_overflow": true,
         "images_loaded": true,
@@ -89,7 +92,8 @@
       "pass": true,
       "checks": {
         "status_200": true,
-        "expected_components": true,
+        "baseline_components_preserved": true,
+        "approved_extensions_only": true,
         "has_source_h1": true,
         "no_horizontal_overflow": true,
         "images_loaded": true,

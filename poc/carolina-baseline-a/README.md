@@ -22,12 +22,17 @@ The homepage is frozen to the canonical seven-block sequence. Inner pages may us
 - Content reconciliation: median source-word coverage is 93.54%. The small thank-you page is the minimum outlier because it contains only 27 visible source words.
 - Inner-page proof: About Our Office, Services, Root Canals and Contact Us render different official block combinations with zero horizontal overflow, broken images, console errors or first-party request failures.
 - Infrastructure: the isolated stack has its own database, Redis, uploads, users, tokens, tunnel, port, backup timer and Cloudflare Pages project. A real database restore recovered all 37 custom collections, 26 pages and 87 Builder rows.
+- CMS contract: 37 collections, 281 fields, 25 relations, 14 official blocks, 28 versioned authoring collections, three required Administrators, isolated build-reader permissions, dynamic page previews, Visual Editor and governed public assets all pass against the clean-room instance.
+- Admin proof: authenticated Studio loaded the exact Carolina review, exposed nine editable overlays across the seven frozen homepage blocks, and opened the real Main Hero record drawer. A disposable page version was created and deleted with Main unchanged.
+- Release proof: an approved Highlight Snippet Quote was added only to the Root Canals inner page, deployed in run `31812583060`, verified publicly, then deleted. Rollback run `31812889399` passed and restored the exact three original Builder rows. The homepage remained the same seven blocks throughout.
 
 ## Gaps found before Dom's component pass
 
 1. Nitro Cache stores real media in `nitro-lazy-src`, `nitro-lazy-srcset` and `nitro-lazy-bg`. The extractor now resolves these attributes rather than accepting placeholder pixels.
 2. Twenty source pages reference the same GoHighLevel appointment iframe. Baseline A records this as a provider-component exception instead of embedding arbitrary third-party markup into structured rich text. A governed appointment component and production routing test belong in phase two.
 3. The source references one missing loader GIF from its own CSS. The 404 is recorded as non-material and is not silently replaced.
+4. Visual Editing was initially bound to the golden Pearl CMS URL in frontend code. The renderer now takes the CMS URL from the connected build environment, so the clean-room Studio edits its own records rather than the golden instance.
+5. Two release checks still assumed the entire migrated site was immutable: one required exactly 87 Builder rows and another required an exact Root Canals block list. The contract now preserves the 87-row baseline, rejects removals and unknown block types, freezes the homepage exactly, and permits reviewed growth on inner pages.
 
 ## Baseline B rule
 
