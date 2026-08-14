@@ -1,0 +1,29 @@
+{
+  "source": "https://www.lowenperio.com/",
+  "startedAt": "2026-08-14T16:11:56.981623+00:00",
+  "completedAt": "2026-08-14T16:12:52.397593+00:00",
+  "sitemapUrls": 39,
+  "pagesCaptured": 39,
+  "http200Pages": 39,
+  "non200Pages": 0,
+  "pageFailures": 0,
+  "assetRecords": 52,
+  "assetFailures": 0,
+  "assetBytes": 2116694,
+  "videoEmbedOccurrences": 0,
+  "uniqueVideoEmbedUrls": 0,
+  "hostedVideoFilesDownloaded": 0,
+  "thirdPartyOccurrences": 820,
+  "uniqueThirdPartyUrls": 28,
+  "templateFamilies": {
+    "about-team": 1,
+    "service-detail": 35,
+    "conversion": 2,
+    "home": 1
+  },
+  "missingTitles": 0,
+  "missingDescriptions": 0,
+  "missingCanonicals": 0,
+  "zeroH1Pages": 0,
+  "multiH1Pages": 37
+}

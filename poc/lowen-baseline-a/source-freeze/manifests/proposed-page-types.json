@@ -1,0 +1,28 @@
+{
+  "families": [
+    {
+      "family": "about-team",
+      "count": 1
+    },
+    {
+      "family": "conversion",
+      "count": 2
+    },
+    {
+      "family": "home",
+      "count": 1
+    },
+    {
+      "family": "service-detail",
+      "count": 35
+    }
+  ],
+  "models": {
+    "home": "homePage",
+    "about-team": "standardPage/personPage",
+    "service-detail": "servicePage",
+    "patient-resource": "patientResourcePage",
+    "conversion": "conversionPage",
+    "location": "locationPage"
+  }
+}

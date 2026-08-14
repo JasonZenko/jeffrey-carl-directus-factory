@@ -1,0 +1,131 @@
+{
+  "generated_at": "2026-08-14T16:42:09.457163+00:00",
+  "target": "http://127.0.0.1:4399/template-preview/pearl",
+  "checks": 4,
+  "passed": 4,
+  "failed": 0,
+  "results": [
+    {
+      "slug": "about-us",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "has_source_h1": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1": "About Us",
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": []
+    },
+    {
+      "slug": "dental-implants",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "has_source_h1": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1": "Dental Implants",
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": []
+    },
+    {
+      "slug": "patient-referral-form",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "has_source_h1": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1": "Lowen Perio Your Tigard, OR Dentist",
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": []
+    },
+    {
+      "slug": "contact-us",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "has_source_h1": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "cta_section_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "cta_section_standard",
+        "flex_content_section"
+      ],
+      "h1": "Office Information",
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": []
+    }
+  ]
+}

@@ -1,0 +1,2326 @@
+[
+  {
+    "url": "https://www.lowenperio.com/sys/weo-lib.js",
+    "finalUrl": "https://www.lowenperio.com/sys/weo-lib.js",
+    "status": 200,
+    "contentType": "application/javascript",
+    "bytes": 248152,
+    "sha256": "3c0ce110903a28fe6b65f610cb75262e83422d06603537ed137d5feb022ebff9",
+    "localPath": "capture/assets/3c0ce110903a_www.lowenperio.com_sys_weo-lib.js",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-About-Us-p2294.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p4949.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Our-Services-p2302.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patients-p4958.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Contact-Us-p2307.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Krista-Lowen-DDS-MSD-p2295.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Lillian-Nguyen-DMD-MS-p68761.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Testimonials-p2303.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-Management-p65541.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Crown-Lengthening-p2323.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Soft-Tissue-Grafting-p2324.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periolase-Tigard-OR-Laser-Therapy-p3342.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Dental-Implants-p3343.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Bone-Grafting-p4953.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Occlusal-Therapy-p4954.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Oral-Pathology-p36754.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Referral-Form-p2320.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Request-an-Appointment-p65556.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-What-Is-A-Periodontist-p2300.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Specialty-of-Periodontics-p2298.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p2299.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Preventing-Periodontal-Disease-p2301.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Forms-p2297.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Financial-Info-p65632.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Privacy-Policy-p75079.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Sedation-Options-p36758.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Educational-Links-p2306.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Antibiotics-p4955.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Digital-X-Rays-p4956.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Osseous-Flap-Surgery-p4952.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Peri-Implantitis-p36756.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Perio-Protect-reg-p36755.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Maintenance-p4951.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Surgery-p65522.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Ridge-Preservation-p36753.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Scaling-and-Root-Planing-p4950.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-TRIOS-reg-p36757.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-VELscope-trade-p4957.asp",
+        "kind": "script[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/docs/20240404-PostOp-Diet-c139.pdf",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/docs/20240404-PostOp-Diet-c139.pdf",
+    "status": 200,
+    "contentType": "application/pdf",
+    "bytes": 82845,
+    "sha256": "9dfc2c6707142b37c1f337e9ac6e7ff7e04f15c96f335191c203e0f7ff80b182",
+    "localPath": "capture/assets/9dfc2c670714_www.lowenperio.com_tpn_c_C139_docs_20240404-PostOp-Diet-c139.pdf",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Forms-p2297.asp",
+        "kind": "a[href]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/docs/20240404-Pre-Op-Instructions-c139.pdf",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/docs/20240404-Pre-Op-Instructions-c139.pdf",
+    "status": 200,
+    "contentType": "application/pdf",
+    "bytes": 73901,
+    "sha256": "c2730e34982fc6c24449adecc235927eb749f5caaa4aba2860e5f5231f61be8b",
+    "localPath": "capture/assets/c2730e34982f_www.lowenperio.com_tpn_c_C139_docs_20240404-Pre-Op-Instructions-c139.pdf",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Forms-p2297.asp",
+        "kind": "a[href]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/docs/20240404-Scaling-RootPlaning-Instructions-c139.pdf",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/docs/20240404-Scaling-RootPlaning-Instructions-c139.pdf",
+    "status": 200,
+    "contentType": "application/pdf",
+    "bytes": 80362,
+    "sha256": "6da0853156eaf2663eb4aee0849ee40d7f6ddbd955b8aa433c441a9a8796a0f1",
+    "localPath": "capture/assets/6da0853156ea_www.lowenperio.com_tpn_c_C139_docs_20240404-Scaling-RootPlaning-Instructions-c139.pdf",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Forms-p2297.asp",
+        "kind": "a[href]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/1-Luan-Hygiene-Oral-Cancer-Screening-with-VELscope.jpg",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/1-Luan-Hygiene-Oral-Cancer-Screening-with-VELscope.jpg",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 76112,
+    "sha256": "cd502431d5d29845342682a7789099675ac1542a3c715ae26a1ddfb091a7a4d5",
+    "localPath": "capture/assets/cd502431d5d2_www.lowenperio.com_tpn_c_C139_img_1-Luan-Hygiene-Oral-Cancer-Screening-with-VELscope.jpg",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-VELscope-trade-p4957.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/20240404-Dr-Nguyen-c139.jpg",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/20240404-Dr-Nguyen-c139.jpg",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 66474,
+    "sha256": "f709c0089d6165583bd068ae74815a3f0a984e232a40a52641c76dad8f5d8e6f",
+    "localPath": "capture/assets/f709c0089d61_www.lowenperio.com_tpn_c_C139_img_20240404-Dr-Nguyen-c139.jpg",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Lillian-Nguyen-DMD-MS-p68761.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/20240404-Nguyen-c139.jpg",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/20240404-Nguyen-c139.jpg",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 92406,
+    "sha256": "357a3f5e9640eb5e547e766e9942fa526ff5fc8f2bb9b3486ba4cbae91f742de",
+    "localPath": "capture/assets/357a3f5e9640_www.lowenperio.com_tpn_c_C139_img_20240404-Nguyen-c139.jpg",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/20240404-nguyen-family-c139.jpg",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/20240404-nguyen-family-c139.jpg",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 115527,
+    "sha256": "b29c34fe753cf63198b0a4ff9f2081ed095962f2c575230d1785ad3525382435",
+    "localPath": "capture/assets/b29c34fe753c_www.lowenperio.com_tpn_c_C139_img_20240404-nguyen-family-c139.jpg",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Lillian-Nguyen-DMD-MS-p68761.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/BKG-anibanner-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/BKG-anibanner-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 109044,
+    "sha256": "cb169b02cb58fb7dc00a24991122382de4dd871be3cb1ff8d4fde17a6605a746",
+    "localPath": "capture/assets/cb169b02cb58_www.lowenperio.com_tpn_c_C139_img_BKG-anibanner-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/webpage.css?vers=4-139-7507m-2025031275308",
+        "kind": "css-url"
+      },
+      {
+        "source": "https://www.lowenperio.com/webpage.css?vers=4-139-7508-2025031275308",
+        "kind": "css-url"
+      },
+      {
+        "source": "https://www.lowenperio.com/webpage.css?vers=4-139-7508-2025031275308",
+        "kind": "css-url"
+      },
+      {
+        "source": "https://www.lowenperio.com/webpage.css?vers=4-139-7508-2025031275308",
+        "kind": "css-url"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/BKG-art2-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/BKG-art2-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 117026,
+    "sha256": "23f7be97bc68cb10795154628744b1ab7bd37dd5eeee83c97db8db6042bf9d76",
+    "localPath": "capture/assets/23f7be97bc68_www.lowenperio.com_tpn_c_C139_img_BKG-art2-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/webpage.css?vers=4-139-7507m-2025031275308",
+        "kind": "css-url"
+      },
+      {
+        "source": "https://www.lowenperio.com/webpage.css?vers=4-139-7508-2025031275308",
+        "kind": "css-url"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-Gum-Disease-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-Gum-Disease-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 9158,
+    "sha256": "615c955d1e24a11298378de4a7209a61ff9c0229a7bde3d5c396c885eb0fcc2b",
+    "localPath": "capture/assets/615c955d1e24_www.lowenperio.com_tpn_c_C139_img_IMG-Gum-Disease-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p4949.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-HappyLion-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-HappyLion-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 24100,
+    "sha256": "bb5611b5faf43764c76b5b9f1877cf5cd9b8b1828199110469dd87157f73e81d",
+    "localPath": "capture/assets/bb5611b5faf4_www.lowenperio.com_tpn_c_C139_img_IMG-HappyLion-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patients-p4958.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-LANAP-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-LANAP-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 14410,
+    "sha256": "49b1e4a534926632ad842af8897a705344f7a305f0409d0261aa560c895d8439",
+    "localPath": "capture/assets/49b1e4a53492_www.lowenperio.com_tpn_c_C139_img_IMG-LANAP-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periolase-Tigard-OR-Laser-Therapy-p3342.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-Xray-c129.jpg",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-Xray-c129.jpg",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 81645,
+    "sha256": "b65ba7639804cb795e908c736b3d011687b08a69a9d2e97fd40ed7e79f054749",
+    "localPath": "capture/assets/b65ba7639804_www.lowenperio.com_tpn_c_C139_img_IMG-Xray-c129.jpg",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Digital-X-Rays-p4956.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-art1-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-art1-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 27364,
+    "sha256": "507171e9af7b3ef73d000bcd1acc90c30dca775eb7a649254355ac075e23df07",
+    "localPath": "capture/assets/507171e9af7b_www.lowenperio.com_tpn_c_C139_img_IMG-art1-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-bonegraft-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-bonegraft-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 13354,
+    "sha256": "183e94e1862b9d2cba7ed4265f4ad125dd29f39b8246f56a290d3f00072915e9",
+    "localPath": "capture/assets/183e94e1862b_www.lowenperio.com_tpn_c_C139_img_IMG-bonegraft-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Bone-Grafting-p4953.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-crown-lengthing-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-crown-lengthing-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 16198,
+    "sha256": "442d33d5d64521b3c0ca3c662bd7428f1f07a5e450070ca06532b9f83f7f79aa",
+    "localPath": "capture/assets/442d33d5d645_www.lowenperio.com_tpn_c_C139_img_IMG-crown-lengthing-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Crown-Lengthening-p2323.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-dr-lowen_c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-dr-lowen_c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 18244,
+    "sha256": "4494e39c0cf759ab44b00c8c0dedb1d3d77f83f0777704177b023d5ca9a5071a",
+    "localPath": "capture/assets/4494e39c0cf7_www.lowenperio.com_tpn_c_C139_img_IMG-dr-lowen_c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Krista-Lowen-DDS-MSD-p2295.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-family-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-family-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 17166,
+    "sha256": "259d1b50505ebf250dd2d9e864ca2cc9e844ffe41719a1d4e391112c72660389",
+    "localPath": "capture/assets/259d1b50505e_www.lowenperio.com_tpn_c_C139_img_IMG-family-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Krista-Lowen-DDS-MSD-p2295.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-gum-graft-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-gum-graft-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 15198,
+    "sha256": "edd59ef0677dfe64cc43a055b954cb929c507592e05b796723d8296640d8a345",
+    "localPath": "capture/assets/edd59ef0677d_www.lowenperio.com_tpn_c_C139_img_IMG-gum-graft-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Soft-Tissue-Grafting-p2324.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-implant-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-implant-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 6026,
+    "sha256": "160db35501e67c31163b33a057d8209b6e529933404ebc32c3944783358ab9e0",
+    "localPath": "capture/assets/160db35501e6_www.lowenperio.com_tpn_c_C139_img_IMG-implant-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Dental-Implants-p3343.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-lowen-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-lowen-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 30300,
+    "sha256": "7cbef11e5e8236cc885f1dbd5c14801a8268a5488b5576f344606a9f653b4cd9",
+    "localPath": "capture/assets/7cbef11e5e82_www.lowenperio.com_tpn_c_C139_img_IMG-lowen-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-nightguard-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-nightguard-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 7402,
+    "sha256": "18d1e11d9f85cb866c8ceb2e8f9bd7ea933de98380f056d63a1a16bac13ab1d0",
+    "localPath": "capture/assets/18d1e11d9f85_www.lowenperio.com_tpn_c_C139_img_IMG-nightguard-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Occlusal-Therapy-p4954.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-perio-disease-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-perio-disease-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 10616,
+    "sha256": "315303ea5fae4fd698b32ef28ccf0d1f27bd661fe41cf4207f46a8d5f5cc50bc",
+    "localPath": "capture/assets/315303ea5fae_www.lowenperio.com_tpn_c_C139_img_IMG-perio-disease-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p2299.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-smiling-people-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-smiling-people-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 25272,
+    "sha256": "54b6e49931f1d6d4fdc9342c1098dabb01bc3fcaf8d350e695ce4d820e427c9e",
+    "localPath": "capture/assets/54b6e49931f1_www.lowenperio.com_tpn_c_C139_img_IMG-smiling-people-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Antibiotics-p4955.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-surgery-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-surgery-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 17878,
+    "sha256": "3652827b9a8ff9350e420830dd73ba8b64e558fdd87156a8bd9063615375d1fa",
+    "localPath": "capture/assets/3652827b9a8f_www.lowenperio.com_tpn_c_C139_img_IMG-surgery-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-Management-p65541.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Surgery-p65522.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-tools-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-tools-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 9636,
+    "sha256": "27766e4419eeccd89b95cafc5340618b6708f68911a5123641589b90ed5bffc1",
+    "localPath": "capture/assets/27766e4419ee_www.lowenperio.com_tpn_c_C139_img_IMG-tools-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-Management-p65541.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-tooth-brushing-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-tooth-brushing-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 11382,
+    "sha256": "04021a11376c6040608e953f020febe60c10ab91bd4396422094c7b91567e516",
+    "localPath": "capture/assets/04021a11376c_www.lowenperio.com_tpn_c_C139_img_IMG-tooth-brushing-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Preventing-Periodontal-Disease-p2301.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-tooth-root.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-tooth-root.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 17786,
+    "sha256": "abee39455f79b7a6999d566eee667e900c9fc54a558dfa31677b5031cc12516e",
+    "localPath": "capture/assets/abee39455f79_www.lowenperio.com_tpn_c_C139_img_IMG-tooth-root.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Our-Services-p2302.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-what-is-perio-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/IMG-what-is-perio-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 5868,
+    "sha256": "6212d8ea86cb86aaddf4489e516d418b6630e15a0cda6a4e181c4a3c0bbb8742",
+    "localPath": "capture/assets/6212d8ea86cb_www.lowenperio.com_tpn_c_C139_img_IMG-what-is-perio-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-What-Is-A-Periodontist-p2300.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/Img-tongue-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/Img-tongue-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 11558,
+    "sha256": "a052402b50ef638451aa3ae469001379ebe4d902a8194dcc55c885830248d58e",
+    "localPath": "capture/assets/a052402b50ef_www.lowenperio.com_tpn_c_C139_img_Img-tongue-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Oral-Pathology-p36754.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/LGO-default-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/LGO-default-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 13722,
+    "sha256": "330dd5f398aa592839d93839e0b4f5a1e27122784312e3861ee61dabdfaaf70e",
+    "localPath": "capture/assets/330dd5f398aa_www.lowenperio.com_tpn_c_C139_img_LGO-default-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-About-Us-p2294.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p4949.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Our-Services-p2302.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patients-p4958.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Contact-Us-p2307.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Krista-Lowen-DDS-MSD-p2295.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Lillian-Nguyen-DMD-MS-p68761.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Testimonials-p2303.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-Management-p65541.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Crown-Lengthening-p2323.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Soft-Tissue-Grafting-p2324.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periolase-Tigard-OR-Laser-Therapy-p3342.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Dental-Implants-p3343.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Bone-Grafting-p4953.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Occlusal-Therapy-p4954.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Oral-Pathology-p36754.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Referral-Form-p2320.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Request-an-Appointment-p65556.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-What-Is-A-Periodontist-p2300.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Specialty-of-Periodontics-p2298.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p2299.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Preventing-Periodontal-Disease-p2301.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Forms-p2297.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Financial-Info-p65632.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Privacy-Policy-p75079.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Sedation-Options-p36758.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Educational-Links-p2306.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Antibiotics-p4955.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Digital-X-Rays-p4956.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Osseous-Flap-Surgery-p4952.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Peri-Implantitis-p36756.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Perio-Protect-reg-p36755.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Maintenance-p4951.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Surgery-p65522.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Ridge-Preservation-p36753.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Scaling-and-Root-Planing-p4950.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-TRIOS-reg-p36757.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-VELscope-trade-p4957.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/LGO-default02-c139.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/LGO-default02-c139.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 12564,
+    "sha256": "6bf250c7896df0b6cf5330388c991bcccf99a3d1d0489c386d8c1a75c4e30d88",
+    "localPath": "capture/assets/6bf250c7896d_www.lowenperio.com_tpn_c_C139_img_LGO-default02-c139.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-About-Us-p2294.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p4949.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Our-Services-p2302.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patients-p4958.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Contact-Us-p2307.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Krista-Lowen-DDS-MSD-p2295.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Lillian-Nguyen-DMD-MS-p68761.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Testimonials-p2303.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-Management-p65541.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Crown-Lengthening-p2323.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Soft-Tissue-Grafting-p2324.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periolase-Tigard-OR-Laser-Therapy-p3342.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Dental-Implants-p3343.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Bone-Grafting-p4953.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Occlusal-Therapy-p4954.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Oral-Pathology-p36754.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Referral-Form-p2320.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Request-an-Appointment-p65556.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-What-Is-A-Periodontist-p2300.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Specialty-of-Periodontics-p2298.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p2299.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Preventing-Periodontal-Disease-p2301.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Forms-p2297.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Financial-Info-p65632.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Privacy-Policy-p75079.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Sedation-Options-p36758.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Educational-Links-p2306.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Antibiotics-p4955.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Digital-X-Rays-p4956.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Osseous-Flap-Surgery-p4952.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Peri-Implantitis-p36756.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Perio-Protect-reg-p36755.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Maintenance-p4951.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Surgery-p65522.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Ridge-Preservation-p36753.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Scaling-and-Root-Planing-p4950.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-TRIOS-reg-p36757.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-VELscope-trade-p4957.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/c139_exterior.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/c139_exterior.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 60066,
+    "sha256": "55e9eca01f603fde87b2ca386a46e8037aa9cc4e4931c3ad7f2aff81f2b238cb",
+    "localPath": "capture/assets/55e9eca01f60_www.lowenperio.com_tpn_c_C139_img_c139_exterior.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Contact-Us-p2307.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/favicon.png",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/favicon.png",
+    "status": 200,
+    "contentType": "image/png",
+    "bytes": 15243,
+    "sha256": "2e13f354cc9ce38f4cdc77c74a17d9e46559f33abf0be13b85808aac7e285585",
+    "localPath": "capture/assets/2e13f354cc9c_www.lowenperio.com_tpn_c_C139_img_favicon.png",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-About-Us-p2294.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p4949.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Our-Services-p2302.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patients-p4958.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Contact-Us-p2307.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Krista-Lowen-DDS-MSD-p2295.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Lillian-Nguyen-DMD-MS-p68761.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Testimonials-p2303.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-Management-p65541.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Crown-Lengthening-p2323.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Soft-Tissue-Grafting-p2324.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periolase-Tigard-OR-Laser-Therapy-p3342.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Dental-Implants-p3343.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Bone-Grafting-p4953.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Occlusal-Therapy-p4954.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Oral-Pathology-p36754.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Referral-Form-p2320.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Request-an-Appointment-p65556.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-What-Is-A-Periodontist-p2300.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Specialty-of-Periodontics-p2298.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p2299.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Preventing-Periodontal-Disease-p2301.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Forms-p2297.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Financial-Info-p65632.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Privacy-Policy-p75079.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Sedation-Options-p36758.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Educational-Links-p2306.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Antibiotics-p4955.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Digital-X-Rays-p4956.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Osseous-Flap-Surgery-p4952.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Peri-Implantitis-p36756.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Perio-Protect-reg-p36755.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Maintenance-p4951.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Surgery-p65522.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Ridge-Preservation-p36753.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Scaling-and-Root-Planing-p4950.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-TRIOS-reg-p36757.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-VELscope-trade-p4957.asp",
+        "kind": "link[href]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/c/C139/img/perioprotect-tray.jpg",
+    "finalUrl": "https://www.lowenperio.com/tpn/c/C139/img/perioprotect-tray.jpg",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 16011,
+    "sha256": "c13e05b8e58bfca55b7c5fe7b4f24a45880dd2a9ae7d3af1cdc990c6d02ffb1f",
+    "localPath": "capture/assets/c13e05b8e58b_www.lowenperio.com_tpn_c_C139_img_perioprotect-tray.jpg",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Perio-Protect-reg-p36755.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/docs/2022super.css",
+    "finalUrl": "https://www.lowenperio.com/tpn/docs/2022super.css",
+    "status": 200,
+    "contentType": "text/css",
+    "bytes": 13347,
+    "sha256": "4f09a0f3eef1d680f3954c2a04f975ca639c903288e0c00762f1f924c47678fe",
+    "localPath": "capture/assets/4f09a0f3eef1_www.lowenperio.com_tpn_docs_2022super.css",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-About-Us-p2294.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p4949.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Our-Services-p2302.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patients-p4958.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Contact-Us-p2307.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Krista-Lowen-DDS-MSD-p2295.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Lillian-Nguyen-DMD-MS-p68761.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Testimonials-p2303.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-Management-p65541.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Crown-Lengthening-p2323.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Soft-Tissue-Grafting-p2324.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periolase-Tigard-OR-Laser-Therapy-p3342.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Dental-Implants-p3343.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Bone-Grafting-p4953.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Occlusal-Therapy-p4954.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Oral-Pathology-p36754.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Referral-Form-p2320.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Request-an-Appointment-p65556.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-What-Is-A-Periodontist-p2300.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Specialty-of-Periodontics-p2298.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p2299.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Preventing-Periodontal-Disease-p2301.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Forms-p2297.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Financial-Info-p65632.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Privacy-Policy-p75079.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Sedation-Options-p36758.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Educational-Links-p2306.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Antibiotics-p4955.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Digital-X-Rays-p4956.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Osseous-Flap-Surgery-p4952.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Peri-Implantitis-p36756.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Perio-Protect-reg-p36755.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Maintenance-p4951.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Surgery-p65522.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Ridge-Preservation-p36753.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Scaling-and-Root-Planing-p4950.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-TRIOS-reg-p36757.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-VELscope-trade-p4957.asp",
+        "kind": "link[href]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/docs/20240726-vimeo-video-banner.css",
+    "finalUrl": "https://www.lowenperio.com/tpn/docs/20240726-vimeo-video-banner.css",
+    "status": 200,
+    "contentType": "text/css",
+    "bytes": 2017,
+    "sha256": "68d7ed19f82438d330165149e106befd8d3c88f7c3facebaa8b4df99c7534578",
+    "localPath": "capture/assets/68d7ed19f824_www.lowenperio.com_tpn_docs_20240726-vimeo-video-banner.css",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-About-Us-p2294.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p4949.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Our-Services-p2302.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patients-p4958.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Contact-Us-p2307.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Krista-Lowen-DDS-MSD-p2295.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Lillian-Nguyen-DMD-MS-p68761.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Testimonials-p2303.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-Management-p65541.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Crown-Lengthening-p2323.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Soft-Tissue-Grafting-p2324.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periolase-Tigard-OR-Laser-Therapy-p3342.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Dental-Implants-p3343.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Bone-Grafting-p4953.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Occlusal-Therapy-p4954.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Oral-Pathology-p36754.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Referral-Form-p2320.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Request-an-Appointment-p65556.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-What-Is-A-Periodontist-p2300.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Specialty-of-Periodontics-p2298.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p2299.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Preventing-Periodontal-Disease-p2301.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Forms-p2297.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Financial-Info-p65632.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Privacy-Policy-p75079.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Sedation-Options-p36758.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Educational-Links-p2306.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Antibiotics-p4955.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Digital-X-Rays-p4956.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Osseous-Flap-Surgery-p4952.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Peri-Implantitis-p36756.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Perio-Protect-reg-p36755.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Maintenance-p4951.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Surgery-p65522.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Ridge-Preservation-p36753.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Scaling-and-Root-Planing-p4950.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-TRIOS-reg-p36757.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-VELscope-trade-p4957.asp",
+        "kind": "link[href]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/docs/aos.css",
+    "finalUrl": "https://www.lowenperio.com/tpn/docs/aos.css",
+    "status": 200,
+    "contentType": "text/css",
+    "bytes": 26053,
+    "sha256": "1aa8845fd06e475aefe733d4e55b36a92fcd487975049c8172341827ac9cc03e",
+    "localPath": "capture/assets/1aa8845fd06e_www.lowenperio.com_tpn_docs_aos.css",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+        "kind": "link[href]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/docs/aos.js",
+    "finalUrl": "https://www.lowenperio.com/tpn/docs/aos.js",
+    "status": 200,
+    "contentType": "application/javascript",
+    "bytes": 13479,
+    "sha256": "a00c23a0cd0489809b6371f5ae1ada309feacaaee67cec8b4dc1c79b5c9aad68",
+    "localPath": "capture/assets/a00c23a0cd04_www.lowenperio.com_tpn_docs_aos.js",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-About-Us-p2294.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p4949.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Our-Services-p2302.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patients-p4958.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Contact-Us-p2307.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Krista-Lowen-DDS-MSD-p2295.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Lillian-Nguyen-DMD-MS-p68761.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Testimonials-p2303.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-Management-p65541.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Crown-Lengthening-p2323.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Soft-Tissue-Grafting-p2324.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periolase-Tigard-OR-Laser-Therapy-p3342.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Dental-Implants-p3343.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Bone-Grafting-p4953.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Occlusal-Therapy-p4954.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Oral-Pathology-p36754.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Referral-Form-p2320.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Request-an-Appointment-p65556.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-What-Is-A-Periodontist-p2300.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Specialty-of-Periodontics-p2298.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p2299.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Preventing-Periodontal-Disease-p2301.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Forms-p2297.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Financial-Info-p65632.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Privacy-Policy-p75079.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Sedation-Options-p36758.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Educational-Links-p2306.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Antibiotics-p4955.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Digital-X-Rays-p4956.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Osseous-Flap-Surgery-p4952.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Peri-Implantitis-p36756.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Perio-Protect-reg-p36755.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Maintenance-p4951.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Surgery-p65522.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Ridge-Preservation-p36753.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Scaling-and-Root-Planing-p4950.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-TRIOS-reg-p36757.asp",
+        "kind": "script[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-VELscope-trade-p4957.asp",
+        "kind": "script[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/docs/bootstrap-tp.css",
+    "finalUrl": "https://www.lowenperio.com/tpn/docs/bootstrap-tp.css",
+    "status": 200,
+    "contentType": "text/css",
+    "bytes": 136072,
+    "sha256": "b24258ad4e06c36711d1adf1e01944ce7ba62326b1e30e623f85751ffef9bac4",
+    "localPath": "capture/assets/b24258ad4e06_www.lowenperio.com_tpn_docs_bootstrap-tp.css",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-About-Us-p2294.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p4949.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Our-Services-p2302.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patients-p4958.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Contact-Us-p2307.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Krista-Lowen-DDS-MSD-p2295.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Lillian-Nguyen-DMD-MS-p68761.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Testimonials-p2303.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-Management-p65541.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Crown-Lengthening-p2323.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Soft-Tissue-Grafting-p2324.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periolase-Tigard-OR-Laser-Therapy-p3342.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Dental-Implants-p3343.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Bone-Grafting-p4953.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Occlusal-Therapy-p4954.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Oral-Pathology-p36754.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Referral-Form-p2320.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Request-an-Appointment-p65556.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-What-Is-A-Periodontist-p2300.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Specialty-of-Periodontics-p2298.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p2299.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Preventing-Periodontal-Disease-p2301.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Forms-p2297.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Financial-Info-p65632.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Privacy-Policy-p75079.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Sedation-Options-p36758.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Educational-Links-p2306.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Antibiotics-p4955.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Digital-X-Rays-p4956.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Osseous-Flap-Surgery-p4952.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Peri-Implantitis-p36756.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Perio-Protect-reg-p36755.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Maintenance-p4951.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Surgery-p65522.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Ridge-Preservation-p36753.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Scaling-and-Root-Planing-p4950.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-TRIOS-reg-p36757.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-VELscope-trade-p4957.asp",
+        "kind": "link[href]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/gen/201802-lip-gloss-188012190.jpg",
+    "finalUrl": "https://www.lowenperio.com/tpn/gen/201802-lip-gloss-188012190.jpg",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 51583,
+    "sha256": "d6b880f074d356042ae08c896ea66e61588254380a93290e0571d9105dea57bc",
+    "localPath": "capture/assets/d6b880f074d3_www.lowenperio.com_tpn_gen_201802-lip-gloss-188012190.jpg",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Peri-Implantitis-p36756.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/gen/201905-ORTHO-benefits-of-straight-teeth-969233490.jpg",
+    "finalUrl": "https://www.lowenperio.com/tpn/gen/201905-ORTHO-benefits-of-straight-teeth-969233490.jpg",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 47608,
+    "sha256": "29ec7e0fa176b00ff982f825711104db6d685be0f3a915dfdb635765651f5b95",
+    "localPath": "capture/assets/29ec7e0fa176_www.lowenperio.com_tpn_gen_201905-ORTHO-benefits-of-straight-teeth-969233490.jpg",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-About-Us-p2294.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/gen/201909-dental-patient-anxiety-1058717948.jpg",
+    "finalUrl": "https://www.lowenperio.com/tpn/gen/201909-dental-patient-anxiety-1058717948.jpg",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 46596,
+    "sha256": "b89ed0c4d2f460ec927f221ba9b4539ed12d8d39b6f10f7e6c6f3d35ded078af",
+    "localPath": "capture/assets/b89ed0c4d2f4_www.lowenperio.com_tpn_gen_201909-dental-patient-anxiety-1058717948.jpg",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Forms-p2297.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/gen/GettyImages-854449766.jpg",
+    "finalUrl": "https://www.lowenperio.com/tpn/gen/GettyImages-854449766.jpg",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 75685,
+    "sha256": "64b839533cbae4dd1713420c72e12d4656ae8629060e8422a2d5f87bb1858674",
+    "localPath": "capture/assets/64b839533cba_www.lowenperio.com_tpn_gen_GettyImages-854449766.jpg",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Ridge-Preservation-p36753.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/gen/GettyImages-901439760.jpg",
+    "finalUrl": "https://www.lowenperio.com/tpn/gen/GettyImages-901439760.jpg",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 32798,
+    "sha256": "658e02c0b91f51b86d38e1e42902d3f9ac35ff0827dbcdda5e3587fac9442306",
+    "localPath": "capture/assets/658e02c0b91f_www.lowenperio.com_tpn_gen_GettyImages-901439760.jpg",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-Management-p65541.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Maintenance-p4951.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/gen/IMG-insurance-paperwork-AdobeStock_489300560.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/gen/IMG-insurance-paperwork-AdobeStock_489300560.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 20140,
+    "sha256": "b6e53dd7329d226a954507498d49fbec32dc6c21bd0eb995bb5f547eecea57ed",
+    "localPath": "capture/assets/b6e53dd7329d_www.lowenperio.com_tpn_gen_IMG-insurance-paperwork-AdobeStock_489300560.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Financial-Info-p65632.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/gen/IMG-periodontal-maintenance-AdobeStock_443421167.webp",
+    "finalUrl": "https://www.lowenperio.com/tpn/gen/IMG-periodontal-maintenance-AdobeStock_443421167.webp",
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 19574,
+    "sha256": "951a30c040e75f2179d0d1e080374b14d6632109d9301289a3cb8d16a0de9d36",
+    "localPath": "capture/assets/951a30c040e7_www.lowenperio.com_tpn_gen_IMG-periodontal-maintenance-AdobeStock_443421167.webp",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-Management-p65541.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Specialty-of-Periodontics-p2298.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Scaling-and-Root-Planing-p4950.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/gen/icn-ada-black.png",
+    "finalUrl": "https://www.lowenperio.com/tpn/gen/icn-ada-black.png",
+    "status": 200,
+    "contentType": "image/png",
+    "bytes": 477,
+    "sha256": "8ecc812d4c2988ca16dda4574d56a3611efef1e6663971e3fb3b8aee727738e7",
+    "localPath": "capture/assets/8ecc812d4c29_www.lowenperio.com_tpn_gen_icn-ada-black.png",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-About-Us-p2294.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p4949.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Our-Services-p2302.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patients-p4958.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Contact-Us-p2307.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Krista-Lowen-DDS-MSD-p2295.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Lillian-Nguyen-DMD-MS-p68761.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Testimonials-p2303.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-Management-p65541.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Crown-Lengthening-p2323.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Soft-Tissue-Grafting-p2324.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periolase-Tigard-OR-Laser-Therapy-p3342.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Dental-Implants-p3343.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Bone-Grafting-p4953.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Occlusal-Therapy-p4954.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Oral-Pathology-p36754.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Referral-Form-p2320.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Request-an-Appointment-p65556.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-What-Is-A-Periodontist-p2300.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Specialty-of-Periodontics-p2298.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p2299.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Preventing-Periodontal-Disease-p2301.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Forms-p2297.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Financial-Info-p65632.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Privacy-Policy-p75079.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Sedation-Options-p36758.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Educational-Links-p2306.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Antibiotics-p4955.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Digital-X-Rays-p4956.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Osseous-Flap-Surgery-p4952.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Peri-Implantitis-p36756.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Perio-Protect-reg-p36755.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Maintenance-p4951.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Surgery-p65522.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Ridge-Preservation-p36753.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Scaling-and-Root-Planing-p4950.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-TRIOS-reg-p36757.asp",
+        "kind": "img[src]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-VELscope-trade-p4957.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/tpn/gen/trios3shape.jpg",
+    "finalUrl": "https://www.lowenperio.com/tpn/gen/trios3shape.jpg",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 11090,
+    "sha256": "dce4a8fd0ef5e573230a1058d86ef1ddcde98f4042c550f57381ad151ebb9978",
+    "localPath": "capture/assets/dce4a8fd0ef5_www.lowenperio.com_tpn_gen_trios3shape.jpg",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-TRIOS-reg-p36757.asp",
+        "kind": "img[src]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/webpage.css?vers=4-139-7507m-2025031275308",
+    "finalUrl": "https://www.lowenperio.com/webpage.css?vers=4-139-7507m-2025031275308",
+    "status": 200,
+    "contentType": "text/css",
+    "bytes": 24305,
+    "sha256": "bb20dbbe79138d9fe3edf277707fa8a6e89c6430b1bc81b203c2ab177f59bbb5",
+    "localPath": "capture/assets/bb20dbbe7913_www.lowenperio.com_webpage.css_vers_4-139-7507m-2025031275308",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+        "kind": "link[href]"
+      }
+    ]
+  },
+  {
+    "url": "https://www.lowenperio.com/webpage.css?vers=4-139-7508-2025031275308",
+    "finalUrl": "https://www.lowenperio.com/webpage.css?vers=4-139-7508-2025031275308",
+    "status": 200,
+    "contentType": "text/css",
+    "bytes": 25854,
+    "sha256": "31f4ca15bcbf8b8059116c0ecf27de906bd77fb39abc9e58a1c82ece177d88a6",
+    "localPath": "capture/assets/31f4ca15bcbf_www.lowenperio.com_webpage.css_vers_4-139-7508-2025031275308",
+    "referencedBy": [
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-About-Us-p2294.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p4949.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Our-Services-p2302.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patients-p4958.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Contact-Us-p2307.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Krista-Lowen-DDS-MSD-p2295.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Lillian-Nguyen-DMD-MS-p68761.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Testimonials-p2303.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-Management-p65541.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Crown-Lengthening-p2323.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Soft-Tissue-Grafting-p2324.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periolase-Tigard-OR-Laser-Therapy-p3342.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Dental-Implants-p3343.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Bone-Grafting-p4953.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Occlusal-Therapy-p4954.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Oral-Pathology-p36754.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Referral-Form-p2320.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Request-an-Appointment-p65556.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-What-Is-A-Periodontist-p2300.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Specialty-of-Periodontics-p2298.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Disease-p2299.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Preventing-Periodontal-Disease-p2301.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Forms-p2297.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Financial-Info-p65632.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Privacy-Policy-p75079.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Sedation-Options-p36758.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Educational-Links-p2306.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Antibiotics-p4955.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Digital-X-Rays-p4956.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Osseous-Flap-Surgery-p4952.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Peri-Implantitis-p36756.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Perio-Protect-reg-p36755.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Maintenance-p4951.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Periodontal-Surgery-p65522.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Ridge-Preservation-p36753.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Scaling-and-Root-Planing-p4950.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-TRIOS-reg-p36757.asp",
+        "kind": "link[href]"
+      },
+      {
+        "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-VELscope-trade-p4957.asp",
+        "kind": "link[href]"
+      }
+    ]
+  }
+]

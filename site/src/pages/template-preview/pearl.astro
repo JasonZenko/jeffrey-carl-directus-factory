@@ -8,9 +8,9 @@ import { defaultPearlTheme } from '../../lib/pearl/theme';
 const connected = (process.env.PEARL_CONTENT_MODE ?? 'connected') === 'connected';
 const page = connected
   ? await getPearlPage()
-  : { title: 'Pearl template component workshop', description: 'Explicit disconnected fixture mode', blocks: pearlFixture, theme: defaultPearlTheme, pageVisual: undefined, themeVisual: undefined };
+  : { title: 'Pearl template component workshop', description: 'Explicit disconnected fixture mode', blocks: pearlFixture, theme: defaultPearlTheme, navigation: [{label: 'Home', url: '/', sort: 1}], logo: undefined, pageVisual: undefined, themeVisual: undefined };
 ---
 
-<BaseLayout title={page.title} description={page.description} theme={page.theme} pageVisual={page.pageVisual} themeVisual={page.themeVisual}>
+<BaseLayout title={page.title} description={page.description} theme={page.theme} navigation={page.navigation} logo={page.logo} pageVisual={page.pageVisual} themeVisual={page.themeVisual}>
   {page.blocks.map((block) => <BlockRenderer block={block} />)}
 </BaseLayout>

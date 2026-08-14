@@ -1,0 +1,20 @@
+[
+  {
+    "page": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Contact-Us-p2307.asp",
+    "kind": "embed",
+    "provider": "maps.google.com",
+    "url": "https://maps.google.com/maps?f=q&source=s_q&hl=en&z=15&t=m&iwloc=A&output=embed&q=Lowen+Perio+9900+SW+Greenburg+Rd,+Suite+#230+,+Tigard+OR+97223-5473"
+  },
+  {
+    "page": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Patient-Referral-Form-p2320.asp",
+    "kind": "embed",
+    "provider": "api.referralintel.com",
+    "url": "https://api.referralintel.com/public/referral-form/019effb5-7cab-73ce-82f0-35caeda2adf4"
+  },
+  {
+    "page": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Request-an-Appointment-p65556.asp",
+    "kind": "form",
+    "reason": "provider component required",
+    "source_html_sha256": "bd2d714b6e37e46b71bf70af587fe30e2f3eb14f3749095ecd193bf549cc5ed5"
+  }
+]

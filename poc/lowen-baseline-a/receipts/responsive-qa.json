@@ -1,0 +1,108 @@
+{
+  "generated_at": "2026-08-14T16:42:06.064759+00:00",
+  "target": "http://127.0.0.1:4399/template-preview/pearl",
+  "checks": 3,
+  "passed": 3,
+  "failed": 0,
+  "results": [
+    {
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "source_homepage_composition": true,
+        "source_navigation": true,
+        "source_logo": true,
+        "theme_connected": true,
+        "shared_chrome": true,
+        "responsive_navigation": true,
+        "wcag_aa": true
+      },
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "source_homepage_composition": true,
+        "source_navigation": true,
+        "source_logo": true,
+        "theme_connected": true,
+        "shared_chrome": true,
+        "responsive_navigation": true,
+        "wcag_aa": true
+      },
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "source_homepage_composition": true,
+        "source_navigation": true,
+        "source_logo": true,
+        "theme_connected": true,
+        "shared_chrome": true,
+        "responsive_navigation": true,
+        "wcag_aa": true
+      },
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    }
+  ]
+}

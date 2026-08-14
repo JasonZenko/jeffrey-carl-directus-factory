@@ -65,8 +65,16 @@ export interface PearlPage {
   description?: string;
   blocks: PearlBlock[];
   theme: PearlTheme;
+  navigation: PearlNavigationItem[];
+  logo?: string;
   pageVisual?: PearlVisualRef;
   themeVisual?: PearlVisualRef;
+}
+
+export interface PearlNavigationItem {
+  label: string;
+  url: string;
+  sort: number;
 }
 
 export interface PearlPageRoute {
@@ -126,7 +134,7 @@ export async function getPearlPage(slug = 'home'): Promise<PearlPage> {
   if (!token) throw new Error('PEARL_DIRECTUS_TOKEN is required for connected Pearl builds');
   const directusUrl = process.env.PEARL_DIRECTUS_URL ?? 'https://pearlcms.foundryworks.ai';
   const [pages, themes] = await Promise.all([
-    pearlApi<DirectusList<any>>(`/items/pearl_pages?filter[slug][_eq]=${encodeURIComponent(slug)}&limit=1&fields=id,slug,title,meta_description,status,workflow_status,robots_index,robots_follow`, token, directusUrl),
+    pearlApi<DirectusList<any>>(`/items/pearl_pages?filter[slug][_eq]=${encodeURIComponent(slug)}&limit=1&fields=id,slug,title,meta_description,status,workflow_status,robots_index,robots_follow,site.id,site.logo`, token, directusUrl),
     pearlApi<DirectusItem<any>>('/items/pearl_theme_settings?fields=*', token, directusUrl),
   ]);
   const page = pages.data[0];
@@ -137,6 +145,12 @@ export async function getPearlPage(slug = 'home'): Promise<PearlPage> {
   const themeId = theme.id;
   delete theme.id;
   delete theme.status;
+  const navigation = await pearlApi<DirectusList<PearlNavigationItem & {status: string}>>(
+    `/items/pearl_navigation_items?filter[site][_eq]=${encodeURIComponent(page.site.id)}&filter[status][_eq]=published&limit=-1&sort=sort&fields=label,url,sort,status`,
+    token,
+    directusUrl,
+  );
+  if (navigation.data.length === 0) throw new Error(`Published Pearl navigation not found for: ${slug}`);
 
   const fields = [
     'id', 'sort', 'collection',
@@ -164,6 +178,8 @@ export async function getPearlPage(slug = 'home'): Promise<PearlPage> {
     description: page.meta_description,
     blocks,
     theme,
+    navigation: navigation.data.map(({label, url, sort}) => ({label, url, sort})),
+    logo: page.site.logo ? directusAssetUrl(directusUrl, page.site.logo) : undefined,
     pageVisual: {collection: 'pearl_pages', item: page.id, fields: ['title', 'meta_description'], mode: 'drawer'},
     themeVisual: {collection: 'pearl_theme_settings', item: themeId, mode: 'drawer'},
   };

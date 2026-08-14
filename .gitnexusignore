@@ -1,0 +1,5 @@
+# Immutable migration evidence is data, not executable repository code.
+poc/lowen-baseline-a/source-freeze/capture/
+poc/lowen-baseline-a/source-freeze/manifests/
+poc/lowen-baseline-a/migration/*.json
+poc/lowen-baseline-a/receipts/*.json
