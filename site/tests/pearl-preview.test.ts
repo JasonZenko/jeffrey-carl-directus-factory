@@ -51,12 +51,16 @@ describe('Pearl official block surface', () => {
     expect(route).toContain('getPearlPage(slug)');
   });
 
-  it('keeps image descriptions, social navigation and lowercase primary navigation',()=>{
+  it('keeps image descriptions, contact links and source-driven navigation',()=>{
     const html=readFileSync(join(SITE_ROOT,'dist/template-preview/pearl/index.html'),'utf8');
-    expect(html).toContain('alt="Dentist welcoming a patient in a bright treatment room"');
-    expect(html).toContain('alt="Dr. Amanda Pearl"');
+    const images=[...html.matchAll(/<img\b[^>]*>/g)].map(match=>match[0]);
+    expect(images.length).toBeGreaterThan(0);
+    expect(images.every(image=>/\balt="[^"]*"/.test(image))).toBe(true);
     expect(html).toContain('aria-label="Contact links"');
-    expect(html).toContain('aria-label="Social media"');
-    for(const [href,label] of [['#top','home'],['#services','services'],['#about','about'],['#contact','contact']]) expect(html).toMatch(new RegExp(`<a href="${href}"[^>]*>${label}</a>`));
+    expect(html).toContain('aria-label="Footer navigation"');
+    const navigation=html.match(/<nav id="pearl-primary-navigation"[\s\S]*?<\/nav>/)?.[0]??'';
+    const links=[...navigation.matchAll(/<a href="([^"]+)"[^>]*>([^<]+)<\/a>/g)];
+    expect(links.length).toBeGreaterThan(0);
+    expect(links.every(match=>!match[1].startsWith('#')&&Boolean(match[2].trim()))).toBe(true);
   });
 });

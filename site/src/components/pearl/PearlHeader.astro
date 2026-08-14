@@ -1,17 +1,19 @@
 ---
 import type { PearlTheme } from '../../lib/pearl/theme';
+import type { PearlNavigationItem } from '../../lib/pearl/directus';
 import type { PearlVisualRef } from './types';
 import { pearlVisualAttr } from '../../lib/pearl/visual-editing';
 
-interface Props { theme: PearlTheme; visual?: PearlVisualRef; }
-const { theme, visual } = Astro.props;
+interface Props { theme: PearlTheme; navigation: PearlNavigationItem[]; logo?: string; visual?: PearlVisualRef; }
+const { theme, navigation, logo, visual } = Astro.props;
 ---
 
 <header class="pearl-site-header" data-directus={pearlVisualAttr(visual)}>
   <div class="pearl-site-header__top pearl-wrap">
-    <a class="pearl-brand" href="#top" aria-label={`${theme.brand_name} home`}>
-      <strong>{theme.brand_name}</strong>
-      {theme.brand_descriptor && <span>{theme.brand_descriptor}</span>}
+    <a class="pearl-brand" href="/" aria-label={`${theme.brand_name} home`}>
+      {logo
+        ? <img src={logo} alt={theme.brand_name} />
+        : <><strong>{theme.brand_name}</strong>{theme.brand_descriptor && <span>{theme.brand_descriptor}</span>}</>}
     </a>
     <div class="pearl-site-header__details">
       {theme.appointment_label && theme.appointment_url && <a class="pearl-header-cta" href={theme.appointment_url}>{theme.appointment_label}</a>}
@@ -32,10 +34,7 @@ const { theme, visual } = Astro.props;
   </div>
   <nav id="pearl-primary-navigation" aria-label="Pearl reference navigation">
     <div class="pearl-wrap">
-      <a href="#top">home</a>
-      <a href="#services">services</a>
-      <a href="#about">about</a>
-      <a href="#contact">contact</a>
+      {navigation.map((item) => <a href={item.url}>{item.label}</a>)}
     </div>
   </nav>
 </header>
@@ -84,6 +83,7 @@ const { theme, visual } = Astro.props;
   .pearl-site-header__top { min-height: 118px; display: flex; align-items: center; justify-content: space-between; gap: 32px; transition: min-height .38s cubic-bezier(.22,1,.36,1); }
   .pearl-brand { width: 190px; min-height: 138px; margin-bottom: -34px; display: grid; place-content: center; background: var(--pearl-secondary); color: var(--pearl-ink); text-align: center; text-decoration: none; transition: width .38s cubic-bezier(.22,1,.36,1), min-height .38s cubic-bezier(.22,1,.36,1), margin .38s cubic-bezier(.22,1,.36,1), transform .38s cubic-bezier(.22,1,.36,1); }
   .pearl-brand strong { display: block; font-family: var(--pearl-font-heading); font-size: 3.15rem; font-weight: 400; line-height: .85; transition: font-size .38s cubic-bezier(.22,1,.36,1); }
+  .pearl-brand img { width: calc(100% - 28px); max-height: 112px; object-fit: contain; transition: max-height .38s cubic-bezier(.22,1,.36,1); }
   .pearl-brand span { display: block; margin-top: 12px; font-size: .72rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; }
   .pearl-site-header__details { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 10px 22px; color: var(--pearl-muted); font-size: .88rem; }
   .pearl-site-header__details a { color: inherit; }
@@ -96,6 +96,7 @@ const { theme, visual } = Astro.props;
   .pearl-site-header--scrolled .pearl-site-header__top { min-height: 64px; }
   .pearl-site-header--scrolled .pearl-brand { width: 116px; min-height: 74px; margin-bottom: -10px; transform: translateY(4px); }
   .pearl-site-header--scrolled .pearl-brand strong { font-size: 2rem; }
+  .pearl-site-header--scrolled .pearl-brand img { max-height: 58px; }
   .pearl-site-header--scrolled .pearl-brand span { margin-top: 7px; font-size: .55rem; }
   .pearl-site-header--scrolled .pearl-site-header__details > span { display: none; }
 

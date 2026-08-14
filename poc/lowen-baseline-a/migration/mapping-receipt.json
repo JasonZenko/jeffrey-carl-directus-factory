@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "source": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+  "source_family": "WEO Pearl",
+  "pages": 39,
+  "blocks": 88,
+  "block_types": {
+    "contact_info_standard": 1,
+    "cta_section_standard": 5,
+    "feature_image_content": 5,
+    "flex_content_section": 35,
+    "highlight_snippet_quote": 1,
+    "icon_feature_cards": 2,
+    "inner_hero_standard": 38,
+    "main_hero_standard": 1
+  },
+  "homepage_sequence": [
+    "main_hero_standard",
+    "icon_feature_cards",
+    "feature_image_content",
+    "icon_feature_cards",
+    "highlight_snippet_quote",
+    "feature_image_content",
+    "feature_image_content",
+    "contact_info_standard"
+  ],
+  "homepage_dynamic": true,
+  "navigation_items": 6,
+  "theme_mapping": {
+    "source_primary_color": "#e36966",
+    "mapped_primary_color": "#bc5755",
+    "white_text_contrast": 4.533,
+    "minimum_contrast": 4.5
+  },
+  "exceptions": 3,
+  "dropped_unevidenced_images": 0
+}

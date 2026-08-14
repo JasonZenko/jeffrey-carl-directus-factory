@@ -4,6 +4,7 @@ import PearlHeader from '../../components/pearl/PearlHeader.astro';
 import VisualEditing from '../../components/pearl/VisualEditing.astro';
 import type { PearlVisualRef } from '../../components/pearl/types';
 import type { PearlTheme } from '../../lib/pearl/theme';
+import type { PearlNavigationItem } from '../../lib/pearl/directus';
 import { pearlThemeStyle } from '../../lib/pearl/theme';
 import { pearlVisualAttr } from '../../lib/pearl/visual-editing';
 import '../../styles/pearl.css';
@@ -12,11 +13,13 @@ interface Props {
   title: string;
   description?: string;
   theme: PearlTheme;
+  navigation: PearlNavigationItem[];
+  logo?: string;
   pageVisual?: PearlVisualRef;
   themeVisual?: PearlVisualRef;
 }
 
-const { title, description = 'Pearl template component workshop', theme, pageVisual, themeVisual } = Astro.props;
+const { title, description = 'Pearl template component workshop', theme, navigation, logo, pageVisual, themeVisual } = Astro.props;
 const tokenStyle = pearlThemeStyle(theme);
 ---
 
@@ -33,9 +36,9 @@ const tokenStyle = pearlThemeStyle(theme);
     <link href="https://fonts.googleapis.com/css2?family=Forum&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body class="pearl-preview" data-template-adapter="pearl" data-template-version="1.0.0">
-    <PearlHeader theme={theme} visual={themeVisual} />
+    <PearlHeader theme={theme} navigation={navigation} logo={logo} visual={themeVisual} />
     <main id="top" data-directus={pearlVisualAttr(pageVisual)}><slot /></main>
-    <PearlFooter theme={theme} />
+    <PearlFooter theme={theme} navigation={navigation} logo={logo} />
     <VisualEditing />
   </body>
 </html>

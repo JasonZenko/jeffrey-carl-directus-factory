@@ -15,6 +15,6 @@ if (!slug) throw new Error('Pearl page slug is required');
 const page = await getPearlPage(slug);
 ---
 
-<BaseLayout title={page.title} description={page.description} theme={page.theme} pageVisual={page.pageVisual} themeVisual={page.themeVisual}>
+<BaseLayout title={page.title} description={page.description} theme={page.theme} navigation={page.navigation} logo={page.logo} pageVisual={page.pageVisual} themeVisual={page.themeVisual}>
   {page.blocks.map((block) => <BlockRenderer block={block} />)}
 </BaseLayout>

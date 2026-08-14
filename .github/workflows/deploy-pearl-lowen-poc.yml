@@ -1,0 +1,83 @@
+name: deploy-pearl-lowen-poc
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [pearl/lowen-poc-baseline-a]
+
+jobs:
+  deploy-pearl-lowen-poc:
+    runs-on: ubuntu-latest
+    environment: noindex-preview
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+          cd site && npm ci
+
+      - name: Rebuild the frozen Lowen object map
+        run: |
+          python3 poc/lowen-baseline-a/scripts/object-map.py
+          git diff --exit-code -- poc/lowen-baseline-a/migration \
+            || (echo 'Lowen object mapping is not deterministic' && exit 1)
+
+      - name: Build connected Lowen POC
+        working-directory: site
+        run: npm run build
+        env:
+          PEARL_CONTENT_MODE: connected
+          PEARL_DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
+          PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_LOWEN_DIRECTUS_TOKEN }}
+
+      - name: Prove isolated CMS and dynamic object mapping
+        run: node poc/lowen-baseline-a/scripts/verify-connected-build.mjs
+        env:
+          PEARL_DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
+          PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_LOWEN_DIRECTUS_TOKEN }}
+
+      - name: Run shared contracts
+        working-directory: site
+        run: npm test
+        env:
+          PEARL_DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
+
+      - name: Prove responsive home and representative inner pages
+        run: |
+          PORT=4322 node scripts/serve.mjs &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:4322/robots.txt > /dev/null && break; sleep 1; done
+          python3 poc/lowen-baseline-a/scripts/responsive-qa.py --target http://127.0.0.1:4322/template-preview/pearl/
+          python3 poc/lowen-baseline-a/scripts/inner-page-qa.py --target http://127.0.0.1:4322/template-preview/pearl
+
+      - name: Preserve accepted Jeffrey regression evidence
+        run: |
+          PORT=4321 node scripts/serve.mjs &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:4321/robots.txt > /dev/null && break; sleep 1; done
+          python3 auditor/audit_rendered.py --target http://127.0.0.1:4321 --strict
+          python3 qa/browser_matrix.py --target http://127.0.0.1:4321
+          python3 qa/visual_fidelity.py --target http://127.0.0.1:4321
+
+      - name: Protect Lowen POC as the noindex review root
+        run: |
+          cp site/dist/template-preview/pearl/index.html site/dist/index.html
+          grep -q 'Lowen Perio' site/dist/index.html
+          grep -q 'noindex, nofollow' site/dist/index.html
+
+      - name: Deploy isolated Lowen POC review
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site/dist --project-name=pearl-lowen-poc --branch=pearl-lowen-poc

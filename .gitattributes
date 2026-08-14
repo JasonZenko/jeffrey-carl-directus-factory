@@ -1,0 +1,4 @@
+# Keep verbatim source captures reproducible without treating upstream
+# whitespace or minified vendor files as locally authored code.
+poc/lowen-baseline-a/source-freeze/capture/** -diff linguist-generated=true
+poc/lowen-baseline-a/source-freeze/manifests/** -diff linguist-generated=true

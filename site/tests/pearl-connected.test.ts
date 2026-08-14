@@ -8,7 +8,8 @@ describe('connected Pearl adapter',()=>{
   it('fails closed when the dedicated server token is absent',async()=>{delete process.env.PEARL_DIRECTUS_TOKEN;await expect(getPearlPage()).rejects.toThrow('PEARL_DIRECTUS_TOKEN is required');});
   it('renders managed assets and official Directus annotations',async()=>{
     const{readFileSync}=await import('node:fs');const html=readFileSync('dist/template-preview/pearl/index.html','utf8');
-    expect(html).toContain('https://pearlcms.foundryworks.ai/assets/');
+    const directus=(process.env.PEARL_DIRECTUS_URL??'https://pearlcms.foundryworks.ai').replace(/\/$/,'');
+    expect(html).toContain(`${directus}/assets/`);
     expect(html).toContain('data-pearl-block="main_hero_standard"');
     expect(html).toContain('data-pearl-block="contact_info_standard"');
     expect(html).toContain('https://www.google.com/maps?q=');
