@@ -8,10 +8,7 @@ const COMPONENTS = [
   'MainHero','InnerHeroStandard','FlexContentSection','HighlightLinks','ImageGalleryGrid','TestimonialListStandard',
   'IconCircles','FlexContentImage','HighlightSnippetQuote','CtaSectionStandard','ContactInfoStandard','AreasServedStandard','FaqDropdown','CherryFinancing',
 ];
-const HOMEPAGE_SEQUENCE = [
-  'main_hero_standard','icon_feature_cards','feature_image_content','icon_feature_cards',
-  'highlight_snippet_quote','feature_image_content','contact_info_standard',
-];
+const OFFICIAL_BLOCKS = new Set(Object.keys(PEARL_FIELD_KEYS));
 
 describe('Pearl official block surface', () => {
   it('implements all 14 official blocks behind one renderer', () => {
@@ -28,7 +25,7 @@ describe('Pearl official block surface', () => {
     }
   });
 
-  it('builds the approved noindex Pearl homepage with official names',()=>{
+  it('builds a composable noindex Pearl homepage from approved blocks',()=>{
     const output=join(SITE_ROOT,'dist/template-preview/pearl/index.html');
     expect(existsSync(output),'run npm run build before tests').toBe(true);
     const html=readFileSync(output,'utf8');
@@ -41,7 +38,17 @@ describe('Pearl official block surface', () => {
     expect(html).toContain('aria-expanded="false"');
     expect(html).toContain('id="pearl-primary-navigation"');
     expect(html).toContain('class="pearl-site-footer"');
-    expect([...html.matchAll(/data-pearl-block="([^"]+)"/g)].map(match=>match[1])).toEqual(HOMEPAGE_SEQUENCE);
+    const sequence=[...html.matchAll(/data-pearl-block="([^"]+)"/g)].map(match=>match[1]);
+    expect(sequence.length).toBeGreaterThan(0);
+    expect(sequence[0]).toBe('main_hero_standard');
+    expect(sequence).toContain('contact_info_standard');
+    expect(sequence.every(type=>OFFICIAL_BLOCKS.has(type))).toBe(true);
+  });
+
+  it('generates CMS page routes instead of limiting previews to home',()=>{
+    const route=readFileSync(join(SITE_ROOT,'src/pages/template-preview/pearl/[slug].astro'),'utf8');
+    expect(route).toContain('getPublishedPearlPageRoutes');
+    expect(route).toContain('getPearlPage(slug)');
   });
 
   it('keeps image descriptions, social navigation and lowercase primary navigation',()=>{

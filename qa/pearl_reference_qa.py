@@ -16,6 +16,12 @@ VIEWPORTS = {
     "tablet": {"width": 820, "height": 1080},
     "mobile": {"width": 390, "height": 844},
 }
+OFFICIAL_BLOCKS = {
+    "inner_hero_standard", "flex_content_section", "highlight_links", "image_gallery_grid",
+    "testimonial_list_standard", "main_hero_standard", "icon_feature_cards",
+    "feature_image_content", "highlight_snippet_quote", "cta_section_standard",
+    "contact_info_standard", "areas_served_links", "faq_dropdown", "cherry_financing",
+}
 
 
 def main():
@@ -105,11 +111,13 @@ def main():
                 "no_page_errors": not page_errors,
                 "no_first_party_http_errors": not response_errors,
                 "noindex": "noindex" in evidence["robots"],
-                "approved_homepage_sequence": evidence["blocks"] == 7 and evidence["blockSequence"] == [
-                    "main_hero_standard", "icon_feature_cards", "feature_image_content", "icon_feature_cards",
-                    "highlight_snippet_quote", "feature_image_content", "contact_info_standard",
-                ],
-                "theme_connected": evidence["theme"] == "#855d56",
+                "approved_homepage_composition": bool(evidence["blockSequence"])
+                    and evidence["blockSequence"][0] == "main_hero_standard"
+                    and "contact_info_standard" in evidence["blockSequence"]
+                    and all(block in OFFICIAL_BLOCKS for block in evidence["blockSequence"]),
+                "theme_connected": bool(evidence["theme"])
+                    and evidence["theme"].lower().startswith("#")
+                    and len(evidence["theme"]) == 7,
                 "shared_chrome": evidence["header"] and evidence["footer"],
                 "responsive_navigation": all(navigation_evidence.values()),
                 "wcag_aa": not violations,

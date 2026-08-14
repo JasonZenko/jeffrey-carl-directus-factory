@@ -35,7 +35,7 @@ The manifest owns four things together: the Directus collection/field contract, 
 - Every renderer accepts the exact snake_case field names defined by its Directus collection. The locked field lists live in `site/src/components/pearl/types.ts` and are checked against this manifest in CI.
 - Component-specific structure and CSS are colocated inside each `.astro` file. `site/src/styles/pearl.css` now contains only the shared reset, typography, tokens and workshop shell.
 - Reusable primitives live in `site/src/components/pearl/ui/`; the template layout is isolated under `site/src/layouts/pearl/`; Directus collection bindings and design tokens live under `site/src/lib/pearl/`.
-- `/template-preview/pearl/` renders the complete component workshop with `noindex, nofollow` and no production form actions.
+- `/template-preview/pearl/` renders the homepage workshop. Every approved published CMS page is also generated at `/template-preview/pearl/<slug>/`, always with `noindex, nofollow` and no production form actions.
 
 Preview locally:
 
@@ -67,5 +67,12 @@ The accepted Jeffrey Carl build remains unchanged while this adapter is develope
 ## Theme editing
 
 In `https://pearlcms.foundryworks.ai/admin/`, open **Pearl Theme Library**. Change the global settings, keep the record published, then run the connected noindex review build. One setting updates every Pearl block and the shared header/footer. `qa/pearl_reference_qa.py` must pass at desktop, tablet and mobile before a theme change is approved.
+
+## Page and component previews
+
+- Open **Pages**, choose an approved published page, and use Directus Preview. The page slug is resolved to its own noindex Cloudflare route.
+- Page composition may contain any ordered combination of the fourteen published Pearl Block Library types. The homepage must retain a leading Main Hero Standard and a Contact Info Standard block.
+- A newly created component starts as **Draft**. Set that component to **Published** before promoting the page version; the connected build intentionally refuses to render an approved page that references a draft component.
+- Theme hex values are normalized case-insensitively. Valid six-digit colours proceed to responsive WCAG QA; an inaccessible combination still blocks release.
 
 Pearl-owned Directus assets are publicly readable through a title-prefix allowlist so static pages can render them. Everything else remains private; the clean CMS verifier proves both sides of that boundary.

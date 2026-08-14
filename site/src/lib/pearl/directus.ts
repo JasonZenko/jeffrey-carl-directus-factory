@@ -69,6 +69,10 @@ export interface PearlPage {
   themeVisual?: PearlVisualRef;
 }
 
+export interface PearlPageRoute {
+  slug: string;
+}
+
 async function pearlApi<T>(path: string, token: string, directusUrl: string): Promise<T> {
   const response = await fetch(`${directusUrl.replace(/\/$/, '')}${path}`, {
     headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' },
@@ -122,11 +126,11 @@ export async function getPearlPage(slug = 'home'): Promise<PearlPage> {
   if (!token) throw new Error('PEARL_DIRECTUS_TOKEN is required for connected Pearl builds');
   const directusUrl = process.env.PEARL_DIRECTUS_URL ?? 'https://pearlcms.foundryworks.ai';
   const [pages, themes] = await Promise.all([
-    pearlApi<DirectusList<any>>(`/items/pearl_pages?filter[slug][_eq]=${encodeURIComponent(slug)}&limit=1&fields=id,slug,title,meta_description,status,robots_index,robots_follow`, token, directusUrl),
+    pearlApi<DirectusList<any>>(`/items/pearl_pages?filter[slug][_eq]=${encodeURIComponent(slug)}&limit=1&fields=id,slug,title,meta_description,status,workflow_status,robots_index,robots_follow`, token, directusUrl),
     pearlApi<DirectusItem<any>>('/items/pearl_theme_settings?fields=*', token, directusUrl),
   ]);
   const page = pages.data[0];
-  if (!page || page.status !== 'published') throw new Error(`Published Pearl page not found: ${slug}`);
+  if (!page || page.status !== 'published' || page.workflow_status !== 'approved') throw new Error(`Approved published Pearl page not found: ${slug}`);
   if (page.robots_index !== false || page.robots_follow !== false) throw new Error(`Pearl review page must remain noindex/nofollow: ${slug}`);
   const theme = themes.data;
   if (!theme || theme.status !== 'published') throw new Error('Published Pearl theme settings not found');
@@ -163,4 +167,16 @@ export async function getPearlPage(slug = 'home'): Promise<PearlPage> {
     pageVisual: {collection: 'pearl_pages', item: page.id, fields: ['title', 'meta_description'], mode: 'drawer'},
     themeVisual: {collection: 'pearl_theme_settings', item: themeId, mode: 'drawer'},
   };
+}
+
+export async function getPublishedPearlPageRoutes(): Promise<PearlPageRoute[]> {
+  const token = process.env.PEARL_DIRECTUS_TOKEN;
+  if (!token) throw new Error('PEARL_DIRECTUS_TOKEN is required for connected Pearl builds');
+  const directusUrl = process.env.PEARL_DIRECTUS_URL ?? 'https://pearlcms.foundryworks.ai';
+  const pages = await pearlApi<DirectusList<PearlPageRoute>>(
+    '/items/pearl_pages?filter[status][_eq]=published&filter[workflow_status][_eq]=approved&filter[robots_index][_eq]=false&filter[robots_follow][_eq]=false&limit=-1&sort=slug&fields=slug',
+    token,
+    directusUrl,
+  );
+  return pages.data.filter((page) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(page.slug));
 }

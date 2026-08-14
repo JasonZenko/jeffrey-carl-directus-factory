@@ -76,7 +76,7 @@ const RADIUS = { square: '0px', soft: '8px', pill: '999px' } as const;
 const HEX = /^#[0-9a-f]{6}$/i;
 
 export function pearlThemeStyle(theme: PearlTheme): string {
-  const safeColor = (value: string, fallback: string) => HEX.test(value) ? value : fallback;
+  const safeColor = (value: string, fallback: string) => (HEX.test(value) ? value : fallback).toLowerCase();
   const scale = HEADING_SCALE[theme.heading_scale];
   const values: Record<string, string> = {
     'font-heading': FONT_STACK[theme.heading_font],
