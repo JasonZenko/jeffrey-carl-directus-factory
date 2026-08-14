@@ -10,6 +10,7 @@ describe('connected Pearl adapter',()=>{
     const{readFileSync}=await import('node:fs');const html=readFileSync('dist/template-preview/pearl/index.html','utf8');
     const directus=(process.env.PEARL_DIRECTUS_URL??'https://pearlcms.foundryworks.ai').replace(/\/$/,'');
     expect(html).toContain(`${directus}/assets/`);
+    expect(html).toContain(`data-directus-url="${directus}"`);
     expect(html).toContain('data-pearl-block="main_hero_standard"');
     expect(html).toContain('data-pearl-block="contact_info_standard"');
     expect(html).toContain('https://www.google.com/maps?q=');
