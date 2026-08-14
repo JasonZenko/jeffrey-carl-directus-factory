@@ -1,0 +1,58 @@
+{
+  "ok": true,
+  "cms": "https://pearl-poc-cms.foundryworks.ai",
+  "page": "services-family-dentistry-root-canals",
+  "marker": "CAROLINA INNER-PAGE RELEASE PROOF",
+  "applied_at": "2026-08-14T14:55:40.438Z",
+  "before": [
+    {
+      "id": "aaa409ed-f62e-46b7-906c-3f0052234088",
+      "sort": 1,
+      "collection": "pearl_inner_hero_standard",
+      "item": "9afce4db-12df-4475-93d4-8238cbdf3fa1"
+    },
+    {
+      "id": "58bd30dc-cd5e-4415-8519-67b87ca0f929",
+      "sort": 2,
+      "collection": "pearl_flex_content_section",
+      "item": "5cbb993d-8816-4146-8ed8-53febd17b89b"
+    },
+    {
+      "id": "2bfad3f3-f806-4b5a-aab7-919da16939b1",
+      "sort": 3,
+      "collection": "pearl_flex_content_section",
+      "item": "a97e4fc6-84e0-44b9-8e19-2895169a731f"
+    }
+  ],
+  "applied": {
+    "builder_id": "2cca1665-91c5-4b91-a484-b6bc216c646f",
+    "block_id": "36819723-f874-4687-99c1-a050f8484f3b"
+  },
+  "after_apply": [
+    {
+      "id": "aaa409ed-f62e-46b7-906c-3f0052234088",
+      "sort": 1,
+      "collection": "pearl_inner_hero_standard",
+      "item": "9afce4db-12df-4475-93d4-8238cbdf3fa1"
+    },
+    {
+      "id": "58bd30dc-cd5e-4415-8519-67b87ca0f929",
+      "sort": 2,
+      "collection": "pearl_flex_content_section",
+      "item": "5cbb993d-8816-4146-8ed8-53febd17b89b"
+    },
+    {
+      "id": "2bfad3f3-f806-4b5a-aab7-919da16939b1",
+      "sort": 3,
+      "collection": "pearl_flex_content_section",
+      "item": "a97e4fc6-84e0-44b9-8e19-2895169a731f"
+    },
+    {
+      "id": "2cca1665-91c5-4b91-a484-b6bc216c646f",
+      "sort": 4,
+      "collection": "pearl_highlight_snippet_quote",
+      "item": "36819723-f874-4687-99c1-a050f8484f3b"
+    }
+  ],
+  "homepage_untouched": true
+}

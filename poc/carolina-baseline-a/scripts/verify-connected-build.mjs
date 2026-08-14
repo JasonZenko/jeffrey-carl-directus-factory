@@ -12,6 +12,7 @@ const token = process.env.PEARL_DIRECTUS_TOKEN;
 if (!token) throw new Error('PEARL_DIRECTUS_TOKEN is required');
 
 const normalized = JSON.parse(await readFile(resolve(ROOT, 'migration/normalized-pages.json'), 'utf8'));
+const baselineBuilderRows = 87;
 const expectedHome = [
   'pearl_main_hero_standard', 'pearl_icon_feature_cards', 'pearl_feature_image_content',
   'pearl_icon_feature_cards', 'pearl_highlight_snippet_quote', 'pearl_feature_image_content',
@@ -31,7 +32,7 @@ const allowed = new Set(library.map(item => item.collection_name));
 const pages = await api('/items/pearl_pages?filter[status][_eq]=published&filter[workflow_status][_eq]=approved&limit=-1&sort=slug&fields=id,slug,robots_index,robots_follow');
 if (pages.length !== 26) throw new Error(`Expected 26 approved pages, received ${pages.length}`);
 const rows = await api('/items/pearl_page_builder?limit=-1&sort=page,sort&fields=id,page,sort,collection,item');
-if (rows.length !== 87) throw new Error(`Expected 87 Builder rows, received ${rows.length}`);
+if (rows.length < baselineBuilderRows) throw new Error(`Baseline Builder rows were removed: expected at least ${baselineBuilderRows}, received ${rows.length}`);
 
 for (const page of pages) {
   if (page.robots_index !== false || page.robots_follow !== false) throw new Error(`Page is indexable: ${page.slug}`);
@@ -79,6 +80,8 @@ const receipt = {
   official_blocks: library.length,
   approved_pages: pages.length,
   builder_rows: rows.length,
+  baseline_builder_rows: baselineBuilderRows,
+  inner_page_growth_allowed: true,
   homepage_frozen: true,
   rendered_routes: normalized.length,
   source_headings_present: normalized.length,

@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "checked_at": "2026-08-14T14:58:51.719482+00:00",
+  "cms": "https://pearl-poc-cms.foundryworks.ai",
+  "review": "https://pearl-carolina-poc.pages.dev",
+  "versioning": {
+    "page": "services-family-dentistry-root-canals",
+    "created": true,
+    "deleted": true,
+    "main_unchanged": true
+  },
+  "visual_editor": {
+    "authenticated": true,
+    "visual_editor_url": "https://pearl-poc-cms.foundryworks.ai/admin/visual",
+    "iframe_url": "https://pearl-carolina-poc.pages.dev/?visual-editing=true",
+    "annotations": 9,
+    "homepage_blocks": 7,
+    "edit_controls": 9,
+    "record_drawer_opened": true,
+    "blocking_console_errors": [],
+    "ignored_auth_refresh_errors": [
+      {
+        "status": 400,
+        "url": "https://pearl-poc-cms.foundryworks.ai/auth/refresh"
+      }
+    ],
+    "screenshot": "/tmp/pearl-carolina-poc-visual-editor.png"
+  }
+}

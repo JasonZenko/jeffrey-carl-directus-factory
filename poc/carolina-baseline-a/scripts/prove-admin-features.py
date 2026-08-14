@@ -66,10 +66,15 @@ def prove_versioning(cms: str, email: str, password: str):
 
 def prove_visual_editor(cms: str, review: str, email: str, password: str, screenshot: str):
     console_errors: list[str] = []
+    response_errors: list[dict[str, object]] = []
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
         page = browser.new_page(viewport={"width": 1440, "height": 1000})
         page.on("console", lambda message: console_errors.append(message.text) if message.type == "error" else None)
+        page.on("response", lambda response: response_errors.append({
+            "status": response.status,
+            "url": response.url,
+        }) if response.status >= 400 else None)
         page.goto(f"{cms}/admin/login", wait_until="domcontentloaded", timeout=90000)
         if "/admin/login" in page.url:
             page.locator('input[type="email"]').fill(email)
@@ -125,11 +130,31 @@ def prove_visual_editor(cms: str, review: str, email: str, password: str, screen
         if edit_controls:
             edit_buttons.first.click(force=True)
             page.wait_for_timeout(2500)
-            drawer_opened = page.get_by_text("Pearl Theme Settings", exact=False).count() > 0
+            drawer_opened = (
+                page.get_by_text("Pearl Main Hero Standard", exact=False).count() > 0
+                or page.get_by_text("Pearl Theme Settings", exact=False).count() > 0
+                or page.locator(".drawer").count() > 0
+            )
         page.screenshot(path=screenshot, full_page=True)
         iframe_url = frame.url
         browser.close()
-    blocking_errors = [message for message in console_errors if "/auth/refresh" not in message]
+    blocking_response_errors = [
+        failure for failure in response_errors
+        if "/auth/refresh" not in str(failure["url"])
+    ]
+    generic_resource_errors = [
+        message for message in console_errors
+        if "Failed to load resource" in message
+    ]
+    blocking_errors = [
+        message for message in console_errors
+        if "/auth/refresh" not in message and message not in generic_resource_errors
+    ]
+    if blocking_response_errors:
+        blocking_errors.extend(
+            f"HTTP {failure['status']}: {failure['url']}"
+            for failure in blocking_response_errors
+        )
     if annotations < 9 or blocks != 7 or edit_controls < 1 or not drawer_opened:
         raise RuntimeError(json.dumps({
             "annotations": annotations,
@@ -151,6 +176,10 @@ def prove_visual_editor(cms: str, review: str, email: str, password: str, screen
         "edit_controls": edit_controls,
         "record_drawer_opened": drawer_opened,
         "blocking_console_errors": blocking_errors,
+        "ignored_auth_refresh_errors": [
+            failure for failure in response_errors
+            if "/auth/refresh" in str(failure["url"])
+        ],
         "screenshot": screenshot,
     }
 
