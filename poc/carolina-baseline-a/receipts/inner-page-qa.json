@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-14T14:23:33.625776+00:00",
-  "target": "http://127.0.0.1:4422/template-preview/pearl",
+  "generated_at": "2026-08-14T14:31:51.113563+00:00",
+  "target": "https://pearl-carolina-poc.pages.dev/template-preview/pearl",
   "checks": 4,
   "passed": 4,
   "failed": 0,

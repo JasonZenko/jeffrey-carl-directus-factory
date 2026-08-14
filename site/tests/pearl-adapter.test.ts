@@ -1,6 +1,9 @@
+import {readFileSync} from 'node:fs';
+import {join} from 'node:path';
 import {describe,expect,it} from 'vitest';
 import {PEARL_FIELD_KEYS} from '../src/components/pearl/types';
 import {PEARL_COLLECTION_BY_BLOCK} from '../src/lib/pearl/directus';
+import {SITE_ROOT} from './helpers';
 
 const REQUIRED_COMMON=['inner_hero_standard','flex_content_section','highlight_links','image_gallery_grid','testimonial_list_standard'];
 const REQUIRED_HOMEPAGE=['main_hero_standard','icon_feature_cards','feature_image_content','highlight_snippet_quote'];
@@ -16,5 +19,11 @@ describe('Pearl 1.0 official adapter contract',()=>{
     expect(PEARL_FIELD_KEYS.highlight_links).toContain('links');
     expect(PEARL_FIELD_KEYS.image_gallery_grid).toContain('images');
     expect(PEARL_FIELD_KEYS.testimonial_list_standard).toContain('reviews');
+  });
+  it('binds Visual Editor to the active CMS build rather than the golden instance',()=>{
+    const source=readFileSync(join(SITE_ROOT,'src/components/pearl/VisualEditing.astro'),'utf8');
+    expect(source).toContain('import.meta.env.PEARL_DIRECTUS_URL');
+    expect(source).toContain('data-directus-url={directusUrl}');
+    expect(source).not.toMatch(/apply\(\{\s*directusUrl:\s*['"]https:\/\//);
   });
 });

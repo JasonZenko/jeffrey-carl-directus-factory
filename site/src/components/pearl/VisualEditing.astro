@@ -1,10 +1,18 @@
+---
+const directusUrl = import.meta.env.PEARL_DIRECTUS_URL || import.meta.env.DIRECTUS_URL || 'https://pearlcms.foundryworks.ai';
+---
+
+<span id="pearl-visual-editing-config" data-directus-url={directusUrl} hidden></span>
+
 <script>
   import { apply } from '@directus/visual-editing';
 
   const params = new URLSearchParams(window.location.search);
   if (params.get('visual-editing') === 'true') sessionStorage.setItem('pearl-visual-editing', 'true');
   if (sessionStorage.getItem('pearl-visual-editing') === 'true') {
-    apply({ directusUrl: 'https://pearlcms.foundryworks.ai' }).catch((error) => {
+    const directusUrl = document.querySelector<HTMLElement>('#pearl-visual-editing-config')?.dataset.directusUrl;
+    if (!directusUrl) throw new Error('Pearl Visual Editor Directus URL is missing');
+    apply({directusUrl}).catch((error) => {
       console.error('Pearl Visual Editor failed to initialise', error);
     });
   }
