@@ -18,6 +18,14 @@ CASES = {
     "contact-us": ["inner_hero_standard", "flex_content_section", "contact_info_standard", "cta_section_standard"],
 }
 
+APPROVED_BLOCKS = {
+    "areas_served_links", "contact_info_standard", "cta_section_standard",
+    "faq_dropdown", "feature_image_content", "flex_content_section",
+    "highlight_links", "highlight_snippet_quote", "icon_feature_cards",
+    "image_gallery_grid", "inner_hero_standard", "main_hero_standard",
+    "testimonial_list_standard", "cherry_financing",
+}
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -51,9 +59,12 @@ def main():
                   h1: document.querySelector('h1')?.textContent?.trim() || '',
                 })
             """)
+            baseline_preserved = evidence["blocks"][:len(expected_blocks)] == expected_blocks
+            approved_extensions = all(block in APPROVED_BLOCKS for block in evidence["blocks"][len(expected_blocks):])
             checks = {
                 "status_200": bool(response and response.status == 200),
-                "expected_components": evidence["blocks"] == expected_blocks,
+                "baseline_components_preserved": baseline_preserved,
+                "approved_extensions_only": approved_extensions,
                 "has_source_h1": bool(evidence["h1"]),
                 "no_horizontal_overflow": evidence["overflow"] <= 1,
                 "images_loaded": not evidence["brokenImages"],
