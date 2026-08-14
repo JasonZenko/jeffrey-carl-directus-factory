@@ -1,0 +1,3 @@
+# Frozen third-party responses are evidence, not hand-authored source. Preserve
+# their captured bytes while suppressing enormous generated-site text diffs.
+capture/** -diff

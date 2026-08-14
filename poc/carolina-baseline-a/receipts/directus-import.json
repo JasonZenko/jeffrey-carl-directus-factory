@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "baseline": "A",
+  "target": "http://127.0.0.1:8059",
+  "source_pages": 26,
+  "imported_pages": 26,
+  "uploaded_assets": 27,
+  "homepage_blocks": [
+    "pearl_main_hero_standard",
+    "pearl_icon_feature_cards",
+    "pearl_feature_image_content",
+    "pearl_icon_feature_cards",
+    "pearl_highlight_snippet_quote",
+    "pearl_feature_image_content",
+    "pearl_contact_info_standard"
+  ],
+  "homepage_frozen": true,
+  "inner_pages": 25,
+  "exceptions": 20,
+  "started_at": "2026-08-14T14:17:44.122Z",
+  "completed_at": "2026-08-14T14:17:55.648Z"
+}

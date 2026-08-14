@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "database_backup": "/opt/pearl-poc-cms/backups/pearl-poc-20260814T142229Z.dump",
+  "database_bytes": 286328,
+  "uploads_backup": "/opt/pearl-poc-cms/backups/uploads-20260814T142229Z.tar.gz",
+  "uploads_bytes": 1330921,
+  "restore_target": "pearlpoc_restore_test",
+  "restored_custom_collections": 37,
+  "restored_pages": 26,
+  "restored_builder_rows": 87,
+  "temporary_restore_database_dropped": true,
+  "uploads_archive_integrity": true,
+  "nightly_timer_active": true
+}

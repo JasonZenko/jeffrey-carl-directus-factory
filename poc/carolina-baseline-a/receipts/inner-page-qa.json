@@ -1,0 +1,115 @@
+{
+  "generated_at": "2026-08-14T14:23:33.625776+00:00",
+  "target": "http://127.0.0.1:4422/template-preview/pearl",
+  "checks": 4,
+  "passed": 4,
+  "failed": 0,
+  "results": [
+    {
+      "slug": "about-our-office",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "expected_components": true,
+        "has_source_h1": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true
+      },
+      "blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "image_gallery_grid"
+      ],
+      "h1": "Our Comfortable Fayetteville Dental Office",
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": []
+    },
+    {
+      "slug": "services",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "expected_components": true,
+        "has_source_h1": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true
+      },
+      "blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "highlight_links"
+      ],
+      "h1": "Family Dentistry",
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": []
+    },
+    {
+      "slug": "services-family-dentistry-root-canals",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "expected_components": true,
+        "has_source_h1": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true
+      },
+      "blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1": "Painless Root Canals in Fayetteville, NC",
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": []
+    },
+    {
+      "slug": "contact-us",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "expected_components": true,
+        "has_source_h1": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true
+      },
+      "blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "contact_info_standard",
+        "cta_section_standard"
+      ],
+      "h1": "Contact Us Today!",
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": []
+    }
+  ]
+}

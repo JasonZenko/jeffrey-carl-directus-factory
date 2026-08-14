@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "baseline": "A",
+  "cms": "https://pearl-poc-cms.foundryworks.ai",
+  "official_blocks": 14,
+  "approved_pages": 26,
+  "builder_rows": 87,
+  "homepage_frozen": true,
+  "rendered_routes": 26,
+  "source_headings_present": 26,
+  "build_reader_isolated": true,
+  "noindex": true
+}

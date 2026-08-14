@@ -1,0 +1,17 @@
+[
+  {
+    "url": "https://www.carolinacomfortdental.com/wp-content/plugins/dcf-2-0/core/admin/images/loader.gif",
+    "reason": "excluded-html-response",
+    "status": 404,
+    "referencedBy": [
+      {
+        "source": "https://cdn-bjnjg.nitrocdn.com/cjTLkTFkJDyELxeAMAgQHECTdAHByStK/assets/static/optimized/rev-154858e/www.carolinacomfortdental.com/combinedCss/nitro-min-noimport-90819f7091a861ae3e4ecbc415a037e5-stylesheet.css",
+        "kind": "css-url"
+      },
+      {
+        "source": "https://cdn-bjnjg.nitrocdn.com/cjTLkTFkJDyELxeAMAgQHECTdAHByStK/assets/static/optimized/rev-154858e/www.carolinacomfortdental.com/combinedCss/nitro-min-noimport-90819f7091a861ae3e4ecbc415a037e5-stylesheet.css",
+        "kind": "css-url"
+      }
+    ]
+  }
+]

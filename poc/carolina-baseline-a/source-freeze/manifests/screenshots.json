@@ -1,0 +1,242 @@
+[
+  {
+    "family": "home",
+    "url": "https://www.carolinacomfortdental.com/",
+    "viewport": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000
+    },
+    "status": 200,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "scrollHeight": 10347,
+    "h1Count": 1,
+    "title": "Dentist Fayetteville NC | Carolina Comfort Dental | 910-485-0023",
+    "horizontalOverflow": false,
+    "errors": [
+      "console: Failed to load resource: the server responded with a status of 403 ()"
+    ],
+    "localPath": "capture/screenshots/home-desktop-1440x1000.png"
+  },
+  {
+    "family": "home",
+    "url": "https://www.carolinacomfortdental.com/",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "status": 200,
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "scrollHeight": 15177,
+    "h1Count": 1,
+    "title": "Dentist Fayetteville NC | Carolina Comfort Dental | 910-485-0023",
+    "horizontalOverflow": false,
+    "errors": [
+      "console: Failed to load resource: the server responded with a status of 403 ()"
+    ],
+    "localPath": "capture/screenshots/home-tablet-768x1024.png"
+  },
+  {
+    "family": "home",
+    "url": "https://www.carolinacomfortdental.com/",
+    "viewport": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "status": 200,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 15401,
+    "h1Count": 1,
+    "title": "Dentist Fayetteville NC | Carolina Comfort Dental | 910-485-0023",
+    "horizontalOverflow": false,
+    "errors": [
+      "console: Failed to load resource: the server responded with a status of 403 ()"
+    ],
+    "localPath": "capture/screenshots/home-mobile-390x844.png"
+  },
+  {
+    "family": "about-team",
+    "url": "https://www.carolinacomfortdental.com/about/",
+    "viewport": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000
+    },
+    "status": 200,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "scrollHeight": 5175,
+    "h1Count": 1,
+    "title": "Our Dental Office | Fayetteville Dentist Dr. Tan Binh Nguyen |",
+    "horizontalOverflow": false,
+    "errors": [
+      "console: Failed to load resource: the server responded with a status of 403 ()"
+    ],
+    "localPath": "capture/screenshots/about-team-desktop-1440x1000.png"
+  },
+  {
+    "family": "about-team",
+    "url": "https://www.carolinacomfortdental.com/about/",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "status": 200,
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "scrollHeight": 11876,
+    "h1Count": 1,
+    "title": "Our Dental Office | Fayetteville Dentist Dr. Tan Binh Nguyen |",
+    "horizontalOverflow": false,
+    "errors": [
+      "console: Failed to load resource: the server responded with a status of 403 ()"
+    ],
+    "localPath": "capture/screenshots/about-team-tablet-768x1024.png"
+  },
+  {
+    "family": "about-team",
+    "url": "https://www.carolinacomfortdental.com/about/",
+    "viewport": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "status": 200,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 9808,
+    "h1Count": 1,
+    "title": "Our Dental Office | Fayetteville Dentist Dr. Tan Binh Nguyen |",
+    "horizontalOverflow": false,
+    "errors": [
+      "console: Failed to load resource: the server responded with a status of 403 ()"
+    ],
+    "localPath": "capture/screenshots/about-team-mobile-390x844.png"
+  },
+  {
+    "family": "service-detail",
+    "url": "https://www.carolinacomfortdental.com/hipaa-notice-of-privacy-practices/",
+    "viewport": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000
+    },
+    "status": 200,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "scrollHeight": 2470,
+    "h1Count": 1,
+    "title": "HIPAA Notice of Privacy Practices - Carolina Comfort Dental",
+    "horizontalOverflow": false,
+    "errors": [
+      "console: Failed to load resource: the server responded with a status of 403 ()"
+    ],
+    "localPath": "capture/screenshots/service-detail-desktop-1440x1000.png"
+  },
+  {
+    "family": "service-detail",
+    "url": "https://www.carolinacomfortdental.com/hipaa-notice-of-privacy-practices/",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "status": 200,
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "scrollHeight": 3291,
+    "h1Count": 1,
+    "title": "HIPAA Notice of Privacy Practices - Carolina Comfort Dental",
+    "horizontalOverflow": false,
+    "errors": [
+      "console: Failed to load resource: the server responded with a status of 403 ()"
+    ],
+    "localPath": "capture/screenshots/service-detail-tablet-768x1024.png"
+  },
+  {
+    "family": "service-detail",
+    "url": "https://www.carolinacomfortdental.com/hipaa-notice-of-privacy-practices/",
+    "viewport": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "status": 200,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 5429,
+    "h1Count": 1,
+    "title": "HIPAA Notice of Privacy Practices - Carolina Comfort Dental",
+    "horizontalOverflow": false,
+    "errors": [
+      "console: Failed to load resource: the server responded with a status of 403 ()"
+    ],
+    "localPath": "capture/screenshots/service-detail-mobile-390x844.png"
+  },
+  {
+    "family": "conversion",
+    "url": "https://www.carolinacomfortdental.com/contact-us/",
+    "viewport": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000
+    },
+    "status": 200,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "scrollHeight": 4480,
+    "h1Count": 1,
+    "title": "Contact Us | Carolina Comfort Dental | Dr. Nguyen | 910-485-0023",
+    "horizontalOverflow": false,
+    "errors": [
+      "console: Failed to load resource: the server responded with a status of 403 ()"
+    ],
+    "localPath": "capture/screenshots/conversion-desktop-1440x1000.png"
+  },
+  {
+    "family": "conversion",
+    "url": "https://www.carolinacomfortdental.com/contact-us/",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "status": 200,
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "scrollHeight": 5717,
+    "h1Count": 1,
+    "title": "Contact Us | Carolina Comfort Dental | Dr. Nguyen | 910-485-0023",
+    "horizontalOverflow": false,
+    "errors": [
+      "console: Failed to load resource: the server responded with a status of 403 ()"
+    ],
+    "localPath": "capture/screenshots/conversion-tablet-768x1024.png"
+  },
+  {
+    "family": "conversion",
+    "url": "https://www.carolinacomfortdental.com/contact-us/",
+    "viewport": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "status": 200,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 6053,
+    "h1Count": 1,
+    "title": "Contact Us | Carolina Comfort Dental | Dr. Nguyen | 910-485-0023",
+    "horizontalOverflow": false,
+    "errors": [
+      "console: Failed to load resource: the server responded with a status of 403 ()"
+    ],
+    "localPath": "capture/screenshots/conversion-mobile-390x844.png"
+  }
+]

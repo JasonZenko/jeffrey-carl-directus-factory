@@ -1,0 +1,29 @@
+{
+  "source": "https://www.carolinacomfortdental.com/",
+  "startedAt": "2026-08-14T14:05:54.488733+00:00",
+  "completedAt": "2026-08-14T14:06:19.719631+00:00",
+  "sitemapUrls": 26,
+  "pagesCaptured": 26,
+  "http200Pages": 26,
+  "non200Pages": 0,
+  "pageFailures": 0,
+  "assetRecords": 184,
+  "assetFailures": 1,
+  "assetBytes": 46824825,
+  "videoEmbedOccurrences": 0,
+  "uniqueVideoEmbedUrls": 0,
+  "hostedVideoFilesDownloaded": 0,
+  "thirdPartyOccurrences": 385,
+  "uniqueThirdPartyUrls": 45,
+  "templateFamilies": {
+    "home": 1,
+    "about-team": 3,
+    "conversion": 2,
+    "service-detail": 20
+  },
+  "missingTitles": 0,
+  "missingDescriptions": 1,
+  "missingCanonicals": 0,
+  "zeroH1Pages": 0,
+  "multiH1Pages": 0
+}

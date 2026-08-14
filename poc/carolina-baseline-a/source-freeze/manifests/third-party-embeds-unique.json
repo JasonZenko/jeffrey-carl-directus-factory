@@ -1,0 +1,182 @@
+[
+  {
+    "type": "external",
+    "url": "http://office1-map-url/"
+  },
+  {
+    "type": "external",
+    "url": "http://www.accessfirefox.org/"
+  },
+  {
+    "type": "external",
+    "url": "http://www.ada.org/en"
+  },
+  {
+    "type": "external",
+    "url": "http://www.adobe.com/accessibility/products/reader.html"
+  },
+  {
+    "type": "external",
+    "url": "http://www.freedomscientific.com/Products/Blindness/JAWS"
+  },
+  {
+    "type": "external",
+    "url": "http://www.friendlydentalvan.com/"
+  },
+  {
+    "type": "external",
+    "url": "http://www.hcsga.com/"
+  },
+  {
+    "type": "external",
+    "url": "http://www.opera.com/help/tutorials/security/cookies/"
+  },
+  {
+    "type": "external",
+    "url": "https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html"
+  },
+  {
+    "type": "external",
+    "url": "https://clearcorrect.com/"
+  },
+  {
+    "type": "external",
+    "url": "https://fonts.googleapis.com/"
+  },
+  {
+    "type": "external",
+    "url": "https://gmpg.org/xfn/11"
+  },
+  {
+    "type": "external",
+    "url": "https://link.carolinacomfortdental.com/widget/form/1LWDExAKyFPZy2wduNUQ"
+  },
+  {
+    "type": "external",
+    "url": "https://link.carolinacomfortdental.com/widget/form/cZxPZ4aOwEFKp6bmvWzC"
+  },
+  {
+    "type": "external",
+    "url": "https://maps.googleapis.com/"
+  },
+  {
+    "type": "external",
+    "url": "https://pay.withcherry.com/carolina-comfort-dental"
+  },
+  {
+    "type": "external",
+    "url": "https://privacy.microsoft.com/en-us/windows-10-microsoft-edge-and-privacy"
+  },
+  {
+    "type": "external",
+    "url": "https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac"
+  },
+  {
+    "type": "google",
+    "url": "https://support.google.com/chrome/answer/95647?hl=en"
+  },
+  {
+    "type": "external",
+    "url": "https://support.microsoft.com/en-gb/help/17442/windows-internet-explorer-delete-manage-cookies"
+  },
+  {
+    "type": "external",
+    "url": "https://support.mozilla.org/en-US/kb/enable-and-disable-cookies-website-preferences"
+  },
+  {
+    "type": "google",
+    "url": "https://translate.google.com/"
+  },
+  {
+    "type": "external",
+    "url": "https://www.6monthsmiles.com/home"
+  },
+  {
+    "type": "external",
+    "url": "https://www.ada.org/en"
+  },
+  {
+    "type": "external",
+    "url": "https://www.apple.com/accessibility/mac/vision/"
+  },
+  {
+    "type": "external",
+    "url": "https://www.carecredit.com/"
+  },
+  {
+    "type": "external",
+    "url": "https://www.cereconline.com/"
+  },
+  {
+    "type": "external",
+    "url": "https://www.deltadental.com/us/en/protect-my-smile/dental-benefits/dental-insurance/ppo-dental-insurance-plan-benefits.html"
+  },
+  {
+    "type": "facebook",
+    "url": "https://www.facebook.com/CarolinaComfortDental/"
+  },
+  {
+    "type": "google",
+    "url": "https://www.google.com/accessibility/products-features.html"
+  },
+  {
+    "type": "google",
+    "url": "https://www.google.com/maps/place/Carolina+Comfort+Dental/@35.043782,-78.9752973,15z/data=!4m5!3m4!1s0x0:0xed1a954af1fb8cbf!8m2!3d35.043782!4d-78.9752973"
+  },
+  {
+    "type": "google",
+    "url": "https://www.google.com/policies/privacy/"
+  },
+  {
+    "type": "google",
+    "url": "https://www.google.com/search?amp%3Bludocid=17085132285503311039&q=Carolina+Comfort+Dental"
+  },
+  {
+    "type": "google",
+    "url": "https://www.google.com/search?ludocid=17085132285503311039&q=Carolina+Comfort+Dental"
+  },
+  {
+    "type": "analytics",
+    "url": "https://www.googletagmanager.com/ns.html?id=GTM-T2F3V5R"
+  },
+  {
+    "type": "external",
+    "url": "https://www.kavo.com/en-us/handpieces-small-equipment/diagnodent-pen-hygiene"
+  },
+  {
+    "type": "external",
+    "url": "https://www.marketlydigital.com/"
+  },
+  {
+    "type": "external",
+    "url": "https://www.metlife.com/insurance/dental-insurance/"
+  },
+  {
+    "type": "external",
+    "url": "https://www.microsoft.com/en-us/accessibility"
+  },
+  {
+    "type": "external",
+    "url": "https://www.ncdental.org/"
+  },
+  {
+    "type": "external",
+    "url": "https://www.nvaccess.org/"
+  },
+  {
+    "type": "external",
+    "url": "https://www.tricare.mil/Plans/DentalPlans"
+  },
+  {
+    "type": "external",
+    "url": "https://www.unitedconcordia.com/dental-insurance/"
+  },
+  {
+    "type": "external",
+    "url": "https://www.usa.philips.com/c-m-pe/teeth-whitening/learn-about-teeth-whitening"
+  },
+  {
+    "type": "external",
+    "url": "https://www.w3.org/TR/WCAG20/"
+  }
+]

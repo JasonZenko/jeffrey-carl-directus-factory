@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "health": "ok",
+  "project_name": "Pearl Migration POC - Carolina Comfort",
+  "collections": 37,
+  "fields": 281,
+  "relations": 25,
+  "official_blocks": 14,
+  "homepage_blocks": 7,
+  "homepage_frozen": true,
+  "versioned_collections": 28,
+  "visual_editor": true,
+  "required_admins": 3,
+  "build_reader": true,
+  "public_assets": true,
+  "editor_assets": true,
+  "no_weo": true,
+  "noindex": true
+}

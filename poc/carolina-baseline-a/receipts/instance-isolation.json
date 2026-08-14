@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "instance": "Pearl Migration POC - Carolina Comfort",
+  "cms": "https://pearl-poc-cms.foundryworks.ai",
+  "review": "https://pearl-carolina-poc.pages.dev",
+  "server_path": "/opt/pearl-poc-cms",
+  "compose_project": "pearl-poc-cms",
+  "loopback_port": 8059,
+  "tunnel_id": "a7c2a94c-1d46-4015-b1f3-4509e7f6333a",
+  "fresh_database_volume": true,
+  "fresh_redis_volume": true,
+  "fresh_uploads": true,
+  "unique_build_identity": true,
+  "unique_admin_credentials": true,
+  "golden_database_copied": false,
+  "release_enabled_during_import": false,
+  "golden_cms_mutated": false
+}
