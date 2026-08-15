@@ -21,13 +21,64 @@
 
 .pearl-wrap { width: min(calc(100% - 40px), var(--pearl-wrap)); margin-inline: auto; }
 .pearl-section { padding: clamp(24px, 4vw, 48px) 0; }
-.pearl-prose { max-width: 68ch; }
 .pearl-prose > :first-child { margin-top: 0; }
 .pearl-prose > :last-child { margin-bottom: 0; }
 
 .pearl-workshop-bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 10px max(20px, calc((100vw - var(--pearl-wrap)) / 2)); background: var(--pearl-ink); color: #fff; font-size: 13px; }
 .pearl-workshop-bar strong { font-weight: 700; }
 .pearl-workshop-bar span { color: #d7ded4; }
+
+
+/* ===== RICH TEXT LINKS — fallback (bare <a>, no class) ===== */
+.pearl-prose a {
+  color: var(--pearl-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pearl-prose a:hover {
+  color: color-mix(in srgb, var(--pearl-primary) 70%, #000);
+}
+
+/* ===== RICH TEXT LINKS — explicit migration classes ===== */
+.pearl-prose .paragraph-link {
+  color: var(--pearl-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pearl-prose .paragraph-link:hover {
+  color: color-mix(in srgb, var(--pearl-primary) 70%, #000);
+}
+
+.pearl-prose .paragraph-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 12px;
+  padding: 11px 20px;
+  border: 0;
+  border-radius: var(--pearl-button-radius);
+  background: var(--pearl-primary);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 180ms ease-out;
+}
+
+.pearl-prose .paragraph-button:hover {
+  background: color-mix(in srgb, var(--pearl-primary) 70%, #000);
+}
+
+/* ===== RICH TEXT HEADINGS — links inside h-tags ===== */
+.pearl-prose h1 a,
+.pearl-prose h2 a,
+.pearl-prose h3 a,
+.pearl-prose .paragraph-heading {
+  color: inherit;
+  text-decoration: none;
+}
 
 @media (max-width: 800px) {
   .pearl-workshop-bar { align-items: flex-start; flex-direction: column; gap: 3px; }

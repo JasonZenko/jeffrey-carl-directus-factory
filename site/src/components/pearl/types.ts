@@ -6,7 +6,7 @@ export interface PearlVisualRef {
 }
 
 export interface PearlInnerHeroStandardRecord { page_title: string; intro_paragraph?: string; featured_image?: string; image_alt?: string; cta_label?: string; cta_url?: string; }
-export interface PearlFlexContentSectionRecord { section_header?: string; body_content: string; image?: string; image_alt?: string; cta_url?: string; cta_label?: string; header_tag?: 'h1'|'h2'|'h3'; image_position?: 'left'|'right'; }
+export interface PearlFlexContentSectionRecord { section_header?: string; body_content: string; image?: string; image_alt?: string; header_tag?: 'h1'|'h2'|'h3'; image_position?: 'left'|'right'; }
 export interface PearlHighlightLinkItem { link_label: string; link_url: string; sort: number; }
 export interface PearlHighlightLinksRecord { section_heading?: string; links: PearlHighlightLinkItem[]; }
 export interface PearlGalleryItem { image: string; image_alt: string; sort: number; }
@@ -49,7 +49,7 @@ export type PearlBlock = {
 
 export const PEARL_FIELD_KEYS = {
   inner_hero_standard: ['page_title','intro_paragraph','featured_image','image_alt','cta_label','cta_url'],
-  flex_content_section: ['section_header','body_content','image','image_alt','cta_url','cta_label','header_tag','image_position'],
+  flex_content_section: ['section_header','body_content','image','image_alt','header_tag','image_position'],
   highlight_links: ['section_heading','links'],
   image_gallery_grid: ['section_heading','grid_columns','images'],
   testimonial_list_standard: ['section_heading','intro_text','reviews'],
