@@ -144,7 +144,7 @@ jobs:
           for i in $(seq 1 60); do curl -sf https://pearl-lowen-poc.pages.dev/ >/dev/null && break; sleep 2; done
           python3 poc/lowen-final-b/route-matrix-qa.py --target https://pearl-lowen-poc.pages.dev
           mv poc/lowen-final-b/receipts/route-matrix-qa.json poc/lowen-final-b/receipts/route-matrix-live.json
-          DEPLOYMENT_JSON="$(wrangler pages deployment list --project-name pearl-lowen-poc --json)"
+          DEPLOYMENT_JSON="$(npx wrangler pages deployment list --project-name pearl-lowen-poc --json)"
           DEPLOYMENT_ID="$(printf %s "$DEPLOYMENT_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)[0]["Id"])')"
           DEPLOYMENT_SOURCE="$(printf %s "$DEPLOYMENT_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)[0]["Source"])')"
           DEPLOYMENT_URL="https://${DEPLOYMENT_ID%%-*}.pearl-lowen-poc.pages.dev"
