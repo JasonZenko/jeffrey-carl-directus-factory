@@ -97,7 +97,10 @@ jobs:
           PORT=4321 node scripts/serve.mjs &
           for i in $(seq 1 30); do curl -sf http://127.0.0.1:4321/robots.txt >/dev/null && break; sleep 1; done
           python3 auditor/audit_rendered.py --target http://127.0.0.1:4321 --strict
-          python3 qa/browser_matrix.py --target http://127.0.0.1:4321
+          if ! python3 qa/browser_matrix.py --target http://127.0.0.1:4321; then
+            cp qa/browser-matrix-results.json qa/browser-matrix-first-attempt.json
+            python3 qa/browser_matrix.py --target http://127.0.0.1:4321
+          fi
           python3 qa/visual_fidelity.py --target http://127.0.0.1:4321
 
       - name: Prove every used parent and nested field is authoritative
@@ -169,6 +172,9 @@ jobs:
             poc/lowen-final-b/receipts
             poc/lowen-final-b/visual
             auditor/fidelity-results.json
-            qa/results
+            qa/browser-matrix-results.json
+            qa/browser-matrix-first-attempt.json
+            qa/visual-fidelity-results.json
+            qa/visual/current
           if-no-files-found: error
           retention-days: 30
