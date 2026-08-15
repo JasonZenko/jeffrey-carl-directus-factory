@@ -4,16 +4,24 @@
 import {mkdir, readFile, stat, writeFile} from 'node:fs/promises';
 import {basename, dirname, resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {loadCanonicalContract, validateContractParity, validateRelease} from './validate-release.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = (process.env.DIRECTUS_URL || 'https://pearl-lowen-poc-cms.foundryworks.ai').replace(/\/$/, '');
 const REVIEW = (process.env.PEARL_REVIEW_BASE_URL || 'https://pearl-lowen-poc.pages.dev').replace(/\/$/, '');
 const ASSET_FOLDER = process.env.PEARL_PUBLIC_ASSET_FOLDER_ID;
 const APPLY = process.argv.includes('--apply');
+const BASELINE = process.env.PEARL_BASELINE || 'A';
+const RUN_LABEL = `Lowen Perio · Baseline ${BASELINE}`;
+const ITEM_PREFIX = `Lowen ${BASELINE}`;
+const RECEIPTS_DIR = resolve(process.env.PEARL_RECEIPTS_DIR || resolve(ROOT, 'receipts'));
 const siteSource = JSON.parse(await readFile(resolve(ROOT, 'migration/site.json'), 'utf8'));
 const pages = JSON.parse(await readFile(resolve(ROOT, 'migration/pages.json'), 'utf8'));
 const mappingReceipt = JSON.parse(await readFile(resolve(ROOT, 'migration/mapping-receipt.json'), 'utf8'));
 const exceptions = JSON.parse(await readFile(resolve(ROOT, 'migration/exceptions.json'), 'utf8'));
+const canonicalContract = await loadCanonicalContract();
+const releaseErrors = validateRelease({pages, exceptions, contract: canonicalContract});
+if (releaseErrors.length) throw new Error(`Pearl release preflight failed:\n- ${releaseErrors.join('\n- ')}`);
 
 if (!ASSET_FOLDER) throw new Error('PEARL_PUBLIC_ASSET_FOLDER_ID is required');
 
@@ -68,6 +76,8 @@ if (!APPLY) {
     homepage_sequence: mappingReceipt.homepage_sequence,
     navigation_items: siteSource.navigation.length,
     exceptions: exceptions.length,
+    canonical_contract: canonicalContract.version,
+    release_preflight: 'passed',
   }, null, 2));
   process.exit(0);
 }
@@ -77,9 +87,8 @@ const token = await authenticate();
 const api = (path, options = {}) => raw(path, {...options, token});
 const libraryRows = await api('/items/pearl_block_library?limit=-1&fields=key,collection_name,field_contract,status');
 const contract = new Map(libraryRows.map(item => [item.key, item]));
-if (libraryRows.length !== 14 || libraryRows.some(item => item.status !== 'published')) {
-  throw new Error('Official 14-block library is not ready');
-}
+const contractErrors = validateContractParity(libraryRows, canonicalContract);
+if (contractErrors.length) throw new Error(`Official Pearl contract parity failed:\n- ${contractErrors.join('\n- ')}`);
 
 async function upsert(collection, key, value, payload) {
   const existing = await api(`/items/${collection}?filter[${key}][_eq]=${encodeURIComponent(value)}&limit=1&fields=id`);
@@ -109,7 +118,7 @@ const mimeExtension = {
 async function ensureAsset(asset) {
   if (!asset?.local_path) return null;
   if (uploaded.has(asset.sha256)) return uploaded.get(asset.sha256);
-  const title = `Lowen A · ${asset.sha256.slice(0, 12)} · ${asset.alt || basename(asset.local_path)}`.slice(0, 255);
+  const title = `${ITEM_PREFIX} · ${asset.sha256.slice(0, 12)} · ${asset.alt || basename(asset.local_path)}`.slice(0, 255);
   const existing = await api(`/files?filter[title][_eq]=${encodeURIComponent(title)}&limit=1&fields=id`);
   if (existing[0]) {
     uploaded.set(asset.sha256, existing[0].id);
@@ -124,9 +133,9 @@ async function ensureAsset(asset) {
   form.append('file', new Blob([bytes], {type: asset.content_type || 'application/octet-stream'}), `lowen-${asset.sha256.slice(0, 12)}.${extension}`);
   const file = await api('/files', {method: 'POST', body: form});
   uploaded.set(asset.sha256, file.id);
-  await upsert('pearl_media_assets', 'internal_name', `Lowen A · ${asset.sha256.slice(0, 12)}`, {
+  await upsert('pearl_media_assets', 'internal_name', `${ITEM_PREFIX} · ${asset.sha256.slice(0, 12)}`, {
     status: 'published',
-    internal_name: `Lowen A · ${asset.sha256.slice(0, 12)}`,
+    internal_name: `${ITEM_PREFIX} · ${asset.sha256.slice(0, 12)}`,
     source_url: asset.source_url,
     file: file.id,
     alt_text: asset.alt || '',
@@ -196,7 +205,7 @@ async function prepareRecord(spec, internalName, sourceItem) {
 async function prepareBlock(page, index, block) {
   const spec = contract.get(block.type);
   if (!spec) throw new Error(`Unknown official block: ${block.type}`);
-  const name = `Lowen A · ${page.slug} · ${String(index + 1).padStart(2, '0')} · ${block.type}`;
+  const name = `${ITEM_PREFIX} · ${page.slug} · ${String(index + 1).padStart(2, '0')} · ${block.type}`;
   return prepareRecord(spec, name, block.item);
 }
 
@@ -209,7 +218,7 @@ async function bindPage(page, site, blocks) {
     title: pageTitle(page),
     meta_description: page.meta_description || page.title,
     workflow_status: 'approved',
-    approval_notes: 'Baseline A dynamic object migration from frozen WEO Pearl source.',
+    approval_notes: `Baseline ${BASELINE} dynamic object migration from frozen WEO Pearl source.`,
     approved_at: new Date().toISOString(),
     robots_index: false,
     robots_follow: false,
@@ -239,7 +248,7 @@ async function bindPage(page, site, blocks) {
 const logo = await ensureAsset(siteSource.logo);
 const site = await upsert('pearl_sites', 'slug', siteSource.slug, {
   status: 'published',
-  internal_name: 'Lowen Perio · Baseline A',
+  internal_name: RUN_LABEL,
   name: siteSource.name,
   slug: siteSource.slug,
   preview_url: `${REVIEW}/`,
@@ -259,7 +268,7 @@ for (const page of pages) importedPages.push(await bindPage(page, site, page.blo
 const existingNavigation = await api(`/items/pearl_navigation_items?filter[site][_eq]=${site.id}&limit=-1&fields=id,internal_name`);
 const usedNavigation = new Set();
 for (const [index, item] of siteSource.navigation.entries()) {
-  const internalName = `Lowen A · navigation · ${index + 1}`;
+  const internalName = `${ITEM_PREFIX} · navigation · ${index + 1}`;
   const row = await upsert('pearl_navigation_items', 'internal_name', internalName, {
     status: 'published', internal_name: internalName, site: site.id,
     label: item.label, url: item.url, sort: index + 1,
@@ -273,7 +282,7 @@ for (const stale of existingNavigation.filter(row => !usedNavigation.has(row.id)
 for (const [index, exception] of exceptions.entries()) {
   if (!exception.url) continue;
   const provider = exception.provider || 'external';
-  const internalName = `Lowen A · provider exception · ${index + 1}`;
+  const internalName = `${ITEM_PREFIX} · provider exception · ${index + 1}`;
   await upsert('pearl_forms', 'internal_name', internalName, {
     status: 'published', internal_name: internalName,
     name: `${provider} ${exception.kind}`, provider, embed_url: exception.url,
@@ -281,9 +290,9 @@ for (const [index, exception] of exceptions.entries()) {
 }
 
 const completedAt = new Date().toISOString();
-await upsert('pearl_migration_runs', 'internal_name', 'Lowen Perio · Baseline A', {
+await upsert('pearl_migration_runs', 'internal_name', RUN_LABEL, {
   status: 'published',
-  internal_name: 'Lowen Perio · Baseline A',
+  internal_name: RUN_LABEL,
   source_url: mappingReceipt.source,
   started_at: startedAt,
   completed_at: completedAt,
@@ -303,7 +312,7 @@ if (!home || home.blocks.join(',') !== expectedHome.join(',')) {
 
 const receipt = {
   ok: true,
-  baseline: 'A',
+  baseline: BASELINE,
   target: BASE,
   source_pages: pages.length,
   imported_pages: importedPages.length,
@@ -312,10 +321,12 @@ const receipt = {
   navigation_items: siteSource.navigation.length,
   homepage_blocks: home.blocks,
   homepage_source_derived: true,
+  canonical_contract: canonicalContract.version,
+  release_preflight: 'passed',
   exceptions: exceptions.length,
   started_at: startedAt,
   completed_at: completedAt,
 };
-await mkdir(resolve(ROOT, 'receipts'), {recursive: true});
-await writeFile(resolve(ROOT, 'receipts/directus-import.json'), JSON.stringify(receipt, null, 2) + '\n');
+await mkdir(RECEIPTS_DIR, {recursive: true});
+await writeFile(resolve(RECEIPTS_DIR, 'directus-import.json'), JSON.stringify(receipt, null, 2) + '\n');
 console.log(JSON.stringify(receipt, null, 2));

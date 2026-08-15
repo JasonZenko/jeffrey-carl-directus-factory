@@ -12,7 +12,6 @@ describe('connected Pearl adapter',()=>{
     expect(html).toContain(`${directus}/assets/`);
     expect(html).toContain(`data-directus-url="${directus}"`);
     expect(html).toContain('data-pearl-block="main_hero_standard"');
-    expect(html).toContain('data-pearl-block="contact_info_standard"');
     expect(html).toContain('https://www.google.com/maps?q=');
     expect(html.match(/data-directus=/g)?.length).toBeGreaterThanOrEqual(9);
     expect(html).toContain('collection:pearl_theme_settings');

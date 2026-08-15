@@ -2,15 +2,15 @@
   "adapter_id": "pearl",
   "template_name": "Pearl",
   "version": "0.1.0",
-  "status": "canonical-integration",
+  "status": "retired-contract",
   "based_on": {
     "source_site": "https://jeffreycarldmd.com/",
     "source_freeze": "source-freeze/manifests/capture-summary.json",
     "review": "Dom Tab 4, 2026-08-12"
   },
   "activation": {
-    "active": true,
-    "reason": "Canonical Pearl records, native Builder composition and fail-closed Astro hydration are the approved review baseline. Production, DNS, forms and indexing remain inactive."
+    "active": false,
+    "reason": "Retired legacy nine-block contract. The locked Pearl v1 contract is poc/lowen-baseline-a/contract/pearl-block-library.v1.json. This manifest must not provision or seed Directus."
   },
   "implementation": {
     "directus_schema_plan": "template-adapters/pearl/directus/pearl-schema.mjs",

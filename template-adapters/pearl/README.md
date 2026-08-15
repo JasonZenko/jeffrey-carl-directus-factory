@@ -1,5 +1,7 @@
 # Pearl template adapter
 
+> **Retired schema path:** `v0.1.0/manifest.json` is the obsolete nine-block experiment and is deliberately inactive. Its provisioner and canonical seed now fail closed. The locked migration contract is `poc/lowen-baseline-a/contract/pearl-block-library.v1.json` (14 blocks, version 1.0.0).
+
 This directory is the client-independent contract for the Pearl design template. Pearl content and authoring now live in the dedicated Directus instance at `https://pearlcms.foundryworks.ai/admin/`; Jeffrey Carl and the WEO component estate are deliberately excluded from that CMS.
 
 Developer handoff: [`DEVELOPER-WORKFLOW.md`](DEVELOPER-WORKFLOW.md) explains the component rules, Directus-to-Astro data flow, local workflow, pull-request gates and noindex deployment path step by step.

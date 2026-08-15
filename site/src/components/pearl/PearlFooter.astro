@@ -25,7 +25,7 @@ const mapEmbedUrl = theme.address
       {logo ? <img src={logo} alt={theme.brand_name} /> : <strong>{theme.brand_name}</strong>}
       {theme.brand_descriptor && <span>{theme.brand_descriptor}</span>}
     </div>
-    <div>
+    <div aria-label="Contact links">
       <h2>Contact information</h2>
       {theme.address && <p>{theme.address}</p>}
       {theme.phone && <p><a href={`tel:${theme.phone.replace(/[^+\d]/g, '')}`}>{theme.phone}</a></p>}
@@ -40,7 +40,7 @@ const mapEmbedUrl = theme.address
   .pearl-site-footer { padding-top: 0; background: var(--pearl-secondary); color: var(--pearl-ink); }
   .pearl-site-footer__map { width: 100%; aspect-ratio: 21 / 6; }
   .pearl-site-footer__map iframe { display: block; width: 100%; height: 100%; border: 0; }
-  .pearl-site-footer__grid { display: grid; grid-template-columns: 1.1fr 1fr .6fr; gap: 56px; padding-bottom: calc(80px * var(--pearl-spacing)); padding-top:30px; }
+  .pearl-site-footer__grid { display: grid; grid-template-columns: 1.1fr 1fr .6fr; gap: 56px; padding-block: 30px calc(80px * var(--pearl-spacing)); }
   .pearl-footer-brand strong { display: block; font-family: var(--pearl-font-heading); font-size: 4rem; font-weight: 400; line-height: .9; }
   .pearl-footer-brand img { width: min(240px, 100%); max-height: 120px; object-fit: contain; object-position: left center; }
   .pearl-footer-brand span { display: block; margin-top: 12px; letter-spacing: .22em; text-transform: uppercase; }

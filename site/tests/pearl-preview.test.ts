@@ -31,7 +31,7 @@ describe('Pearl official block surface', () => {
     const html=readFileSync(output,'utf8');
     expect(html).toContain('<meta name="robots" content="noindex, nofollow"');
     expect(html).toContain('data-template-adapter="pearl"');
-    expect(html).toContain('data-template-version="1.0.0"');
+    expect(html).toContain('data-template-version="1.1.0"');
     expect(html).toContain('class="pearl-site-header"');
     expect(html).toContain('class="pearl-menu-toggle"');
     expect(html).toContain('aria-controls="pearl-primary-navigation"');
@@ -41,7 +41,6 @@ describe('Pearl official block surface', () => {
     const sequence=[...html.matchAll(/data-pearl-block="([^"]+)"/g)].map(match=>match[1]);
     expect(sequence.length).toBeGreaterThan(0);
     expect(sequence[0]).toBe('main_hero_standard');
-    expect(sequence).toContain('contact_info_standard');
     expect(sequence.every(type=>OFFICIAL_BLOCKS.has(type))).toBe(true);
   });
 

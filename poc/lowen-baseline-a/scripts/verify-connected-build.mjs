@@ -7,13 +7,17 @@ import {fileURLToPath} from 'node:url';
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const REPO = resolve(ROOT, '../..');
 const SITE = resolve(REPO, 'site');
+const BASELINE = process.env.PEARL_BASELINE || 'A';
+const RECEIPTS_DIR = resolve(process.env.PEARL_RECEIPTS_DIR || resolve(ROOT, 'receipts'));
 const BASE = (process.env.PEARL_DIRECTUS_URL || 'https://pearl-lowen-poc-cms.foundryworks.ai').replace(/\/$/, '');
 const token = process.env.PEARL_DIRECTUS_TOKEN;
 if (!token) throw new Error('PEARL_DIRECTUS_TOKEN is required');
 
 const normalized = JSON.parse(await readFile(resolve(ROOT, 'migration/pages.json'), 'utf8'));
 const mapping = JSON.parse(await readFile(resolve(ROOT, 'migration/mapping-receipt.json'), 'utf8'));
+const siteContract = JSON.parse(await readFile(resolve(ROOT, 'migration/site.json'), 'utf8'));
 const expectedHome = mapping.homepage_sequence.map(type => `pearl_${type}`);
+const expectedNavigation = [...siteContract.navigation].sort((a, b) => Number(a.sort) - Number(b.sort));
 
 async function api(path) {
   const response = await fetch(`${BASE}${path}`, {headers: {Authorization: `Bearer ${token}`, Accept: 'application/json'}});
@@ -33,6 +37,9 @@ const sites = await api('/items/pearl_sites?filter[slug][_eq]=lowen-perio&limit=
 if (!sites[0]) throw new Error('Lowen site identity is missing');
 const navigation = await api(`/items/pearl_navigation_items?filter[site][_eq]=${sites[0].id}&filter[status][_eq]=published&limit=-1&sort=sort&fields=label,url,sort`);
 if (navigation.length !== mapping.navigation_items) throw new Error(`Expected ${mapping.navigation_items} navigation items, received ${navigation.length}`);
+if (JSON.stringify(navigation) !== JSON.stringify(expectedNavigation)) {
+  throw new Error(`Navigation diverged from the frozen source: ${JSON.stringify(navigation)}`);
+}
 
 for (const page of pages) {
   if (page.robots_index !== false || page.robots_follow !== false) throw new Error(`Page is indexable: ${page.slug}`);
@@ -76,10 +83,15 @@ if (homeHtml.includes('Dr. Amanda Pearl') || homeHtml.includes('Carolina Comfort
 if (homeHtml.match(/<nav id="pearl-primary-navigation"[\s\S]*?<\/nav>/)?.[0].includes('href="#')) {
   throw new Error('Primary navigation still contains target-shell anchors');
 }
+const renderedNavigation = [...(homeHtml.match(/<nav id="pearl-primary-navigation"[\s\S]*?<\/nav>/)?.[0] || '').matchAll(/<a href="([^"]+)"[^>]*>([^<]+)<\/a>/g)]
+  .map(match => ({url: match[1], label: match[2]}));
+if (JSON.stringify(renderedNavigation) !== JSON.stringify(expectedNavigation.map(({label, url}) => ({url, label})))) {
+  throw new Error(`Rendered navigation diverged from the frozen source: ${JSON.stringify(renderedNavigation)}`);
+}
 
 const receipt = {
   ok: true,
-  baseline: 'A',
+  baseline: BASELINE,
   cms: BASE,
   official_blocks: library.length,
   approved_pages: pages.length,
@@ -91,6 +103,6 @@ const receipt = {
   build_reader_isolated: true,
   noindex: true,
 };
-await mkdir(resolve(ROOT, 'receipts'), {recursive: true});
-await writeFile(resolve(ROOT, 'receipts/connected-build.json'), `${JSON.stringify(receipt, null, 2)}\n`);
+await mkdir(RECEIPTS_DIR, {recursive: true});
+await writeFile(resolve(RECEIPTS_DIR, 'connected-build.json'), `${JSON.stringify(receipt, null, 2)}\n`);
 console.log(JSON.stringify(receipt, null, 2));

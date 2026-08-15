@@ -26,6 +26,7 @@ OUT = POC_ROOT / "migration"
 GENERATED_ASSETS = OUT / "generated-assets"
 ENGINE_PATH = REPO_ROOT / "scripts" / "extract.py"
 SOURCE_HOSTS = {"lowenperio.com", "www.lowenperio.com"}
+MINIMUM_AUTO_MAP_CONFIDENCE = 0.90
 
 spec = importlib.util.spec_from_file_location("foundry_extract_engine", ENGINE_PATH)
 if spec is None or spec.loader is None:
@@ -113,6 +114,47 @@ def remove_nodes(html: str, selectors: str) -> str:
     return "".join(str(node) for node in soup.contents).strip()
 
 
+def clean_rich_text(html: str) -> str:
+    """Remove legacy presentation hooks while preserving semantic source copy."""
+    soup = BeautifulSoup(html or "", "html.parser")
+    for node in soup.find_all(True):
+        if node.name == "a" and node.has_attr("href"):
+            candidates = re.findall(r"https?://[^\s]+", node["href"])
+            if candidates and (len(candidates) > 1 or re.search(r"\s", node["href"])):
+                usable = [candidate for candidate in candidates if candidate not in {"http://", "https://"}]
+                if usable:
+                    node["href"] = usable[-1]
+        classes = [value for value in node.get("class", []) if not value.lower().startswith("tp")]
+        if classes:
+            node["class"] = classes
+        elif node.has_attr("class"):
+            del node["class"]
+        if str(node.get("id", "")).lower().startswith("tp"):
+            del node["id"]
+        if str(node.get("title", "")).lower() == "b11":
+            del node["title"]
+        if node.name in {"div", "span"} and not node.attrs:
+            node.unwrap()
+    return "".join(str(node) for node in soup.contents).strip()
+
+
+def mapped_block(block_type: str, item: dict, page: dict, page_url: str, html: str, confidence: float, signals: list[str]) -> dict:
+    """Attach auditable source evidence to every automatic mapping decision."""
+    return {
+        "type": block_type,
+        "item": item,
+        "mapping": {
+            "decision": "auto_map" if confidence >= MINIMUM_AUTO_MAP_CONFIDENCE else "manual_review",
+            "confidence": confidence,
+            "minimum_auto_map_confidence": MINIMUM_AUTO_MAP_CONFIDENCE,
+            "signals": signals,
+            "source_url": page_url,
+            "source_html_sha256": page["sha256"],
+            "fragment_sha256": hashlib.sha256((html or "").encode()).hexdigest(),
+        },
+    }
+
+
 def first_link(soup: BeautifulSoup, page_url: str):
     node = soup.find("a", href=True)
     if not node:
@@ -167,7 +209,13 @@ def split_band(band: Tag) -> list[list]:
             if normalized_text(child):
                 current.append(child)
             continue
-        if not isinstance(child, Tag) or child.name in {"br", "hr"}:
+        if not isinstance(child, Tag):
+            continue
+        if child.name in {"br", "hr"}:
+            # Preserve a semantic word boundary. The legacy source uses BR
+            # elements between adjacent text nodes; dropping them concatenated
+            # phone numbers, addresses, hours and sentences in rich text.
+            current.append(NavigableString(" "))
             continue
         classes = set(child.get("class") or [])
         special = bool(classes & {"TPcta-row", "TPctas", "TPquote"}) or bool(child.select_one(".TPcta-row,.TPctas,.TPquote"))
@@ -184,6 +232,58 @@ def split_band(band: Tag) -> list[list]:
     return segments
 
 
+def extract_inner_hero(soup: BeautifulSoup, page: dict, page_url: str, by_url: dict, by_name: dict):
+    """Separate page identity from page body before semantic classification.
+
+    WEO Pearl inner pages place the title, lead image and complete article body
+    inside one ArtID band. Treating that band as the first content region made
+    the old mapper collapse the whole article into Inner Hero. The hero owns
+    only the page title and lead image; the remaining source nodes stay in the
+    band and are classified independently.
+    """
+    band = soup.select_one("[id^='ArtID']")
+    if band is None:
+        return None
+
+    title_node = band.select_one(":scope > .TPtitle") or band.find("h1", recursive=False)
+    title = normalized_text(title_node.get_text(" ", strip=True)) if title_node else normalized_text(page["h1s"][0] if page.get("h1s") else page["title"])
+    title_html = str(title_node) if title_node else title
+    if title_node:
+        title_node.decompose()
+
+    image_node = band.find("img", recursive=False)
+    image = source_asset(
+        image_node.get("src"),
+        page_url,
+        by_url,
+        by_name,
+        normalized_text(image_node.get("alt")),
+    ) if image_node else None
+    image_html = str(image_node) if image_node else ""
+    if image_node and image:
+        image_node.decompose()
+
+    # Direct-child bold labels in the legacy article body are section
+    # headings, not inline emphasis. Promote them before segmentation so each
+    # source section remains separately editable in Directus.
+    for label in band.find_all(["b", "strong"], recursive=False):
+        previous = label.previous_sibling
+        while isinstance(previous, NavigableString) and not normalized_text(previous):
+            previous = previous.previous_sibling
+        starts_section = previous is None or (isinstance(previous, Tag) and previous.name in {"br", "hr", "img"})
+        if starts_section and normalized_text(label.get_text(" ", strip=True)):
+            label.name = "h2"
+
+    return mapped_block("inner_hero_standard", {
+        "page_title": title,
+        "intro_paragraph": "",
+        "featured_image": image,
+        "image_alt": image.get("alt", "") if image else "",
+        "cta_label": "",
+        "cta_url": "",
+    }, page, page_url, title_html + image_html, 0.99, ["page_family:not_home", "source:page_title", "source:lead_image_only"])
+
+
 def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, by_name: dict, stats: dict, first: bool):
     html, text, images, embeds, links, headings = engine.transform_fragment(segment, page_url, {
         key: {"name": Path(value["local_path"]).name, "sha256": value["sha256"], "source_url": value["source_url"]}
@@ -195,23 +295,50 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
     exceptions = []
 
     if soup.find("form"):
-        exceptions.append({"page": page_url, "kind": "form", "reason": "provider component required", "source_html_sha256": hashlib.sha256(html.encode()).hexdigest()})
-        safe = remove_nodes(html, "form,script")
-        return ([{"type": "flex_content_section", "item": {"body_content": safe or f"<p>{text}</p>", "header_tag": "h2", "image_position": "right"}}] if safe or text else []), exceptions
+        exceptions.append({"page": page_url, "kind": "form", "status": "manual_review", "confidence": 0, "reason": "provider component required", "source_html_sha256": page["sha256"], "fragment_sha256": hashlib.sha256(html.encode()).hexdigest()})
+        safe = clean_rich_text(remove_nodes(html, "form,script"))
+        block = mapped_block("flex_content_section", {"body_content": safe or f"<p>{text}</p>", "header_tag": "h2", "image_position": "right"}, page, page_url, html, 0.91, ["source:prose_outside_provider_form", "source:provider_form_exception"])
+        block["mapping"]["content_features"] = {
+            "headings": len(soup.find_all(re.compile(r"^h[1-6]$"))),
+            "list_items": len(soup.find_all("li")),
+            "links": len(soup.find_all("a", href=True)),
+            "images": len(soup.find_all("img")),
+        }
+        return ([block] if safe or text else []), exceptions
 
     if embeds:
-        exceptions.append({"page": page_url, "kind": "embed", "provider": urlparse(embeds[0]).hostname or "external", "url": embeds[0]})
-        return [], exceptions
+        exceptions.append({"page": page_url, "kind": "embed", "status": "manual_review", "confidence": 0, "provider": urlparse(embeds[0]).hostname or "external", "url": embeds[0], "source_html_sha256": page["sha256"], "fragment_sha256": hashlib.sha256(html.encode()).hexdigest()})
+        safe = clean_rich_text(remove_nodes(html, "iframe,embed,script"))
+        safe_soup = BeautifulSoup(safe, "html.parser")
+        safe_text = normalized_text(safe_soup.get_text(" ", strip=True))
+        if not safe_text:
+            return [], exceptions
+        heading_node = safe_soup.find(re.compile(r"^h[1-6]$"))
+        heading = normalized_text(heading_node.get_text(" ", strip=True)) if heading_node else ""
+        body = clean_rich_text(remove_nodes(safe, "h1,h2,h3,h4,h5,h6"))
+        block = mapped_block("flex_content_section", {
+            "section_header": heading,
+            "body_content": body or f"<p>{safe_text}</p>",
+            "image_position": "right",
+            "header_tag": "h2",
+        }, page, page_url, html, 0.92, ["source:prose_outside_provider_embed", "source:provider_embed_exception"])
+        block["mapping"]["content_features"] = {
+            "headings": len(safe_soup.find_all(re.compile(r"^h[1-6]$"))),
+            "list_items": len(safe_soup.find_all("li")),
+            "links": len(safe_soup.find_all("a", href=True)),
+            "images": 0,
+        }
+        return [block], exceptions
 
     items = feature_items(segment, page_url, by_url, by_name)
     if items:
         heading_node = next((node for node in soup.find_all(re.compile(r"^h[1-6]$")) if not node.find_parent("a")), None)
-        return [{"type": "icon_feature_cards", "item": {
+        return [mapped_block("icon_feature_cards", {
             "section_heading": normalized_text(heading_node.get_text(" ", strip=True)) if heading_node else "",
             "intro_text": "",
             "display_variant": "services" if soup.select_one(".TPctas") else "overlay",
             "items": items,
-        }}], exceptions
+        }, page, page_url, html, 0.98, ["source:repeated_items", "source:icons", "source:TPcta"])], exceptions
 
     if soup.select_one(".TPquote"):
         quote_area = soup.select_one(".TPcol-xs-12") or soup
@@ -220,32 +347,59 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
             node.decompose()
         quote = normalized_text(quote_copy.get_text(" ", strip=True))
         heading = normalized_text((soup.find(re.compile(r"^h[1-6]$")) or {}).get_text(" ", strip=True)) if soup.find(re.compile(r"^h[1-6]$")) else ""
-        return [{"type": "highlight_snippet_quote", "item": {"quote": f"<p>{quote}</p>", "attribution": heading, "tone": "brand"}}], exceptions
+        return [mapped_block("highlight_snippet_quote", {"quote": f"<p>{quote}</p>", "attribution": heading, "tone": "brand"}, page, page_url, html, 0.98, ["source:TPquote", "source:quote_text"])], exceptions
+
+    review_rows = [row for row in soup.select(".TProw") if row.select_one(".TPstars")]
+    if review_rows:
+        reviews = []
+        for index, row in enumerate(review_rows, 1):
+            quote_copy = BeautifulSoup(str(row), "html.parser")
+            for node in quote_copy.select(".TPstars,svg"):
+                node.decompose()
+            quote = normalized_text(quote_copy.get_text(" ", strip=True))
+            if not quote:
+                continue
+            reviews.append({"quote": f"<p>{quote}</p>", "sort": index})
+        if reviews:
+            heading_node = soup.find(re.compile(r"^h[1-6]$"))
+            return [mapped_block("testimonial_list_standard", {
+                "section_heading": normalized_text(heading_node.get_text(" ", strip=True)) if heading_node else "",
+                "intro_text": "",
+                "reviews": reviews,
+            }, page, page_url, html, 0.98, ["source:review_rows", "source:TPstars", "source:quote_text"])], exceptions
 
     image_node = soup.find("img")
     image = source_asset(image_node.get("src"), page_url, by_url, by_name, normalized_text(image_node.get("alt"))) if image_node else None
     heading_node = soup.find(re.compile(r"^h[1-6]$"))
     heading = normalized_text(heading_node.get_text(" ", strip=True)) if heading_node else ""
-    body = remove_nodes(html, "h1,h2,h3,h4,h5,h6,img,script,style")
+    body = clean_rich_text(remove_nodes(html, "h1,h2,h3,h4,h5,h6,img,script,style"))
     link = first_link(soup, page_url)
 
-    # Pure source section labels describe the object that follows; they are
-    # not standalone content objects and must not become empty CMS blocks.
+    # Preserve standalone source callouts. The legacy estate sometimes uses a
+    # heading element as the complete region (for example an insurance status
+    # statement) immediately before the next section. Dropping that region
+    # caused deterministic source-word loss.
     if heading and not normalized_text(BeautifulSoup(body, "html.parser").get_text(" ", strip=True)) and not image and not link:
-        return [], exceptions
+        if heading_node.name.lower() in {"h1", "h2"}:
+            return [], exceptions
+        return [mapped_block("highlight_snippet_quote", {
+            "quote": f"<p>{heading}</p>",
+            "attribution": "",
+            "tone": "brand",
+        }, page, page_url, html, 0.97, ["source:standalone_heading_callout", f"source:{heading_node.name.lower()}"])], exceptions
 
     if first and heading_node and heading_node.name.lower() == "h1":
-        return [{"type": "inner_hero_standard", "item": {
+        return [mapped_block("inner_hero_standard", {
             "page_title": heading,
             "intro_paragraph": body,
             "featured_image": image,
             "image_alt": image.get("alt", "") if image else "",
             "cta_label": link["label"] if link else "",
             "cta_url": link["url"] if link else "",
-        }}], exceptions
+        }, page, page_url, html, 0.95, ["source:first_content_region", "source:h1"])], exceptions
 
     if image and heading:
-        return [{"type": "feature_image_content", "item": {
+        return [mapped_block("feature_image_content", {
             "heading": heading,
             "body": body or f"<p>{text}</p>",
             "image": image,
@@ -253,24 +407,51 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
             "image_position": "left" if soup.select_one(".TPcol-md-6:first-child img,.TPcol-sm-4:first-child img") else "right",
             "cta_label": link["label"] if link else "",
             "cta_url": link["url"] if link else "",
-        }}], exceptions
+        }, page, page_url, html, 0.93, ["source:prose", "source:managed_image", "source:image_adjacent_to_prose"])], exceptions
 
-    if heading and link and len(text) <= 360 and not soup.find(["ul", "ol", "table"]):
-        return [{"type": "cta_section_standard", "item": {
+    link_count = len(soup.find_all("a", href=True))
+    if heading and link and link_count == 1 and len(text) <= 360 and not soup.find(["ul", "ol", "table"]):
+        return [mapped_block("cta_section_standard", {
             "heading": heading,
             "body": body,
             "cta_label": link["label"] or heading,
             "cta_url": link["url"],
-        }}], exceptions
+        }, page, page_url, html, 0.94, ["source:heading", "source:cta_link", "source:compact_prose"])], exceptions
 
-    return [{"type": "flex_content_section", "item": {
+    explicit_cta = soup.select_one("a.TPbtn-primary[href],a.TPbtn[href]")
+    flex_body = clean_rich_text(body or html)
+    if explicit_cta:
+        body_soup = BeautifulSoup(flex_body, "html.parser")
+        for candidate in body_soup.select("a.TPbtn-primary[href],a.TPbtn[href]"):
+            candidate.decompose()
+        flex_body = clean_rich_text("".join(str(node) for node in body_soup.contents))
+
+    flex = mapped_block("flex_content_section", {
         "section_header": heading,
-        "body_content": body or html,
+        "body_content": flex_body,
         "image": image,
         "image_alt": image.get("alt", "") if image else "",
         "image_position": "right",
         "header_tag": "h2",
-    }}], exceptions
+    }, page, page_url, html, 0.90, ["source:prose", "source:flex_content_fallback"] + (["source:contextual_link"] if link else []))
+    flex["mapping"]["content_features"] = {
+        "headings": len(soup.find_all(re.compile(r"^h[1-6]$"))),
+        "list_items": len(soup.find_all("li")),
+        "links": len(soup.find_all("a", href=True)),
+        "images": len(soup.find_all("img")),
+    }
+    blocks = [flex]
+    if explicit_cta:
+        cta_label = visible_link_text(explicit_cta) or "Learn more"
+        cta_url = engine.normalize_url(explicit_cta.get("href"), page_url)
+        flex["mapping"]["cta_handoff"] = "adjacent_cta_section_standard"
+        blocks.append(mapped_block("cta_section_standard", {
+            "heading": heading or cta_label,
+            "body": "",
+            "cta_label": cta_label,
+            "cta_url": cta_url,
+        }, page, page_url, str(explicit_cta), 0.97, ["source:explicit_cta_class", "source:adjacent_flex_handoff"]))
+    return blocks, exceptions
 
 
 def css_value(css: str, selector: str, property_name: str, fallback: str) -> str:
@@ -321,6 +502,8 @@ def rewrite_internal_links(value, route_to_slug: dict[str, str], key: str = ""):
         return {name: rewrite_internal_links(item, route_to_slug, name) for name, item in value.items()}
     if not isinstance(value, str):
         return value
+    if key == "source_url":
+        return value
     if key == "url" or key.endswith("_url"):
         return preview_url(value, route_to_slug)
     if key in {"body", "body_content", "intro_paragraph", "quote"} and "href=" in value:
@@ -362,13 +545,18 @@ def main():
             supporting = normalized_text(subtitle.get_text(" ", strip=True)) if subtitle else ""
             hero_image = next((source_asset(item["url"], page_url, by_url, by_name, "") for item in assets_manifest if "bkg-anibanner" in item["url"].lower() or "bkg-slider1" in item["url"].lower()), None)
             appointment = next((a for a in (hero.find_all("a", href=True) if hero else []) if "appointment" in normalized_text(a.get_text(" ", strip=True)).lower()), None)
-            blocks.append({"type": "main_hero_standard", "item": {
+            hero_html = str(hero) if hero else ""
+            blocks.append(mapped_block("main_hero_standard", {
                 "heading": heading,
                 "supporting_text": supporting,
                 "background_image": hero_image,
                 "primary_cta_label": normalized_text(appointment.get_text(" ", strip=True)) if appointment else "",
                 "primary_cta_url": engine.normalize_url(appointment.get("href"), page_url) if appointment else "",
-            }})
+            }, source_page, page_url, hero_html, 0.98, ["page_family:home", "source:primary_hero_region", "source:hero_media"]))
+        else:
+            inner_hero = extract_inner_hero(soup, source_page, page_url, by_url, by_name)
+            if inner_hero:
+                blocks.append(inner_hero)
 
         source_bands = soup.select("[id^='ArtID']")
         for band in source_bands:
@@ -376,15 +564,15 @@ def main():
                 ignored.decompose()
             segments = split_band(band)
             for index, segment in enumerate(segments):
-                mapped, found_exceptions = block_from_segment(segment, source_page, page_url, by_url, by_name, stats, first=(source_page["templateFamily"] != "home" and not blocks and index == 0))
+                mapped, found_exceptions = block_from_segment(segment, source_page, page_url, by_url, by_name, stats, first=False)
                 blocks.extend(mapped)
                 page_exceptions.extend(found_exceptions)
 
         if source_page["templateFamily"] != "home" and (not blocks or blocks[0]["type"] != "inner_hero_standard"):
-            blocks.insert(0, {"type": "inner_hero_standard", "item": {
+            blocks.insert(0, mapped_block("inner_hero_standard", {
                 "page_title": normalized_text(source_page["h1s"][0] if source_page["h1s"] else source_page["title"]),
                 "intro_paragraph": source_page.get("metaDescription") or "",
-            }})
+            }, source_page, page_url, source_page.get("metaDescription") or source_page["title"], 0.91, ["page_family:not_home", "source:page_h1_or_title", "source:meta_description"]))
 
         pages_out.append({
             "slug": slug,
@@ -406,10 +594,8 @@ def main():
     map_node = contact.find("a", href=re.compile(r"maps|google", re.I)) if contact else None
     address = visible_link_text(map_node)
     phone = visible_link_text(phone_node)
-    home["blocks"].append({"type": "contact_info_standard", "item": {
-        "heading": "Contact Lowen Perio", "address": address, "phone": phone,
-        "map_url": engine.normalize_url(map_node.get("href"), home_source["sitemapUrl"]) if map_node else "",
-    }})
+    # Contact details and the map now belong to the global footer. Do not force
+    # an optional Contact Info block into the homepage composition.
 
     nav_region = home_soup.find("nav")
     navigation = []
@@ -467,6 +653,7 @@ def main():
         "block_types": dict(sorted(counts.items())),
         "homepage_sequence": [block["type"] for block in home["blocks"]],
         "homepage_dynamic": True,
+        "homepage_contact_block_required": False,
         "navigation_items": len(navigation),
         "theme_mapping": {
             "source_primary_color": source_primary_color,
@@ -475,6 +662,9 @@ def main():
             "minimum_contrast": 4.5,
         },
         "exceptions": len(exceptions),
+        "manual_review_exceptions": sum(1 for item in exceptions if item.get("status") == "manual_review"),
+        "minimum_auto_map_confidence": MINIMUM_AUTO_MAP_CONFIDENCE,
+        "mapping_decisions": dict(sorted(Counter(block["mapping"]["decision"] for page in pages_out for block in page["blocks"]).items())),
         "dropped_unevidenced_images": stats["dropped_unevidenced_img"],
     }
     OUT.mkdir(parents=True, exist_ok=True)

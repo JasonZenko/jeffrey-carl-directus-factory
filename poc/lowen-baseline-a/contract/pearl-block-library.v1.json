@@ -1,0 +1,247 @@
+{
+  "version": "1.1.0",
+  "source": "Client Migration Spec Directus CRM, updated 2026-08-13",
+  "blocks": [
+    {
+      "key": "inner_hero_standard",
+      "label": "Inner Hero Standard",
+      "category": "common",
+      "requirement": "required",
+      "collection": "pearl_inner_hero_standard",
+      "fields": [
+        {"name":"page_title","type":"string","required":true,"interface":"input"},
+        {"name":"intro_paragraph","type":"text","required":false,"interface":"input-rich-text-html"},
+        {"name":"featured_image","type":"uuid","required":false,"interface":"file-image","file":true},
+        {"name":"image_alt","type":"string","required":false,"interface":"input"},
+        {"name":"cta_label","type":"string","required":false,"interface":"input"},
+        {"name":"cta_url","type":"string","required":false,"interface":"input"}
+      ]
+    },
+    {
+      "key": "flex_content_section",
+      "label": "Flex Content Section",
+      "category": "common",
+      "requirement": "required",
+      "collection": "pearl_flex_content_section",
+      "fields": [
+        {"name":"section_header","type":"string","required":false,"interface":"input"},
+        {"name":"body_content","type":"text","required":true,"interface":"input-rich-text-html"},
+        {"name":"image","type":"uuid","required":false,"interface":"file-image","file":true},
+        {"name":"image_alt","type":"string","required":false,"interface":"input"},
+        {"name":"header_tag","type":"string","required":false,"interface":"select-dropdown","choices":["h1","h2","h3"]},
+        {"name":"image_position","type":"string","required":false,"interface":"select-dropdown","choices":["left","right"]}
+      ]
+    },
+    {
+      "key": "highlight_links",
+      "label": "Highlight Links",
+      "category": "common",
+      "requirement": "required",
+      "collection": "pearl_highlight_links",
+      "fields": [
+        {"name":"section_heading","type":"string","required":false,"interface":"input"}
+      ],
+      "children": {
+        "collection": "pearl_highlight_link_items",
+        "alias": "links",
+        "fields": [
+          {"name":"link_label","type":"string","required":true,"interface":"input"},
+          {"name":"link_url","type":"string","required":true,"interface":"input"},
+          {"name":"sort","type":"integer","required":true,"interface":"input"}
+        ]
+      }
+    },
+    {
+      "key": "image_gallery_grid",
+      "label": "Image Gallery Grid",
+      "category": "common",
+      "requirement": "required",
+      "collection": "pearl_image_gallery_grid",
+      "fields": [
+        {"name":"section_heading","type":"string","required":false,"interface":"input"},
+        {"name":"grid_columns","type":"integer","required":true,"interface":"select-dropdown","choices":[3,4]}
+      ],
+      "children": {
+        "collection": "pearl_image_gallery_items",
+        "alias": "images",
+        "fields": [
+          {"name":"image","type":"uuid","required":true,"interface":"file-image","file":true},
+          {"name":"image_alt","type":"string","required":true,"interface":"input"},
+          {"name":"sort","type":"integer","required":true,"interface":"input"}
+        ]
+      }
+    },
+    {
+      "key": "testimonial_list_standard",
+      "label": "Testimonial List Standard",
+      "category": "common",
+      "requirement": "required",
+      "collection": "pearl_testimonial_list_standard",
+      "fields": [
+        {"name":"section_heading","type":"string","required":false,"interface":"input"},
+        {"name":"intro_text","type":"text","required":false,"interface":"input-multiline"}
+      ],
+      "children": {
+        "collection": "pearl_testimonial_items",
+        "alias": "reviews",
+        "fields": [
+          {"name":"quote","type":"text","required":true,"interface":"input-rich-text-html"},
+          {"name":"patient_name","type":"string","required":false,"interface":"input"},
+          {"name":"sort","type":"integer","required":true,"interface":"input"}
+        ]
+      }
+    },
+    {
+      "key": "main_hero_standard",
+      "label": "Main Hero Standard",
+      "category": "homepage",
+      "requirement": "required",
+      "collection": "pearl_main_hero_standard",
+      "fields": [
+        {"name":"heading","type":"string","required":true,"interface":"input"},
+        {"name":"supporting_text","type":"text","required":false,"interface":"input-multiline"},
+        {"name":"background_image","type":"uuid","required":false,"interface":"file-image","file":true},
+        {"name":"background_video_url","type":"string","required":false,"interface":"input"},
+        {"name":"primary_cta_label","type":"string","required":false,"interface":"input"},
+        {"name":"primary_cta_url","type":"string","required":false,"interface":"input"}
+      ]
+    },
+    {
+      "key": "icon_feature_cards",
+      "label": "Icon Feature Cards",
+      "category": "homepage",
+      "requirement": "required",
+      "collection": "pearl_icon_feature_cards",
+      "fields": [
+        {"name":"section_heading","type":"string","required":false,"interface":"input"},
+        {"name":"intro_text","type":"text","required":false,"interface":"input-multiline"},
+        {"name":"background_image","type":"uuid","required":false,"interface":"file-image","file":true},
+        {"name":"display_variant","type":"string","required":false,"interface":"select-dropdown","choices":["overlay","services"]}
+      ],
+      "children": {
+        "collection": "pearl_icon_feature_card_items",
+        "alias": "items",
+        "fields": [
+          {"name":"icon","type":"uuid","required":true,"interface":"file-image","file":true},
+          {"name":"title","type":"string","required":true,"interface":"input"},
+          {"name":"body","type":"text","required":false,"interface":"input-multiline"},
+          {"name":"url","type":"string","required":false,"interface":"input"},
+          {"name":"sort","type":"integer","required":true,"interface":"input"}
+        ]
+      }
+    },
+    {
+      "key": "feature_image_content",
+      "label": "Feature Image Content",
+      "category": "homepage",
+      "requirement": "required",
+      "collection": "pearl_feature_image_content",
+      "fields": [
+        {"name":"heading","type":"string","required":true,"interface":"input"},
+        {"name":"subheading","type":"string","required":false,"interface":"input"},
+        {"name":"body","type":"text","required":true,"interface":"input-rich-text-html"},
+        {"name":"image","type":"uuid","required":true,"interface":"file-image","file":true},
+        {"name":"image_alt","type":"string","required":true,"interface":"input"},
+        {"name":"image_position","type":"string","required":true,"interface":"select-dropdown","choices":["left","right"]},
+        {"name":"cta_label","type":"string","required":false,"interface":"input"},
+        {"name":"cta_url","type":"string","required":false,"interface":"input"}
+      ]
+    },
+    {
+      "key": "highlight_snippet_quote",
+      "label": "Highlight Snippet Quote",
+      "category": "homepage",
+      "requirement": "required",
+      "collection": "pearl_highlight_snippet_quote",
+      "fields": [
+        {"name":"quote","type":"text","required":true,"interface":"input-rich-text-html"},
+        {"name":"attribution","type":"string","required":false,"interface":"input"},
+        {"name":"tone","type":"string","required":true,"interface":"select-dropdown","choices":["light","brand","dark"]},
+        {"name":"facebook_url","type":"string","required":false,"interface":"input"},
+        {"name":"x_url","type":"string","required":false,"interface":"input"}
+      ]
+    },
+    {
+      "key": "cta_section_standard",
+      "label": "CTA Section Standard",
+      "category": "optional",
+      "requirement": "optional",
+      "collection": "pearl_cta_section_standard",
+      "fields": [
+        {"name":"heading","type":"string","required":true,"interface":"input"},
+        {"name":"body","type":"text","required":false,"interface":"input-rich-text-html"},
+        {"name":"background_image","type":"uuid","required":false,"interface":"file-image","file":true},
+        {"name":"cta_label","type":"string","required":true,"interface":"input"},
+        {"name":"cta_url","type":"string","required":true,"interface":"input"}
+      ]
+    },
+    {
+      "key": "contact_info_standard",
+      "label": "Contact Info Standard",
+      "category": "optional",
+      "requirement": "optional",
+      "collection": "pearl_contact_info_standard",
+      "fields": [
+        {"name":"heading","type":"string","required":false,"interface":"input"},
+        {"name":"address","type":"text","required":true,"interface":"input-multiline"},
+        {"name":"phone","type":"string","required":false,"interface":"input"},
+        {"name":"email","type":"string","required":false,"interface":"input"},
+        {"name":"map_url","type":"string","required":false,"interface":"input"}
+      ]
+    },
+    {
+      "key": "areas_served_links",
+      "label": "Areas Served Links",
+      "category": "optional",
+      "requirement": "optional",
+      "collection": "pearl_areas_served_links",
+      "fields": [
+        {"name":"section_heading","type":"string","required":false,"interface":"input"},
+        {"name":"intro_text","type":"text","required":false,"interface":"input-multiline"}
+      ],
+      "children": {
+        "collection": "pearl_area_link_items",
+        "alias": "areas",
+        "fields": [
+          {"name":"link_label","type":"string","required":true,"interface":"input"},
+          {"name":"link_url","type":"string","required":true,"interface":"input"},
+          {"name":"sort","type":"integer","required":true,"interface":"input"}
+        ]
+      }
+    },
+    {
+      "key": "faq_dropdown",
+      "label": "FAQ Dropdown",
+      "category": "optional",
+      "requirement": "optional",
+      "collection": "pearl_faq_dropdown",
+      "fields": [
+        {"name":"section_heading","type":"string","required":false,"interface":"input"},
+        {"name":"intro_text","type":"text","required":false,"interface":"input-multiline"}
+      ],
+      "children": {
+        "collection": "pearl_faq_items",
+        "alias": "items",
+        "fields": [
+          {"name":"question","type":"string","required":true,"interface":"input"},
+          {"name":"answer","type":"text","required":true,"interface":"input-rich-text-html"},
+          {"name":"sort","type":"integer","required":true,"interface":"input"}
+        ]
+      }
+    },
+    {
+      "key": "cherry_financing",
+      "label": "Cherry Financing",
+      "category": "optional",
+      "requirement": "optional",
+      "collection": "pearl_cherry_financing",
+      "fields": [
+        {"name":"heading","type":"string","required":true,"interface":"input"},
+        {"name":"body","type":"text","required":false,"interface":"input-rich-text-html"},
+        {"name":"merchant_id","type":"string","required":false,"interface":"input"},
+        {"name":"cta_label","type":"string","required":false,"interface":"input"},
+        {"name":"cta_url","type":"string","required":false,"interface":"input"}
+      ]
+    }
+  ]
+}

@@ -3,7 +3,7 @@ name: deploy-pearl-lowen-poc
 on:
   workflow_dispatch:
   push:
-    branches: [pearl/lowen-poc-baseline-a]
+    branches: [pearl/lowen-poc-baseline-b2]
 
 jobs:
   deploy-pearl-lowen-poc:
@@ -11,6 +11,8 @@ jobs:
     environment: noindex-preview
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -28,11 +30,17 @@ jobs:
           python -m playwright install --with-deps chromium
           cd site && npm ci
 
+      - name: Prove approved Pearl template ancestry
+        run: python3 poc/lowen-baseline-b2/verify-template-provenance.py
+
       - name: Rebuild the frozen Lowen object map
         run: |
           python3 poc/lowen-baseline-a/scripts/object-map.py
           git diff --exit-code -- poc/lowen-baseline-a/migration \
             || (echo 'Lowen object mapping is not deterministic' && exit 1)
+          node poc/lowen-baseline-a/scripts/validate-release.mjs
+          node poc/lowen-baseline-b/validate-prepared.mjs
+          python3 poc/lowen-baseline-b2/source-fidelity-gate.py
 
       - name: Build connected Lowen POC
         working-directory: site
@@ -47,6 +55,8 @@ jobs:
         env:
           PEARL_DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
           PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_LOWEN_DIRECTUS_TOKEN }}
+          PEARL_BASELINE: B2
+          PEARL_RECEIPTS_DIR: poc/lowen-baseline-b2/receipts
 
       - name: Run shared contracts
         working-directory: site
@@ -54,12 +64,11 @@ jobs:
         env:
           PEARL_DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
 
-      - name: Prove responsive home and representative inner pages
+      - name: Prove all 39 routes at desktop, tablet and mobile
         run: |
           PORT=4322 node scripts/serve.mjs &
           for i in $(seq 1 30); do curl -sf http://127.0.0.1:4322/robots.txt > /dev/null && break; sleep 1; done
-          python3 poc/lowen-baseline-a/scripts/responsive-qa.py --target http://127.0.0.1:4322/template-preview/pearl/
-          python3 poc/lowen-baseline-a/scripts/inner-page-qa.py --target http://127.0.0.1:4322/template-preview/pearl
+          python3 poc/lowen-baseline-b/every-route-qa.py --target http://127.0.0.1:4322/template-preview/pearl
 
       - name: Preserve accepted Jeffrey regression evidence
         run: |
