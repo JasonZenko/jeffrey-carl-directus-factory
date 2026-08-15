@@ -19,7 +19,8 @@ const sectionStyle = background_image ? `--pearl-icons-background:url('${backgro
 
 <style>
   .pearl-icons { position: relative; z-index: 2; background: var(--pearl-secondary); }
-  .pearl-icons--overlay { margin-top: -108px; padding: 0 0 clamp(58px, 8vw, 94px); }
+  .pearl-icons--overlay { margin-bottom: -50px; padding: 0; }
+  .pearl-icons--overlay .pearl-icons__list { transform: translateY(-70px); }
   .pearl-icons--services { padding-block: clamp(70px, 9vw, 118px); background-image: linear-gradient(rgb(225 233 243 / .76), rgb(225 233 243 / .5)), var(--pearl-icons-background); background-position: center; background-size: cover; }
   .pearl-heading-row { display: grid; justify-items: center; gap: 14px; margin-bottom: 48px; text-align: center; }
   .pearl-heading-row > p { max-width: 58ch; margin: 0; color: var(--pearl-muted); }
