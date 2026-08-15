@@ -26,6 +26,7 @@ export interface PearlTheme {
   phone?: string;
   address?: string;
   email?: string;
+ 
 }
 
 export const defaultPearlTheme: PearlTheme = {
