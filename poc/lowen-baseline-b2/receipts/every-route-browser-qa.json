@@ -1,0 +1,5700 @@
+{
+  "generated_at": "2026-08-15T18:10:40.735136+00:00",
+  "baseline": "B2",
+  "target": "http://127.0.0.1:4332/template-preview/pearl",
+  "routes": 39,
+  "viewports": 3,
+  "checks": 117,
+  "passed": 117,
+  "failed": 0,
+  "results": [
+    {
+      "slug": "about-us",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "About Us"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "about-us",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "About Us"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "about-us",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "About Us"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "antibiotics",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Antibiotics"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "antibiotics",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Antibiotics"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "antibiotics",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Antibiotics"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "bone-grafting",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Bone Grafting"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "bone-grafting",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Bone Grafting"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "bone-grafting",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Bone Grafting"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "contact-us",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "cta_section_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "cta_section_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Office Information"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "contact-us",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "cta_section_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "cta_section_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Office Information"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "contact-us",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "cta_section_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "cta_section_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Office Information"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "crown-lengthening",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Crown Lengthening"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "crown-lengthening",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Crown Lengthening"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "crown-lengthening",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Crown Lengthening"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "dental-implants",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Dental Implants"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "dental-implants",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Dental Implants"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "dental-implants",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Dental Implants"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "digital-x-rays",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Digital Radiography (X-Rays)"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "digital-x-rays",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Digital Radiography (X-Rays)"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "digital-x-rays",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Digital Radiography (X-Rays)"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "educational-links",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Educational Links"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "educational-links",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Educational Links"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "educational-links",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Educational Links"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "financial-info",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "highlight_snippet_quote",
+        "cta_section_standard"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "highlight_snippet_quote",
+        "cta_section_standard"
+      ],
+      "h1s": [
+        "Finances & Insurance"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "financial-info",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "highlight_snippet_quote",
+        "cta_section_standard"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "highlight_snippet_quote",
+        "cta_section_standard"
+      ],
+      "h1s": [
+        "Finances & Insurance"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "financial-info",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "highlight_snippet_quote",
+        "cta_section_standard"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "highlight_snippet_quote",
+        "cta_section_standard"
+      ],
+      "h1s": [
+        "Finances & Insurance"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "home",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "main_hero_standard",
+        "icon_feature_cards",
+        "feature_image_content",
+        "icon_feature_cards",
+        "highlight_snippet_quote",
+        "feature_image_content",
+        "feature_image_content"
+      ],
+      "rendered_blocks": [
+        "main_hero_standard",
+        "icon_feature_cards",
+        "feature_image_content",
+        "icon_feature_cards",
+        "highlight_snippet_quote",
+        "feature_image_content",
+        "feature_image_content"
+      ],
+      "h1s": [
+        "Lowen Perio"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "home",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "main_hero_standard",
+        "icon_feature_cards",
+        "feature_image_content",
+        "icon_feature_cards",
+        "highlight_snippet_quote",
+        "feature_image_content",
+        "feature_image_content"
+      ],
+      "rendered_blocks": [
+        "main_hero_standard",
+        "icon_feature_cards",
+        "feature_image_content",
+        "icon_feature_cards",
+        "highlight_snippet_quote",
+        "feature_image_content",
+        "feature_image_content"
+      ],
+      "h1s": [
+        "Lowen Perio"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "home",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "main_hero_standard",
+        "icon_feature_cards",
+        "feature_image_content",
+        "icon_feature_cards",
+        "highlight_snippet_quote",
+        "feature_image_content",
+        "feature_image_content"
+      ],
+      "rendered_blocks": [
+        "main_hero_standard",
+        "icon_feature_cards",
+        "feature_image_content",
+        "icon_feature_cards",
+        "highlight_snippet_quote",
+        "feature_image_content",
+        "feature_image_content"
+      ],
+      "h1s": [
+        "Lowen Perio"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "krista-lowen-dds-msd",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Meet Dr. Lowen"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "krista-lowen-dds-msd",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Meet Dr. Lowen"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "krista-lowen-dds-msd",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Meet Dr. Lowen"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "lillian-nguyen-dmd-ms",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Meet Dr. Nguyen"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "lillian-nguyen-dmd-ms",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Meet Dr. Nguyen"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "lillian-nguyen-dmd-ms",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Meet Dr. Nguyen"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "occlusal-therapy",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Occlusal Therapy"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "occlusal-therapy",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Occlusal Therapy"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "occlusal-therapy",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Occlusal Therapy"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "oral-pathology",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Oral Pathology"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "oral-pathology",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Oral Pathology"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "oral-pathology",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Oral Pathology"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "osseous-flap-surgery",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Osseous Flap Surgery"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "osseous-flap-surgery",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Osseous Flap Surgery"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "osseous-flap-surgery",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Osseous Flap Surgery"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "our-services",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Our Services"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "our-services",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Our Services"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "our-services",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Our Services"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "patient-forms",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "cta_section_standard",
+        "flex_content_section",
+        "cta_section_standard"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "cta_section_standard",
+        "flex_content_section",
+        "cta_section_standard"
+      ],
+      "h1s": [
+        "Patient Forms"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "patient-forms",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "cta_section_standard",
+        "flex_content_section",
+        "cta_section_standard"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "cta_section_standard",
+        "flex_content_section",
+        "cta_section_standard"
+      ],
+      "h1s": [
+        "Patient Forms"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "patient-forms",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "cta_section_standard",
+        "flex_content_section",
+        "cta_section_standard"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "cta_section_standard",
+        "flex_content_section",
+        "cta_section_standard"
+      ],
+      "h1s": [
+        "Patient Forms"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "patient-referral-form",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Patient Referral Form"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "patient-referral-form",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Patient Referral Form"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "patient-referral-form",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Patient Referral Form"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "patients",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Patients"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "patients",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Patients"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "patients",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Patients"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "peri-implantitis",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Rescuing a Failing Implant"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "peri-implantitis",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Rescuing a Failing Implant"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "peri-implantitis",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Rescuing a Failing Implant"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "perio-protect-reg",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Perio Protect®"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "perio-protect-reg",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Perio Protect®"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "perio-protect-reg",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Perio Protect®"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "periodontal-disease-management",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "feature_image_content",
+        "feature_image_content",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "feature_image_content",
+        "feature_image_content",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Disease Management"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "periodontal-disease-management",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "feature_image_content",
+        "feature_image_content",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "feature_image_content",
+        "feature_image_content",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Disease Management"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "periodontal-disease-management",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "feature_image_content",
+        "feature_image_content",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "feature_image_content",
+        "feature_image_content",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Disease Management"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "periodontal-disease",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Disease"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "periodontal-disease",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Disease"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "periodontal-disease",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Disease"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "periodontal-disease-4949",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Disease"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "periodontal-disease-4949",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Disease"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "periodontal-disease-4949",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Disease"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "periodontal-maintenance",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Maintenance"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "periodontal-maintenance",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Maintenance"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "periodontal-maintenance",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Maintenance"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "periodontal-surgery",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Surgery"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "periodontal-surgery",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Surgery"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "periodontal-surgery",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Periodontal Surgery"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "preventing-periodontal-disease",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Preventing Periodontal Disease"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "preventing-periodontal-disease",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Preventing Periodontal Disease"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "preventing-periodontal-disease",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Preventing Periodontal Disease"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "privacy-policy",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Privacy Policy"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "privacy-policy",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Privacy Policy"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "privacy-policy",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Privacy Policy"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "request-an-appointment",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Request an Appointment"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "request-an-appointment",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Request an Appointment"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "request-an-appointment",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Request an Appointment"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "ridge-preservation",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Ridge Preservation"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "ridge-preservation",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Ridge Preservation"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "ridge-preservation",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Ridge Preservation"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "scaling-and-root-planing",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Scaling and Root Planing"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "scaling-and-root-planing",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Scaling and Root Planing"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "scaling-and-root-planing",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Scaling and Root Planing"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "sedation-options",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Sedation Options"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "sedation-options",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Sedation Options"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "sedation-options",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Sedation Options"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "soft-tissue-grafting",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Soft Tissue Grafting"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "soft-tissue-grafting",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Soft Tissue Grafting"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "soft-tissue-grafting",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Soft Tissue Grafting"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "specialty-of-periodontics",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Specialty of Periodontics"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "specialty-of-periodontics",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Specialty of Periodontics"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "specialty-of-periodontics",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Specialty of Periodontics"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "trios-reg",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "TRIOS® Digital Scanner"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "trios-reg",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "TRIOS® Digital Scanner"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "trios-reg",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "TRIOS® Digital Scanner"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "testimonials",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "cta_section_standard",
+        "testimonial_list_standard"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "cta_section_standard",
+        "testimonial_list_standard"
+      ],
+      "h1s": [
+        "Testimonials"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "testimonials",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "cta_section_standard",
+        "testimonial_list_standard"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "cta_section_standard",
+        "testimonial_list_standard"
+      ],
+      "h1s": [
+        "Testimonials"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "testimonials",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "cta_section_standard",
+        "testimonial_list_standard"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "cta_section_standard",
+        "testimonial_list_standard"
+      ],
+      "h1s": [
+        "Testimonials"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "velscope-trade",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Oral Cancer Screening With VELscope™"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "velscope-trade",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Oral Cancer Screening With VELscope™"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "velscope-trade",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Oral Cancer Screening With VELscope™"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "what-is-a-periodontist",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "cta_section_standard"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "cta_section_standard"
+      ],
+      "h1s": [
+        "What is a Periodontist?"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "what-is-a-periodontist",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "cta_section_standard"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "cta_section_standard"
+      ],
+      "h1s": [
+        "What is a Periodontist?"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "what-is-a-periodontist",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "cta_section_standard"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section",
+        "flex_content_section",
+        "flex_content_section",
+        "cta_section_standard"
+      ],
+      "h1s": [
+        "What is a Periodontist?"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    },
+    {
+      "slug": "laser-therapy",
+      "viewport": "desktop",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Laser Therapy"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "laser-therapy",
+      "viewport": "tablet",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Laser Therapy"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_hidden": true,
+        "navigation_visible": true,
+        "link_count": true
+      }
+    },
+    {
+      "slug": "laser-therapy",
+      "viewport": "mobile",
+      "pass": true,
+      "checks": {
+        "status_200": true,
+        "source_object_sequence": true,
+        "one_source_h1": true,
+        "source_navigation": true,
+        "navigation_behavior": true,
+        "no_shell_or_legacy_links": true,
+        "no_horizontal_overflow": true,
+        "images_loaded": true,
+        "images_described": true,
+        "no_console_errors": true,
+        "no_page_errors": true,
+        "no_first_party_http_errors": true,
+        "noindex": true,
+        "shared_chrome": true,
+        "wcag_aa": true
+      },
+      "expected_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "rendered_blocks": [
+        "inner_hero_standard",
+        "flex_content_section"
+      ],
+      "h1s": [
+        "Laser Therapy"
+      ],
+      "overflow_pixels": 0,
+      "broken_images": [],
+      "missing_alt": [],
+      "console_errors": [],
+      "page_errors": [],
+      "first_party_http_errors": [],
+      "accessibility_violations": [],
+      "navigation_evidence": {
+        "toggle_visible": true,
+        "closed_initially": true,
+        "expanded": true,
+        "opened": true,
+        "link_count": true,
+        "escape_closed": true
+      }
+    }
+  ]
+}
