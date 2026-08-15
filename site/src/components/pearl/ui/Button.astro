@@ -2,10 +2,10 @@
 interface Props {
   label: string;
   url: string;
-  tone?: 'default' | 'light';
+  tone?: 'contrast' | 'light';
 }
 
-const { label, url, tone = 'default' } = Astro.props;
+const { label, url, tone = 'contrast' } = Astro.props;
 ---
 
 <a class:list={['pearl-button', `pearl-button--${tone}`]} href={url}>{label}</a>
@@ -20,16 +20,18 @@ const { label, url, tone = 'default' } = Astro.props;
     padding: 11px 20px;
     border: 0;
     border-radius: var(--pearl-button-radius);
-    background: var(--pearl-primary);
     color: #fff;
     font-weight: 700;
     text-decoration: none;
-    transition: background-color 180ms ease-out, color 180ms ease-out;
+    text-transform: uppercase;
+    transition: background-color 180ms ease-out;
   }
 
-  .pearl-button:hover { background: var(--pearl-accent); color: var(--pearl-ink); }
-  .pearl-button--light { border: 1px solid #fff; background: transparent; color: #fff; }
-  .pearl-button--light:hover { background: #fff; color: var(--pearl-ink); }
+  .pearl-button--contrast { background: var(--pearl-primary); }
+  .pearl-button--contrast:hover { background: color-mix(in srgb, var(--pearl-primary) 70%, #000); }
+
+  .pearl-button--light { background: var(--pearl-secondary); color: var(--pearl-ink); }
+  .pearl-button--light:hover { background: color-mix(in srgb, var(--pearl-secondary) 70%, #000); }
 
   @media (prefers-reduced-motion: reduce) {
     .pearl-button { transition-duration: .01ms; }
