@@ -58,7 +58,7 @@ async function authenticate() {
 }
 
 function previewPath(slug) {
-  return slug === 'home' ? '/' : `/template-preview/pearl/${slug}/`;
+  return slug === 'home' ? '/' : `/${slug}/`;
 }
 
 function pageTitle(page) {

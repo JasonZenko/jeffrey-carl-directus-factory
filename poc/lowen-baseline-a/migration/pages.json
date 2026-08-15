@@ -42,7 +42,7 @@
         "type": "flex_content_section",
         "item": {
           "section_header": "",
-          "body_content": "Above all else, we here at Lowen Perio want our patients to maintain healthy, bright, and beautiful smiles! Next to that, we want our patients to feel comfortable and content during their appointments with us. Both of these goals begin with patient education! Staying informed can help you better understand the tenants of good oral health, prevent potential problems, and reveal why certain treatments are necessary.  <a href=\"/template-preview/pearl/krista-lowen-dds-msd/\" title=\"Krista Lowen, DDS, MSD Lowen Perio Tigard, OR Periodontist Tigard OR\">Meet Dr. Krista Lowen</a>\n<br/><a href=\"/template-preview/pearl/lillian-nguyen-dmd-ms/\" title=\"Lillian Nguyen, DMD, MS Lowen Perio Tigard, OR Periodontist Tigard OR\">Meet Dr. Lillian Nguyen</a>\n<br/><a href=\"/template-preview/pearl/testimonials/\" title=\"Testimonials Lowen Perio Tigard, OR Periodontist Tigard OR\">Testimonials</a>",
+          "body_content": "Above all else, we here at Lowen Perio want our patients to maintain healthy, bright, and beautiful smiles! Next to that, we want our patients to feel comfortable and content during their appointments with us. Both of these goals begin with patient education! Staying informed can help you better understand the tenants of good oral health, prevent potential problems, and reveal why certain treatments are necessary.  <a href=\"/krista-lowen-dds-msd/\" title=\"Krista Lowen, DDS, MSD Lowen Perio Tigard, OR Periodontist Tigard OR\">Meet Dr. Krista Lowen</a>\n<br/><a href=\"/lillian-nguyen-dmd-ms/\" title=\"Lillian Nguyen, DMD, MS Lowen Perio Tigard, OR Periodontist Tigard OR\">Meet Dr. Lillian Nguyen</a>\n<br/><a href=\"/testimonials/\" title=\"Testimonials Lowen Perio Tigard, OR Periodontist Tigard OR\">Testimonials</a>",
           "image": null,
           "image_alt": "",
           "image_position": "right",
@@ -369,7 +369,7 @@
         "type": "cta_section_standard",
         "item": {
           "heading": "Contact Information:",
-          "body": "Phone: 503 620 1117 Fax: 503 624 1547 Email: <a href=\"mailto:info@lowenperio.com\" target=\"_blank\">info@lowenperio.com</a>",
+          "body": "Phone: 503 620 1117 Fax: 503 624 1547 Email:",
           "cta_label": "info@lowenperio.com",
           "cta_url": "mailto:info@lowenperio.com"
         },
@@ -590,7 +590,7 @@
         "type": "flex_content_section",
         "item": {
           "section_header": "Peri-implantitis",
-          "body_content": "Dental implants are typically highly predictable procedures with initial success rates over 95%. However, bone loss can occur over time (this usually begins around 5 years but can be seen earlier or later).   Peri-implant mucositis is bleeding, swelling, and/or infection around the implant. <a href=\"/template-preview/pearl/peri-implantitis/\" title=\"Peri-Implantitis Lowen Perio Tigard, OR Periodontist Tigard OR\">Peri-implantitis</a> is more advanced and includes bone loss around the implant. Implants with inflammation and bone loss are more difficult to treat than teeth with periodontal disease due to the small thread design and surface characteristics. We try to save these implants with early intervention using a combination of non-surgical and surgical treatment. However, If more than 50% of the implant threads are affected, treatment is less predictable and these implants are likely to fail. Early treatment is critical for success.",
+          "body_content": "Dental implants are typically highly predictable procedures with initial success rates over 95%. However, bone loss can occur over time (this usually begins around 5 years but can be seen earlier or later).   Peri-implant mucositis is bleeding, swelling, and/or infection around the implant. <a href=\"/peri-implantitis/\" title=\"Peri-Implantitis Lowen Perio Tigard, OR Periodontist Tigard OR\">Peri-implantitis</a> is more advanced and includes bone loss around the implant. Implants with inflammation and bone loss are more difficult to treat than teeth with periodontal disease due to the small thread design and surface characteristics. We try to save these implants with early intervention using a combination of non-surgical and surgical treatment. However, If more than 50% of the implant threads are affected, treatment is less predictable and these implants are likely to fail. Early treatment is critical for success.",
           "image": null,
           "image_alt": "",
           "image_position": "right",
@@ -851,30 +851,37 @@
         }
       },
       {
-        "type": "highlight_snippet_quote",
+        "type": "flex_content_section",
         "item": {
-          "quote": "<p>We are a Delta Dental Premier Provider and a community provider with Kaiser (referral required).</p>",
-          "attribution": "",
-          "tone": "brand"
+          "section_header": "We are a Delta Dental Premier Provider and a community provider with Kaiser (referral required).",
+          "body_content": "<p></p>",
+          "image_position": "right",
+          "header_tag": "h3"
         },
         "mapping": {
           "decision": "auto_map",
-          "confidence": 0.97,
+          "confidence": 0.99,
           "minimum_auto_map_confidence": 0.9,
           "signals": [
-            "source:standalone_heading_callout",
+            "source:standalone_section_heading",
             "source:h3"
           ],
           "source_url": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Financial-Info-p65632.asp",
           "source_html_sha256": "937d2521ceaea269d26a0120ea69a389875cc1bcea27debbfb7b1e8695b534b9",
-          "fragment_sha256": "bcf89fea748322037b75e0d524f3c5aebff82a59ce3b93a81241f7072feb6e9d"
+          "fragment_sha256": "bcf89fea748322037b75e0d524f3c5aebff82a59ce3b93a81241f7072feb6e9d",
+          "content_features": {
+            "headings": 1,
+            "list_items": 0,
+            "links": 0,
+            "images": 0
+          }
         }
       },
       {
         "type": "cta_section_standard",
         "item": {
           "heading": "Financing options",
-          "body": "We provide Cherry Payment plans which allow you to receive the dental care you need when you need it. You can pay for treatment over time and choose a payment plan that fits your budget. We are happy to discuss this financing option at your consultation appointment.  <a href=\"http://withcherry.com/patients\" target=\"_blank\">Cherry Payment Plans</a>",
+          "body": "We provide Cherry Payment plans which allow you to receive the dental care you need when you need it. You can pay for treatment over time and choose a payment plan that fits your budget. We are happy to discuss this financing option at your consultation appointment.",
           "cta_label": "Cherry Payment Plans",
           "cta_url": "http://withcherry.com/patients"
         },
@@ -916,7 +923,7 @@
             "alt": ""
           },
           "primary_cta_label": "REQUEST AN APPOINTMENT",
-          "primary_cta_url": "/template-preview/pearl/request-an-appointment/"
+          "primary_cta_url": "/request-an-appointment/"
         },
         "mapping": {
           "decision": "auto_map",
@@ -949,7 +956,7 @@
               },
               "title": "Periodontics",
               "body": "Specialty of Periodontics Lowen Perio Tigard, OR Periodontist Tigard OR",
-              "url": "/template-preview/pearl/specialty-of-periodontics/",
+              "url": "/specialty-of-periodontics/",
               "sort": 1
             },
             {
@@ -962,7 +969,7 @@
               },
               "title": "Dental Implants",
               "body": "Dental Implants Lowen Perio Tigard, OR Periodontist Tigard OR",
-              "url": "/template-preview/pearl/dental-implants/",
+              "url": "/dental-implants/",
               "sort": 2
             },
             {
@@ -975,7 +982,7 @@
               },
               "title": "Laser Treatment",
               "body": "Laser Therapy Lowen Perio Tigard, OR Periolase Tigard OR",
-              "url": "/template-preview/pearl/laser-therapy/",
+              "url": "/laser-therapy/",
               "sort": 3
             },
             {
@@ -988,7 +995,7 @@
               },
               "title": "Periodontal Surgery",
               "body": "Periodontal Surgery Lowen Perio Tigard, OR Periodontist Tigard OR",
-              "url": "/template-preview/pearl/periodontal-surgery/",
+              "url": "/periodontal-surgery/",
               "sort": 4
             }
           ]
@@ -1011,7 +1018,7 @@
         "type": "feature_image_content",
         "item": {
           "heading": "Welcome to Lowen Perio",
-          "body": "<div data-aos=\"fade-up\" data-aos-delay=\"600\" data-aos-duration=\"800\"> </div> <div data-aos=\"fade-down\" data-aos-duration=\"800\">\n<br/>Dr. Krista Lowen &amp; Dr. Lillian Nguyen and their professional staff work closely with general dentists in the greater Portland area to provide patients with the very best in periodontal care and implant dentistry. Regardless of the extent of your periodontal needs, our team looks forward to establishing a solid relationship with you and providing you with the highest quality care.<br/>\n<br/>We are currently accepting new patients and patient referrals. We thank you for your trust and interest. Please browse our website and learn how periodontal treatment can help you create a healthy, beautiful smile. For doctor referrals, please fill out the\u00a0Doctor Referral Form. If you do not have a referral, please call the front desk to schedule your initial consultation appointment.<br/>\n<br/><a href=\"/template-preview/pearl/about-us/\" title=\"About Us Lowen Perio Tigard, OR Periodontist Tigard OR\">Learn More About Us</a> </div>",
+          "body": "<div data-aos=\"fade-up\" data-aos-delay=\"600\" data-aos-duration=\"800\"> </div> <div data-aos=\"fade-down\" data-aos-duration=\"800\">\n<br/>Dr. Krista Lowen &amp; Dr. Lillian Nguyen and their professional staff work closely with general dentists in the greater Portland area to provide patients with the very best in periodontal care and implant dentistry. Regardless of the extent of your periodontal needs, our team looks forward to establishing a solid relationship with you and providing you with the highest quality care.<br/>\n<br/>We are currently accepting new patients and patient referrals. We thank you for your trust and interest. Please browse our website and learn how periodontal treatment can help you create a healthy, beautiful smile. For doctor referrals, please fill out the\u00a0Doctor Referral Form. If you do not have a referral, please call the front desk to schedule your initial consultation appointment.<br/>\n<br/> </div>",
           "image": {
             "source_url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-art1-c139.webp",
             "local_path": "capture/assets/507171e9af7b_www.lowenperio.com_tpn_c_C139_img_IMG-art1-c139.webp",
@@ -1022,7 +1029,7 @@
           "image_alt": "Lowen Perio's reception desk.",
           "image_position": "left",
           "cta_label": "Learn More About Us",
-          "cta_url": "/template-preview/pearl/about-us/"
+          "cta_url": "/about-us/"
         },
         "mapping": {
           "decision": "auto_map",
@@ -1055,7 +1062,7 @@
               },
               "title": "Periodontal Disease",
               "body": "Periodontal Disease Lowen Perio Tigard, OR Periodontist Tigard OR",
-              "url": "/template-preview/pearl/periodontal-disease/",
+              "url": "/periodontal-disease/",
               "sort": 1
             },
             {
@@ -1068,7 +1075,7 @@
               },
               "title": "Crown Lengthening",
               "body": "Crown Lengthening Lowen Perio Tigard, OR Periodontist Tigard OR",
-              "url": "/template-preview/pearl/crown-lengthening/",
+              "url": "/crown-lengthening/",
               "sort": 2
             },
             {
@@ -1081,7 +1088,7 @@
               },
               "title": "Soft Tissue Grafting",
               "body": "Soft Tissue Grafting Lowen Perio Tigard, OR Periodontist Tigard OR",
-              "url": "/template-preview/pearl/soft-tissue-grafting/",
+              "url": "/soft-tissue-grafting/",
               "sort": 3
             },
             {
@@ -1094,7 +1101,7 @@
               },
               "title": "Laser Therapy",
               "body": "Laser Therapy Lowen Perio Tigard, OR Periolase Tigard OR",
-              "url": "/template-preview/pearl/laser-therapy/",
+              "url": "/laser-therapy/",
               "sort": 4
             },
             {
@@ -1107,7 +1114,7 @@
               },
               "title": "Dental Implants",
               "body": "Dental Implants Lowen Perio Tigard, OR Periodontist Tigard OR",
-              "url": "/template-preview/pearl/dental-implants/",
+              "url": "/dental-implants/",
               "sort": 5
             },
             {
@@ -1120,7 +1127,7 @@
               },
               "title": "Bone Grafting",
               "body": "Bone Grafting Lowen Perio Tigard, OR Periodontist Tigard OR",
-              "url": "/template-preview/pearl/bone-grafting/",
+              "url": "/bone-grafting/",
               "sort": 6
             },
             {
@@ -1133,7 +1140,7 @@
               },
               "title": "Occlusal Therapy",
               "body": "Osseous Flap Surgery Lowen Perio Tigard, OR Periodontist Tigard OR",
-              "url": "/template-preview/pearl/osseous-flap-surgery/",
+              "url": "/osseous-flap-surgery/",
               "sort": 7
             },
             {
@@ -1146,7 +1153,7 @@
               },
               "title": "Oral Pathology",
               "body": "Oral Pathology Lowen Perio Tigard, OR Periodontist Tigard OR",
-              "url": "/template-preview/pearl/oral-pathology/",
+              "url": "/oral-pathology/",
               "sort": 8
             }
           ]
@@ -1168,7 +1175,7 @@
       {
         "type": "highlight_snippet_quote",
         "item": {
-          "quote": "<p>\"Absolutely wonderful experience! I felt welcome and cared for from the time I came in the door until I left. The staff was very friendly and efficient. Dr. Lowen explained everything well, my procedure took less time than I thought, and the best part was I had no discomfort after the procedure. Highly Recommend!!\"</p>",
+          "quote": "<p>\"Absolutely wonderful experience! I felt welcome and cared for from the time I came in the door until I left. The staff was very friendly and efficient. Dr. Lowen explained everything well, my procedure took less time than I thought, and the best part was I had no discomfort after the procedure. Highly Recommend!!\"</p><p class=\"pearl-source-social\"><a href=\"https://goo.gl/maps/KqmtthnCGU69Bgpp6\">Google social media icon</a></p>",
           "attribution": "This is hands down the best dental office I've ever been to.",
           "tone": "brand"
         },
@@ -1178,7 +1185,8 @@
           "minimum_auto_map_confidence": 0.9,
           "signals": [
             "source:TPquote",
-            "source:quote_text"
+            "source:quote_text",
+            "source:social_link_preserved"
           ],
           "source_url": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
           "source_html_sha256": "055c05da16d88b47644704e218448108d2cd2ea5ed23b1646791bee12c8cc5f3",
@@ -1186,10 +1194,37 @@
         }
       },
       {
-        "type": "feature_image_content",
+        "type": "flex_content_section",
         "item": {
-          "heading": "Dr. Krista Lowen",
-          "body": "<div data-aos=\"fade-up\" data-aos-delay=\"150\" data-aos-duration=\"800\">\n<br/>Dr. Lowen grew up locally in Damascus, Oregon. She graduated from Northwestern University with a degree in Biomedical Engineering. She went on to attend dental school at the University of Texas Health Science Center at San Antonio where she graduated with honors. She completed her residency training in periodontics with a master\u2019s degree from the University of Washington. During her residency she focused on advanced periodontal surgical techniques, implant dentistry, microsurgery and sedation dentistry.<br/><a href=\"/template-preview/pearl/krista-lowen-dds-msd/\" title=\"Krista Lowen, DDS, MSD Lowen Perio Tigard, OR Periodontist Tigard OR\">More About Dr. Krista Lowen</a> </div> <div data-aos=\"fade-down\" data-aos-duration=\"800\"> </div>",
+          "section_header": "Meet the Doctors",
+          "body_content": "<p></p>",
+          "image_position": "right",
+          "header_tag": "h2"
+        },
+        "mapping": {
+          "decision": "auto_map",
+          "confidence": 0.99,
+          "minimum_auto_map_confidence": 0.9,
+          "signals": [
+            "source:standalone_section_heading",
+            "source:h2"
+          ],
+          "source_url": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
+          "source_html_sha256": "055c05da16d88b47644704e218448108d2cd2ea5ed23b1646791bee12c8cc5f3",
+          "fragment_sha256": "ec9135697ded318e4e6a05880fef5c7bfd4cf89023f77fb166b9604e9db3cfe4",
+          "content_features": {
+            "headings": 1,
+            "list_items": 0,
+            "links": 0,
+            "images": 0
+          }
+        }
+      },
+      {
+        "type": "flex_content_section",
+        "item": {
+          "section_header": "Dr. Krista Lowen",
+          "body_content": "<div data-aos=\"fade-up\" data-aos-delay=\"150\" data-aos-duration=\"800\">\n<br/>Dr. Lowen grew up locally in Damascus, Oregon. She graduated from Northwestern University with a degree in Biomedical Engineering. She went on to attend dental school at the University of Texas Health Science Center at San Antonio where she graduated with honors. She completed her residency training in periodontics with a master\u2019s degree from the University of Washington. During her residency she focused on advanced periodontal surgical techniques, implant dentistry, microsurgery and sedation dentistry.<br/><a href=\"/krista-lowen-dds-msd/\" title=\"Krista Lowen, DDS, MSD Lowen Perio Tigard, OR Periodontist Tigard OR\">More About Dr. Krista Lowen</a> </div> <div data-aos=\"fade-down\" data-aos-duration=\"800\"> </div>",
           "image": {
             "source_url": "https://www.lowenperio.com/tpn/c/C139/img/IMG-lowen-c139.webp",
             "local_path": "capture/assets/7cbef11e5e82_www.lowenperio.com_tpn_c_C139_img_IMG-lowen-c139.webp",
@@ -1199,28 +1234,33 @@
           },
           "image_alt": "Dr. Krista Lowen of Lowen Perio",
           "image_position": "right",
-          "cta_label": "More About Dr. Krista Lowen",
-          "cta_url": "/template-preview/pearl/krista-lowen-dds-msd/"
+          "header_tag": "h3"
         },
         "mapping": {
           "decision": "auto_map",
-          "confidence": 0.93,
+          "confidence": 0.95,
           "minimum_auto_map_confidence": 0.9,
           "signals": [
             "source:prose",
             "source:managed_image",
-            "source:image_adjacent_to_prose"
+            "source:heading_level_preserved"
           ],
           "source_url": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
           "source_html_sha256": "055c05da16d88b47644704e218448108d2cd2ea5ed23b1646791bee12c8cc5f3",
-          "fragment_sha256": "9336813a626b26e5c47212d9eab193baa85e19acaf8924a28d2d9a9cd9e82d76"
+          "fragment_sha256": "9336813a626b26e5c47212d9eab193baa85e19acaf8924a28d2d9a9cd9e82d76",
+          "content_features": {
+            "headings": 1,
+            "list_items": 0,
+            "links": 1,
+            "images": 1
+          }
         }
       },
       {
-        "type": "feature_image_content",
+        "type": "flex_content_section",
         "item": {
-          "heading": "Dr. Lillian Nguyen",
-          "body": "<div data-aos=\"fade-up\" data-aos-duration=\"800\">\n<br/>Growing up in the suburbs of Portland, Dr. Lillian Nguyen attended Tigard High School and received her Bachelor of Science in Biochemistry from the University of Portland. She continued her studies at Oregon Health and Science University receiving her Doctorate in Dental Medicine and a Certificate in Periodontics and Master of Science. During her residency, Dr. Nguyen mastered the placement of dental implants, gum and bone grafting, the treatment of gum disease, and is certified in moderate sedation. She is board certified in Periodontology and Dental Implant Surgery.<br/><a href=\"/template-preview/pearl/lillian-nguyen-dmd-ms/\" title=\"Lillian Nguyen, DMD, MS Lowen Perio Tigard, OR Periodontist Tigard OR\">More About Dr. Lillian Nguyen</a> </div> <div data-aos=\"fade-down\" data-aos-duration=\"800\"> </div>",
+          "section_header": "Dr. Lillian Nguyen",
+          "body_content": "<div data-aos=\"fade-up\" data-aos-duration=\"800\">\n<br/>Growing up in the suburbs of Portland, Dr. Lillian Nguyen attended Tigard High School and received her Bachelor of Science in Biochemistry from the University of Portland. She continued her studies at Oregon Health and Science University receiving her Doctorate in Dental Medicine and a Certificate in Periodontics and Master of Science. During her residency, Dr. Nguyen mastered the placement of dental implants, gum and bone grafting, the treatment of gum disease, and is certified in moderate sedation. She is board certified in Periodontology and Dental Implant Surgery.<br/><a href=\"/lillian-nguyen-dmd-ms/\" title=\"Lillian Nguyen, DMD, MS Lowen Perio Tigard, OR Periodontist Tigard OR\">More About Dr. Lillian Nguyen</a> </div> <div data-aos=\"fade-down\" data-aos-duration=\"800\"> </div>",
           "image": {
             "source_url": "https://www.lowenperio.com/tpn/c/C139/img/20240404-Nguyen-c139.jpg",
             "local_path": "capture/assets/357a3f5e9640_www.lowenperio.com_tpn_c_C139_img_20240404-Nguyen-c139.jpg",
@@ -1230,21 +1270,26 @@
           },
           "image_alt": "Dr. Lillian Nguyen of Lowen Perio",
           "image_position": "right",
-          "cta_label": "More About Dr. Lillian Nguyen",
-          "cta_url": "/template-preview/pearl/lillian-nguyen-dmd-ms/"
+          "header_tag": "h3"
         },
         "mapping": {
           "decision": "auto_map",
-          "confidence": 0.93,
+          "confidence": 0.95,
           "minimum_auto_map_confidence": 0.9,
           "signals": [
             "source:prose",
             "source:managed_image",
-            "source:image_adjacent_to_prose"
+            "source:heading_level_preserved"
           ],
           "source_url": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Home-p55.asp",
           "source_html_sha256": "055c05da16d88b47644704e218448108d2cd2ea5ed23b1646791bee12c8cc5f3",
-          "fragment_sha256": "2fdc0d8784b45ff784300441ae56ca05b3f50e5709c63049969c6c06be8e07e9"
+          "fragment_sha256": "2fdc0d8784b45ff784300441ae56ca05b3f50e5709c63049969c6c06be8e07e9",
+          "content_features": {
+            "headings": 1,
+            "list_items": 0,
+            "links": 1,
+            "images": 1
+          }
         }
       }
     ]
@@ -1677,7 +1722,7 @@
         "type": "flex_content_section",
         "item": {
           "section_header": "Learn More About the Services Provided at Lowen Perio:",
-          "body_content": "<a href=\"/template-preview/pearl/periodontal-disease-management/\" title=\"Periodontal Disease Management Lowen Perio Tigard, OR Periodontist Tigard OR\">Periodontal Disease Management</a>\n<br/><a href=\"/template-preview/pearl/crown-lengthening/\" title=\"Crown Lengthening Lowen Perio Tigard, OR Periodontist Tigard OR\">Crown Lengthening</a>\n<br/><a href=\"/template-preview/pearl/soft-tissue-grafting/\" title=\"Soft Tissue Grafting Lowen Perio Tigard, OR Periodontist Tigard OR\">Soft Tissue Grafting</a>\n<br/><a href=\"/template-preview/pearl/laser-therapy/\" title=\"Laser Therapy Lowen Perio Tigard, OR Periolase Tigard OR\">Laser Therapy</a>\n<br/><a href=\"/template-preview/pearl/dental-implants/\" title=\"Dental Implants Lowen Perio Tigard, OR Periodontist Tigard OR\">Dental Implants</a>\n<br/><a href=\"/template-preview/pearl/bone-grafting/\" title=\"Bone Grafting Lowen Perio Tigard, OR Periodontist Tigard OR\">Bone Grafting</a>\n<br/><a href=\"/template-preview/pearl/occlusal-therapy/\" title=\"Occlusal Therapy Lowen Perio Tigard, OR Periodontist Tigard OR\">Occlusal Therapy</a>\n<br/><a href=\"/template-preview/pearl/oral-pathology/\" title=\"Oral Pathology Lowen Perio Tigard, OR Periodontist Tigard OR\">Oral Pathology </a>",
+          "body_content": "<a href=\"/periodontal-disease-management/\" title=\"Periodontal Disease Management Lowen Perio Tigard, OR Periodontist Tigard OR\">Periodontal Disease Management</a>\n<br/><a href=\"/crown-lengthening/\" title=\"Crown Lengthening Lowen Perio Tigard, OR Periodontist Tigard OR\">Crown Lengthening</a>\n<br/><a href=\"/soft-tissue-grafting/\" title=\"Soft Tissue Grafting Lowen Perio Tigard, OR Periodontist Tigard OR\">Soft Tissue Grafting</a>\n<br/><a href=\"/laser-therapy/\" title=\"Laser Therapy Lowen Perio Tigard, OR Periolase Tigard OR\">Laser Therapy</a>\n<br/><a href=\"/dental-implants/\" title=\"Dental Implants Lowen Perio Tigard, OR Periodontist Tigard OR\">Dental Implants</a>\n<br/><a href=\"/bone-grafting/\" title=\"Bone Grafting Lowen Perio Tigard, OR Periodontist Tigard OR\">Bone Grafting</a>\n<br/><a href=\"/occlusal-therapy/\" title=\"Occlusal Therapy Lowen Perio Tigard, OR Periodontist Tigard OR\">Occlusal Therapy</a>\n<br/><a href=\"/oral-pathology/\" title=\"Oral Pathology Lowen Perio Tigard, OR Periodontist Tigard OR\">Oral Pathology </a>",
           "image": null,
           "image_alt": "",
           "image_position": "right",
@@ -1777,7 +1822,7 @@
         "type": "cta_section_standard",
         "item": {
           "heading": "Patient Portal",
-          "body": "<a href=\"https://patient.portal.archy.com/signIn\" target=\"_blank\">Click for Patient Portal</a>",
+          "body": "",
           "cta_label": "Click for Patient Portal",
           "cta_url": "https://patient.portal.archy.com/signIn"
         },
@@ -1799,7 +1844,7 @@
         "type": "flex_content_section",
         "item": {
           "section_header": "Patient Instruction Forms",
-          "body_content": "<a href=\"/tpn/c/C139/docs/20240404-Pre-Op-Instructions-c139.pdf\" target=\"_blank\">Pre-operative Surgical Instructions</a> <a href=\"/tpn/c/C139/docs/20240404-Scaling-RootPlaning-Instructions-c139.pdf\" target=\"_blank\">Scaling &amp; Root Planing Instructions</a>",
+          "body_content": "<a href=\"/lowen-assets/c2730e34982f-20240404-Pre-Op-Instructions-c139.pdf\" target=\"_blank\">Pre-operative Surgical Instructions</a> <a href=\"/lowen-assets/6da0853156ea-20240404-Scaling-RootPlaning-Instructions-c139.pdf\" target=\"_blank\">Scaling &amp; Root Planing Instructions</a>",
           "image": null,
           "image_alt": "",
           "image_position": "right",
@@ -1829,9 +1874,9 @@
         "type": "cta_section_standard",
         "item": {
           "heading": "Other Forms",
-          "body": "<a href=\"/tpn/c/C139/docs/20240404-PostOp-Diet-c139.pdf\" target=\"_blank\">Food Suggestions</a>",
+          "body": "",
           "cta_label": "Food Suggestions",
-          "cta_url": "/tpn/c/C139/docs/20240404-PostOp-Diet-c139.pdf"
+          "cta_url": "/lowen-assets/9dfc2c670714-20240404-PostOp-Diet-c139.pdf"
         },
         "mapping": {
           "decision": "auto_map",
@@ -1957,7 +2002,7 @@
         "type": "flex_content_section",
         "item": {
           "section_header": "Here Are Some Helpful Links:",
-          "body_content": "<div style=\"padding-left:25px;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/template-preview/pearl/patient-forms/\" title=\"Patient Forms Lowen Perio Tigard, OR Periodontist Tigard OR\">Patient Forms</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/template-preview/pearl/financial-info/\" title=\"Financial Info Lowen Perio Tigard, OR Periodontist Tigard OR\">Financial Info</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/template-preview/pearl/privacy-policy/\" title=\"Privacy Policy Lowen Perio Tigard, OR Periodontist Tigard OR\">Privacy Policy</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/template-preview/pearl/sedation-options/\" title=\"Sedation Options Lowen Perio Tigard, OR Periodontist Tigard OR\">Sedation Options</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/template-preview/pearl/educational-links/\" title=\"Educational Links Lowen Perio Tigard, OR Periodontist Tigard OR\">Educational Links</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"https://patient.portal.archy.com/signIn\" target=\"_blank\">Patient Portal</a>\n</td>\n</tr>\n</table>\n</div>",
+          "body_content": "<div style=\"padding-left:25px;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/patient-forms/\" title=\"Patient Forms Lowen Perio Tigard, OR Periodontist Tigard OR\">Patient Forms</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/financial-info/\" title=\"Financial Info Lowen Perio Tigard, OR Periodontist Tigard OR\">Financial Info</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/privacy-policy/\" title=\"Privacy Policy Lowen Perio Tigard, OR Periodontist Tigard OR\">Privacy Policy</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/sedation-options/\" title=\"Sedation Options Lowen Perio Tigard, OR Periodontist Tigard OR\">Sedation Options</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/educational-links/\" title=\"Educational Links Lowen Perio Tigard, OR Periodontist Tigard OR\">Educational Links</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"https://patient.portal.archy.com/signIn\" target=\"_blank\">Patient Portal</a>\n</td>\n</tr>\n</table>\n</div>",
           "image": null,
           "image_alt": "",
           "image_position": "right",
@@ -2638,7 +2683,7 @@
         "type": "flex_content_section",
         "item": {
           "section_header": "Learn More About Periodontal Treatment:",
-          "body_content": "<div style=\"padding-left:25px;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/template-preview/pearl/what-is-a-periodontist/\" title=\"What Is A Periodontist? Lowen Perio Tigard, OR Periodontist Tigard OR\">What is a Periodontist?</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/template-preview/pearl/specialty-of-periodontics/\" title=\"Specialty of Periodontics Lowen Perio Tigard, OR Periodontist Tigard OR\">Specialty of Periodontics</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/template-preview/pearl/periodontal-disease/\" title=\"Periodontal Disease Lowen Perio Tigard, OR Periodontist Tigard OR\">Periodontal Disease</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/template-preview/pearl/preventing-periodontal-disease/\" title=\"Preventing Periodontal Disease Lowen Perio Tigard, OR Periodontist Tigard OR\">Preventing Periodontal Disease</a> </td>\n</tr>\n</table> </div>",
+          "body_content": "<div style=\"padding-left:25px;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/what-is-a-periodontist/\" title=\"What Is A Periodontist? Lowen Perio Tigard, OR Periodontist Tigard OR\">What is a Periodontist?</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/specialty-of-periodontics/\" title=\"Specialty of Periodontics Lowen Perio Tigard, OR Periodontist Tigard OR\">Specialty of Periodontics</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/periodontal-disease/\" title=\"Periodontal Disease Lowen Perio Tigard, OR Periodontist Tigard OR\">Periodontal Disease</a>\n<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\"><a href=\"/preventing-periodontal-disease/\" title=\"Preventing Periodontal Disease Lowen Perio Tigard, OR Periodontist Tigard OR\">Preventing Periodontal Disease</a> </td>\n</tr>\n</table> </div>",
           "image": null,
           "image_alt": "",
           "image_position": "right",
@@ -2808,7 +2853,7 @@
         "type": "flex_content_section",
         "item": {
           "section_header": "The following are some of the reasons why surgery might be necessary:",
-          "body_content": "<div style=\"padding-left:25px;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\">To clean and reduce periodontal pockets\u00a0(<a href=\"/template-preview/pearl/osseous-flap-surgery/\" title=\"Osseous Flap Surgery Lowen Perio Tigard, OR Periodontist Tigard OR\">flap surgery</a>). You cannot keep deep pockets clean and free of plaque just by brushing and flossing alone. The pockets may also be too deep even for a dental professional to clean. Therefore, your periodontist may decide that surgery is necessary to remove plaque and calculus below the gumline. The gums are lifted away from the teeth to allow access for cleaning and smoothing of the tooth roots. Your periodontist will reduce the pocket and reposition the gums with stitches to minimize areas where disease-causing bacteria can hide.<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\">To reshape damaged bone (osseous surgery). This procedure is completed to smooth the uneven or irregular surfaces of the damaged bone and to promote proper healing of the gum tissue.<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\">To regenerate or \"regrow\" tissue (bone grafting or guided tissue regeneration). These techniques restore and strengthen the support of the teeth so they can function longer. There are many new technologies available to enhance bone regeneration.</td>\n</tr>\n</table>\n</div>",
+          "body_content": "<div style=\"padding-left:25px;\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\">To clean and reduce periodontal pockets\u00a0(<a href=\"/osseous-flap-surgery/\" title=\"Osseous Flap Surgery Lowen Perio Tigard, OR Periodontist Tigard OR\">flap surgery</a>). You cannot keep deep pockets clean and free of plaque just by brushing and flossing alone. The pockets may also be too deep even for a dental professional to clean. Therefore, your periodontist may decide that surgery is necessary to remove plaque and calculus below the gumline. The gums are lifted away from the teeth to allow access for cleaning and smoothing of the tooth roots. Your periodontist will reduce the pocket and reposition the gums with stitches to minimize areas where disease-causing bacteria can hide.<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\">To reshape damaged bone (osseous surgery). This procedure is completed to smooth the uneven or irregular surfaces of the damaged bone and to promote proper healing of the gum tissue.<br/></td>\n</tr>\n<tr><td valign=\"top\">\u2022\u00a0</td>\n<td valign=\"top\">To regenerate or \"regrow\" tissue (bone grafting or guided tissue regeneration). These techniques restore and strengthen the support of the teeth so they can function longer. There are many new technologies available to enhance bone regeneration.</td>\n</tr>\n</table>\n</div>",
           "image": null,
           "image_alt": "",
           "image_position": "right",
@@ -3029,12 +3074,39 @@
       {
         "type": "flex_content_section",
         "item": {
+          "section_header": "What Information Do We Collect?",
+          "body_content": "<p></p>",
+          "image_position": "right",
+          "header_tag": "h2"
+        },
+        "mapping": {
+          "decision": "auto_map",
+          "confidence": 0.99,
+          "minimum_auto_map_confidence": 0.9,
+          "signals": [
+            "source:standalone_section_heading",
+            "source:h2"
+          ],
+          "source_url": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-Privacy-Policy-p75079.asp",
+          "source_html_sha256": "06860e76c7e19e7456cf78060e0e1cc28043bcf5048a609a784f257d06a9d264",
+          "fragment_sha256": "a68e8acdb069821db18f2b83990758ba8e67eb2786b7180feb96e55d6b241dfc",
+          "content_features": {
+            "headings": 1,
+            "list_items": 0,
+            "links": 0,
+            "images": 0
+          }
+        }
+      },
+      {
+        "type": "flex_content_section",
+        "item": {
           "section_header": "Active Collection:",
           "body_content": "We collect information from you in various ways when you visit the Site.  For example, we collect information you voluntarily provide to us, such as if you create an account, send us an email, fill out a form, register for an event, provide or request information, or post comments or other content on the Site.  Such information may include personal information, such as your name, address, email, telephone number, other contact and demographic information, and credit card number. Personal and demographic information may also be collected if you provide such information in connection with creating a profile or group, leaving comments, submitting or posting content, sending an email or message to another user or participating in any interactive forums or features on the Site.",
           "image": null,
           "image_alt": "",
           "image_position": "right",
-          "header_tag": "h2"
+          "header_tag": "h3"
         },
         "mapping": {
           "decision": "auto_map",
@@ -3063,7 +3135,7 @@
           "image": null,
           "image_alt": "",
           "image_position": "right",
-          "header_tag": "h2"
+          "header_tag": "h3"
         },
         "mapping": {
           "decision": "auto_map",
@@ -3323,7 +3395,7 @@
         "type": "flex_content_section",
         "item": {
           "section_header": "",
-          "body_content": "<a href=\"/template-preview/pearl/privacy-policy/\" title=\"Privacy Policy Lowen Perio Tigard, OR Periodontist Tigard OR\">Click to view our privacy policy.</a>",
+          "body_content": "<a href=\"/privacy-policy/\" title=\"Privacy Policy Lowen Perio Tigard, OR Periodontist Tigard OR\">Click to view our privacy policy.</a>",
           "image": null,
           "image_alt": "",
           "image_position": "right",
@@ -3947,7 +4019,7 @@
         "type": "cta_section_standard",
         "item": {
           "heading": "We love to hear from you!",
-          "body": "We love hearing from our patients, please take a moment to leave us a review on <a href=\"https://goo.gl/maps/KqmtthnCGU69Bgpp6\" target=\"_blank\">Google</a>.",
+          "body": "We love hearing from our patients, please take a moment to leave us a review on .",
           "cta_label": "Google",
           "cta_url": "https://goo.gl/maps/KqmtthnCGU69Bgpp6"
         },
@@ -3972,35 +4044,43 @@
           "intro_text": "",
           "reviews": [
             {
+              "patient_name": "",
               "quote": "<p>I was highly impressed with Dr Lowen and her staff. Every step of the proposed work and associated costs was explained in detail and alternatives discussed. Highly recommended.</p>",
               "sort": 1
             },
             {
+              "patient_name": "",
               "quote": "<p>Absolutely wonderful experience! I felt welcome and cared for from the time I came in the door until I left. The staff was very friendly and efficient. Dr. Lowen explained everything well, my procedure took less time than I thought, and the best part was I had no discomfort after the procedure. Highly Recommend!!</p>",
               "sort": 2
             },
             {
+              "patient_name": "",
               "quote": "<p>Dr. Lowen completed the extraction of 3 teeth and the placement of 3 implants. I personally believe she is one of the very best in the business and I couldn't be happier with the results.</p>",
               "sort": 3
             },
             {
+              "patient_name": "",
               "quote": "<p>Fabulous, compassionate, attentive, professionalism supreme ! My experience with Dr. Krista Lowen and all staff members involved in my care was comforting and efficient. I was particularly impressed with Dr Lowen's determination to resolve my issue.</p>",
               "sort": 4
             },
             {
-              "quote": "<p>Bonnie R. Dear Dr. Layport Thank you so much for your before and after photos, and for letting my husband look, and for your superb care. You are particularly kind, excellent at explaining things and conscientious. It was an honor being under your care.</p>",
+              "patient_name": "Bonnie R.",
+              "quote": "<p>Dear Dr. Layport Thank you so much for your before and after photos, and for letting my husband look, and for your superb care. You are particularly kind, excellent at explaining things and conscientious. It was an honor being under your care.</p>",
               "sort": 5
             },
             {
-              "quote": "<p>J.W. Dr. Layport: Just wanted to say thank you and your entire staff for the wonderful care I received when I had my dental surgery in September and all my visits since. I was comforted and asked always how I was doing and always my questions and concerns answered. I felt comfortable and very well taken care of with my anxiety. Thank you for your excellent care and I will recommend you highly.</p>",
+              "patient_name": "J.W.",
+              "quote": "<p>Dr. Layport: Just wanted to say thank you and your entire staff for the wonderful care I received when I had my dental surgery in September and all my visits since. I was comforted and asked always how I was doing and always my questions and concerns answered. I felt comfortable and very well taken care of with my anxiety. Thank you for your excellent care and I will recommend you highly.</p>",
               "sort": 6
             },
             {
-              "quote": "<p>Judy B. Dear Dr. Layport and Staff Thank you so much for your kind consideration and your high standards and professionalism. You are head and shoulders above the crowd. You are sincerely appreciated.</p>",
+              "patient_name": "Judy B.",
+              "quote": "<p>Dear Dr. Layport and Staff Thank you so much for your kind consideration and your high standards and professionalism. You are head and shoulders above the crowd. You are sincerely appreciated.</p>",
               "sort": 7
             },
             {
-              "quote": "<p>Joan Dr. Layport Thanks for working with me and the other dentists on the solution for my teeth. I have my new bridge now and it looks and works greats. Thanks for your time and expertise.</p>",
+              "patient_name": "Joan",
+              "quote": "<p>Dr. Layport Thanks for working with me and the other dentists on the solution for my teeth. I have my new bridge now and it looks and works greats. Thanks for your time and expertise.</p>",
               "sort": 8
             }
           ]
@@ -4163,6 +4243,33 @@
       {
         "type": "flex_content_section",
         "item": {
+          "section_header": "Benefits of Seeing a Periodontist",
+          "body_content": "<p></p>",
+          "image_position": "right",
+          "header_tag": "h2"
+        },
+        "mapping": {
+          "decision": "auto_map",
+          "confidence": 0.99,
+          "minimum_auto_map_confidence": 0.9,
+          "signals": [
+            "source:standalone_section_heading",
+            "source:h2"
+          ],
+          "source_url": "https://www.lowenperio.com/p/Periodontist-Tigard-OR-What-Is-A-Periodontist-p2300.asp",
+          "source_html_sha256": "153d447e184138868065de43dab77a16378d892c8b166d18b5adc3a9a40afe9d",
+          "fragment_sha256": "c301d56939e41a158c11984a2bfb23312acd631f8a666dcb35db8d0d99c4010f",
+          "content_features": {
+            "headings": 1,
+            "list_items": 0,
+            "links": 0,
+            "images": 0
+          }
+        }
+      },
+      {
+        "type": "flex_content_section",
+        "item": {
           "section_header": "Periodontists Save Teeth!",
           "body_content": "We save teeth where possible and place implants when needed. Have you been told you need to have your teeth extracted? Have a second opinion to save your teeth if possible.",
           "image": null,
@@ -4222,7 +4329,7 @@
         "type": "cta_section_standard",
         "item": {
           "heading": "Medical Correlation",
-          "body": "Current research has found links between periodontal disease and systemic health problems such as cardiovascular (heart) disease, alzheimer's, premature or low birth-weight babies and osteoporosis. Having healthy gums can also improve your overall health. <a href=\"https://fightgumdisease.com\" target=\"_blank\">FightGumDisease.com</a>",
+          "body": "Current research has found links between periodontal disease and systemic health problems such as cardiovascular (heart) disease, alzheimer's, premature or low birth-weight babies and osteoporosis. Having healthy gums can also improve your overall health.",
           "cta_label": "FightGumDisease.com",
           "cta_url": "https://fightgumdisease.com"
         },

@@ -1,0 +1,715 @@
+{
+  "ok": true,
+  "generated_at": "2026-08-15T20:15:24.531655+00:00",
+  "baseline": "Final B",
+  "deployment_id": "80da4f74-7de5-4f50-9b49-8539dcc04d6f",
+  "deployment_url": "https://80da4f74.pearl-lowen-poc.pages.dev",
+  "production_alias": "https://pearl-lowen-poc.pages.dev",
+  "source": "860d826",
+  "expected_source": "860d82639e878e713c765b73925a57021be574ff",
+  "source_matches": true,
+  "live_route_matrix": {
+    "passed": 234,
+    "failed": 0
+  },
+  "roots": [
+    {
+      "url": "https://pearl-lowen-poc.pages.dev/",
+      "status": 200,
+      "home_route_identity": true,
+      "html_noindex": true,
+      "header_noindex": true,
+      "sha256": "cf447ffda168be39ac3bef292c2e1ce82efc9b097709c7155d1dcd297f1dccf4"
+    },
+    {
+      "url": "https://80da4f74.pearl-lowen-poc.pages.dev/",
+      "status": 200,
+      "home_route_identity": true,
+      "html_noindex": true,
+      "header_noindex": true,
+      "sha256": "cf447ffda168be39ac3bef292c2e1ce82efc9b097709c7155d1dcd297f1dccf4"
+    }
+  ],
+  "route_parity": [
+    {
+      "path": "/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "cf447ffda168be39ac3bef292c2e1ce82efc9b097709c7155d1dcd297f1dccf4",
+      "deployment_sha256": "cf447ffda168be39ac3bef292c2e1ce82efc9b097709c7155d1dcd297f1dccf4",
+      "match": true
+    },
+    {
+      "path": "/about-us/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "94ea4d7d4d6363f5a13763466c41aa84d417a10b941f2d7a4107c5a47565ce7c",
+      "deployment_sha256": "94ea4d7d4d6363f5a13763466c41aa84d417a10b941f2d7a4107c5a47565ce7c",
+      "match": true
+    },
+    {
+      "path": "/antibiotics/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "61ed4914d99956ddea02cfe5dc4df17c21d6a4c220b7ed0b0c0445587b4dd291",
+      "deployment_sha256": "61ed4914d99956ddea02cfe5dc4df17c21d6a4c220b7ed0b0c0445587b4dd291",
+      "match": true
+    },
+    {
+      "path": "/bone-grafting/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "a1c2f3379eb8167e083a56694c9717087abda7fcec86179a40e09afa1e1f6dd7",
+      "deployment_sha256": "a1c2f3379eb8167e083a56694c9717087abda7fcec86179a40e09afa1e1f6dd7",
+      "match": true
+    },
+    {
+      "path": "/contact-us/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "2be7d28c0d77b984891ed1fe08962218f51e8203a61257c060d6eaac92efee39",
+      "deployment_sha256": "2be7d28c0d77b984891ed1fe08962218f51e8203a61257c060d6eaac92efee39",
+      "match": true
+    },
+    {
+      "path": "/crown-lengthening/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "64a0d64970636700a1e1e35b2aebe3c3d276b780399d6abff856fe0d0843830e",
+      "deployment_sha256": "64a0d64970636700a1e1e35b2aebe3c3d276b780399d6abff856fe0d0843830e",
+      "match": true
+    },
+    {
+      "path": "/dental-implants/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "ceebc6a510c4300883a1971eea04269b499dbc090d690f68d8508dc14a298fbd",
+      "deployment_sha256": "ceebc6a510c4300883a1971eea04269b499dbc090d690f68d8508dc14a298fbd",
+      "match": true
+    },
+    {
+      "path": "/digital-x-rays/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "b6fdfef6d89c23c4bd5087d724c43bb5d9b41e47d88e76fd3efbc9bf23772e48",
+      "deployment_sha256": "b6fdfef6d89c23c4bd5087d724c43bb5d9b41e47d88e76fd3efbc9bf23772e48",
+      "match": true
+    },
+    {
+      "path": "/educational-links/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "f9c65fae9785499d12aea9dc3c48d6b84851db407e4833ff8842ea0ac2d00228",
+      "deployment_sha256": "f9c65fae9785499d12aea9dc3c48d6b84851db407e4833ff8842ea0ac2d00228",
+      "match": true
+    },
+    {
+      "path": "/financial-info/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "57cc24dec23377387a65b54055ec54b43e015f4eaab576ca1d2b94fba68200af",
+      "deployment_sha256": "57cc24dec23377387a65b54055ec54b43e015f4eaab576ca1d2b94fba68200af",
+      "match": true
+    },
+    {
+      "path": "/krista-lowen-dds-msd/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "b657a7dfcd878c7701388243e20ebb8e59a1b6c0417bfe0bd4aa47063a7d4fa6",
+      "deployment_sha256": "b657a7dfcd878c7701388243e20ebb8e59a1b6c0417bfe0bd4aa47063a7d4fa6",
+      "match": true
+    },
+    {
+      "path": "/laser-therapy/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "80644f10d090fe63413d5ec1737606d9e707fa3cfe985dcfecbe0b946c401343",
+      "deployment_sha256": "80644f10d090fe63413d5ec1737606d9e707fa3cfe985dcfecbe0b946c401343",
+      "match": true
+    },
+    {
+      "path": "/lillian-nguyen-dmd-ms/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "9c696289adf847fa4683397d95e29af7bd8cf63c6fdde274db195870c13dea37",
+      "deployment_sha256": "9c696289adf847fa4683397d95e29af7bd8cf63c6fdde274db195870c13dea37",
+      "match": true
+    },
+    {
+      "path": "/occlusal-therapy/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "4851062dedb1d2e9cba27b192948fbb3528f7b89e354e7500626302343773c2e",
+      "deployment_sha256": "4851062dedb1d2e9cba27b192948fbb3528f7b89e354e7500626302343773c2e",
+      "match": true
+    },
+    {
+      "path": "/oral-pathology/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "8cc047f0754e65f4f37e40f0030cc62d6c9ede02a572fd2bd288658a3d4a41fc",
+      "deployment_sha256": "8cc047f0754e65f4f37e40f0030cc62d6c9ede02a572fd2bd288658a3d4a41fc",
+      "match": true
+    },
+    {
+      "path": "/osseous-flap-surgery/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "48db24c43344a0739a9bcaeacb0cd85528b34a0a5459c850243095ea80878096",
+      "deployment_sha256": "48db24c43344a0739a9bcaeacb0cd85528b34a0a5459c850243095ea80878096",
+      "match": true
+    },
+    {
+      "path": "/our-services/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "f5477477de7ad9fdcc4e3372a520b543e2aa8af31a74810b076a081140a9bebe",
+      "deployment_sha256": "f5477477de7ad9fdcc4e3372a520b543e2aa8af31a74810b076a081140a9bebe",
+      "match": true
+    },
+    {
+      "path": "/patient-forms/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "14577f2b35603907ad8ce6ca26d4f81220fd851fbcf66e7940a7466adefcae37",
+      "deployment_sha256": "14577f2b35603907ad8ce6ca26d4f81220fd851fbcf66e7940a7466adefcae37",
+      "match": true
+    },
+    {
+      "path": "/patient-referral-form/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "6b7a163757746709305d57ee4be6cebb9bd9574f8da47d2d9b6d3125b4de7ba9",
+      "deployment_sha256": "6b7a163757746709305d57ee4be6cebb9bd9574f8da47d2d9b6d3125b4de7ba9",
+      "match": true
+    },
+    {
+      "path": "/patients/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "3689e34cfaab44fe7fd313dcef78a03b216309621ae7ab5ef79223327ac01bc1",
+      "deployment_sha256": "3689e34cfaab44fe7fd313dcef78a03b216309621ae7ab5ef79223327ac01bc1",
+      "match": true
+    },
+    {
+      "path": "/peri-implantitis/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "edd8f5e0d2deaf26998ab431cef19f780751b0d6eca7c3763df031640b5b653e",
+      "deployment_sha256": "edd8f5e0d2deaf26998ab431cef19f780751b0d6eca7c3763df031640b5b653e",
+      "match": true
+    },
+    {
+      "path": "/perio-protect-reg/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "02078b993dab593f1fa4a85209da405b267b00a1f9cb032fe5b507634a0b03b5",
+      "deployment_sha256": "02078b993dab593f1fa4a85209da405b267b00a1f9cb032fe5b507634a0b03b5",
+      "match": true
+    },
+    {
+      "path": "/periodontal-disease-4949/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "cc085eafc5303dc0074beb606b23332eb7d6e7ed46a3c447e588fc1e6f4f69e7",
+      "deployment_sha256": "cc085eafc5303dc0074beb606b23332eb7d6e7ed46a3c447e588fc1e6f4f69e7",
+      "match": true
+    },
+    {
+      "path": "/periodontal-disease-management/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "9e68044985797fe88ca2a9a85e5f090f8474bc6d37c5eb84bf8fea455ddd07c5",
+      "deployment_sha256": "9e68044985797fe88ca2a9a85e5f090f8474bc6d37c5eb84bf8fea455ddd07c5",
+      "match": true
+    },
+    {
+      "path": "/periodontal-disease/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "615cc4f84b27d4280d95575bb2406f336ee3ef02361640764189d23fa5fbd234",
+      "deployment_sha256": "615cc4f84b27d4280d95575bb2406f336ee3ef02361640764189d23fa5fbd234",
+      "match": true
+    },
+    {
+      "path": "/periodontal-maintenance/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "f804dd2d97c79efb51b881b3d8150a9911137be842df8605f90bd44cf0b79aa8",
+      "deployment_sha256": "f804dd2d97c79efb51b881b3d8150a9911137be842df8605f90bd44cf0b79aa8",
+      "match": true
+    },
+    {
+      "path": "/periodontal-surgery/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "6e9a21ab350e87e4ccf4db1b854b57253c84a754c02a268a1bc17de755ce3e06",
+      "deployment_sha256": "6e9a21ab350e87e4ccf4db1b854b57253c84a754c02a268a1bc17de755ce3e06",
+      "match": true
+    },
+    {
+      "path": "/preventing-periodontal-disease/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "5defb6eab05c38782911838667003a25e497fb56d61497e96b1b9964f337bb89",
+      "deployment_sha256": "5defb6eab05c38782911838667003a25e497fb56d61497e96b1b9964f337bb89",
+      "match": true
+    },
+    {
+      "path": "/privacy-policy/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "8aae658d13139653c57d247fd9c8710ab4b1e78dc479fe34df84fde2a285e8e4",
+      "deployment_sha256": "8aae658d13139653c57d247fd9c8710ab4b1e78dc479fe34df84fde2a285e8e4",
+      "match": true
+    },
+    {
+      "path": "/request-an-appointment/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "f3380ce5c90057822d3006bcfb762d83796b9fecfdc04686ee92c83890d58e35",
+      "deployment_sha256": "f3380ce5c90057822d3006bcfb762d83796b9fecfdc04686ee92c83890d58e35",
+      "match": true
+    },
+    {
+      "path": "/ridge-preservation/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "bd1ee6f7dc6346f88be588ef40b0eab571d374450dd3c30438ab8627cd05eff1",
+      "deployment_sha256": "bd1ee6f7dc6346f88be588ef40b0eab571d374450dd3c30438ab8627cd05eff1",
+      "match": true
+    },
+    {
+      "path": "/scaling-and-root-planing/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "2b47cf36d707270eeb6adab8d47fcb2313f04b708dbd2897c85ec5957c70f414",
+      "deployment_sha256": "2b47cf36d707270eeb6adab8d47fcb2313f04b708dbd2897c85ec5957c70f414",
+      "match": true
+    },
+    {
+      "path": "/sedation-options/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "772664eaf0ff4e365e1ed43ffae4c6e0c8601b9edfa19cf66c92449ecb032686",
+      "deployment_sha256": "772664eaf0ff4e365e1ed43ffae4c6e0c8601b9edfa19cf66c92449ecb032686",
+      "match": true
+    },
+    {
+      "path": "/soft-tissue-grafting/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "3dafa268713d091e61f2afbd5c8d50050f9beb99838176c1e231357d78a2c538",
+      "deployment_sha256": "3dafa268713d091e61f2afbd5c8d50050f9beb99838176c1e231357d78a2c538",
+      "match": true
+    },
+    {
+      "path": "/specialty-of-periodontics/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "f832e09641821eb653a53baca8b37e4731e35ba7cca9e83eaaa1e82477724edb",
+      "deployment_sha256": "f832e09641821eb653a53baca8b37e4731e35ba7cca9e83eaaa1e82477724edb",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "cf447ffda168be39ac3bef292c2e1ce82efc9b097709c7155d1dcd297f1dccf4",
+      "deployment_sha256": "cf447ffda168be39ac3bef292c2e1ce82efc9b097709c7155d1dcd297f1dccf4",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/about-us/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "94ea4d7d4d6363f5a13763466c41aa84d417a10b941f2d7a4107c5a47565ce7c",
+      "deployment_sha256": "94ea4d7d4d6363f5a13763466c41aa84d417a10b941f2d7a4107c5a47565ce7c",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/antibiotics/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "61ed4914d99956ddea02cfe5dc4df17c21d6a4c220b7ed0b0c0445587b4dd291",
+      "deployment_sha256": "61ed4914d99956ddea02cfe5dc4df17c21d6a4c220b7ed0b0c0445587b4dd291",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/bone-grafting/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "a1c2f3379eb8167e083a56694c9717087abda7fcec86179a40e09afa1e1f6dd7",
+      "deployment_sha256": "a1c2f3379eb8167e083a56694c9717087abda7fcec86179a40e09afa1e1f6dd7",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/contact-us/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "2be7d28c0d77b984891ed1fe08962218f51e8203a61257c060d6eaac92efee39",
+      "deployment_sha256": "2be7d28c0d77b984891ed1fe08962218f51e8203a61257c060d6eaac92efee39",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/crown-lengthening/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "64a0d64970636700a1e1e35b2aebe3c3d276b780399d6abff856fe0d0843830e",
+      "deployment_sha256": "64a0d64970636700a1e1e35b2aebe3c3d276b780399d6abff856fe0d0843830e",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/dental-implants/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "ceebc6a510c4300883a1971eea04269b499dbc090d690f68d8508dc14a298fbd",
+      "deployment_sha256": "ceebc6a510c4300883a1971eea04269b499dbc090d690f68d8508dc14a298fbd",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/digital-x-rays/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "b6fdfef6d89c23c4bd5087d724c43bb5d9b41e47d88e76fd3efbc9bf23772e48",
+      "deployment_sha256": "b6fdfef6d89c23c4bd5087d724c43bb5d9b41e47d88e76fd3efbc9bf23772e48",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/educational-links/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "f9c65fae9785499d12aea9dc3c48d6b84851db407e4833ff8842ea0ac2d00228",
+      "deployment_sha256": "f9c65fae9785499d12aea9dc3c48d6b84851db407e4833ff8842ea0ac2d00228",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/financial-info/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "57cc24dec23377387a65b54055ec54b43e015f4eaab576ca1d2b94fba68200af",
+      "deployment_sha256": "57cc24dec23377387a65b54055ec54b43e015f4eaab576ca1d2b94fba68200af",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/krista-lowen-dds-msd/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "b657a7dfcd878c7701388243e20ebb8e59a1b6c0417bfe0bd4aa47063a7d4fa6",
+      "deployment_sha256": "b657a7dfcd878c7701388243e20ebb8e59a1b6c0417bfe0bd4aa47063a7d4fa6",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/laser-therapy/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "80644f10d090fe63413d5ec1737606d9e707fa3cfe985dcfecbe0b946c401343",
+      "deployment_sha256": "80644f10d090fe63413d5ec1737606d9e707fa3cfe985dcfecbe0b946c401343",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/lillian-nguyen-dmd-ms/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "9c696289adf847fa4683397d95e29af7bd8cf63c6fdde274db195870c13dea37",
+      "deployment_sha256": "9c696289adf847fa4683397d95e29af7bd8cf63c6fdde274db195870c13dea37",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/occlusal-therapy/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "4851062dedb1d2e9cba27b192948fbb3528f7b89e354e7500626302343773c2e",
+      "deployment_sha256": "4851062dedb1d2e9cba27b192948fbb3528f7b89e354e7500626302343773c2e",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/oral-pathology/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "8cc047f0754e65f4f37e40f0030cc62d6c9ede02a572fd2bd288658a3d4a41fc",
+      "deployment_sha256": "8cc047f0754e65f4f37e40f0030cc62d6c9ede02a572fd2bd288658a3d4a41fc",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/osseous-flap-surgery/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "48db24c43344a0739a9bcaeacb0cd85528b34a0a5459c850243095ea80878096",
+      "deployment_sha256": "48db24c43344a0739a9bcaeacb0cd85528b34a0a5459c850243095ea80878096",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/our-services/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "f5477477de7ad9fdcc4e3372a520b543e2aa8af31a74810b076a081140a9bebe",
+      "deployment_sha256": "f5477477de7ad9fdcc4e3372a520b543e2aa8af31a74810b076a081140a9bebe",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/patient-forms/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "14577f2b35603907ad8ce6ca26d4f81220fd851fbcf66e7940a7466adefcae37",
+      "deployment_sha256": "14577f2b35603907ad8ce6ca26d4f81220fd851fbcf66e7940a7466adefcae37",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/patient-referral-form/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "6b7a163757746709305d57ee4be6cebb9bd9574f8da47d2d9b6d3125b4de7ba9",
+      "deployment_sha256": "6b7a163757746709305d57ee4be6cebb9bd9574f8da47d2d9b6d3125b4de7ba9",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/patients/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "3689e34cfaab44fe7fd313dcef78a03b216309621ae7ab5ef79223327ac01bc1",
+      "deployment_sha256": "3689e34cfaab44fe7fd313dcef78a03b216309621ae7ab5ef79223327ac01bc1",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/peri-implantitis/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "edd8f5e0d2deaf26998ab431cef19f780751b0d6eca7c3763df031640b5b653e",
+      "deployment_sha256": "edd8f5e0d2deaf26998ab431cef19f780751b0d6eca7c3763df031640b5b653e",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/perio-protect-reg/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "02078b993dab593f1fa4a85209da405b267b00a1f9cb032fe5b507634a0b03b5",
+      "deployment_sha256": "02078b993dab593f1fa4a85209da405b267b00a1f9cb032fe5b507634a0b03b5",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/periodontal-disease-4949/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "cc085eafc5303dc0074beb606b23332eb7d6e7ed46a3c447e588fc1e6f4f69e7",
+      "deployment_sha256": "cc085eafc5303dc0074beb606b23332eb7d6e7ed46a3c447e588fc1e6f4f69e7",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/periodontal-disease-management/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "9e68044985797fe88ca2a9a85e5f090f8474bc6d37c5eb84bf8fea455ddd07c5",
+      "deployment_sha256": "9e68044985797fe88ca2a9a85e5f090f8474bc6d37c5eb84bf8fea455ddd07c5",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/periodontal-disease/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "615cc4f84b27d4280d95575bb2406f336ee3ef02361640764189d23fa5fbd234",
+      "deployment_sha256": "615cc4f84b27d4280d95575bb2406f336ee3ef02361640764189d23fa5fbd234",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/periodontal-maintenance/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "f804dd2d97c79efb51b881b3d8150a9911137be842df8605f90bd44cf0b79aa8",
+      "deployment_sha256": "f804dd2d97c79efb51b881b3d8150a9911137be842df8605f90bd44cf0b79aa8",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/periodontal-surgery/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "6e9a21ab350e87e4ccf4db1b854b57253c84a754c02a268a1bc17de755ce3e06",
+      "deployment_sha256": "6e9a21ab350e87e4ccf4db1b854b57253c84a754c02a268a1bc17de755ce3e06",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/preventing-periodontal-disease/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "5defb6eab05c38782911838667003a25e497fb56d61497e96b1b9964f337bb89",
+      "deployment_sha256": "5defb6eab05c38782911838667003a25e497fb56d61497e96b1b9964f337bb89",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/privacy-policy/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "8aae658d13139653c57d247fd9c8710ab4b1e78dc479fe34df84fde2a285e8e4",
+      "deployment_sha256": "8aae658d13139653c57d247fd9c8710ab4b1e78dc479fe34df84fde2a285e8e4",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/request-an-appointment/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "f3380ce5c90057822d3006bcfb762d83796b9fecfdc04686ee92c83890d58e35",
+      "deployment_sha256": "f3380ce5c90057822d3006bcfb762d83796b9fecfdc04686ee92c83890d58e35",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/ridge-preservation/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "bd1ee6f7dc6346f88be588ef40b0eab571d374450dd3c30438ab8627cd05eff1",
+      "deployment_sha256": "bd1ee6f7dc6346f88be588ef40b0eab571d374450dd3c30438ab8627cd05eff1",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/scaling-and-root-planing/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "2b47cf36d707270eeb6adab8d47fcb2313f04b708dbd2897c85ec5957c70f414",
+      "deployment_sha256": "2b47cf36d707270eeb6adab8d47fcb2313f04b708dbd2897c85ec5957c70f414",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/sedation-options/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "772664eaf0ff4e365e1ed43ffae4c6e0c8601b9edfa19cf66c92449ecb032686",
+      "deployment_sha256": "772664eaf0ff4e365e1ed43ffae4c6e0c8601b9edfa19cf66c92449ecb032686",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/soft-tissue-grafting/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "3dafa268713d091e61f2afbd5c8d50050f9beb99838176c1e231357d78a2c538",
+      "deployment_sha256": "3dafa268713d091e61f2afbd5c8d50050f9beb99838176c1e231357d78a2c538",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/specialty-of-periodontics/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "f832e09641821eb653a53baca8b37e4731e35ba7cca9e83eaaa1e82477724edb",
+      "deployment_sha256": "f832e09641821eb653a53baca8b37e4731e35ba7cca9e83eaaa1e82477724edb",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/testimonials/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "60744cd2cb734c66a3cb927800ce9fbac8ad101b2d4eddcb132cdb80eac3c9ac",
+      "deployment_sha256": "60744cd2cb734c66a3cb927800ce9fbac8ad101b2d4eddcb132cdb80eac3c9ac",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/trios-reg/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "6ab94e586d9a9ab678338b294749cbbd9b8995311a9d822dbba11e0ad47d1da2",
+      "deployment_sha256": "6ab94e586d9a9ab678338b294749cbbd9b8995311a9d822dbba11e0ad47d1da2",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/velscope-trade/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "f3e8d8eea1251d1508cd6969cfa576ade6b9d22e0852724e934a6c8d9a4506b7",
+      "deployment_sha256": "f3e8d8eea1251d1508cd6969cfa576ade6b9d22e0852724e934a6c8d9a4506b7",
+      "match": true
+    },
+    {
+      "path": "/template-preview/pearl/what-is-a-periodontist/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "df5aa6c5247a30da3b0dc287bef2ca4aa5f60a13bb1cead7d2a41ffe3862e043",
+      "deployment_sha256": "df5aa6c5247a30da3b0dc287bef2ca4aa5f60a13bb1cead7d2a41ffe3862e043",
+      "match": true
+    },
+    {
+      "path": "/testimonials/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "60744cd2cb734c66a3cb927800ce9fbac8ad101b2d4eddcb132cdb80eac3c9ac",
+      "deployment_sha256": "60744cd2cb734c66a3cb927800ce9fbac8ad101b2d4eddcb132cdb80eac3c9ac",
+      "match": true
+    },
+    {
+      "path": "/trios-reg/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "6ab94e586d9a9ab678338b294749cbbd9b8995311a9d822dbba11e0ad47d1da2",
+      "deployment_sha256": "6ab94e586d9a9ab678338b294749cbbd9b8995311a9d822dbba11e0ad47d1da2",
+      "match": true
+    },
+    {
+      "path": "/velscope-trade/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "f3e8d8eea1251d1508cd6969cfa576ade6b9d22e0852724e934a6c8d9a4506b7",
+      "deployment_sha256": "f3e8d8eea1251d1508cd6969cfa576ade6b9d22e0852724e934a6c8d9a4506b7",
+      "match": true
+    },
+    {
+      "path": "/what-is-a-periodontist/",
+      "alias_status": 200,
+      "deployment_status": 200,
+      "alias_sha256": "df5aa6c5247a30da3b0dc287bef2ca4aa5f60a13bb1cead7d2a41ffe3862e043",
+      "deployment_sha256": "df5aa6c5247a30da3b0dc287bef2ca4aa5f60a13bb1cead7d2a41ffe3862e043",
+      "match": true
+    }
+  ],
+  "static_assets": [
+    {
+      "route": "/lowen-assets/9dfc2c670714-20240404-PostOp-Diet-c139.pdf",
+      "expected_sha256": "9dfc2c6707142b37c1f337e9ac6e7ff7e04f15c96f335191c203e0f7ff80b182",
+      "checks": [
+        {
+          "url": "https://pearl-lowen-poc.pages.dev/lowen-assets/9dfc2c670714-20240404-PostOp-Diet-c139.pdf",
+          "status": 200,
+          "sha256": "9dfc2c6707142b37c1f337e9ac6e7ff7e04f15c96f335191c203e0f7ff80b182",
+          "match": true
+        },
+        {
+          "url": "https://80da4f74.pearl-lowen-poc.pages.dev/lowen-assets/9dfc2c670714-20240404-PostOp-Diet-c139.pdf",
+          "status": 200,
+          "sha256": "9dfc2c6707142b37c1f337e9ac6e7ff7e04f15c96f335191c203e0f7ff80b182",
+          "match": true
+        }
+      ]
+    },
+    {
+      "route": "/lowen-assets/c2730e34982f-20240404-Pre-Op-Instructions-c139.pdf",
+      "expected_sha256": "c2730e34982fc6c24449adecc235927eb749f5caaa4aba2860e5f5231f61be8b",
+      "checks": [
+        {
+          "url": "https://pearl-lowen-poc.pages.dev/lowen-assets/c2730e34982f-20240404-Pre-Op-Instructions-c139.pdf",
+          "status": 200,
+          "sha256": "c2730e34982fc6c24449adecc235927eb749f5caaa4aba2860e5f5231f61be8b",
+          "match": true
+        },
+        {
+          "url": "https://80da4f74.pearl-lowen-poc.pages.dev/lowen-assets/c2730e34982f-20240404-Pre-Op-Instructions-c139.pdf",
+          "status": 200,
+          "sha256": "c2730e34982fc6c24449adecc235927eb749f5caaa4aba2860e5f5231f61be8b",
+          "match": true
+        }
+      ]
+    },
+    {
+      "route": "/lowen-assets/6da0853156ea-20240404-Scaling-RootPlaning-Instructions-c139.pdf",
+      "expected_sha256": "6da0853156eaf2663eb4aee0849ee40d7f6ddbd955b8aa433c441a9a8796a0f1",
+      "checks": [
+        {
+          "url": "https://pearl-lowen-poc.pages.dev/lowen-assets/6da0853156ea-20240404-Scaling-RootPlaning-Instructions-c139.pdf",
+          "status": 200,
+          "sha256": "6da0853156eaf2663eb4aee0849ee40d7f6ddbd955b8aa433c441a9a8796a0f1",
+          "match": true
+        },
+        {
+          "url": "https://80da4f74.pearl-lowen-poc.pages.dev/lowen-assets/6da0853156ea-20240404-Scaling-RootPlaning-Instructions-c139.pdf",
+          "status": 200,
+          "sha256": "6da0853156eaf2663eb4aee0849ee40d7f6ddbd955b8aa433c441a9a8796a0f1",
+          "match": true
+        }
+      ]
+    }
+  ]
+}

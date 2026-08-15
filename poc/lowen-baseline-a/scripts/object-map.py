@@ -162,6 +162,15 @@ def first_link(soup: BeautifulSoup, page_url: str):
     return {"label": normalized_text(node.get_text(" ", strip=True)), "url": engine.normalize_url(node["href"], page_url)}
 
 
+def remove_first_link(value: str) -> str:
+    """Remove a link already promoted to a dedicated CTA without duplicating it."""
+    soup = BeautifulSoup(value or "", "html.parser")
+    anchor = soup.find("a", href=True)
+    if anchor:
+        anchor.decompose()
+    return clean_rich_text("".join(str(node) for node in soup.contents))
+
+
 def feature_items(segment: list, page_url: str, by_url: dict, by_name: dict):
     soup = BeautifulSoup("".join(str(node) for node in segment), "html.parser")
     items = []
@@ -347,19 +356,29 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
             node.decompose()
         quote = normalized_text(quote_copy.get_text(" ", strip=True))
         heading = normalized_text((soup.find(re.compile(r"^h[1-6]$")) or {}).get_text(" ", strip=True)) if soup.find(re.compile(r"^h[1-6]$")) else ""
-        return [mapped_block("highlight_snippet_quote", {"quote": f"<p>{quote}</p>", "attribution": heading, "tone": "brand"}, page, page_url, html, 0.98, ["source:TPquote", "source:quote_text"])], exceptions
+        social = soup.select_one(".TPsocial a[href]")
+        social_markup = ""
+        if social:
+            social_label = normalized_text((social.find("img") or {}).get("alt")) if social.find("img") else normalized_text(social.get_text(" ", strip=True))
+            social_url = engine.normalize_url(social.get("href"), page_url)
+            social_markup = f'<p class="pearl-source-social"><a href="{social_url}">{social_label or "Source review"}</a></p>'
+        return [mapped_block("highlight_snippet_quote", {"quote": f"<p>{quote}</p>{social_markup}", "attribution": heading, "tone": "brand"}, page, page_url, html, 0.98, ["source:TPquote", "source:quote_text", "source:social_link_preserved"])], exceptions
 
     review_rows = [row for row in soup.select(".TProw") if row.select_one(".TPstars")]
     if review_rows:
         reviews = []
         for index, row in enumerate(review_rows, 1):
             quote_copy = BeautifulSoup(str(row), "html.parser")
+            patient_heading = quote_copy.find(re.compile(r"^h[1-6]$"))
+            patient_name = normalized_text(patient_heading.get_text(" ", strip=True)) if patient_heading else ""
+            if patient_heading:
+                patient_heading.decompose()
             for node in quote_copy.select(".TPstars,svg"):
                 node.decompose()
             quote = normalized_text(quote_copy.get_text(" ", strip=True))
             if not quote:
                 continue
-            reviews.append({"quote": f"<p>{quote}</p>", "sort": index})
+            reviews.append({"patient_name": patient_name, "quote": f"<p>{quote}</p>", "sort": index})
         if reviews:
             heading_node = soup.find(re.compile(r"^h[1-6]$"))
             return [mapped_block("testimonial_list_standard", {
@@ -380,8 +399,17 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
     # statement) immediately before the next section. Dropping that region
     # caused deterministic source-word loss.
     if heading and not normalized_text(BeautifulSoup(body, "html.parser").get_text(" ", strip=True)) and not image and not link:
-        if heading_node.name.lower() in {"h1", "h2"}:
+        if heading_node.name.lower() == "h1":
             return [], exceptions
+        if heading_node.name.lower() in {"h2", "h3", "h4", "h5", "h6"}:
+            block = mapped_block("flex_content_section", {
+                "section_header": heading,
+                "body_content": "<p></p>",
+                "image_position": "right",
+                "header_tag": heading_node.name.lower(),
+            }, page, page_url, html, 0.99, ["source:standalone_section_heading", f"source:{heading_node.name.lower()}"])
+            block["mapping"]["content_features"] = {"headings": 1, "list_items": 0, "links": 0, "images": 0}
+            return [block], exceptions
         return [mapped_block("highlight_snippet_quote", {
             "quote": f"<p>{heading}</p>",
             "attribution": "",
@@ -399,9 +427,25 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
         }, page, page_url, html, 0.95, ["source:first_content_region", "source:h1"])], exceptions
 
     if image and heading:
+        if heading_node.name.lower() != "h2":
+            block = mapped_block("flex_content_section", {
+                "section_header": heading,
+                "body_content": body or f"<p>{text}</p>",
+                "image": image,
+                "image_alt": image.get("alt", ""),
+                "image_position": "left" if soup.select_one(".TPcol-md-6:first-child img,.TPcol-sm-4:first-child img") else "right",
+                "header_tag": heading_node.name.lower(),
+            }, page, page_url, html, 0.95, ["source:prose", "source:managed_image", "source:heading_level_preserved"])
+            block["mapping"]["content_features"] = {
+                "headings": len(soup.find_all(re.compile(r"^h[1-6]$"))),
+                "list_items": len(soup.find_all("li")),
+                "links": len(soup.find_all("a", href=True)),
+                "images": len(soup.find_all("img")),
+            }
+            return [block], exceptions
         return [mapped_block("feature_image_content", {
             "heading": heading,
-            "body": body or f"<p>{text}</p>",
+            "body": remove_first_link(body) if link else (body or f"<p>{text}</p>"),
             "image": image,
             "image_alt": image.get("alt", ""),
             "image_position": "left" if soup.select_one(".TPcol-md-6:first-child img,.TPcol-sm-4:first-child img") else "right",
@@ -413,7 +457,7 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
     if heading and link and link_count == 1 and len(text) <= 360 and not soup.find(["ul", "ol", "table"]):
         return [mapped_block("cta_section_standard", {
             "heading": heading,
-            "body": body,
+            "body": remove_first_link(body),
             "cta_label": link["label"] or heading,
             "cta_url": link["url"],
         }, page, page_url, html, 0.94, ["source:heading", "source:cta_link", "source:compact_prose"])], exceptions
@@ -432,7 +476,7 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
         "image": image,
         "image_alt": image.get("alt", "") if image else "",
         "image_position": "right",
-        "header_tag": "h2",
+        "header_tag": heading_node.name.lower() if heading_node else "h2",
     }, page, page_url, html, 0.90, ["source:prose", "source:flex_content_fallback"] + (["source:contextual_link"] if link else []))
     flex["mapping"]["content_features"] = {
         "headings": len(soup.find_all(re.compile(r"^h[1-6]$"))),
@@ -482,34 +526,38 @@ def accessible_source_color(source: str, background: str = "#ffffff", minimum: f
     return "#000000"
 
 
-def preview_url(value: str, route_to_slug: dict[str, str]) -> str:
+def preview_url(value: str, route_to_slug: dict[str, str], asset_routes: dict[str, str] | None = None) -> str:
     if not value:
         return value
     route = urlparse(value).path
+    if asset_routes and route in asset_routes:
+        return asset_routes[route]
     target_slug = route_to_slug.get(route)
     if target_slug == "home":
         return "/"
     if target_slug:
-        return f"/template-preview/pearl/{target_slug}/"
+        return f"/{target_slug}/"
+    if value.startswith("/"):
+        return urljoin("https://www.lowenperio.com", value)
     return value
 
 
-def rewrite_internal_links(value, route_to_slug: dict[str, str], key: str = ""):
+def rewrite_internal_links(value, route_to_slug: dict[str, str], asset_routes: dict[str, str], key: str = ""):
     """Rewrite every known frozen-source route to its generated review route."""
     if isinstance(value, list):
-        return [rewrite_internal_links(item, route_to_slug) for item in value]
+        return [rewrite_internal_links(item, route_to_slug, asset_routes) for item in value]
     if isinstance(value, dict):
-        return {name: rewrite_internal_links(item, route_to_slug, name) for name, item in value.items()}
+        return {name: rewrite_internal_links(item, route_to_slug, asset_routes, name) for name, item in value.items()}
     if not isinstance(value, str):
         return value
     if key == "source_url":
         return value
     if key == "url" or key.endswith("_url"):
-        return preview_url(value, route_to_slug)
+        return preview_url(value, route_to_slug, asset_routes)
     if key in {"body", "body_content", "intro_paragraph", "quote"} and "href=" in value:
         soup = BeautifulSoup(value, "html.parser")
         for anchor in soup.find_all("a", href=True):
-            anchor["href"] = preview_url(anchor["href"], route_to_slug)
+            anchor["href"] = preview_url(anchor["href"], route_to_slug, asset_routes)
         return "".join(str(node) for node in soup.contents)
     return value
 
@@ -531,6 +579,12 @@ def main():
     home_source = next(item for item in pages_manifest if item["templateFamily"] == "home")
     home_soup = BeautifulSoup((FREEZE / home_source["localPath"]).read_text(encoding="utf-8"), "html.parser")
     route_to_slug = {route: slug for slug, route in slugs.items()}
+    route_to_slug.update({f"/{slug}/": slug for slug in slugs})
+    asset_routes = {
+        urlparse(item["url"]).path: f"/lowen-assets/{item['sha256'][:12]}-{Path(urlparse(item['url']).path).name}"
+        for item in assets_manifest
+        if item.get("contentType") == "application/pdf"
+    }
 
     for source_page in pages_manifest:
         page_url = source_page["sitemapUrl"]
@@ -586,7 +640,7 @@ def main():
         })
         exceptions.extend(page_exceptions)
 
-    pages_out = rewrite_internal_links(pages_out, route_to_slug)
+    pages_out = rewrite_internal_links(pages_out, route_to_slug, asset_routes)
 
     home = next(page for page in pages_out if page["slug"] == "home")
     contact = home_soup.select_one(".TPcontact-info")
@@ -608,7 +662,7 @@ def main():
             target_slug = route_to_slug.get(source_route)
             navigation.append({
                 "label": normalized_text(anchor.get_text(" ", strip=True)),
-                "url": "/" if target_slug == "home" else f"/template-preview/pearl/{target_slug}/" if target_slug else engine.normalize_url(anchor.get("href"), home_source["sitemapUrl"]),
+                "url": "/" if target_slug == "home" else f"/{target_slug}/" if target_slug else engine.normalize_url(anchor.get("href"), home_source["sitemapUrl"]),
                 "sort": len(navigation) + 1,
             })
 
@@ -621,6 +675,7 @@ def main():
     appointment_url = preview_url(
         engine.normalize_url(appointment_node.get("href"), home_source["sitemapUrl"]),
         route_to_slug,
+        asset_routes,
     ) if appointment_node else ""
     email_node = home_soup.find("a", href=re.compile(r"^mailto:", re.I))
     email = email_node.get("href", "").split(":", 1)[-1].strip() if email_node else ""

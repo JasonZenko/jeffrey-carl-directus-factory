@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "baseline": "Final B",
+  "cms": "https://pearl-lowen-poc-cms.foundryworks.ai",
+  "official_blocks": 14,
+  "approved_pages": 39,
+  "builder_rows": 132,
+  "navigation_items": 6,
+  "homepage_source_derived": true,
+  "rendered_routes": 39,
+  "source_headings_present": 39,
+  "build_reader_isolated": true,
+  "noindex": true
+}

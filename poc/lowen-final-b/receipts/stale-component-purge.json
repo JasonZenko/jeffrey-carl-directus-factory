@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "mode": "apply",
+  "target": "https://pearl-lowen-poc-cms.foundryworks.ai",
+  "exact_scope": "orphan Lowen component records whose internal_name is not prefixed Lowen Final B ·",
+  "final_b_excluded_fail_closed": true,
+  "selected": {
+    "pearl_inner_hero_standard": 38,
+    "pearl_flex_content_section": 35,
+    "pearl_highlight_links": 0,
+    "pearl_image_gallery_grid": 0,
+    "pearl_testimonial_list_standard": 0,
+    "pearl_main_hero_standard": 1,
+    "pearl_icon_feature_cards": 2,
+    "pearl_feature_image_content": 5,
+    "pearl_highlight_snippet_quote": 1,
+    "pearl_cta_section_standard": 5,
+    "pearl_contact_info_standard": 1,
+    "pearl_areas_served_links": 0,
+    "pearl_faq_dropdown": 0,
+    "pearl_cherry_financing": 0
+  },
+  "after": {
+    "pearl_inner_hero_standard": 0,
+    "pearl_flex_content_section": 0,
+    "pearl_highlight_links": 0,
+    "pearl_image_gallery_grid": 0,
+    "pearl_testimonial_list_standard": 0,
+    "pearl_main_hero_standard": 0,
+    "pearl_icon_feature_cards": 0,
+    "pearl_feature_image_content": 0,
+    "pearl_highlight_snippet_quote": 0,
+    "pearl_cta_section_standard": 0,
+    "pearl_contact_info_standard": 0,
+    "pearl_areas_served_links": 0,
+    "pearl_faq_dropdown": 0,
+    "pearl_cherry_financing": 0
+  }
+}

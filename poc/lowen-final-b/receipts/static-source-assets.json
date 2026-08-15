@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "assets": 3,
+  "files": [
+    {
+      "source_url": "https://www.lowenperio.com/tpn/c/C139/docs/20240404-PostOp-Diet-c139.pdf",
+      "route": "/lowen-assets/9dfc2c670714-20240404-PostOp-Diet-c139.pdf",
+      "sha256": "9dfc2c6707142b37c1f337e9ac6e7ff7e04f15c96f335191c203e0f7ff80b182",
+      "bytes": 82845
+    },
+    {
+      "source_url": "https://www.lowenperio.com/tpn/c/C139/docs/20240404-Pre-Op-Instructions-c139.pdf",
+      "route": "/lowen-assets/c2730e34982f-20240404-Pre-Op-Instructions-c139.pdf",
+      "sha256": "c2730e34982fc6c24449adecc235927eb749f5caaa4aba2860e5f5231f61be8b",
+      "bytes": 73901
+    },
+    {
+      "source_url": "https://www.lowenperio.com/tpn/c/C139/docs/20240404-Scaling-RootPlaning-Instructions-c139.pdf",
+      "route": "/lowen-assets/6da0853156ea-20240404-Scaling-RootPlaning-Instructions-c139.pdf",
+      "sha256": "6da0853156eaf2663eb4aee0849ee40d7f6ddbd955b8aa433c441a9a8796a0f1",
+      "bytes": 80362
+    }
+  ]
+}

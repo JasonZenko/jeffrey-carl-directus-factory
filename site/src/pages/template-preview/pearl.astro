@@ -11,6 +11,6 @@ const page = connected
   : { title: 'Pearl template component workshop', description: 'Explicit disconnected fixture mode', blocks: pearlFixture, theme: defaultPearlTheme, navigation: [{label: 'Home', url: '/', sort: 1}], logo: undefined, pageVisual: undefined, themeVisual: undefined };
 ---
 
-<BaseLayout title={page.title} description={page.description} theme={page.theme} navigation={page.navigation} logo={page.logo} pageVisual={page.pageVisual} themeVisual={page.themeVisual}>
+<BaseLayout slug="home" title={page.title} description={page.description} theme={page.theme} navigation={page.navigation} logo={page.logo} pageVisual={page.pageVisual} themeVisual={page.themeVisual}>
   {page.blocks.map((block) => <BlockRenderer block={block} />)}
 </BaseLayout>

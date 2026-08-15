@@ -1,0 +1,22 @@
+{
+  "ok": false,
+  "mode": "apply",
+  "target": "https://pearl-lowen-poc-cms.foundryworks.ai",
+  "exact_scope": "lowen-perio isolated review records only",
+  "inventory": {
+    "sites": 1,
+    "pages": 39,
+    "builders": 129,
+    "components": 129,
+    "navigation": 6,
+    "forms": 6,
+    "migration_runs": 3,
+    "media_assets": 143,
+    "files": 143
+  },
+  "after": {
+    "sites": 0,
+    "pages": 0,
+    "components": 174
+  }
+}

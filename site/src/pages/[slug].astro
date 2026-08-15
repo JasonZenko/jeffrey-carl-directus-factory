@@ -1,13 +1,15 @@
 ---
-import BlockRenderer from '../../../components/pearl/blocks/BlockRenderer.astro';
-import BaseLayout from '../../../layouts/pearl/BaseLayout.astro';
-import { getPearlPage, getPublishedPearlPageRoutes } from '../../../lib/pearl/directus';
+import BlockRenderer from '../components/pearl/blocks/BlockRenderer.astro';
+import BaseLayout from '../layouts/pearl/BaseLayout.astro';
+import { getPearlPage, getPublishedPearlPageRoutes } from '../lib/pearl/directus';
 
 export async function getStaticPaths() {
   const connected = (process.env.PEARL_CONTENT_MODE ?? 'connected') === 'connected';
   if (!connected) return [];
   const pages = await getPublishedPearlPageRoutes();
-  return pages.map(({slug}) => ({params: {slug}}));
+  return pages
+    .filter(({slug}) => slug !== 'home')
+    .map(({slug}) => ({params: {slug}}));
 }
 
 const slug = Astro.params.slug;

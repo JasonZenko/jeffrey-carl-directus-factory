@@ -10,3 +10,6 @@ playwright-report/
 .DS_Store
 source-freeze/.capture-running
 qa/visual/current/
+poc/lowen-final-b/visual/
+site/public/lowen-assets/
+poc/lowen-baseline-b/prepared-validation.json

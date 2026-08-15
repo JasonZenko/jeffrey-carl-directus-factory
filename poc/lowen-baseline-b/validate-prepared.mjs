@@ -36,7 +36,7 @@ if (site.navigation.length !== 6) errors.push(`expected six navigation items, re
 for (const [index, item] of site.navigation.entries()) {
   if (item.sort !== index + 1) errors.push(`navigation sort drift at ${item.label}`);
   if (!item.label || !item.url || item.url.includes('#')) errors.push(`invalid navigation item ${item.label || index + 1}`);
-  const match = item.url.match(/^\/template-preview\/pearl\/([^/]+)\/$/);
+  const match = item.url.match(/^\/([^/]+)\/$/);
   if (item.url !== '/' && (!match || !slugs.has(match[1]))) errors.push(`navigation target is not a frozen route: ${item.url}`);
 }
 

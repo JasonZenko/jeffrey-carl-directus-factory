@@ -10,6 +10,7 @@ import { pearlVisualAttr } from '../../lib/pearl/visual-editing';
 import '../../styles/pearl.css';
 
 interface Props {
+  slug?: string;
   title: string;
   description?: string;
   theme: PearlTheme;
@@ -19,7 +20,7 @@ interface Props {
   themeVisual?: PearlVisualRef;
 }
 
-const { title, description = 'Pearl template component workshop', theme, navigation, logo, pageVisual, themeVisual } = Astro.props;
+const { slug = 'home', title, description = 'Pearl template component workshop', theme, navigation, logo, pageVisual, themeVisual } = Astro.props;
 const tokenStyle = pearlThemeStyle(theme);
 ---
 
@@ -35,7 +36,7 @@ const tokenStyle = pearlThemeStyle(theme);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Forum&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
-  <body class="pearl-preview" data-template-adapter="pearl" data-template-version="1.1.0">
+  <body class="pearl-preview" data-template-adapter="pearl" data-template-version="1.1.0" data-page-slug={slug}>
     <PearlHeader theme={theme} navigation={navigation} logo={logo} visual={themeVisual} />
     <main id="top" data-directus={pearlVisualAttr(pageVisual)}><slot /></main>
     <PearlFooter theme={theme} navigation={navigation} logo={logo} />

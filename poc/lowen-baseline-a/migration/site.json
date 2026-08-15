@@ -17,27 +17,27 @@
     },
     {
       "label": "About Us",
-      "url": "/template-preview/pearl/about-us/",
+      "url": "/about-us/",
       "sort": 2
     },
     {
       "label": "Periodontal Disease",
-      "url": "/template-preview/pearl/periodontal-disease-4949/",
+      "url": "/periodontal-disease-4949/",
       "sort": 3
     },
     {
       "label": "Our Services",
-      "url": "/template-preview/pearl/our-services/",
+      "url": "/our-services/",
       "sort": 4
     },
     {
       "label": "Patients",
-      "url": "/template-preview/pearl/patients/",
+      "url": "/patients/",
       "sort": 5
     },
     {
       "label": "Contact Us",
-      "url": "/template-preview/pearl/contact-us/",
+      "url": "/contact-us/",
       "sort": 6
     }
   ],
@@ -65,7 +65,7 @@
     "content_width": "standard",
     "button_radius": "soft",
     "appointment_label": "Request an Appointment",
-    "appointment_url": "/template-preview/pearl/request-an-appointment/",
+    "appointment_url": "/request-an-appointment/",
     "phone": "(503) 620-1117",
     "address": "9900 SW Greenburg Rd, Suite #230, Tigard, OR 97223",
     "email": ""

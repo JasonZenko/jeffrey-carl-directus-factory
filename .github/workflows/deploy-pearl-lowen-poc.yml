@@ -1,14 +1,16 @@
-name: deploy-pearl-lowen-poc
+name: deploy-pearl-lowen-final-b
 
 on:
   workflow_dispatch:
   push:
-    branches: [pearl/lowen-poc-baseline-b2]
+    branches: [pearl/lowen-poc-final-b]
 
 jobs:
-  deploy-pearl-lowen-poc:
+  final-b:
     runs-on: ubuntu-latest
     environment: noindex-preview
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
         with:
@@ -24,25 +26,50 @@ jobs:
           cache: npm
           cache-dependency-path: site/package-lock.json
 
-      - name: Install dependencies
+      - name: Install deterministic test dependencies
         run: |
           pip install -r requirements.txt
           python -m playwright install --with-deps chromium
-          cd site && npm ci
+          cd site
+          npm ci
 
-      - name: Prove approved Pearl template ancestry
-        run: python3 poc/lowen-baseline-b2/verify-template-provenance.py
+      - name: Prove exact approved Pearl ancestry
+        run: python3 poc/lowen-final-b/verify-template-provenance.py
 
-      - name: Rebuild the frozen Lowen object map
+      - name: Rebuild and independently verify the frozen source map
         run: |
           python3 poc/lowen-baseline-a/scripts/object-map.py
-          git diff --exit-code -- poc/lowen-baseline-a/migration \
-            || (echo 'Lowen object mapping is not deterministic' && exit 1)
+          git diff --exit-code -- poc/lowen-baseline-a/migration
           node poc/lowen-baseline-a/scripts/validate-release.mjs
           node poc/lowen-baseline-b/validate-prepared.mjs
-          python3 poc/lowen-baseline-b2/source-fidelity-gate.py
+          python3 poc/lowen-final-b/source-region-gate.py
+          python3 poc/lowen-final-b/prepare-static-source-assets.py
 
-      - name: Build connected Lowen POC
+      - name: Require a machine-proven rollback backup
+        run: |
+          jq -e '.ok and .pg_restore_list_verified and .uploads_archive_verified and .temporary_database_restore_verified and (.source_counts == .restored_counts)' poc/lowen-final-b/receipts/backup-restore-receipt.json
+
+      - name: Prove dry-run and importer idempotence
+        run: node poc/lowen-final-b/idempotence-gate.mjs
+        env:
+          DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
+          DIRECTUS_ADMIN_EMAIL: ${{ secrets.PEARL_LOWEN_ADMIN_EMAIL }}
+          DIRECTUS_ADMIN_PASSWORD: ${{ secrets.PEARL_LOWEN_ADMIN_PASSWORD }}
+          PEARL_PUBLIC_ASSET_FOLDER_ID: ${{ secrets.PEARL_LOWEN_PUBLIC_ASSET_FOLDER_ID }}
+
+      - name: Prove Final B is the sole live Lowen authoring state
+        run: |
+          node poc/lowen-final-b/authoring-gate.mjs
+          node poc/lowen-final-b/final-state-proof.mjs
+        env:
+          DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
+          PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_LOWEN_DIRECTUS_TOKEN }}
+          DIRECTUS_ADMIN_EMAIL: ${{ secrets.PEARL_LOWEN_ADMIN_EMAIL }}
+          DIRECTUS_ADMIN_PASSWORD: ${{ secrets.PEARL_LOWEN_ADMIN_PASSWORD }}
+          DOM_ADMIN_EMAIL: ${{ secrets.PEARL_LOWEN_DOM_ADMIN_EMAIL }}
+          DOM_ADMIN_PASSWORD: ${{ secrets.PEARL_LOWEN_DOM_ADMIN_PASSWORD }}
+
+      - name: Build the credentialed connected site
         working-directory: site
         run: npm run build
         env:
@@ -50,43 +77,93 @@ jobs:
           PEARL_DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
           PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_LOWEN_DIRECTUS_TOKEN }}
 
-      - name: Prove isolated CMS and dynamic object mapping
+      - name: Verify the connected CMS object map
         run: node poc/lowen-baseline-a/scripts/verify-connected-build.mjs
         env:
           PEARL_DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
           PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_LOWEN_DIRECTUS_TOKEN }}
-          PEARL_BASELINE: B2
-          PEARL_RECEIPTS_DIR: poc/lowen-baseline-b2/receipts
+          PEARL_BASELINE: Final B
+          PEARL_RECEIPTS_DIR: poc/lowen-final-b/receipts
 
-      - name: Run shared contracts
+      - name: Run all shared contracts before replacing the review root
         working-directory: site
         run: npm test
         env:
           PEARL_DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
-
-      - name: Prove all 39 routes at desktop, tablet and mobile
-        run: |
-          PORT=4322 node scripts/serve.mjs &
-          for i in $(seq 1 30); do curl -sf http://127.0.0.1:4322/robots.txt > /dev/null && break; sleep 1; done
-          python3 poc/lowen-baseline-b/every-route-qa.py --target http://127.0.0.1:4322/template-preview/pearl
+          PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_LOWEN_DIRECTUS_TOKEN }}
 
       - name: Preserve accepted Jeffrey regression evidence
         run: |
           PORT=4321 node scripts/serve.mjs &
-          for i in $(seq 1 30); do curl -sf http://127.0.0.1:4321/robots.txt > /dev/null && break; sleep 1; done
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:4321/robots.txt >/dev/null && break; sleep 1; done
           python3 auditor/audit_rendered.py --target http://127.0.0.1:4321 --strict
           python3 qa/browser_matrix.py --target http://127.0.0.1:4321
           python3 qa/visual_fidelity.py --target http://127.0.0.1:4321
 
-      - name: Protect Lowen POC as the noindex review root
-        run: |
-          cp site/dist/template-preview/pearl/index.html site/dist/index.html
-          grep -q 'Lowen Perio' site/dist/index.html
-          grep -q 'noindex, nofollow' site/dist/index.html
+      - name: Prove every used parent and nested field is authoritative
+        run: node poc/lowen-final-b/field-authority-gate.mjs
+        env:
+          DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
+          PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_LOWEN_DIRECTUS_TOKEN }}
+          DIRECTUS_ADMIN_EMAIL: ${{ secrets.PEARL_LOWEN_ADMIN_EMAIL }}
+          DIRECTUS_ADMIN_PASSWORD: ${{ secrets.PEARL_LOWEN_ADMIN_PASSWORD }}
 
-      - name: Deploy isolated Lowen POC review
+      - name: Reverify the restored connected build
+        run: node poc/lowen-baseline-a/scripts/verify-connected-build.mjs
+        env:
+          PEARL_DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
+          PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_LOWEN_DIRECTUS_TOKEN }}
+          PEARL_BASELINE: Final B
+          PEARL_RECEIPTS_DIR: poc/lowen-final-b/receipts
+
+      - name: Run all 234 clean/template browser cases locally
+        run: |
+          PORT=4322 node scripts/serve.mjs &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:4322/robots.txt >/dev/null && break; sleep 1; done
+          python3 poc/lowen-final-b/route-matrix-qa.py --target http://127.0.0.1:4322
+          cp poc/lowen-final-b/receipts/route-matrix-qa.json poc/lowen-final-b/receipts/route-matrix-local.json
+
+      - name: Capture every frozen-source versus Final B viewport pair
+        run: python3 poc/lowen-final-b/source-preview-visual-qa.py --target http://127.0.0.1:4322
+
+      - name: Assert isolated noindex review root
+        run: |
+          grep -q 'data-page-slug="home"' site/dist/index.html
+          grep -q 'noindex, nofollow' site/dist/index.html
+          test "$(find site/dist/lowen-assets -type f | wc -l | tr -d ' ')" = "3"
+
+      - name: Deploy only the isolated Lowen review project
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy site/dist --project-name=pearl-lowen-poc --branch=pearl-lowen-poc
+
+      - name: Rerun the complete browser gate against the live deployment
+        run: |
+          for i in $(seq 1 60); do curl -sf https://pearl-lowen-poc.pages.dev/ >/dev/null && break; sleep 2; done
+          python3 poc/lowen-final-b/route-matrix-qa.py --target https://pearl-lowen-poc.pages.dev
+          mv poc/lowen-final-b/receipts/route-matrix-qa.json poc/lowen-final-b/receipts/route-matrix-live.json
+          DEPLOYMENT_JSON="$(wrangler pages deployment list --project-name pearl-lowen-poc --json)"
+          DEPLOYMENT_ID="$(printf %s "$DEPLOYMENT_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)[0]["Id"])')"
+          DEPLOYMENT_SOURCE="$(printf %s "$DEPLOYMENT_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)[0]["Source"])')"
+          DEPLOYMENT_URL="https://${DEPLOYMENT_ID%%-*}.pearl-lowen-poc.pages.dev"
+          python3 poc/lowen-final-b/live-deployment-gate.py \
+            --target https://pearl-lowen-poc.pages.dev \
+            --deployment-id "$DEPLOYMENT_ID" \
+            --deployment-url "$DEPLOYMENT_URL" \
+            --source "$DEPLOYMENT_SOURCE" \
+            --expected-source "$GITHUB_SHA"
+
+      - name: Upload the complete Final B evidence pack
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lowen-final-b-evidence-${{ github.sha }}
+          path: |
+            poc/lowen-final-b/receipts
+            poc/lowen-final-b/visual
+            auditor/fidelity-results.json
+            qa/results
+          if-no-files-found: error
+          retention-days: 30

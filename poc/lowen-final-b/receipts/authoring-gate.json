@@ -1,0 +1,118 @@
+{
+  "ok": true,
+  "baseline": "Final B",
+  "cms": "https://pearl-lowen-poc-cms.foundryworks.ai",
+  "sites": 1,
+  "pages": 39,
+  "builder_rows": 132,
+  "component_counts": {
+    "pearl_inner_hero_standard": 38,
+    "pearl_flex_content_section": 80,
+    "pearl_cta_section_standard": 6,
+    "pearl_main_hero_standard": 1,
+    "pearl_icon_feature_cards": 2,
+    "pearl_feature_image_content": 3,
+    "pearl_highlight_snippet_quote": 1,
+    "pearl_testimonial_list_standard": 1
+  },
+  "nested_counts": {
+    "pearl_icon_feature_card_items": 12,
+    "pearl_testimonial_items": 8
+  },
+  "page_builder_counts": {
+    "about-us": 3,
+    "our-services": 2,
+    "sedation-options": 2,
+    "soft-tissue-grafting": 2,
+    "patients": 2,
+    "contact-us": 5,
+    "antibiotics": 2,
+    "what-is-a-periodontist": 6,
+    "perio-protect-reg": 2,
+    "velscope-trade": 2,
+    "home": 8,
+    "krista-lowen-dds-msd": 2,
+    "periodontal-maintenance": 2,
+    "peri-implantitis": 2,
+    "dental-implants": 3,
+    "specialty-of-periodontics": 2,
+    "educational-links": 2,
+    "osseous-flap-surgery": 3,
+    "request-an-appointment": 3,
+    "bone-grafting": 3,
+    "periodontal-disease": 5,
+    "testimonials": 3,
+    "laser-therapy": 2,
+    "digital-x-rays": 2,
+    "occlusal-therapy": 2,
+    "patient-forms": 5,
+    "lillian-nguyen-dmd-ms": 2,
+    "periodontal-surgery": 3,
+    "periodontal-disease-management": 7,
+    "preventing-periodontal-disease": 3,
+    "periodontal-disease-4949": 5,
+    "oral-pathology": 2,
+    "ridge-preservation": 4,
+    "privacy-policy": 12,
+    "trios-reg": 4,
+    "scaling-and-root-planing": 3,
+    "crown-lengthening": 3,
+    "financial-info": 5,
+    "patient-referral-form": 2
+  },
+  "orphan_evidence": {
+    "pearl_inner_hero_standard": {
+      "attached": 38,
+      "final_records": 38,
+      "all_lowen_records": 38,
+      "stale_records": 0
+    },
+    "pearl_flex_content_section": {
+      "attached": 80,
+      "final_records": 80,
+      "all_lowen_records": 80,
+      "stale_records": 0
+    },
+    "pearl_cta_section_standard": {
+      "attached": 6,
+      "final_records": 6,
+      "all_lowen_records": 6,
+      "stale_records": 0
+    },
+    "pearl_main_hero_standard": {
+      "attached": 1,
+      "final_records": 1,
+      "all_lowen_records": 1,
+      "stale_records": 0
+    },
+    "pearl_icon_feature_cards": {
+      "attached": 2,
+      "final_records": 2,
+      "all_lowen_records": 2,
+      "stale_records": 0
+    },
+    "pearl_feature_image_content": {
+      "attached": 3,
+      "final_records": 3,
+      "all_lowen_records": 3,
+      "stale_records": 0
+    },
+    "pearl_highlight_snippet_quote": {
+      "attached": 1,
+      "final_records": 1,
+      "all_lowen_records": 1,
+      "stale_records": 0
+    },
+    "pearl_testimonial_list_standard": {
+      "attached": 1,
+      "final_records": 1,
+      "all_lowen_records": 1,
+      "stale_records": 0
+    }
+  },
+  "provider_records": 2,
+  "provider_exceptions": 3,
+  "build_reader_isolated": true,
+  "dom_admin_login_verified": true,
+  "failures": []
+}

@@ -1,0 +1,65 @@
+{
+  "ok": true,
+  "generated_at": "2026-08-15T20:12:11.917Z",
+  "target": "https://pearl-lowen-poc-cms.foundryworks.ai",
+  "failed_review_backup": {
+    "recoverable": true,
+    "backup_dir": "/opt/pearl-lowen-poc-cms/backups/final-b-pre-20260815T1953Z",
+    "database_dump_sha256": "1fbd096f4174f9c8cd195b891caf673b8a1c9501c42a8f91b778a9e9203665cb",
+    "pages": 39,
+    "builder_rows": 129
+  },
+  "additional_pre_final_components_removed": 88,
+  "final_b_live": {
+    "sites": 1,
+    "pages": 39,
+    "builder_rows": 132,
+    "components": 132,
+    "forms": 2,
+    "migration_runs": 1,
+    "media_assets": 49
+  },
+  "component_evidence": {
+    "pearl_inner_hero_standard": {
+      "all_lowen": 38,
+      "final_b": 38,
+      "stale_b_or_b2": 0
+    },
+    "pearl_flex_content_section": {
+      "all_lowen": 80,
+      "final_b": 80,
+      "stale_b_or_b2": 0
+    },
+    "pearl_cta_section_standard": {
+      "all_lowen": 6,
+      "final_b": 6,
+      "stale_b_or_b2": 0
+    },
+    "pearl_main_hero_standard": {
+      "all_lowen": 1,
+      "final_b": 1,
+      "stale_b_or_b2": 0
+    },
+    "pearl_icon_feature_cards": {
+      "all_lowen": 2,
+      "final_b": 2,
+      "stale_b_or_b2": 0
+    },
+    "pearl_feature_image_content": {
+      "all_lowen": 3,
+      "final_b": 3,
+      "stale_b_or_b2": 0
+    },
+    "pearl_highlight_snippet_quote": {
+      "all_lowen": 1,
+      "final_b": 1,
+      "stale_b_or_b2": 0
+    },
+    "pearl_testimonial_list_standard": {
+      "all_lowen": 1,
+      "final_b": 1,
+      "stale_b_or_b2": 0
+    }
+  },
+  "failures": []
+}

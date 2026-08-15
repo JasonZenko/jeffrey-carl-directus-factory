@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "generated_at": "2026-08-15T18:53:27.740082+00:00",
+  "run_id": "final-b-pre-20260815T1953Z",
+  "backup_dir": "/opt/pearl-lowen-poc-cms/backups/final-b-pre-20260815T1953Z",
+  "database_dump_sha256": "1fbd096f4174f9c8cd195b891caf673b8a1c9501c42a8f91b778a9e9203665cb",
+  "uploads_archive_sha256": "d47c5342705b01d0c8e34d6f431e604ef9757a03a8b7ed23308706acdb814d81",
+  "pg_restore_list_verified": true,
+  "uploads_archive_verified": true,
+  "temporary_database_restore_verified": true,
+  "source_counts": {
+    "pearl_pages": 39,
+    "pearl_page_builder": 129,
+    "pearl_sites": 2,
+    "pearl_navigation_items": 10,
+    "directus_files": 151
+  },
+  "restored_counts": {
+    "pearl_pages": 39,
+    "pearl_page_builder": 129,
+    "pearl_sites": 2,
+    "pearl_navigation_items": 10,
+    "directus_files": 151
+  },
+  "temporary_database_removed_on_exit": true
+}

@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "baseline": "Final B",
+  "target": "https://pearl-lowen-poc-cms.foundryworks.ai",
+  "source_pages": 39,
+  "imported_pages": 39,
+  "imported_blocks": 132,
+  "uploaded_assets": 49,
+  "navigation_items": 6,
+  "homepage_blocks": [
+    "pearl_main_hero_standard",
+    "pearl_icon_feature_cards",
+    "pearl_feature_image_content",
+    "pearl_icon_feature_cards",
+    "pearl_highlight_snippet_quote",
+    "pearl_flex_content_section",
+    "pearl_flex_content_section",
+    "pearl_flex_content_section"
+  ],
+  "homepage_source_derived": true,
+  "canonical_contract": "1.1.0",
+  "release_preflight": "passed",
+  "exceptions": 3,
+  "started_at": "2026-08-15T19:48:53.833Z",
+  "completed_at": "2026-08-15T19:49:53.621Z"
+}

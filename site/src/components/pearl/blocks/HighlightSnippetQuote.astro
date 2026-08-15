@@ -15,7 +15,7 @@ const { quote, attribution, tone, facebook_url, x_url, visual } = Astro.props;
 
   <div class="pearl-wrap">
     <blockquote set:html={quote} />
-    {attribution && {attribution}}
+    {attribution && <h2>{attribution}</h2>}
     {(facebook_url || x_url) && (
       <nav aria-label="Social media">
         {facebook_url && <a href={facebook_url} aria-label="Facebook">f</a>}
@@ -57,6 +57,28 @@ const { quote, attribution, tone, facebook_url, x_url, visual } = Astro.props;
 
   .pearl-snippet-quote blockquote :global(p) {
     margin: 0;
+  }
+
+  .pearl-snippet-quote blockquote :global(.pearl-source-social) {
+    margin-top: 20px;
+  }
+
+  .pearl-snippet-quote blockquote :global(.pearl-source-social a) {
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--pearl-primary);
+    font-size: 0;
+    text-decoration: none;
+  }
+
+  .pearl-snippet-quote blockquote :global(.pearl-source-social a::before) {
+    content: 'G';
+    font: 700 16px/1 Arial, sans-serif;
   }
 
   .pearl-snippet-quote cite {

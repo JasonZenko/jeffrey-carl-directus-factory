@@ -3,12 +3,13 @@ import type { PearlRecordByBlock, PearlVisualRef } from '../types';
 import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
 
 type Props = PearlRecordByBlock['flex_content_section'] & { visual?: PearlVisualRef };
-const { section_header, body_content, image, image_alt, image_position = 'right', visual } = Astro.props;
+const { section_header, body_content, image, image_alt, image_position = 'right', header_tag = 'h2', visual } = Astro.props;
+const Heading = header_tag;
 ---
 
 <section class="pearl-section pearl-flex-standard" data-pearl-block="flex_content_section" data-directus={pearlVisualAttr(visual)}>
   <div class="pearl-wrap">
-    {section_header && <h2>{section_header}</h2>}
+    {section_header && <Heading>{section_header}</Heading>}
     <div class="pearl-flex-standard__body">
       {image && (
         <img

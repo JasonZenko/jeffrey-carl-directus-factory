@@ -16,7 +16,7 @@ const ordered = [...reviews].sort((a, b) => a.sort - b.sort);
       {ordered.map((review) => (
         <article class="pearl-testimonial">
           <div class="pearl-testimonial__meta">
-            {review.patient_name && <p class="pearl-testimonial__name">{review.patient_name}</p>}
+            {review.patient_name && <h3 class="pearl-testimonial__name">{review.patient_name}</h3>}
             <div class="pearl-testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
           </div>
           <blockquote class="pearl-testimonial__quote" set:html={review.quote} />
