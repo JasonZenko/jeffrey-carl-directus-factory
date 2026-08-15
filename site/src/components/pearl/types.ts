@@ -11,7 +11,7 @@ export interface PearlHighlightLinkItem { link_label: string; link_url: string; 
 export interface PearlHighlightLinksRecord { section_heading?: string; links: PearlHighlightLinkItem[]; }
 export interface PearlGalleryItem { image: string; image_alt: string; sort: number; }
 export interface PearlImageGalleryGridRecord { section_heading?: string; grid_columns: 3|4; images: PearlGalleryItem[]; }
-export interface PearlTestimonialItem { quote: string; patient_name?: string; rating?: number; sort: number; }
+export interface PearlTestimonialItem { quote: string; patient_name?: string; sort: number; }
 export interface PearlTestimonialListStandardRecord { section_heading?: string; intro_text?: string; reviews: PearlTestimonialItem[]; }
 export interface PearlMainHeroStandardRecord { heading: string; supporting_text?: string; background_image?: string; background_video_url?: string; primary_cta_label?: string; primary_cta_url?: string; }
 export interface PearlIconFeatureItem { icon: string; title: string; body?: string; url?: string; sort: number; }
