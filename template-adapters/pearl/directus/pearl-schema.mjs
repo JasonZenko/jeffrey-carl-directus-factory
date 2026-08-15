@@ -95,6 +95,12 @@ const themeFieldNotes = {
 
 export function buildPearlSchemaPlan(manifestPath = MANIFEST) {
   const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+  if (manifest.activation?.active !== true) {
+    throw new Error(
+      `Refusing to provision inactive Pearl contract ${manifest.adapter_id}@${manifest.version}. `
+      + 'Use poc/lowen-baseline-a/contract/pearl-block-library.v1.json as the canonical contract.',
+    );
+  }
   const plan = {
     adapter: `${manifest.adapter_id}@${manifest.version}`,
     requires: ['weo_page_blocks', 'directus_files'],

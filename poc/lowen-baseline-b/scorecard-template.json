@@ -1,0 +1,36 @@
+{
+  "status": "complete",
+  "baseline": "B",
+  "source_pages": 39,
+  "frozen_input_hashes": {
+    "pages_manifest": "575a5f3592f897acd764ff38edee8257e4ca5de86ab8d8395298e97dd95d8d0e",
+    "assets_manifest": "2cb1431ca318ae3990e76643cf6cc7c24670756b5f1eee8557338a6db29b37a1",
+    "pearl_contract": "b9873592aab684842ac4541f987def5df646e17365ad1b77231a19991da722c9"
+  },
+  "integration_commit": "4e571f4eac2f2f5780906fbd822bb7402db8e549",
+  "started_at": "2026-08-15T10:43:50.168Z",
+  "completed_at": "2026-08-15T11:11:07.728573Z",
+  "mapped_blocks": 87,
+  "automatic_mappings": 87,
+  "manual_review_exceptions": 3,
+  "low_confidence_mappings": 0,
+  "invented_fields": 0,
+  "placeholder_failures": 0,
+  "invalid_link_failures": 0,
+  "legacy_markup_failures": 0,
+  "contract_parity": true,
+  "pages_imported": 39,
+  "routes_qa_passed": 39,
+  "routes_qa_total": 39,
+  "responsive_viewports_passed": 3,
+  "responsive_viewports_total": 3,
+  "wcag_failures": 0,
+  "human_interventions": 0,
+  "human_minutes": 0,
+  "notes": [
+    "117/117 hosted browser checks passed across 39 routes and three viewports.",
+    "34 Flex blocks passed the dedicated completeness gate; the frozen estate contained no inline Flex CTA requiring an adjacent CTA handoff.",
+    "Three provider-backed form/embed regions remain explicit manual-review exceptions rather than invented content.",
+    "Live review remains noindex/nofollow at https://pearl-lowen-poc.pages.dev/."
+  ]
+}

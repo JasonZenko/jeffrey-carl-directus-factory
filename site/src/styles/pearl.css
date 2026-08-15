@@ -21,7 +21,8 @@
 
 .pearl-wrap { width: min(calc(100% - 40px), var(--pearl-wrap)); margin-inline: auto; }
 .pearl-section { padding: calc(clamp(4rem, 8vw, 7.5rem) * var(--pearl-spacing)) 0; }
-.pearl-prose { max-width: 68ch; }
+.pearl-prose { min-width: 0; max-width: 68ch; overflow-wrap: anywhere; }
+.pearl-prose a { overflow-wrap: anywhere; }
 .pearl-prose > :first-child { margin-top: 0; }
 .pearl-prose > :last-child { margin-bottom: 0; }
 

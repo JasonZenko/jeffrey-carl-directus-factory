@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "baseline": "B",
+  "frozen_pages": 39,
+  "mapped_blocks": 87,
+  "flex_blocks": 34,
+  "explicit_flex_cta_handoffs": 0,
+  "navigation_items": 6,
+  "contract_version": "1.1.0",
+  "hashes": {
+    "pages": "575a5f3592f897acd764ff38edee8257e4ca5de86ab8d8395298e97dd95d8d0e",
+    "assets": "2cb1431ca318ae3990e76643cf6cc7c24670756b5f1eee8557338a6db29b37a1",
+    "contract": "b9873592aab684842ac4541f987def5df646e17365ad1b77231a19991da722c9"
+  },
+  "errors": []
+}

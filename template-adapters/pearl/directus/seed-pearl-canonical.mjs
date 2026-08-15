@@ -10,6 +10,13 @@ const APPLY = process.argv.includes('--apply');
 const seed = JSON.parse(await readFile(resolve(HERE, 'canonical-seed.json'), 'utf8'));
 const manifest = JSON.parse(await readFile(resolve(HERE, '../v0.1.0/manifest.json'), 'utf8'));
 
+if (manifest.activation?.active !== true) {
+  throw new Error(
+    `Refusing to seed inactive Pearl contract ${manifest.adapter_id}@${manifest.version}. `
+    + 'Use the locked Pearl v1 migration/import workflow instead.',
+  );
+}
+
 async function raw(path, { method = 'GET', body, token } = {}) {
   const headers = { Accept: 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) };
   if (body !== undefined && !(body instanceof FormData)) headers['Content-Type'] = 'application/json';
