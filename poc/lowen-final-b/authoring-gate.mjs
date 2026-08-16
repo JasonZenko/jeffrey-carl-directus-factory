@@ -30,6 +30,22 @@ async function login(email, password) {
   return payload.data.access_token;
 }
 
+async function authenticatedIdentity(token) {
+  const identity = await request('/users/me', token);
+  const roleId = typeof identity?.role === 'object' ? identity.role?.id : identity?.role;
+  const role = roleId
+    ? await request(`/roles/${roleId}?fields=id,name,policies.policy.id,policies.policy.name,policies.policy.admin_access,policies.policy.app_access`, token)
+    : null;
+  const policies = (role?.policies || []).map(item => item?.policy).filter(Boolean);
+  return {
+    id: identity?.id,
+    email: identity?.email,
+    status: identity?.status,
+    role: {id: role?.id, name: role?.name},
+    administrator: policies.some(policy => policy.admin_access === true && policy.app_access === true),
+  };
+}
+
 const adminToken = process.env.DIRECTUS_ADMIN_TOKEN || await login(process.env.DIRECTUS_ADMIN_EMAIL, process.env.DIRECTUS_ADMIN_PASSWORD);
 const failures = [];
 const check = (condition, message) => { if (!condition) failures.push(message); };
@@ -130,13 +146,13 @@ check(denied.status === 403, `build reader unexpectedly accessed users (${denied
 let domIdentity = null;
 if (process.env.DOM_ADMIN_EMAIL && process.env.DOM_ADMIN_PASSWORD) {
   const domToken = await login(process.env.DOM_ADMIN_EMAIL, process.env.DOM_ADMIN_PASSWORD);
-  domIdentity = await request('/users/me?fields=id,email,status,role.id,role.name,role.admin_access', domToken);
+  domIdentity = await authenticatedIdentity(domToken);
   check(domIdentity?.email?.toLowerCase() === process.env.DOM_ADMIN_EMAIL.toLowerCase(), 'Dom login resolved to the wrong user');
   check(domIdentity?.status === 'active', 'Dom user is not active');
-  check(domIdentity?.role?.admin_access === true, 'Dom user does not have Administrator access');
+  check(domIdentity?.administrator === true, 'Dom user does not have effective Administrator access');
 }
 
-const receipt = {ok: failures.length === 0, baseline: 'Final B', cms: BASE, sites: sites.length, pages: pages.length, builder_rows: rows.length, navigation_records: navigation.length, navigation_roots: rootNavigation.length, navigation_children: childNavigation.length, component_counts: actualCounts, nested_counts: actualNested, page_builder_counts: Object.fromEntries(pageRowCounts), orphan_evidence: orphanEvidence, provider_records: forms.length, provider_exceptions: runs[0]?.summary?.exceptions, build_reader_isolated: denied.status === 403, dom_admin_login_verified: Boolean(domIdentity), dom_admin_identity_verified: Boolean(domIdentity?.email && domIdentity?.role?.admin_access), failures};
+const receipt = {ok: failures.length === 0, baseline: 'Final B', cms: BASE, sites: sites.length, pages: pages.length, builder_rows: rows.length, navigation_records: navigation.length, navigation_roots: rootNavigation.length, navigation_children: childNavigation.length, component_counts: actualCounts, nested_counts: actualNested, page_builder_counts: Object.fromEntries(pageRowCounts), orphan_evidence: orphanEvidence, provider_records: forms.length, provider_exceptions: runs[0]?.summary?.exceptions, build_reader_isolated: denied.status === 403, dom_admin_login_verified: Boolean(domIdentity), dom_admin_identity_verified: Boolean(domIdentity?.email && domIdentity?.administrator), failures};
 await mkdir(resolve(HERE, 'receipts'), {recursive: true});
 await writeFile(resolve(HERE, 'receipts/authoring-gate.json'), JSON.stringify(receipt, null, 2) + '\n');
 console.log(JSON.stringify(receipt, null, 2));

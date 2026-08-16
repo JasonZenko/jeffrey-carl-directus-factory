@@ -24,18 +24,22 @@ async function login(email, password) {
 
 const adminToken = process.env.DIRECTUS_ADMIN_TOKEN || await login(process.env.DIRECTUS_ADMIN_EMAIL, process.env.DIRECTUS_ADMIN_PASSWORD);
 const api = (path, options = {}) => raw(path, {...options, token: adminToken});
-const roles = await api('/roles?filter[admin_access][_eq]=true&limit=1&fields=id,name,admin_access');
-if (!roles[0]) throw new Error('Administrator role not found');
+const roles = await api('/roles?filter[name][_eq]=Administrator&limit=-1&fields=id,name,policies.policy.id,policies.policy.admin_access,policies.policy.app_access');
+const administratorRole = roles.find(role => (role.policies || []).some(item => item?.policy?.admin_access === true && item?.policy?.app_access === true));
+if (!administratorRole) throw new Error('Effective Administrator role not found');
 const users = await api(`/users?filter[email][_eq]=${encodeURIComponent(REVIEWER_EMAIL)}&limit=1&fields=id,email,status,role`);
-const payload = {email: REVIEWER_EMAIL, password: REVIEWER_PASSWORD, status: 'active', role: roles[0].id, first_name: 'Dominique', last_name: 'Farrar'};
+const payload = {email: REVIEWER_EMAIL, password: REVIEWER_PASSWORD, status: 'active', role: administratorRole.id, first_name: 'Dominique', last_name: 'Farrar'};
 const mode = users[0] ? 'reset' : 'create';
 if (users[0]) await api(`/users/${users[0].id}`, {method: 'PATCH', body: payload});
 else await api('/users', {method: 'POST', body: payload});
 
 const reviewerToken = await login(REVIEWER_EMAIL, REVIEWER_PASSWORD);
-const identity = await raw('/users/me?fields=id,email,status,role.id,role.name,role.admin_access', {token: reviewerToken});
-const ok = identity?.email?.toLowerCase() === REVIEWER_EMAIL && identity?.status === 'active' && identity?.role?.admin_access === true;
-const receipt = {ok, mode, target: BASE, reviewer_email: REVIEWER_EMAIL, status: identity?.status, role: identity?.role?.name, administrator: identity?.role?.admin_access === true, password_disclosed: false};
+const identity = await raw('/users/me', {token: reviewerToken});
+const reviewerRoleId = typeof identity?.role === 'object' ? identity.role?.id : identity?.role;
+const reviewerRole = await raw(`/roles/${reviewerRoleId}?fields=id,name,policies.policy.id,policies.policy.admin_access,policies.policy.app_access`, {token: reviewerToken});
+const administrator = (reviewerRole?.policies || []).some(item => item?.policy?.admin_access === true && item?.policy?.app_access === true);
+const ok = identity?.email?.toLowerCase() === REVIEWER_EMAIL && identity?.status === 'active' && administrator;
+const receipt = {ok, mode, target: BASE, reviewer_email: REVIEWER_EMAIL, status: identity?.status, role: reviewerRole?.name, administrator, password_disclosed: false};
 await mkdir(resolve(HERE, 'receipts'), {recursive: true});
 await writeFile(resolve(HERE, 'receipts/reviewer-access.json'), JSON.stringify(receipt, null, 2) + '\n');
 console.log(JSON.stringify(receipt, null, 2));
