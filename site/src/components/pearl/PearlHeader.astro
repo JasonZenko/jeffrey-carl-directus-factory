@@ -57,7 +57,7 @@ const { theme, navigation, logo, visual } = Astro.props;
   const header = document.querySelector<HTMLElement>('.pearl-site-header');
   const menuToggle = header?.querySelector<HTMLButtonElement>('.pearl-menu-toggle');
   const navigation = header?.querySelector<HTMLElement>('#pearl-primary-navigation');
-  const mobileNavigation = window.matchMedia('(max-width: 720px)');
+  const mobileNavigation = window.matchMedia('(max-width: 900px)');
 
   if (header && menuToggle && navigation) {
     const submenuParents = [...navigation.querySelectorAll<HTMLElement>('[data-pearl-nav-parent]')];
@@ -143,7 +143,7 @@ const { theme, navigation, logo, visual } = Astro.props;
   .pearl-site-header--scrolled .pearl-brand span { margin-top: 7px; font-size: .55rem; }
   .pearl-site-header--scrolled .pearl-site-header__details > span { display: none; }
 
-  @media (max-width: 720px) {
+  @media (max-width: 900px) {
     .pearl-site-header__top { min-height: 104px; gap: 18px; }
     .pearl-brand { width: 142px; min-height: 118px; }
     .pearl-brand strong { font-size: 2.45rem; }

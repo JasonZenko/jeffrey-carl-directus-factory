@@ -159,7 +159,7 @@ def main():
 
                     toggle = page.locator(".pearl-menu-toggle")
                     navigation = page.locator("#pearl-primary-navigation")
-                    if viewport_name == "mobile":
+                    if viewport["width"] <= 900:
                         nav_behavior = {"toggle_visible": toggle.is_visible(), "closed_initially": not navigation.is_visible()}
                         toggle.focus()
                         page.keyboard.press("Enter")
@@ -171,6 +171,7 @@ def main():
                     else:
                         first_parent = navigation.locator("[data-pearl-nav-parent]").first
                         first_parent.hover()
+                        page.wait_for_timeout(250)
                         nav_behavior = {"toggle_hidden": not toggle.is_visible(), "navigation_visible": navigation.is_visible(), "link_count": navigation.locator("a").count() == len(EXPECTED_NAV), "root_count": evidence["rootNavCount"] == EXPECTED_ROOT_NAV, "submenu_count": evidence["submenuCount"] == EXPECTED_SUBNAV, "submenu_visible_on_hover": first_parent.locator(".pearl-submenu").is_visible()}
 
                     semantic_dom_fidelity = len(evidence["ctaIndexes"]) <= 1 and (not evidence["ctaIndexes"] or evidence["ctaIndexes"][0] == len(evidence["blocks"]) - 1)

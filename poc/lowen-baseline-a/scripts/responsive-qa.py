@@ -68,7 +68,7 @@ def main():
             """)
             toggle = page.locator(".pearl-menu-toggle")
             navigation = page.locator("#pearl-primary-navigation")
-            if name == "mobile":
+            if viewport["width"] <= 900:
                 navigation_evidence = {"toggle_visible": toggle.is_visible(), "closed_initially": not navigation.is_visible()}
                 toggle.click()
                 navigation_evidence.update({
