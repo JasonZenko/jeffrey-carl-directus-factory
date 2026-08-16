@@ -17,7 +17,10 @@ const normalized = JSON.parse(await readFile(resolve(ROOT, 'migration/pages.json
 const mapping = JSON.parse(await readFile(resolve(ROOT, 'migration/mapping-receipt.json'), 'utf8'));
 const siteContract = JSON.parse(await readFile(resolve(ROOT, 'migration/site.json'), 'utf8'));
 const expectedHome = mapping.homepage_sequence.map(type => `pearl_${type}`);
-const expectedNavigation = [...siteContract.navigation].sort((a, b) => Number(a.sort) - Number(b.sort));
+const flattenNavigation = items => items
+  .sort((a, b) => Number(a.sort) - Number(b.sort))
+  .flatMap(item => [{label: item.label, url: item.url, sort: Number(item.sort)}, ...flattenNavigation(item.children || [])]);
+const expectedNavigation = flattenNavigation(structuredClone(siteContract.navigation));
 
 async function api(path) {
   const response = await fetch(`${BASE}${path}`, {headers: {Authorization: `Bearer ${token}`, Accept: 'application/json'}});
@@ -35,7 +38,17 @@ const rows = await api('/items/pearl_page_builder?limit=-1&sort=page,sort&fields
 if (rows.length !== mapping.blocks) throw new Error(`Expected ${mapping.blocks} Builder rows, received ${rows.length}`);
 const sites = await api('/items/pearl_sites?filter[slug][_eq]=lowen-perio&limit=1&fields=id');
 if (!sites[0]) throw new Error('Lowen site identity is missing');
-const navigation = await api(`/items/pearl_navigation_items?filter[site][_eq]=${sites[0].id}&filter[status][_eq]=published&limit=-1&sort=sort&fields=label,url,sort`);
+const navigationRows = await api(`/items/pearl_navigation_items?filter[site][_eq]=${sites[0].id}&filter[status][_eq]=published&limit=-1&sort=sort&fields=id,label,url,sort,parent`);
+const navigationById = new Map(navigationRows.map(item => [item.id, {...item, children: []}]));
+const navigationRoots = [];
+for (const row of navigationRows) {
+  const node = navigationById.get(row.id);
+  const parentId = typeof row.parent === 'object' ? row.parent?.id : row.parent;
+  const parent = parentId ? navigationById.get(parentId) : undefined;
+  if (parent) parent.children.push(node);
+  else navigationRoots.push(node);
+}
+const navigation = flattenNavigation(navigationRoots);
 if (navigation.length !== mapping.navigation_items) throw new Error(`Expected ${mapping.navigation_items} navigation items, received ${navigation.length}`);
 if (JSON.stringify(navigation) !== JSON.stringify(expectedNavigation)) {
   throw new Error(`Navigation diverged from the frozen source: ${JSON.stringify(navigation)}`);

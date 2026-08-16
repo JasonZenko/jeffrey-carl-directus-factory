@@ -13,6 +13,7 @@ if (!BUILD_TOKEN) throw new Error('PEARL_DIRECTUS_TOKEN is required');
 const pagesSource = JSON.parse(await readFile(resolve(BASELINE, 'migration/pages.json'), 'utf8'));
 const mapping = JSON.parse(await readFile(resolve(BASELINE, 'migration/mapping-receipt.json'), 'utf8'));
 const contract = JSON.parse(await readFile(resolve(BASELINE, 'contract/pearl-block-library.v1.json'), 'utf8'));
+const siteSource = JSON.parse(await readFile(resolve(BASELINE, 'migration/site.json'), 'utf8'));
 
 async function request(path, token, options = {}) {
   const response = await fetch(`${BASE}${path}`, {method: options.method || 'GET', headers: {Accept: 'application/json', Authorization: `Bearer ${token}`, ...(options.body ? {'Content-Type': 'application/json'} : {})}, body: options.body ? JSON.stringify(options.body) : undefined});
@@ -33,6 +34,7 @@ const adminToken = process.env.DIRECTUS_ADMIN_TOKEN || await login(process.env.D
 const failures = [];
 const check = (condition, message) => { if (!condition) failures.push(message); };
 const stableObject = value => Object.fromEntries(Object.entries(value).sort(([left], [right]) => left.localeCompare(right)));
+const flattenNavigation = items => items.sort((a, b) => Number(a.sort) - Number(b.sort)).flatMap(item => [item, ...flattenNavigation(item.children || [])]);
 const sites = await request('/items/pearl_sites?filter[slug][_eq]=lowen-perio&limit=-1&fields=id,slug,internal_name', BUILD_TOKEN);
 check(sites.length === 1, `expected one Lowen site, received ${sites.length}`);
 const site = sites[0];
@@ -41,6 +43,14 @@ const pages = await request(`/items/pearl_pages?filter[site][_eq]=${site.id}&lim
 check(pages.length === 39, `expected 39 Lowen pages, received ${pages.length}`);
 check(new Set(pages.map(page => page.slug)).size === 39, 'page slugs are not unique');
 check(pages.every(page => page.status === 'published' && page.workflow_status === 'approved' && page.robots_index === false && page.robots_follow === false), 'all Lowen pages must be approved, published and noindex/nofollow');
+const navigation = await request(`/items/pearl_navigation_items?filter[site][_eq]=${site.id}&filter[status][_eq]=published&limit=-1&fields=id,label,url,sort,parent`, BUILD_TOKEN);
+const expectedNavigation = flattenNavigation(structuredClone(siteSource.navigation));
+check(navigation.length === expectedNavigation.length, `expected ${expectedNavigation.length} navigation records, received ${navigation.length}`);
+const navigationIds = new Set(navigation.map(item => item.id));
+const rootNavigation = navigation.filter(item => !item.parent);
+const childNavigation = navigation.filter(item => item.parent);
+check(rootNavigation.length === siteSource.navigation.length, `expected ${siteSource.navigation.length} root navigation records, received ${rootNavigation.length}`);
+check(childNavigation.every(item => navigationIds.has(typeof item.parent === 'object' ? item.parent?.id : item.parent)), 'one or more subnavigation parents are missing');
 
 const scopedFields = contract.blocks.flatMap(spec => {
   const values = [`item:${spec.collection}.*`];
@@ -99,7 +109,16 @@ for (const spec of contract.blocks.filter(item => expectedCounts[item.collection
     check(fields.has(field.name), `${spec.collection}.${field.name} is missing`);
     if (field.interface) check(fields.get(field.name)?.meta?.interface === field.interface, `${spec.collection}.${field.name} editor interface drift`);
   }
+  if (spec.children) {
+    const childFields = new Map((await request(`/fields/${spec.children.collection}`, adminToken)).map(item => [item.field, item]));
+    for (const field of spec.children.fields) {
+      check(childFields.has(field.name), `${spec.children.collection}.${field.name} is missing`);
+      if (field.interface) check(childFields.get(field.name)?.meta?.interface === field.interface, `${spec.children.collection}.${field.name} editor interface drift`);
+    }
+  }
 }
+const navigationFields = new Map((await request('/fields/pearl_navigation_items', adminToken)).map(item => [item.field, item]));
+check(navigationFields.get('parent')?.meta?.special?.includes('m2o'), 'pearl_navigation_items.parent must be an editable self relation');
 
 const forms = await request('/items/pearl_forms?filter[internal_name][_starts_with]=Lowen%20Final%20B%20%C2%B7%20&limit=-1&fields=id,provider,embed_url,status', adminToken);
 check(forms.length === 2 && forms.every(form => form.status === 'published' && form.embed_url), `expected two governed provider embed records, received ${forms.length}`);
@@ -108,11 +127,16 @@ check(runs.length === 1 && runs[0].summary?.exceptions === 3, 'Final B migration
 
 const denied = await fetch(`${BASE}/users`, {headers: {Authorization: `Bearer ${BUILD_TOKEN}`}});
 check(denied.status === 403, `build reader unexpectedly accessed users (${denied.status})`);
+let domIdentity = null;
 if (process.env.DOM_ADMIN_EMAIL && process.env.DOM_ADMIN_PASSWORD) {
-  await login(process.env.DOM_ADMIN_EMAIL, process.env.DOM_ADMIN_PASSWORD);
+  const domToken = await login(process.env.DOM_ADMIN_EMAIL, process.env.DOM_ADMIN_PASSWORD);
+  domIdentity = await request('/users/me?fields=id,email,status,role.id,role.name,role.admin_access', domToken);
+  check(domIdentity?.email?.toLowerCase() === process.env.DOM_ADMIN_EMAIL.toLowerCase(), 'Dom login resolved to the wrong user');
+  check(domIdentity?.status === 'active', 'Dom user is not active');
+  check(domIdentity?.role?.admin_access === true, 'Dom user does not have Administrator access');
 }
 
-const receipt = {ok: failures.length === 0, baseline: 'Final B', cms: BASE, sites: sites.length, pages: pages.length, builder_rows: rows.length, component_counts: actualCounts, nested_counts: actualNested, page_builder_counts: Object.fromEntries(pageRowCounts), orphan_evidence: orphanEvidence, provider_records: forms.length, provider_exceptions: runs[0]?.summary?.exceptions, build_reader_isolated: denied.status === 403, dom_admin_login_verified: Boolean(process.env.DOM_ADMIN_EMAIL && process.env.DOM_ADMIN_PASSWORD), failures};
+const receipt = {ok: failures.length === 0, baseline: 'Final B', cms: BASE, sites: sites.length, pages: pages.length, builder_rows: rows.length, navigation_records: navigation.length, navigation_roots: rootNavigation.length, navigation_children: childNavigation.length, component_counts: actualCounts, nested_counts: actualNested, page_builder_counts: Object.fromEntries(pageRowCounts), orphan_evidence: orphanEvidence, provider_records: forms.length, provider_exceptions: runs[0]?.summary?.exceptions, build_reader_isolated: denied.status === 403, dom_admin_login_verified: Boolean(domIdentity), dom_admin_identity_verified: Boolean(domIdentity?.email && domIdentity?.role?.admin_access), failures};
 await mkdir(resolve(HERE, 'receipts'), {recursive: true});
 await writeFile(resolve(HERE, 'receipts/authoring-gate.json'), JSON.stringify(receipt, null, 2) + '\n');
 console.log(JSON.stringify(receipt, null, 2));

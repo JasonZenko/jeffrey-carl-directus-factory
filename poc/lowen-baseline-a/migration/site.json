@@ -13,32 +13,153 @@
     {
       "label": "Home",
       "url": "/",
-      "sort": 1
+      "sort": 1,
+      "children": []
     },
     {
       "label": "About Us",
       "url": "/about-us/",
-      "sort": 2
+      "sort": 2,
+      "children": [
+        {
+          "label": "Krista Lowen, DDS, MSD",
+          "url": "/krista-lowen-dds-msd/",
+          "sort": 1
+        },
+        {
+          "label": "Lillian Nguyen, DMD, MS",
+          "url": "/lillian-nguyen-dmd-ms/",
+          "sort": 2
+        },
+        {
+          "label": "Testimonials",
+          "url": "/testimonials/",
+          "sort": 3
+        }
+      ]
     },
     {
       "label": "Periodontal Disease",
       "url": "/periodontal-disease-4949/",
-      "sort": 3
+      "sort": 3,
+      "children": [
+        {
+          "label": "What Is A Periodontist?",
+          "url": "/what-is-a-periodontist/",
+          "sort": 1
+        },
+        {
+          "label": "Specialty of Periodontics",
+          "url": "/specialty-of-periodontics/",
+          "sort": 2
+        },
+        {
+          "label": "Periodontal Disease",
+          "url": "/periodontal-disease/",
+          "sort": 3
+        },
+        {
+          "label": "Preventing Periodontal Disease",
+          "url": "/preventing-periodontal-disease/",
+          "sort": 4
+        }
+      ]
     },
     {
       "label": "Our Services",
       "url": "/our-services/",
-      "sort": 4
+      "sort": 4,
+      "children": [
+        {
+          "label": "Periodontal Disease Management",
+          "url": "/periodontal-disease-management/",
+          "sort": 1
+        },
+        {
+          "label": "Crown Lengthening",
+          "url": "/crown-lengthening/",
+          "sort": 2
+        },
+        {
+          "label": "Soft Tissue Grafting",
+          "url": "/soft-tissue-grafting/",
+          "sort": 3
+        },
+        {
+          "label": "Laser Therapy",
+          "url": "/laser-therapy/",
+          "sort": 4
+        },
+        {
+          "label": "Dental Implants",
+          "url": "/dental-implants/",
+          "sort": 5
+        },
+        {
+          "label": "Bone Grafting",
+          "url": "/bone-grafting/",
+          "sort": 6
+        },
+        {
+          "label": "Occlusal Therapy",
+          "url": "/occlusal-therapy/",
+          "sort": 7
+        },
+        {
+          "label": "Oral Pathology",
+          "url": "/oral-pathology/",
+          "sort": 8
+        }
+      ]
     },
     {
       "label": "Patients",
       "url": "/patients/",
-      "sort": 5
+      "sort": 5,
+      "children": [
+        {
+          "label": "Patient Forms",
+          "url": "/patient-forms/",
+          "sort": 1
+        },
+        {
+          "label": "Financial Info",
+          "url": "/financial-info/",
+          "sort": 2
+        },
+        {
+          "label": "Privacy Policy",
+          "url": "/privacy-policy/",
+          "sort": 3
+        },
+        {
+          "label": "Sedation Options",
+          "url": "/sedation-options/",
+          "sort": 4
+        },
+        {
+          "label": "Educational Links",
+          "url": "/educational-links/",
+          "sort": 5
+        }
+      ]
     },
     {
       "label": "Contact Us",
       "url": "/contact-us/",
-      "sort": 6
+      "sort": 6,
+      "children": [
+        {
+          "label": "Patient Referral Form",
+          "url": "/patient-referral-form/",
+          "sort": 1
+        },
+        {
+          "label": "Request an Appointment",
+          "url": "/request-an-appointment/",
+          "sort": 2
+        }
+      ]
     }
   ],
   "theme": {

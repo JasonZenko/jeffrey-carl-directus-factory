@@ -75,6 +75,13 @@ export interface PearlNavigationItem {
   label: string;
   url: string;
   sort: number;
+  children?: PearlNavigationItem[];
+}
+
+interface PearlNavigationRow extends PearlNavigationItem {
+  id: string;
+  status: string;
+  parent?: string | {id: string} | null;
 }
 
 export interface PearlPageRoute {
@@ -87,6 +94,28 @@ async function pearlApi<T>(path: string, token: string, directusUrl: string): Pr
   });
   if (!response.ok) throw new Error(`Pearl Directus ${response.status} for ${path}`);
   return (await response.json()) as T;
+}
+
+export function buildPearlNavigation(rows: PearlNavigationRow[]): PearlNavigationItem[] {
+  const byId = new Map(rows.map((row) => [row.id, {
+    label: row.label,
+    url: row.url,
+    sort: Number(row.sort),
+    children: [] as PearlNavigationItem[],
+  }]));
+  const roots: PearlNavigationItem[] = [];
+  for (const row of rows) {
+    const node = byId.get(row.id);
+    if (!node) continue;
+    const parentId = typeof row.parent === 'object' ? row.parent?.id : row.parent;
+    const parent = parentId ? byId.get(parentId) : undefined;
+    if (parent) parent.children?.push(node);
+    else roots.push(node);
+  }
+  const sortTree = (items: PearlNavigationItem[]): PearlNavigationItem[] => items
+    .sort((left, right) => left.sort - right.sort)
+    .map((item) => ({...item, children: sortTree(item.children ?? [])}));
+  return sortTree(roots);
 }
 
 function requireFields(type: keyof PearlRecordByBlock, item: Record<string, unknown>): void {
@@ -145,8 +174,8 @@ export async function getPearlPage(slug = 'home'): Promise<PearlPage> {
   const themeId = theme.id;
   delete theme.id;
   delete theme.status;
-  const navigation = await pearlApi<DirectusList<PearlNavigationItem & {status: string}>>(
-    `/items/pearl_navigation_items?filter[site][_eq]=${encodeURIComponent(page.site.id)}&filter[status][_eq]=published&limit=-1&sort=sort&fields=label,url,sort,status`,
+  const navigation = await pearlApi<DirectusList<PearlNavigationRow>>(
+    `/items/pearl_navigation_items?filter[site][_eq]=${encodeURIComponent(page.site.id)}&filter[status][_eq]=published&limit=-1&sort=sort&fields=id,label,url,sort,status,parent`,
     token,
     directusUrl,
   );
@@ -178,7 +207,7 @@ export async function getPearlPage(slug = 'home'): Promise<PearlPage> {
     description: page.meta_description,
     blocks,
     theme,
-    navigation: navigation.data.map(({label, url, sort}) => ({label, url, sort})),
+    navigation: buildPearlNavigation(navigation.data),
     logo: page.site.logo ? directusAssetUrl(directusUrl, page.site.logo) : undefined,
     pageVisual: {collection: 'pearl_pages', item: page.id, fields: ['title', 'meta_description'], mode: 'drawer'},
     themeVisual: {collection: 'pearl_theme_settings', item: themeId, mode: 'drawer'},

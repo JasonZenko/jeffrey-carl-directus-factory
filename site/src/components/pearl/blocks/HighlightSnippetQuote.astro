@@ -3,7 +3,7 @@ import type { PearlRecordByBlock, PearlVisualRef } from '../types';
 import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
 
 type Props = PearlRecordByBlock['highlight_snippet_quote'] & { visual?: PearlVisualRef };
-const { quote, attribution, tone, facebook_url, x_url, visual } = Astro.props;
+const { snippet, quote, attribution, tone, facebook_url, x_url, visual } = Astro.props;
 ---
 
 <section
@@ -14,8 +14,9 @@ const { quote, attribution, tone, facebook_url, x_url, visual } = Astro.props;
   <span class="pearl-snippet-quote__mark pearl-snippet-quote__mark--open" aria-hidden="true">“</span>
 
   <div class="pearl-wrap">
+    {snippet && <h2 class="pearl-snippet-quote__snippet">{snippet}</h2>}
     <blockquote set:html={quote} />
-    {attribution && <h2>{attribution}</h2>}
+    {attribution && <cite>{attribution}</cite>}
     {(facebook_url || x_url) && (
       <nav aria-label="Social media">
         {facebook_url && <a href={facebook_url} aria-label="Facebook">f</a>}
@@ -53,6 +54,12 @@ const { quote, attribution, tone, facebook_url, x_url, visual } = Astro.props;
     margin: 0 auto;
     font-size: clamp(1rem, 1.45vw, 1.2rem);
     line-height: 1.7;
+  }
+
+  .pearl-snippet-quote__snippet {
+    max-width: 32ch;
+    margin: 0 auto 28px;
+    color: inherit;
   }
 
   .pearl-snippet-quote blockquote :global(p) {

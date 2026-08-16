@@ -21,13 +21,15 @@ const contract = JSON.parse(await readFile(resolve(BASELINE, 'contract/pearl-blo
 const mutationFields = {
   pearl_inner_hero_standard: 'page_title',
   pearl_flex_content_section: 'section_header',
+  pearl_highlight_links: 'section_heading',
+  pearl_highlight_link_items: 'link_label',
   pearl_cta_section_standard: 'heading',
   pearl_main_hero_standard: 'heading',
   pearl_icon_feature_cards: 'section_heading',
   pearl_feature_image_content: 'heading',
-  pearl_highlight_snippet_quote: 'attribution',
+  pearl_highlight_snippet_quote: 'snippet',
   pearl_testimonial_list_standard: 'section_heading',
-  pearl_icon_feature_card_items: 'title',
+  pearl_icon_feature_card_items: 'link_title',
   pearl_testimonial_items: 'patient_name',
 };
 

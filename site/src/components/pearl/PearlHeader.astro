@@ -34,7 +34,21 @@ const { theme, navigation, logo, visual } = Astro.props;
   </div>
   <nav id="pearl-primary-navigation" aria-label="Pearl reference navigation">
     <div class="pearl-wrap">
-      {navigation.map((item) => <a href={item.url}>{item.label}</a>)}
+      <ul class="pearl-nav-root">
+        {navigation.map((item) => {
+          const children = item.children ?? [];
+          const submenuId = `pearl-submenu-${item.sort}`;
+          return <li class:list={['pearl-nav-item', {'pearl-nav-item--parent': children.length > 0}]} data-pearl-nav-parent={children.length > 0 ? '' : undefined}>
+            <div class="pearl-nav-row">
+              <a href={item.url}>{item.label}</a>
+              {children.length > 0 && <button class="pearl-submenu-toggle" type="button" aria-expanded="false" aria-controls={submenuId} aria-label={`Open ${item.label} submenu`}><span aria-hidden="true">⌄</span></button>}
+            </div>
+            {children.length > 0 && <ul id={submenuId} class="pearl-submenu" aria-label={`${item.label} submenu`}>
+              {children.map((child) => <li><a href={child.url}>{child.label}</a></li>)}
+            </ul>}
+          </li>;
+        })}
+      </ul>
     </div>
   </nav>
 </header>
@@ -46,12 +60,23 @@ const { theme, navigation, logo, visual } = Astro.props;
   const mobileNavigation = window.matchMedia('(max-width: 720px)');
 
   if (header && menuToggle && navigation) {
+    const submenuParents = [...navigation.querySelectorAll<HTMLElement>('[data-pearl-nav-parent]')];
+    const setSubmenuState = (parent: HTMLElement, open: boolean) => {
+      const toggle = parent.querySelector<HTMLButtonElement>('.pearl-submenu-toggle');
+      if (!toggle) return;
+      const isOpen = mobileNavigation.matches && open;
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute('aria-label', `${isOpen ? 'Close' : 'Open'} ${parent.querySelector('a')?.textContent?.trim() || ''} submenu`);
+      parent.classList.toggle('pearl-nav-item--expanded', isOpen);
+    };
+
     const setMenuState = (open: boolean, focusFirstLink = false) => {
       const isOpen = mobileNavigation.matches && open;
       menuToggle.setAttribute('aria-expanded', String(isOpen));
       menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
       navigation.hidden = mobileNavigation.matches && !isOpen;
       header.classList.toggle('pearl-site-header--menu-open', isOpen);
+      if (!isOpen) submenuParents.forEach((parent) => setSubmenuState(parent, false));
       if (isOpen && focusFirstLink) navigation.querySelector<HTMLAnchorElement>('a')?.focus();
     };
 
@@ -60,6 +85,13 @@ const { theme, navigation, logo, visual } = Astro.props;
 
     menuToggle.addEventListener('click', () => {
       setMenuState(menuToggle.getAttribute('aria-expanded') !== 'true', true);
+    });
+    submenuParents.forEach((parent) => {
+      parent.querySelector<HTMLButtonElement>('.pearl-submenu-toggle')?.addEventListener('click', () => {
+        const toggle = parent.querySelector<HTMLButtonElement>('.pearl-submenu-toggle');
+        submenuParents.filter((candidate) => candidate !== parent).forEach((candidate) => setSubmenuState(candidate, false));
+        setSubmenuState(parent, toggle?.getAttribute('aria-expanded') !== 'true');
+      });
     });
     navigation.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => setMenuState(false));
@@ -90,9 +122,20 @@ const { theme, navigation, logo, visual } = Astro.props;
   .pearl-header-cta { padding: 7px 13px; background: var(--pearl-primary); color: #fff !important; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
   .pearl-menu-toggle { display: none; }
   .pearl-site-header nav { background: var(--pearl-accent); }
-  .pearl-site-header nav .pearl-wrap { min-height: 42px; display: flex; align-items: center; justify-content: flex-end; gap: 30px; }
+  .pearl-site-header nav .pearl-wrap { min-height: 42px; }
+  .pearl-nav-root,
+  .pearl-submenu { margin: 0; padding: 0; list-style: none; }
+  .pearl-nav-root { min-height: 42px; display: flex; align-items: center; justify-content: flex-end; gap: 30px; }
+  .pearl-nav-item { position: relative; }
+  .pearl-nav-row { display: flex; align-items: center; }
   .pearl-site-header nav a { color: #fff; font-size: .86rem; font-weight: 600; text-decoration: none; }
   .pearl-site-header nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .pearl-submenu-toggle { display: none; }
+  .pearl-submenu { position: absolute; top: calc(100% + 13px); left: 50%; width: max-content; min-width: 250px; padding-block: 9px; border-top: 3px solid var(--pearl-primary); background: var(--pearl-accent); box-shadow: 0 16px 30px rgb(17 17 17 / .18); opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, 8px); transition: opacity .18s ease, transform .18s ease, visibility .18s ease; }
+  .pearl-submenu::before { content: ''; position: absolute; inset: -16px 0 auto; height: 16px; }
+  .pearl-submenu a { min-height: 42px; display: flex; align-items: center; padding: 8px 18px; white-space: nowrap; }
+  .pearl-nav-item--parent:hover > .pearl-submenu,
+  .pearl-nav-item--parent:focus-within > .pearl-submenu { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0); }
   .pearl-site-header--scrolled .pearl-site-header__top { min-height: 64px; }
   .pearl-site-header--scrolled .pearl-brand { width: 116px; min-height: 74px; margin-bottom: -10px; transform: translateY(4px); }
   .pearl-site-header--scrolled .pearl-brand strong { font-size: 2rem; }
@@ -112,9 +155,18 @@ const { theme, navigation, logo, visual } = Astro.props;
     .pearl-site-header--menu-open .pearl-menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .pearl-site-header--menu-open .pearl-menu-toggle span:nth-child(2) { opacity: 0; }
     .pearl-site-header--menu-open .pearl-menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .pearl-site-header nav .pearl-wrap { min-height: auto; padding-block: 8px; display: flex; flex-direction: column; align-items: stretch; gap: 0; }
-    .pearl-site-header nav a { min-height: 48px; display: flex; align-items: center; padding-inline: 4px; border-bottom: 1px solid rgb(255 255 255 / .22); font-size: 1rem; }
-    .pearl-site-header nav a:last-child { border-bottom: 0; }
+    .pearl-site-header nav .pearl-wrap { min-height: auto; padding-block: 8px; }
+    .pearl-nav-root { min-height: auto; display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+    .pearl-nav-row { border-bottom: 1px solid rgb(255 255 255 / .22); }
+    .pearl-site-header nav .pearl-nav-row > a { min-height: 48px; flex: 1; display: flex; align-items: center; padding-inline: 4px; font-size: 1rem; }
+    .pearl-submenu-toggle { width: 48px; height: 48px; display: grid; place-items: center; border: 0; background: transparent; color: #fff; font-size: 1.35rem; cursor: pointer; }
+    .pearl-submenu-toggle span { transition: transform .18s ease; }
+    .pearl-nav-item--expanded .pearl-submenu-toggle span { transform: rotate(180deg); }
+    .pearl-submenu { position: static; width: auto; min-width: 0; display: none; padding: 4px 0 8px 18px; border: 0; background: color-mix(in srgb, var(--pearl-accent) 84%, #000); box-shadow: none; opacity: 1; visibility: visible; pointer-events: auto; transform: none; transition: none; }
+    .pearl-nav-item--expanded > .pearl-submenu { display: block; }
+    .pearl-nav-item--parent:hover > .pearl-submenu,
+    .pearl-nav-item--parent:focus-within > .pearl-submenu { transform: none; }
+    .pearl-submenu a { min-height: 44px; padding: 7px 10px; white-space: normal; }
   }
 
   @media (max-width: 480px) {

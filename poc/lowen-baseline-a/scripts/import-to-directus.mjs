@@ -67,6 +67,10 @@ function pageTitle(page) {
     || page.title;
 }
 
+function navigationCount(items) {
+  return items.reduce((total, item) => total + 1 + navigationCount(item.children || []), 0);
+}
+
 if (!APPLY) {
   console.log(JSON.stringify({
     mode: 'dry-run',
@@ -74,7 +78,7 @@ if (!APPLY) {
     source_pages: pages.length,
     source_blocks: mappingReceipt.blocks,
     homepage_sequence: mappingReceipt.homepage_sequence,
-    navigation_items: siteSource.navigation.length,
+    navigation_items: navigationCount(siteSource.navigation),
     exceptions: exceptions.length,
     canonical_contract: canonicalContract.version,
     release_preflight: 'passed',
@@ -267,13 +271,26 @@ for (const page of pages) importedPages.push(await bindPage(page, site, page.blo
 
 const existingNavigation = await api(`/items/pearl_navigation_items?filter[site][_eq]=${site.id}&limit=-1&fields=id,internal_name`);
 const usedNavigation = new Set();
+const navigationParents = new Map();
 for (const [index, item] of siteSource.navigation.entries()) {
   const internalName = `${ITEM_PREFIX} · navigation · ${index + 1}`;
   const row = await upsert('pearl_navigation_items', 'internal_name', internalName, {
     status: 'published', internal_name: internalName, site: site.id,
-    label: item.label, url: item.url, sort: index + 1,
+    label: item.label, url: item.url, sort: Number(item.sort ?? index + 1), parent: null,
   });
   usedNavigation.add(row.id);
+  navigationParents.set(index, row.id);
+}
+for (const [parentIndex, item] of siteSource.navigation.entries()) {
+  for (const [childIndex, child] of (item.children || []).entries()) {
+    const internalName = `${ITEM_PREFIX} · navigation · ${parentIndex + 1}.${childIndex + 1}`;
+    const row = await upsert('pearl_navigation_items', 'internal_name', internalName, {
+      status: 'published', internal_name: internalName, site: site.id,
+      label: child.label, url: child.url, sort: Number(child.sort ?? childIndex + 1),
+      parent: navigationParents.get(parentIndex),
+    });
+    usedNavigation.add(row.id);
+  }
 }
 for (const stale of existingNavigation.filter(row => !usedNavigation.has(row.id))) {
   await api(`/items/pearl_navigation_items/${stale.id}`, {method: 'DELETE'});
@@ -318,7 +335,7 @@ const receipt = {
   imported_pages: importedPages.length,
   imported_blocks: importedPages.reduce((total, page) => total + page.blocks.length, 0),
   uploaded_assets: uploaded.size,
-  navigation_items: siteSource.navigation.length,
+  navigation_items: navigationCount(siteSource.navigation),
   homepage_blocks: home.blocks,
   homepage_source_derived: true,
   canonical_contract: canonicalContract.version,

@@ -70,8 +70,12 @@ def block_visible_strings(block: dict) -> list[str]:
         fields = [item.get("section_heading"), item.get("intro_text")]
         for child in item.get("items") or []:
             fields.extend([child.get("title"), child.get("body")])
+    elif kind == "highlight_links":
+        fields = [item.get("section_heading")]
+        for child in item.get("links") or []:
+            fields.append(child.get("link_label"))
     elif kind in {"highlight_snippet_quote", "highlight_quote"}:
-        fields = [item.get("quote"), item.get("attribution")]
+        fields = [item.get("snippet"), item.get("quote"), item.get("attribution")]
     elif kind == "testimonial_list_standard":
         fields = [item.get("section_heading"), item.get("intro_text")]
         for child in item.get("reviews") or []:
@@ -97,7 +101,7 @@ def rich_html_values(block: dict) -> list[str]:
 
 
 def output_urls(block: dict) -> list[str]:
-    result = list(walk_strings(block["item"], {"url", "cta_url", "primary_cta_url"}))
+    result = list(walk_strings(block["item"], {"url", "link_url", "cta_url", "primary_cta_url"}))
     for value in rich_html_values(block):
         result.extend(anchor["href"] for anchor in BeautifulSoup(value, "html.parser").select("a[href]"))
     return [value for value in result if value]
@@ -147,10 +151,12 @@ def semantic_headings(block: dict) -> list[tuple[str, str]]:
         result.extend(("h3", normalized_text(child.get("title"))) for child in item.get("items") or [] if child.get("title"))
     elif kind == "testimonial_list_standard" and item.get("section_heading"):
         result.append(("h2", normalized_text(item["section_heading"])))
+    elif kind == "highlight_links" and item.get("section_heading"):
+        result.append(("h2", normalized_text(item["section_heading"])))
     if kind == "testimonial_list_standard":
         result.extend(("h3", normalized_text(child.get("patient_name"))) for child in item.get("reviews") or [] if child.get("patient_name"))
-    if kind in {"highlight_snippet_quote", "highlight_quote"} and item.get("attribution"):
-        result.append(("h2", normalized_text(item["attribution"])))
+    if kind in {"highlight_snippet_quote", "highlight_quote"} and item.get("snippet"):
+        result.append(("h2", normalized_text(item["snippet"])))
     for value in rich_html_values(block):
         soup = BeautifulSoup(value, "html.parser")
         result.extend((node.name, normalized_text(node.get_text(" ", strip=True))) for node in soup.find_all(re.compile(r"^h[1-6]$")))
@@ -164,6 +170,8 @@ site = json.loads((MIGRATION / "site.json").read_text())
 exceptions = json.loads((MIGRATION / "exceptions.json").read_text())
 source_by_hash = {item["sha256"]: item for item in manifest}
 asset_hashes = {item["url"]: item["sha256"] for item in assets_manifest}
+css_records = [item for item in assets_manifest if "/webpage.css" in item["url"]]
+source_css = "\n".join((FREEZE / item["localPath"]).read_text(encoding="utf-8", errors="ignore") for item in css_records)
 route_to_slug = {}
 static_asset_to_source = {
     f"/lowen-assets/{item['sha256'][:12]}-{Path(urlparse(item['url']).path).name}": item["url"]
@@ -204,7 +212,6 @@ for page in pages:
     hero = source_soup.select_one(".TPaniBannerBand") if page["slug"] == "home" else None
     output_blocks = page["blocks"]
     source_text_parts = [normalized_text(region.get_text(" ", strip=True)) for region in regions]
-    source_text_parts.extend(normalized_text(anchor.get("title")) for region in regions for anchor in region.select("a.TPcta[title]") if normalized_text(anchor.get("title")))
     source_text_parts.extend(normalized_text(image.get("alt")) for image in raw_source_soup.select("[id^='ArtID'] .TPsocial a[href] img[alt]") if normalized_text(image.get("alt")))
     source_text_parts.extend(normalized_text(title.get_text(" ", strip=True)) for title in raw_source_soup.select("[id^='ArtID'] .TPsocial a[href] svg title") if normalized_text(title.get_text(" ", strip=True)))
     if hero:
@@ -223,6 +230,14 @@ for page in pages:
         for image in region.select("img[src]"):
             source_url = urljoin(page["source_url"], image["src"])
             source_assets.append((source_url, normalized_text(image.get("alt")), asset_hashes.get(source_url, "")))
+        ancestor_classes = [class_name for ancestor in region.parents for class_name in (ancestor.get("class") or [])]
+        for class_name in ancestor_classes:
+            match = re.search(rf"\.{re.escape(class_name)}\s*\{{[^}}]*background-image\s*:\s*url\((['\"]?)([^)'\"]+)\1\)", source_css, re.I)
+            if not match:
+                continue
+            background_url = urljoin(page["source_url"], match.group(2).strip())
+            if background_url in asset_hashes:
+                source_assets.append((background_url, "Portland skyline", asset_hashes[background_url]))
     if hero:
         hero_asset = next((item for item in assets_manifest if "bkg-anibanner" in item["url"].lower() or "bkg-slider1" in item["url"].lower()), None)
         if hero_asset:

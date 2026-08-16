@@ -11,6 +11,7 @@ const REPO = resolve(HERE, '../..');
 const BASELINE = resolve(HERE, '../lowen-baseline-a');
 const BASE = (process.env.DIRECTUS_URL || 'https://pearl-lowen-poc-cms.foundryworks.ai').replace(/\/$/, '');
 const contract = JSON.parse(await readFile(resolve(BASELINE, 'contract/pearl-block-library.v1.json'), 'utf8'));
+const mapping = JSON.parse(await readFile(resolve(BASELINE, 'migration/mapping-receipt.json'), 'utf8'));
 if (!process.env.PEARL_PUBLIC_ASSET_FOLDER_ID) throw new Error('PEARL_PUBLIC_ASSET_FOLDER_ID is required');
 
 async function request(path, token) {
@@ -37,6 +38,9 @@ async function snapshot() {
   const pages = siteId ? await request(`/items/pearl_pages?filter[site][_eq]=${siteId}&limit=-1&fields=id`, token) : [];
   const builders = siteId ? await request(`/items/pearl_page_builder?filter[page][site][_eq]=${siteId}&limit=-1&fields=id`, token) : [];
   const state = {sites: sortIds(sites), pages: sortIds(pages), builders: sortIds(builders), components: {}, nested: {}};
+  state.navigation = siteId ? (await request(`/items/pearl_navigation_items?filter[site][_eq]=${siteId}&limit=-1&fields=id,parent`, token))
+    .map(item => ({id: item.id, parent: typeof item.parent === 'object' ? item.parent?.id : item.parent || null}))
+    .sort((left, right) => left.id.localeCompare(right.id)) : [];
   for (const spec of contract.blocks) {
     const parents = await request(`/items/${spec.collection}?filter[internal_name][_starts_with]=Lowen%20Final%20B%20%C2%B7%20&limit=-1&fields=id`, token);
     state.components[spec.collection] = sortIds(parents);
@@ -64,7 +68,7 @@ if (apply.status !== 0) throw new Error(`Final B idempotent apply failed: ${appl
 const after = await snapshot();
 const stable = JSON.stringify(before) === JSON.stringify(after);
 const receipt = {
-  ok: dryReceipt.mode === 'dry-run' && dryReceipt.source_pages === 39 && dryReceipt.source_blocks === 132 && stable,
+  ok: dryReceipt.mode === 'dry-run' && dryReceipt.source_pages === 39 && dryReceipt.source_blocks === mapping.blocks && stable,
   generated_at: new Date().toISOString(),
   baseline: 'Final B',
   target: BASE,

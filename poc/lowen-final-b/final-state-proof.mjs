@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Prove failed B/B2 state is recoverable but absent, and Final B is the sole live Lowen state. */
+/** Prove the pre-feedback state is recoverable and reviewed Final B is the sole live state. */
 
 import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import {dirname, resolve} from 'node:path';
@@ -32,9 +32,9 @@ async function login() {
 const token = await login();
 const failures = [];
 const check = (condition, message) => { if (!condition) failures.push(message); };
-check(backup.ok && backup.temporary_database_restore_verified, 'pre-Final-B rollback backup lacks restoration proof');
-check(backup.source_counts.pearl_pages === 39 && backup.source_counts.pearl_page_builder === 129, 'rollback backup does not identify the failed 39-page/129-row review state');
-check(purged.ok && Object.values(purged.after).every(count => count === 0), 'stale B/B2 component purge is incomplete');
+check(backup.ok && backup.temporary_database_restore_verified, 'pre-feedback rollback backup lacks restoration proof');
+check(backup.source_counts.pearl_pages === 39 && backup.source_counts.pearl_page_builder > 0, 'rollback backup does not identify the 39-page pre-feedback review state');
+check(purged.ok && Object.values(purged.after).every(count => count === 0), 'unattached Lowen component purge is incomplete');
 check(imported.ok && authoring.ok, 'Final B import/authoring receipts are not green');
 
 const sites = await request('/items/pearl_sites?filter[slug][_eq]=lowen-perio&limit=-1&fields=id,slug,internal_name', token);
@@ -44,7 +44,7 @@ check(site?.internal_name === 'Lowen Perio · Baseline Final B', `live site is n
 const pages = site ? await request(`/items/pearl_pages?filter[site][_eq]=${site.id}&limit=-1&fields=id,slug,internal_name`, token) : [];
 const builders = site ? await request(`/items/pearl_page_builder?filter[page][site][_eq]=${site.id}&limit=-1&fields=id,page,collection,item`, token) : [];
 check(pages.length === 39 && new Set(pages.map(page => page.slug)).size === 39, `live Final B page state is ${pages.length}/39 or contains duplicate slugs`);
-check(builders.length === 132, `live Final B Builder state is ${builders.length}/132`);
+check(builders.length === imported.imported_blocks, `live Final B Builder state is ${builders.length}/${imported.imported_blocks}`);
 
 const componentEvidence = {};
 for (const [collection, expected] of Object.entries(authoring.component_counts)) {
@@ -67,14 +67,14 @@ const receipt = {
   ok: failures.length === 0,
   generated_at: new Date().toISOString(),
   target: BASE,
-  failed_review_backup: {
+  pre_feedback_backup: {
     recoverable: backup.temporary_database_restore_verified,
     backup_dir: backup.backup_dir,
     database_dump_sha256: backup.database_dump_sha256,
     pages: backup.source_counts.pearl_pages,
     builder_rows: backup.source_counts.pearl_page_builder,
   },
-  additional_pre_final_components_removed: Object.values(purged.selected).reduce((sum, count) => sum + count, 0),
+  unattached_lowen_components_removed: Object.values(purged.selected).reduce((sum, count) => sum + count, 0),
   final_b_live: {sites: sites.length, pages: pages.length, builder_rows: builders.length, components: Object.values(authoring.component_counts).reduce((sum, count) => sum + count, 0), forms: forms.length, migration_runs: runs.length, media_assets: media.length},
   component_evidence: componentEvidence,
   failures,

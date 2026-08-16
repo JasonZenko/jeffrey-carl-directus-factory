@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Remove only orphaned Lowen component records that are not Final B. */
+/** Remove only unattached Lowen component records, including superseded Final B rows. */
 
 import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import {dirname, resolve} from 'node:path';
@@ -29,11 +29,21 @@ async function authenticate() {
 
 const token = await authenticate();
 const api = (path, options = {}) => request(path, {...options, token});
+const sites = await api('/items/pearl_sites?filter[slug][_eq]=lowen-perio&limit=1&fields=id');
+if (!sites[0]) throw new Error('Lowen site is missing; refusing orphan purge');
+const builder = await api(`/items/pearl_page_builder?filter[page][site][_eq]=${sites[0].id}&limit=-1&fields=collection,item`);
+const attached = new Map();
+for (const row of builder) {
+  if (!attached.has(row.collection)) attached.set(row.collection, new Set());
+  attached.get(row.collection).add(typeof row.item === 'object' ? row.item?.id : row.item);
+}
 const inventory = {};
 for (const collection of [...new Set(contract.blocks.map(block => block.collection))]) {
   const records = await api(`/items/${collection}?filter[internal_name][_starts_with]=Lowen%20&limit=-1&fields=id,internal_name`);
-  inventory[collection] = records.filter(record => !record.internal_name?.startsWith('Lowen Final B · '));
-  if (inventory[collection].some(record => record.internal_name?.startsWith('Lowen Final B'))) throw new Error(`${collection} selection included Final B records; refusing purge`);
+  inventory[collection] = records.filter(record => !attached.get(collection)?.has(record.id));
+  if (records.some(record => attached.get(collection)?.has(record.id) && inventory[collection].some(candidate => candidate.id === record.id))) {
+    throw new Error(`${collection} selection included an attached component; refusing purge`);
+  }
 }
 
 if (APPLY) {
@@ -45,11 +55,11 @@ if (APPLY) {
 const after = {};
 for (const collection of Object.keys(inventory)) {
   const records = await api(`/items/${collection}?filter[internal_name][_starts_with]=Lowen%20&limit=-1&fields=id,internal_name`);
-  after[collection] = records.filter(record => !record.internal_name?.startsWith('Lowen Final B · ')).length;
+  after[collection] = records.filter(record => !attached.get(collection)?.has(record.id)).length;
 }
 const selected = Object.fromEntries(Object.entries(inventory).map(([collection, records]) => [collection, records.length]));
 const ok = !APPLY || Object.values(after).every(count => count === 0);
-const receipt = {ok, mode: APPLY ? 'apply' : 'dry-run', target: BASE, exact_scope: 'orphan Lowen component records whose internal_name is not prefixed Lowen Final B ·', final_b_excluded_fail_closed: true, selected, after};
+const receipt = {ok, mode: APPLY ? 'apply' : 'dry-run', target: BASE, exact_scope: 'unattached component records with internal_name prefixed Lowen ·', attached_components_protected_fail_closed: true, selected, after};
 await mkdir(resolve(HERE, 'receipts'), {recursive: true});
 await writeFile(resolve(HERE, 'receipts/stale-component-purge.json'), JSON.stringify(receipt, null, 2) + '\n');
 console.log(JSON.stringify(receipt, null, 2));

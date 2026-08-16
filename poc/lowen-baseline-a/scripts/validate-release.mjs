@@ -105,6 +105,9 @@ export function validateRelease({pages, exceptions, contract}) {
 
   for (const page of pages) {
     if (!HASH.test(page.source_html_sha256 || '')) errors.push(`${page.slug}: missing page source hash`);
+    const ctaIndexes = page.blocks.map((block, index) => block.type === 'cta_section_standard' ? index : -1).filter(index => index >= 0);
+    if (ctaIndexes.length > 1) errors.push(`${page.slug}: more than one CTA block`);
+    if (ctaIndexes.some(index => index !== page.blocks.length - 1)) errors.push(`${page.slug}: CTA block is not terminal`);
     for (const [index, block] of page.blocks.entries()) {
       const location = `${page.slug}.blocks[${index}]`;
       const spec = byType.get(block.type);

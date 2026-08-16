@@ -8,6 +8,7 @@ const ROOT = dirname(fileURLToPath(import.meta.url));
 const BASELINE_A = resolve(ROOT, '../lowen-baseline-a');
 const readJson = path => readFile(path, 'utf8').then(JSON.parse);
 const sha256 = value => createHash('sha256').update(value).digest('hex');
+const flattenNavigation = items => items.flatMap(item => [item, ...flattenNavigation(item.children || [])]);
 
 const [pagesRaw, assetsRaw, contractRaw, pages, site, mapping] = await Promise.all([
   readFile(resolve(BASELINE_A, 'source-freeze/manifests/pages.json')),
@@ -27,7 +28,7 @@ const hashes = {pages: sha256(pagesRaw), assets: sha256(assetsRaw), contract: sh
 for (const key of ['pages', 'assets']) if (hashes[key] !== expectedHashes[key]) errors.push(`${key} frozen-input hash drift`);
 
 const contract = JSON.parse(contractRaw);
-if (contract.version !== '1.1.0') errors.push(`contract version ${contract.version} is not 1.1.0`);
+if (contract.version !== '1.2.0') errors.push(`contract version ${contract.version} is not 1.2.0`);
 if (pages.length !== 39) errors.push(`expected 39 pages, received ${pages.length}`);
 if (mapping.blocks !== pages.reduce((sum, page) => sum + page.blocks.length, 0)) errors.push('mapping block count drift');
 
@@ -38,11 +39,18 @@ for (const [index, item] of site.navigation.entries()) {
   if (!item.label || !item.url || item.url.includes('#')) errors.push(`invalid navigation item ${item.label || index + 1}`);
   const match = item.url.match(/^\/([^/]+)\/$/);
   if (item.url !== '/' && (!match || !slugs.has(match[1]))) errors.push(`navigation target is not a frozen route: ${item.url}`);
+  for (const [childIndex, child] of (item.children || []).entries()) {
+    if (child.sort !== childIndex + 1) errors.push(`subnavigation sort drift at ${child.label}`);
+    const childMatch = child.url.match(/^\/([^/]+)\/$/);
+    if (!child.label || !child.url || !childMatch || !slugs.has(childMatch[1])) errors.push(`invalid subnavigation item ${child.label || childIndex + 1}`);
+  }
 }
 
 let flexBlocks = 0;
-let explicitHandoffs = 0;
 for (const page of pages) {
+  const ctaIndexes = page.blocks.map((block, index) => block.type === 'cta_section_standard' ? index : -1).filter(index => index >= 0);
+  if (ctaIndexes.length > 1) errors.push(`${page.slug}: more than one CTA block`);
+  if (ctaIndexes.some(index => index !== page.blocks.length - 1)) errors.push(`${page.slug}: CTA is not the final block`);
   for (const [index, block] of page.blocks.entries()) {
     if (block.type !== 'flex_content_section') continue;
     flexBlocks += 1;
@@ -54,15 +62,8 @@ for (const page of pages) {
     if (features?.headings > 0 && !block.item.section_header) errors.push(`${location}: source heading was not handed off`);
     if (features?.images > 0 && !block.item.image) errors.push(`${location}: source image was not handed off`);
     const renderedLinks = (block.item.body_content.match(/\bhref=["']/gi) || []).length;
-    const expectedLinks = Math.max(0, Number(features?.links || 0) - (block.mapping?.cta_handoff ? 1 : 0));
+    const expectedLinks = Number(features?.links || 0);
     if (renderedLinks < expectedLinks) errors.push(`${location}: ${expectedLinks - renderedLinks} source link(s) lost`);
-    if (block.mapping?.cta_handoff) {
-      explicitHandoffs += 1;
-      const next = page.blocks[index + 1];
-      if (next?.type !== 'cta_section_standard' || !next.mapping?.signals?.includes('source:adjacent_flex_handoff')) {
-        errors.push(`${location}: explicit CTA was not emitted as the adjacent ordered CTA block`);
-      }
-    }
   }
 }
 if (flexBlocks === 0) errors.push('no Flex blocks were tested');
@@ -73,8 +74,9 @@ const receipt = {
   frozen_pages: pages.length,
   mapped_blocks: mapping.blocks,
   flex_blocks: flexBlocks,
-  explicit_flex_cta_handoffs: explicitHandoffs,
-  navigation_items: site.navigation.length,
+  inline_button_links_preserved: true,
+  navigation_items: flattenNavigation(site.navigation).length,
+  navigation_root_items: site.navigation.length,
   contract_version: contract.version,
   hashes,
   errors,

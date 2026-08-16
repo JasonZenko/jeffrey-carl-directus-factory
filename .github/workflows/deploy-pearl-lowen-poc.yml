@@ -2,6 +2,12 @@ name: deploy-pearl-lowen-final-b
 
 on:
   workflow_dispatch:
+    inputs:
+      provision_dom:
+        description: Reset and verify Dom's isolated-CMS reviewer login
+        required: false
+        default: false
+        type: boolean
   push:
     branches: [pearl/lowen-poc-final-b]
 
@@ -48,6 +54,29 @@ jobs:
       - name: Require a machine-proven rollback backup
         run: |
           jq -e '.ok and .pg_restore_list_verified and .uploads_archive_verified and .temporary_database_restore_verified and (.source_counts == .restored_counts)' poc/lowen-final-b/receipts/backup-restore-receipt.json
+
+      - name: Apply the reviewed Pearl 1.2 contract and exact frozen object map
+        run: |
+          node poc/lowen-final-b/provision-feedback-schema.mjs --apply
+          node poc/lowen-baseline-a/scripts/import-to-directus.mjs --apply
+          node poc/lowen-final-b/purge-stale-components.mjs --apply
+        env:
+          DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
+          DIRECTUS_ADMIN_EMAIL: ${{ secrets.PEARL_LOWEN_ADMIN_EMAIL }}
+          DIRECTUS_ADMIN_PASSWORD: ${{ secrets.PEARL_LOWEN_ADMIN_PASSWORD }}
+          PEARL_PUBLIC_ASSET_FOLDER_ID: ${{ secrets.PEARL_LOWEN_PUBLIC_ASSET_FOLDER_ID }}
+          PEARL_BASELINE: Final B
+          PEARL_RECEIPTS_DIR: poc/lowen-final-b/receipts
+
+      - name: Reset and identity-prove Dom's reviewer login when explicitly dispatched
+        if: github.event_name == 'workflow_dispatch' && inputs.provision_dom
+        run: node poc/lowen-final-b/provision-reviewer.mjs
+        env:
+          DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
+          DIRECTUS_ADMIN_EMAIL: ${{ secrets.PEARL_LOWEN_ADMIN_EMAIL }}
+          DIRECTUS_ADMIN_PASSWORD: ${{ secrets.PEARL_LOWEN_ADMIN_PASSWORD }}
+          DOM_ADMIN_EMAIL: ${{ secrets.PEARL_LOWEN_DOM_ADMIN_EMAIL }}
+          DOM_ADMIN_PASSWORD: ${{ secrets.PEARL_LOWEN_DOM_ADMIN_PASSWORD }}
 
       - name: Prove dry-run and importer idempotence
         run: node poc/lowen-final-b/idempotence-gate.mjs

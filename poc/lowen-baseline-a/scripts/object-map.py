@@ -87,13 +87,24 @@ def source_asset(value: str | None, page_url: str, by_url: dict, by_name: dict, 
     return {**record, "alt": alt} if record else None
 
 
-def derived_svg(svg: Tag, label: str):
+def derived_svg(svg: Tag, label: str, source_color: str = ""):
     clone = BeautifulSoup(str(svg), "html.parser").find("svg")
     if clone is None:
         return None
     if not clone.get("xmlns"):
         clone["xmlns"] = "http://www.w3.org/2000/svg"
-    payload = str(clone).encode()
+    if source_color:
+        source_style = str(clone.get("style") or "").rstrip(";")
+        clone["style"] = ";".join(value for value in (source_style, f"color:{source_color}") if value) + ";"
+        if not clone.has_attr("fill") and not clone.has_attr("stroke"):
+            clone["fill"] = source_color
+    payload_text = str(clone)
+    if source_color:
+        # External SVG files do not inherit the source page's CSS `color`.
+        # Materialise the captured source colour so currentColor remains exact
+        # after the icon is uploaded to Directus and rendered through <img>.
+        payload_text = re.sub(r"currentcolor", source_color, payload_text, flags=re.I)
+    payload = payload_text.encode()
     digest = hashlib.sha256(payload).hexdigest()
     GENERATED_ASSETS.mkdir(parents=True, exist_ok=True)
     target = GENERATED_ASSETS / f"{digest[:12]}-{slugify(label)[:60]}.svg"
@@ -124,7 +135,11 @@ def clean_rich_text(html: str) -> str:
                 usable = [candidate for candidate in candidates if candidate not in {"http://", "https://"}]
                 if usable:
                     node["href"] = usable[-1]
-        classes = [value for value in node.get("class", []) if not value.lower().startswith("tp")]
+        source_classes = node.get("class", [])
+        semantic_classes = []
+        if node.name == "a" and any(value in {"TPbtn", "TPbtn-primary"} for value in source_classes):
+            semantic_classes.append("paragraph-button")
+        classes = semantic_classes + [value for value in source_classes if not value.lower().startswith("tp")]
         if classes:
             node["class"] = classes
         elif node.has_attr("class"):
@@ -171,7 +186,7 @@ def remove_first_link(value: str) -> str:
     return clean_rich_text("".join(str(node) for node in soup.contents))
 
 
-def feature_items(segment: list, page_url: str, by_url: dict, by_name: dict):
+def feature_items(segment: list, page_url: str, by_url: dict, by_name: dict, icon_color: str):
     soup = BeautifulSoup("".join(str(node) for node in segment), "html.parser")
     items = []
     for index, anchor in enumerate(soup.select("a.TPcta"), 1):
@@ -182,14 +197,18 @@ def feature_items(segment: list, page_url: str, by_url: dict, by_name: dict):
         if image:
             icon = source_asset(image.get("src"), page_url, by_url, by_name, normalized_text(image.get("alt")))
         if icon is None and anchor.find("svg"):
-            icon = derived_svg(anchor.find("svg"), title)
+            icon = derived_svg(anchor.find("svg"), title, icon_color)
         if icon is None:
             continue
-        body = normalized_text(anchor.get("title"))
+        visible_body = BeautifulSoup(str(anchor), "html.parser").find("a")
+        for node in visible_body.select("h1,h2,h3,h4,h5,h6,svg,img"):
+            node.decompose()
+        body = normalized_text(visible_body.get_text(" ", strip=True))
         items.append({
             "icon": icon,
             "title": title,
             "body": body if body and body != title else "",
+            "link_title": normalized_text(anchor.get("title")),
             "url": engine.normalize_url(anchor.get("href"), page_url),
             "sort": index,
         })
@@ -227,7 +246,7 @@ def split_band(band: Tag) -> list[list]:
             current.append(NavigableString(" "))
             continue
         classes = set(child.get("class") or [])
-        special = bool(classes & {"TPcta-row", "TPctas", "TPquote"}) or bool(child.select_one(".TPcta-row,.TPctas,.TPquote"))
+        special = bool(classes & {"TPcta-row", "TPctas", "TPquote", "TPlist-group"}) or bool(child.select_one(".TPcta-row,.TPctas,.TPquote,.TPlist-group"))
         profile = "TProw" in classes and child.find(re.compile(r"^h[1-6]$")) and child.find("img")
         form_or_embed = bool(child.find(["form", "iframe", "embed"]))
         if special or profile or form_or_embed:
@@ -293,7 +312,7 @@ def extract_inner_hero(soup: BeautifulSoup, page: dict, page_url: str, by_url: d
     }, page, page_url, title_html + image_html, 0.99, ["page_family:not_home", "source:page_title", "source:lead_image_only"])
 
 
-def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, by_name: dict, stats: dict, first: bool):
+def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, by_name: dict, stats: dict, first: bool, icon_color: str):
     html, text, images, embeds, links, headings = engine.transform_fragment(segment, page_url, {
         key: {"name": Path(value["local_path"]).name, "sha256": value["sha256"], "source_url": value["source_url"]}
         for key, value in by_url.items()
@@ -339,7 +358,21 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
         }
         return [block], exceptions
 
-    items = feature_items(segment, page_url, by_url, by_name)
+    highlight_nodes = soup.select("a.TPlist-group-item[href]")
+    if highlight_nodes:
+        links_out = [{
+            "link_label": visible_link_text(anchor),
+            "link_url": engine.normalize_url(anchor.get("href"), page_url),
+            "sort": index,
+        } for index, anchor in enumerate(highlight_nodes, 1) if visible_link_text(anchor)]
+        if links_out:
+            heading_node = next((node for node in soup.find_all(re.compile(r"^h[1-6]$")) if not node.find_parent("a")), None)
+            return [mapped_block("highlight_links", {
+                "section_heading": normalized_text(heading_node.get_text(" ", strip=True)) if heading_node else "",
+                "links": links_out,
+            }, page, page_url, html, 0.99, ["source:TPlist-group", "source:TPlist-group-item", "source:ordered_links"])], exceptions
+
+    items = feature_items(segment, page_url, by_url, by_name, icon_color)
     if items:
         heading_node = next((node for node in soup.find_all(re.compile(r"^h[1-6]$")) if not node.find_parent("a")), None)
         return [mapped_block("icon_feature_cards", {
@@ -362,7 +395,7 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
             social_label = normalized_text((social.find("img") or {}).get("alt")) if social.find("img") else normalized_text(social.get_text(" ", strip=True))
             social_url = engine.normalize_url(social.get("href"), page_url)
             social_markup = f'<p class="pearl-source-social"><a href="{social_url}">{social_label or "Source review"}</a></p>'
-        return [mapped_block("highlight_snippet_quote", {"quote": f"<p>{quote}</p>{social_markup}", "attribution": heading, "tone": "brand"}, page, page_url, html, 0.98, ["source:TPquote", "source:quote_text", "source:social_link_preserved"])], exceptions
+        return [mapped_block("highlight_snippet_quote", {"snippet": heading, "quote": f"<p>{quote}</p>{social_markup}", "attribution": "", "tone": "brand"}, page, page_url, html, 0.99, ["source:TPquote", "source:snippet_heading", "source:quote_text", "source:social_link_preserved"])], exceptions
 
     review_rows = [row for row in soup.select(".TProw") if row.select_one(".TPstars")]
     if review_rows:
@@ -454,21 +487,8 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
         }, page, page_url, html, 0.93, ["source:prose", "source:managed_image", "source:image_adjacent_to_prose"])], exceptions
 
     link_count = len(soup.find_all("a", href=True))
-    if heading and link and link_count == 1 and len(text) <= 360 and not soup.find(["ul", "ol", "table"]):
-        return [mapped_block("cta_section_standard", {
-            "heading": heading,
-            "body": remove_first_link(body),
-            "cta_label": link["label"] or heading,
-            "cta_url": link["url"],
-        }, page, page_url, html, 0.94, ["source:heading", "source:cta_link", "source:compact_prose"])], exceptions
-
-    explicit_cta = soup.select_one("a.TPbtn-primary[href],a.TPbtn[href]")
+    generic_cta_candidate = heading and link and link_count == 1 and len(text) <= 360 and not soup.find(["ul", "ol", "table"])
     flex_body = clean_rich_text(body or html)
-    if explicit_cta:
-        body_soup = BeautifulSoup(flex_body, "html.parser")
-        for candidate in body_soup.select("a.TPbtn-primary[href],a.TPbtn[href]"):
-            candidate.decompose()
-        flex_body = clean_rich_text("".join(str(node) for node in body_soup.contents))
 
     flex = mapped_block("flex_content_section", {
         "section_header": heading,
@@ -484,23 +504,50 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
         "links": len(soup.find_all("a", href=True)),
         "images": len(soup.find_all("img")),
     }
-    blocks = [flex]
-    if explicit_cta:
-        cta_label = visible_link_text(explicit_cta) or "Learn more"
-        cta_url = engine.normalize_url(explicit_cta.get("href"), page_url)
-        flex["mapping"]["cta_handoff"] = "adjacent_cta_section_standard"
-        blocks.append(mapped_block("cta_section_standard", {
-            "heading": heading or cta_label,
-            "body": "",
-            "cta_label": cta_label,
-            "cta_url": cta_url,
-        }, page, page_url, str(explicit_cta), 0.97, ["source:explicit_cta_class", "source:adjacent_flex_handoff"]))
-    return blocks, exceptions
+    if generic_cta_candidate:
+        flex["mapping"]["cta_candidate"] = {
+            "heading": heading,
+            "body": remove_first_link(body),
+            "cta_label": link["label"] or heading,
+            "cta_url": link["url"],
+        }
+        flex["mapping"]["signals"].append("source:compact_cta_candidate")
+    return [flex], exceptions
+
+
+def promote_terminal_cta(blocks: list[dict]) -> list[dict]:
+    """Promote at most one CTA, and only when it is the final source block."""
+    for index, block in enumerate(blocks):
+        candidate = block.get("mapping", {}).pop("cta_candidate", None)
+        if not candidate:
+            continue
+        if index != len(blocks) - 1:
+            block["mapping"]["signals"].append("page_gate:cta_rejected_not_terminal")
+            continue
+        source_mapping = block["mapping"]
+        blocks[index] = {
+            "type": "cta_section_standard",
+            "item": candidate,
+            "mapping": {
+                **source_mapping,
+                "confidence": 0.99,
+                "signals": [
+                    signal for signal in source_mapping["signals"]
+                    if signal not in {"source:flex_content_fallback", "source:compact_cta_candidate"}
+                ] + ["source:compact_cta_candidate", "page_gate:terminal_block", "page_gate:single_cta"],
+            },
+        }
+    return blocks
 
 
 def css_value(css: str, selector: str, property_name: str, fallback: str) -> str:
     match = re.search(rf"{selector}\s*\{{[^}}]*{property_name}\s*:\s*(#[0-9a-fA-F]{{6}})", css, re.I)
     return match.group(1).lower() if match else fallback
+
+
+def css_url_value(css: str, selector: str, property_name: str) -> str:
+    match = re.search(rf"{selector}\s*\{{[^}}]*{property_name}\s*:\s*url\((['\"]?)([^)'\"]+)\1\)", css, re.I)
+    return match.group(2).strip() if match else ""
 
 
 def relative_luminance(color: str) -> float:
@@ -563,9 +610,14 @@ def rewrite_internal_links(value, route_to_slug: dict[str, str], asset_routes: d
 
 
 def main():
+    if GENERATED_ASSETS.exists():
+        shutil.rmtree(GENERATED_ASSETS)
     pages_manifest = json.loads((FREEZE / "manifests/pages.json").read_text())
     assets_manifest = json.loads((FREEZE / "manifests/assets.json").read_text())
     by_url, by_name = asset_maps(assets_manifest)
+    css_record = next((item for item in assets_manifest if "/webpage.css" in item["url"]), None)
+    css = (FREEZE / css_record["localPath"]).read_text(encoding="utf-8", errors="ignore") if css_record else ""
+    icon_color = css_value(css, r"\.TPcta\s+svg", "color", "#fde4d7")
     slugs, pages_out, exceptions = {}, [], []
     stats = {"dropped_srcless_img": 0, "dropped_unevidenced_img": 0}
 
@@ -585,6 +637,13 @@ def main():
         for item in assets_manifest
         if item.get("contentType") == "application/pdf"
     }
+    services_background = source_asset(
+        css_url_value(css, r"\.TPart2Band", "background-image"),
+        home_source["sitemapUrl"],
+        by_url,
+        by_name,
+        "Portland skyline",
+    )
 
     for source_page in pages_manifest:
         page_url = source_page["sitemapUrl"]
@@ -618,7 +677,11 @@ def main():
                 ignored.decompose()
             segments = split_band(band)
             for index, segment in enumerate(segments):
-                mapped, found_exceptions = block_from_segment(segment, source_page, page_url, by_url, by_name, stats, first=False)
+                mapped, found_exceptions = block_from_segment(segment, source_page, page_url, by_url, by_name, stats, first=False, icon_color=icon_color)
+                for block in mapped:
+                    if block["type"] == "icon_feature_cards" and block["item"].get("display_variant") == "services" and services_background:
+                        block["item"]["background_image"] = services_background
+                        block["mapping"]["signals"].append("source:TPart2Band_background_image")
                 blocks.extend(mapped)
                 page_exceptions.extend(found_exceptions)
 
@@ -627,6 +690,8 @@ def main():
                 "page_title": normalized_text(source_page["h1s"][0] if source_page["h1s"] else source_page["title"]),
                 "intro_paragraph": source_page.get("metaDescription") or "",
             }, source_page, page_url, source_page.get("metaDescription") or source_page["title"], 0.91, ["page_family:not_home", "source:page_h1_or_title", "source:meta_description"]))
+
+        blocks = promote_terminal_cta(blocks)
 
         pages_out.append({
             "slug": slug,
@@ -664,7 +729,19 @@ def main():
                 "label": normalized_text(anchor.get_text(" ", strip=True)),
                 "url": "/" if target_slug == "home" else f"/{target_slug}/" if target_slug else engine.normalize_url(anchor.get("href"), home_source["sitemapUrl"]),
                 "sort": len(navigation) + 1,
+                "children": [],
             })
+            for child_index, child in enumerate(item.select(":scope > ul > li"), 1):
+                child_anchor = child.find("a", recursive=False)
+                if not child_anchor:
+                    continue
+                child_route = urlparse(urljoin(home_source["sitemapUrl"], child_anchor.get("href"))).path
+                child_slug = route_to_slug.get(child_route)
+                navigation[-1]["children"].append({
+                    "label": normalized_text(child_anchor.get_text(" ", strip=True)),
+                    "url": "/" if child_slug == "home" else f"/{child_slug}/" if child_slug else engine.normalize_url(child_anchor.get("href"), home_source["sitemapUrl"]),
+                    "sort": child_index,
+                })
 
     logo_node = home_soup.select_one(".TPnavbar-brand img")
     logo = source_asset(logo_node.get("src"), home_source["sitemapUrl"], by_url, by_name, normalized_text(logo_node.get("alt"))) if logo_node else None
@@ -679,8 +756,6 @@ def main():
     ) if appointment_node else ""
     email_node = home_soup.find("a", href=re.compile(r"^mailto:", re.I))
     email = email_node.get("href", "").split(":", 1)[-1].strip() if email_node else ""
-    css_record = next((item for item in assets_manifest if "/webpage.css" in item["url"]), None)
-    css = (FREEZE / css_record["localPath"]).read_text(encoding="utf-8", errors="ignore") if css_record else ""
     source_primary_color = css_value(css, r"H1\s+a:link", "color", "#e36966")
     mapped_primary_color = accessible_source_color(source_primary_color)
     theme = {
@@ -709,7 +784,8 @@ def main():
         "homepage_sequence": [block["type"] for block in home["blocks"]],
         "homepage_dynamic": True,
         "homepage_contact_block_required": False,
-        "navigation_items": len(navigation),
+        "navigation_items": sum(1 + len(item["children"]) for item in navigation),
+        "navigation_root_items": len(navigation),
         "theme_mapping": {
             "source_primary_color": source_primary_color,
             "mapped_primary_color": mapped_primary_color,

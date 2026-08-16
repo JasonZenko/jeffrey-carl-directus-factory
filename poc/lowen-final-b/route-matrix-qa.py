@@ -19,7 +19,17 @@ PAGES = json.loads((BASELINE / "migration/pages.json").read_text())
 SITE = json.loads((BASELINE / "migration/site.json").read_text())
 SOURCE_LEDGER = json.loads((HERE / "receipts/source-region-fidelity.json").read_text())
 SOURCE_BY_SLUG = {item["slug"]: item for item in SOURCE_LEDGER["pages"]}
-EXPECTED_NAV = sorted(SITE["navigation"], key=lambda item: item["sort"])
+def flatten_navigation(items: list[dict]) -> list[dict]:
+    result = []
+    for item in sorted(items, key=lambda value: value["sort"]):
+        result.append({"label": item["label"], "url": item["url"]})
+        result.extend(flatten_navigation(item.get("children") or []))
+    return result
+
+
+EXPECTED_NAV = flatten_navigation(SITE["navigation"])
+EXPECTED_ROOT_NAV = len(SITE["navigation"])
+EXPECTED_SUBNAV = sum(len(item.get("children") or []) for item in SITE["navigation"])
 SLUGS = {page["slug"] for page in PAGES}
 VIEWPORTS = {
     "desktop": {"width": 1440, "height": 1000},
@@ -111,6 +121,16 @@ def main():
                             description: document.querySelector('meta[name="description"]')?.content || '',
                             h1s: [...document.querySelectorAll('h1')].map(node => node.textContent?.trim() || ''),
                             nav: [...document.querySelectorAll('#pearl-primary-navigation a')].map(node => ({label:node.textContent?.trim() || '',url:node.getAttribute('href')})),
+                            rootNavCount: document.querySelectorAll('.pearl-nav-root > .pearl-nav-item').length,
+                            submenuCount: document.querySelectorAll('.pearl-submenu a').length,
+                            ctaIndexes: blocks.map((node,index) => node.dataset.pearlBlock === 'cta_section_standard' ? index : -1).filter(index => index >= 0),
+                            paragraphButtons: [...document.querySelectorAll('.pearl-prose a.paragraph-button')].map(node => node.textContent?.trim() || ''),
+                            highlightLinks: [...document.querySelectorAll('.pearl-highlight-links a')].map(node => node.textContent?.replace('↗','').trim() || ''),
+                            iconMarks: document.querySelectorAll('.pearl-icons__mark').length,
+                            iconLinkTitles: [...document.querySelectorAll('.pearl-icons__mark')].filter(node => Boolean(node.getAttribute('title'))).length,
+                            overlayIconBodies: document.querySelectorAll('.pearl-icons--overlay .pearl-icons__list li > p').length,
+                            servicesBackgroundPresent: (() => { const node=document.querySelector('.pearl-icons--services'); return Boolean(node && getComputedStyle(node).backgroundImage.includes('url(')); })(),
+                            snippetBeforeQuote: (() => { const section=document.querySelector('.pearl-snippet-quote'); const snippet=section?.querySelector('.pearl-snippet-quote__snippet'); const quote=section?.querySelector('blockquote'); return Boolean(snippet && quote && (snippet.compareDocumentPosition(quote) & Node.DOCUMENT_POSITION_FOLLOWING)); })(),
                             hrefs: [...document.querySelectorAll('a[href]')].map(node => node.getAttribute('href')),
                             header: Boolean(document.querySelector('.pearl-site-header')),
                             footer: Boolean(document.querySelector('.pearl-site-footer')),
@@ -143,19 +163,30 @@ def main():
                         nav_behavior = {"toggle_visible": toggle.is_visible(), "closed_initially": not navigation.is_visible()}
                         toggle.focus()
                         page.keyboard.press("Enter")
-                        nav_behavior.update({"expanded": toggle.get_attribute("aria-expanded") == "true", "opened": navigation.is_visible(), "link_count": navigation.locator("a").count() == len(EXPECTED_NAV)})
+                        parent_toggle = navigation.locator(".pearl-submenu-toggle").first
+                        parent_toggle.click()
+                        nav_behavior.update({"expanded": toggle.get_attribute("aria-expanded") == "true", "opened": navigation.is_visible(), "link_count": navigation.locator("a").count() == len(EXPECTED_NAV), "root_count": evidence["rootNavCount"] == EXPECTED_ROOT_NAV, "submenu_count": evidence["submenuCount"] == EXPECTED_SUBNAV, "submenu_expanded": parent_toggle.get_attribute("aria-expanded") == "true", "submenu_visible": navigation.locator(".pearl-submenu").first.is_visible()})
                         page.keyboard.press("Escape")
                         nav_behavior["escape_closed"] = not navigation.is_visible()
                     else:
-                        nav_behavior = {"toggle_hidden": not toggle.is_visible(), "navigation_visible": navigation.is_visible(), "link_count": navigation.locator("a").count() == len(EXPECTED_NAV)}
+                        first_parent = navigation.locator("[data-pearl-nav-parent]").first
+                        first_parent.hover()
+                        nav_behavior = {"toggle_hidden": not toggle.is_visible(), "navigation_visible": navigation.is_visible(), "link_count": navigation.locator("a").count() == len(EXPECTED_NAV), "root_count": evidence["rootNavCount"] == EXPECTED_ROOT_NAV, "submenu_count": evidence["submenuCount"] == EXPECTED_SUBNAV, "submenu_visible_on_hover": first_parent.locator(".pearl-submenu").is_visible()}
+
+                    semantic_dom_fidelity = len(evidence["ctaIndexes"]) <= 1 and (not evidence["ctaIndexes"] or evidence["ctaIndexes"][0] == len(evidence["blocks"]) - 1)
+                    if source_page["slug"] == "home":
+                        semantic_dom_fidelity = semantic_dom_fidelity and evidence["overlayIconBodies"] == 0 and evidence["iconMarks"] > 0 and evidence["iconLinkTitles"] == evidence["iconMarks"] and evidence["servicesBackgroundPresent"] and evidence["snippetBeforeQuote"] and len(evidence["paragraphButtons"]) >= 2
+                    if source_page["slug"] == "about-us":
+                        semantic_dom_fidelity = semantic_dom_fidelity and evidence["highlightLinks"] == ["Meet Dr. Krista Lowen", "Meet Dr. Lillian Nguyen", "Testimonials"]
 
                     checks = {
                         "status_200": bool(response and response.status == 200),
                         "route_identity": evidence["pageSlug"] == source_page["slug"],
                         "source_object_sequence": evidence["blocks"] == expected_blocks,
                         "one_source_h1": len(evidence["h1s"]) == 1 and (not heading or evidence["h1s"][0] == heading),
-                        "source_navigation_clean": evidence["nav"] == [{"label": item["label"], "url": item["url"]} for item in EXPECTED_NAV],
+                        "source_navigation_clean": evidence["nav"] == EXPECTED_NAV,
                         "navigation_behavior": all(nav_behavior.values()),
+                        "semantic_dom_fidelity": semantic_dom_fidelity,
                         "internal_links_clean_and_known": not invalid_internal,
                         "no_horizontal_overflow": evidence["overflow"] <= 1,
                         "images_loaded": not evidence["brokenImages"],
@@ -180,6 +211,7 @@ def main():
                         "missing_content_tokens": missing_content, "unsupported_content_tokens": unsupported_content,
                         "overflow_pixels": evidence["overflow"], "invalid_internal_links": invalid_internal, "broken_images": evidence["brokenImages"], "missing_alt": evidence["missingAlt"],
                         "console_errors": console_errors, "page_errors": page_errors, "first_party_http_errors": response_errors, "accessibility_violations": violations, "navigation_evidence": nav_behavior,
+                        "semantic_evidence": {key: evidence[key] for key in ("ctaIndexes", "paragraphButtons", "highlightLinks", "iconMarks", "iconLinkTitles", "overlayIconBodies", "servicesBackgroundPresent", "snippetBeforeQuote")},
                     })
                     page.close()
         browser.close()

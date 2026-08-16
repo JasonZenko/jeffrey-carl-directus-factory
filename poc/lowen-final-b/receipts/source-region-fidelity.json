@@ -1,11 +1,11 @@
 {
   "ok": true,
-  "generated_at": "2026-08-15T20:12:09.411385+00:00",
+  "generated_at": "2026-08-16T08:31:03.165213+00:00",
   "gate": "final-b-source-region-fidelity",
   "frozen_pages": 39,
   "mapped_pages": 39,
   "source_regions": 43,
-  "mapped_blocks": 132,
+  "mapped_blocks": 134,
   "provider_exceptions": {
     "source_count": 3,
     "mapped_count": 3,
@@ -15,32 +15,153 @@
     {
       "label": "Home",
       "url": "/",
-      "sort": 1
+      "sort": 1,
+      "children": []
     },
     {
       "label": "About Us",
       "url": "/about-us/",
-      "sort": 2
+      "sort": 2,
+      "children": [
+        {
+          "label": "Krista Lowen, DDS, MSD",
+          "url": "/krista-lowen-dds-msd/",
+          "sort": 1
+        },
+        {
+          "label": "Lillian Nguyen, DMD, MS",
+          "url": "/lillian-nguyen-dmd-ms/",
+          "sort": 2
+        },
+        {
+          "label": "Testimonials",
+          "url": "/testimonials/",
+          "sort": 3
+        }
+      ]
     },
     {
       "label": "Periodontal Disease",
       "url": "/periodontal-disease-4949/",
-      "sort": 3
+      "sort": 3,
+      "children": [
+        {
+          "label": "What Is A Periodontist?",
+          "url": "/what-is-a-periodontist/",
+          "sort": 1
+        },
+        {
+          "label": "Specialty of Periodontics",
+          "url": "/specialty-of-periodontics/",
+          "sort": 2
+        },
+        {
+          "label": "Periodontal Disease",
+          "url": "/periodontal-disease/",
+          "sort": 3
+        },
+        {
+          "label": "Preventing Periodontal Disease",
+          "url": "/preventing-periodontal-disease/",
+          "sort": 4
+        }
+      ]
     },
     {
       "label": "Our Services",
       "url": "/our-services/",
-      "sort": 4
+      "sort": 4,
+      "children": [
+        {
+          "label": "Periodontal Disease Management",
+          "url": "/periodontal-disease-management/",
+          "sort": 1
+        },
+        {
+          "label": "Crown Lengthening",
+          "url": "/crown-lengthening/",
+          "sort": 2
+        },
+        {
+          "label": "Soft Tissue Grafting",
+          "url": "/soft-tissue-grafting/",
+          "sort": 3
+        },
+        {
+          "label": "Laser Therapy",
+          "url": "/laser-therapy/",
+          "sort": 4
+        },
+        {
+          "label": "Dental Implants",
+          "url": "/dental-implants/",
+          "sort": 5
+        },
+        {
+          "label": "Bone Grafting",
+          "url": "/bone-grafting/",
+          "sort": 6
+        },
+        {
+          "label": "Occlusal Therapy",
+          "url": "/occlusal-therapy/",
+          "sort": 7
+        },
+        {
+          "label": "Oral Pathology",
+          "url": "/oral-pathology/",
+          "sort": 8
+        }
+      ]
     },
     {
       "label": "Patients",
       "url": "/patients/",
-      "sort": 5
+      "sort": 5,
+      "children": [
+        {
+          "label": "Patient Forms",
+          "url": "/patient-forms/",
+          "sort": 1
+        },
+        {
+          "label": "Financial Info",
+          "url": "/financial-info/",
+          "sort": 2
+        },
+        {
+          "label": "Privacy Policy",
+          "url": "/privacy-policy/",
+          "sort": 3
+        },
+        {
+          "label": "Sedation Options",
+          "url": "/sedation-options/",
+          "sort": 4
+        },
+        {
+          "label": "Educational Links",
+          "url": "/educational-links/",
+          "sort": 5
+        }
+      ]
     },
     {
       "label": "Contact Us",
       "url": "/contact-us/",
-      "sort": 6
+      "sort": 6,
+      "children": [
+        {
+          "label": "Patient Referral Form",
+          "url": "/patient-referral-form/",
+          "sort": 1
+        },
+        {
+          "label": "Request an Appointment",
+          "url": "/request-an-appointment/",
+          "sort": 2
+        }
+      ]
     }
   ],
   "errors": [],
@@ -94,6 +215,7 @@
       "mapped_block_types": [
         "inner_hero_standard",
         "flex_content_section",
+        "highlight_links",
         "flex_content_section"
       ],
       "copy": {
@@ -1243,7 +1365,7 @@
         "inner_hero_standard",
         "flex_content_section",
         "flex_content_section",
-        "cta_section_standard",
+        "flex_content_section",
         "flex_content_section"
       ],
       "copy": {
@@ -3467,20 +3589,20 @@
         "flex_content_section"
       ],
       "copy": {
-        "source_tokens": 526,
-        "mapped_tokens": 526,
+        "source_tokens": 415,
+        "mapped_tokens": 415,
         "source_counter": {
-          "periodontics": 5,
-          "dental": 9,
-          "implants": 5,
-          "laser": 4,
+          "periodontics": 4,
+          "dental": 7,
+          "implants": 3,
+          "laser": 2,
           "treatment": 3,
-          "periodontal": 8,
-          "surgery": 4,
+          "periodontal": 6,
+          "surgery": 2,
           "welcome": 2,
           "to": 6,
-          "lowen": 19,
-          "perio": 14,
+          "lowen": 7,
+          "perio": 2,
           "dr": 10,
           "krista": 3,
           "lillian": 4,
@@ -3507,7 +3629,7 @@
           "implant": 4,
           "dentistry": 4,
           "regardless": 1,
-          "of": 11,
+          "of": 10,
           "extent": 1,
           "your": 3,
           "needs": 1,
@@ -3565,17 +3687,17 @@
           "about": 3,
           "us": 1,
           "services": 1,
-          "disease": 3,
-          "crown": 2,
-          "lengthening": 2,
-          "soft": 2,
-          "tissue": 2,
-          "grafting": 5,
-          "therapy": 4,
-          "bone": 3,
+          "disease": 2,
+          "crown": 1,
+          "lengthening": 1,
+          "soft": 1,
+          "tissue": 1,
+          "grafting": 3,
+          "therapy": 2,
+          "bone": 2,
           "occlusal": 1,
-          "oral": 2,
-          "pathology": 2,
+          "oral": 1,
+          "pathology": 1,
           "this": 1,
           "is": 3,
           "hands": 1,
@@ -3658,7 +3780,7 @@
           "growing": 1,
           "suburbs": 1,
           "attended": 1,
-          "tigard": 25,
+          "tigard": 1,
           "high": 1,
           "received": 1,
           "bachelor": 1,
@@ -3677,12 +3799,6 @@
           "moderate": 1,
           "board": 1,
           "periodontology": 1,
-          "specialty": 1,
-          "or": 24,
-          "periodontist": 10,
-          "periolase": 2,
-          "osseous": 1,
-          "flap": 1,
           "google": 1,
           "social": 1,
           "media": 1,
@@ -3691,27 +3807,20 @@
           "an": 1
         },
         "mapped_counter": {
-          "lowen": 19,
-          "perio": 14,
-          "periodontics": 5,
+          "lowen": 7,
+          "perio": 2,
+          "periodontics": 4,
           "implant": 4,
           "dentistry": 4,
           "request": 1,
           "an": 1,
           "appointment": 2,
-          "specialty": 1,
-          "of": 11,
-          "tigard": 25,
-          "or": 24,
-          "periodontist": 10,
-          "dental": 9,
-          "implants": 5,
-          "laser": 4,
+          "dental": 7,
+          "implants": 3,
+          "laser": 2,
           "treatment": 3,
-          "therapy": 4,
-          "periolase": 2,
-          "periodontal": 8,
-          "surgery": 4,
+          "periodontal": 6,
+          "surgery": 2,
           "welcome": 2,
           "to": 6,
           "dr": 10,
@@ -3738,6 +3847,7 @@
           "best": 3,
           "care": 2,
           "regardless": 1,
+          "of": 10,
           "extent": 1,
           "your": 3,
           "needs": 1,
@@ -3794,18 +3904,25 @@
           "about": 3,
           "us": 1,
           "services": 1,
-          "disease": 3,
-          "crown": 2,
-          "lengthening": 2,
-          "soft": 2,
-          "tissue": 2,
-          "grafting": 5,
-          "bone": 3,
+          "disease": 2,
+          "crown": 1,
+          "lengthening": 1,
+          "soft": 1,
+          "tissue": 1,
+          "grafting": 3,
+          "therapy": 2,
+          "bone": 2,
           "occlusal": 1,
-          "osseous": 1,
-          "flap": 1,
-          "oral": 2,
-          "pathology": 2,
+          "oral": 1,
+          "pathology": 1,
+          "this": 1,
+          "is": 3,
+          "hands": 1,
+          "down": 1,
+          "office": 1,
+          "i've": 1,
+          "ever": 1,
+          "been": 1,
           "absolutely": 1,
           "wonderful": 1,
           "experience": 1,
@@ -3841,14 +3958,6 @@
           "social": 1,
           "media": 1,
           "icon": 1,
-          "this": 1,
-          "is": 3,
-          "hands": 1,
-          "down": 1,
-          "office": 1,
-          "i've": 1,
-          "ever": 1,
-          "been": 1,
           "meet": 1,
           "doctors": 1,
           "grew": 1,
@@ -3892,6 +4001,7 @@
           "growing": 1,
           "suburbs": 1,
           "attended": 1,
+          "tigard": 1,
           "high": 1,
           "received": 1,
           "bachelor": 1,
@@ -3964,6 +4074,11 @@
             "507171e9af7b3ef73d000bcd1acc90c30dca775eb7a649254355ac075e23df07"
           ],
           [
+            "https://www.lowenperio.com/tpn/c/C139/img/BKG-art2-c139.webp",
+            "Portland skyline",
+            "23f7be97bc68cb10795154628744b1ab7bd37dd5eeee83c97db8db6042bf9d76"
+          ],
+          [
             "https://www.lowenperio.com/tpn/c/C139/img/IMG-lowen-c139.webp",
             "Dr. Krista Lowen of Lowen Perio",
             "7cbef11e5e8236cc885f1dbd5c14801a8268a5488b5576f344606a9f653b4cd9"
@@ -3989,6 +4104,11 @@
             "https://www.lowenperio.com/tpn/c/C139/img/IMG-art1-c139.webp",
             "Lowen Perio's reception desk.",
             "507171e9af7b3ef73d000bcd1acc90c30dca775eb7a649254355ac075e23df07"
+          ],
+          [
+            "https://www.lowenperio.com/tpn/c/C139/img/BKG-art2-c139.webp",
+            "Portland skyline",
+            "23f7be97bc68cb10795154628744b1ab7bd37dd5eeee83c97db8db6042bf9d76"
           ],
           [
             "https://www.lowenperio.com/tpn/c/C139/img/IMG-lowen-c139.webp",
@@ -5895,7 +6015,8 @@
       ],
       "mapped_block_types": [
         "inner_hero_standard",
-        "flex_content_section"
+        "flex_content_section",
+        "highlight_links"
       ],
       "copy": {
         "source_tokens": 29,
@@ -6076,7 +6197,7 @@
       "mapped_block_types": [
         "inner_hero_standard",
         "flex_content_section",
-        "cta_section_standard",
+        "flex_content_section",
         "flex_content_section",
         "cta_section_standard"
       ],
@@ -14176,7 +14297,7 @@
       ],
       "mapped_block_types": [
         "inner_hero_standard",
-        "cta_section_standard",
+        "flex_content_section",
         "testimonial_list_standard"
       ],
       "copy": {

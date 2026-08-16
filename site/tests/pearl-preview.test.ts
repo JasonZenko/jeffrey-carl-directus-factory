@@ -31,7 +31,7 @@ describe('Pearl official block surface', () => {
     const html=readFileSync(output,'utf8');
     expect(html).toContain('<meta name="robots" content="noindex, nofollow"');
     expect(html).toContain('data-template-adapter="pearl"');
-    expect(html).toContain('data-template-version="1.1.0"');
+    expect(html).toContain('data-template-version="1.2.0"');
     expect(html).toContain('class="pearl-site-header"');
     expect(html).toContain('class="pearl-menu-toggle"');
     expect(html).toContain('aria-controls="pearl-primary-navigation"');

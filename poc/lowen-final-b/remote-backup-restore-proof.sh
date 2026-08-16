@@ -17,21 +17,21 @@ umask 077
 mkdir -p "$BACKUP_DIR"
 
 cleanup() {
-  docker compose exec -T database psql -U "$POSTGRES_USER" -d postgres -v ON_ERROR_STOP=1 -c "DROP DATABASE IF EXISTS \"$TEMP_DB\" WITH (FORCE);" >/dev/null 2>&1 || true
+  docker compose exec -T database psql -U "$POSTGRES_USER" -d postgres -v ON_ERROR_STOP=1 -c "DROP DATABASE IF EXISTS \"$TEMP_DB\" WITH (FORCE);" </dev/null >/dev/null 2>&1 || true
 }
 trap cleanup EXIT
 
-docker compose exec -T database pg_dump -U "$POSTGRES_USER" -d "$POSTGRES_DB" --format=custom --no-owner --no-privileges > "$DUMP"
+docker compose exec -T database pg_dump -U "$POSTGRES_USER" -d "$POSTGRES_DB" --format=custom --no-owner --no-privileges </dev/null > "$DUMP"
 tar -czf "$UPLOADS" uploads
 docker compose exec -T database pg_restore --list < "$DUMP" >/dev/null
 tar -tzf "$UPLOADS" >/dev/null
 
 COUNT_SQL="SELECT json_build_object('pearl_pages',(SELECT count(*) FROM pearl_pages),'pearl_page_builder',(SELECT count(*) FROM pearl_page_builder),'pearl_sites',(SELECT count(*) FROM pearl_sites),'pearl_navigation_items',(SELECT count(*) FROM pearl_navigation_items),'directus_files',(SELECT count(*) FROM directus_files))::text;"
-SOURCE_COUNTS="$(docker compose exec -T database psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -Atqc "$COUNT_SQL")"
+SOURCE_COUNTS="$(docker compose exec -T database psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -Atqc "$COUNT_SQL" </dev/null)"
 
-docker compose exec -T database psql -U "$POSTGRES_USER" -d postgres -v ON_ERROR_STOP=1 -c "CREATE DATABASE \"$TEMP_DB\";" >/dev/null
+docker compose exec -T database psql -U "$POSTGRES_USER" -d postgres -v ON_ERROR_STOP=1 -c "CREATE DATABASE \"$TEMP_DB\";" </dev/null >/dev/null
 docker compose exec -T database pg_restore -U "$POSTGRES_USER" -d "$TEMP_DB" --exit-on-error --no-owner --no-privileges < "$DUMP"
-RESTORED_COUNTS="$(docker compose exec -T database psql -U "$POSTGRES_USER" -d "$TEMP_DB" -Atqc "$COUNT_SQL")"
+RESTORED_COUNTS="$(docker compose exec -T database psql -U "$POSTGRES_USER" -d "$TEMP_DB" -Atqc "$COUNT_SQL" </dev/null)"
 
 if [[ "$SOURCE_COUNTS" != "$RESTORED_COUNTS" ]]; then
   echo "Restored critical-table counts do not match source" >&2

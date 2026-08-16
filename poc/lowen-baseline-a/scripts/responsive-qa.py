@@ -18,6 +18,8 @@ VIEWPORTS = {
     "mobile": {"width": 390, "height": 844},
 }
 EXPECTED_HOME = json.loads((ROOT / "migration/mapping-receipt.json").read_text())["homepage_sequence"]
+EXPECTED_SITE = json.loads((ROOT / "migration/site.json").read_text())
+EXPECTED_NAV_COUNT = sum(1 + len(item.get("children", [])) for item in EXPECTED_SITE["navigation"])
 
 
 def main():
@@ -72,7 +74,7 @@ def main():
                 navigation_evidence.update({
                     "expanded": toggle.get_attribute("aria-expanded") == "true",
                     "opened": navigation.is_visible(),
-                    "link_count": navigation.locator("a").count() == 6,
+                    "link_count": navigation.locator("a").count() == EXPECTED_NAV_COUNT,
                 })
                 page.keyboard.press("Escape")
                 navigation_evidence.update({"escape_closed": not navigation.is_visible()})
@@ -80,7 +82,7 @@ def main():
                 navigation_evidence = {
                     "toggle_hidden": not toggle.is_visible(),
                     "navigation_visible": navigation.is_visible(),
-                    "link_count": navigation.locator("a").count() == 6,
+                    "link_count": navigation.locator("a").count() == EXPECTED_NAV_COUNT,
                 }
             checks = {
                 "status_200": bool(response and response.status == 200),
@@ -92,7 +94,7 @@ def main():
                 "no_first_party_http_errors": not response_errors,
                 "noindex": "noindex" in evidence["robots"],
                 "source_homepage_composition": evidence["blockSequence"] == EXPECTED_HOME,
-                "source_navigation": len(evidence["navHrefs"]) == 6 and all(not href.startswith("#") for href in evidence["navHrefs"]),
+                "source_navigation": len(evidence["navHrefs"]) == EXPECTED_NAV_COUNT and all(not href.startswith("#") for href in evidence["navHrefs"]),
                 "source_logo": evidence["logo"],
                 "theme_connected": evidence["theme"].startswith("#") and len(evidence["theme"]) == 7,
                 "shared_chrome": evidence["header"] and evidence["footer"],
