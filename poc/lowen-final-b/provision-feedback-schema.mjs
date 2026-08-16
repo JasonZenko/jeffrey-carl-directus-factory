@@ -40,11 +40,11 @@ const canonicalise = value => {
 const canonicalJson = value => JSON.stringify(canonicalise(value));
 
 async function getField(collection, field) {
-  const response = await fetch(`${BASE}/fields/${collection}/${field}`, {headers: {Authorization: `Bearer ${token}`, Accept: 'application/json'}});
-  if (response.status === 404) return null;
-  const payload = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(`GET /fields/${collection}/${field} -> ${response.status}`);
-  return payload.data;
+  // Directus 11 returns 403 (not 404) for a missing singular field, even for
+  // administrators. Collection discovery distinguishes "absent" from a real
+  // permissions failure without treating that response as proof of absence.
+  const fields = await api(`/fields/${collection}`);
+  return fields.find(candidate => candidate.field === field) || null;
 }
 
 async function ensureField(collection, definition) {
