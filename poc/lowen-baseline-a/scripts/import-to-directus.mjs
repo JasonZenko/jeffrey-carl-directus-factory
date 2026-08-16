@@ -124,27 +124,29 @@ async function ensureAsset(asset) {
   if (uploaded.has(asset.sha256)) return uploaded.get(asset.sha256);
   const title = `${ITEM_PREFIX} · ${asset.sha256.slice(0, 12)} · ${asset.alt || basename(asset.local_path)}`.slice(0, 255);
   const existing = await api(`/files?filter[title][_eq]=${encodeURIComponent(title)}&limit=1&fields=id`);
+  let fileId;
   if (existing[0]) {
-    uploaded.set(asset.sha256, existing[0].id);
-    return existing[0].id;
+    fileId = existing[0].id;
+  } else {
+    const path = await assetPath(asset);
+    const bytes = await readFile(path);
+    const extension = mimeExtension[asset.content_type] || 'bin';
+    const form = new FormData();
+    form.append('title', title);
+    form.append('folder', ASSET_FOLDER);
+    form.append('file', new Blob([bytes], {type: asset.content_type || 'application/octet-stream'}), `lowen-${asset.sha256.slice(0, 12)}.${extension}`);
+    const file = await api('/files', {method: 'POST', body: form});
+    fileId = file.id;
   }
-  const path = await assetPath(asset);
-  const bytes = await readFile(path);
-  const extension = mimeExtension[asset.content_type] || 'bin';
-  const form = new FormData();
-  form.append('title', title);
-  form.append('folder', ASSET_FOLDER);
-  form.append('file', new Blob([bytes], {type: asset.content_type || 'application/octet-stream'}), `lowen-${asset.sha256.slice(0, 12)}.${extension}`);
-  const file = await api('/files', {method: 'POST', body: form});
-  uploaded.set(asset.sha256, file.id);
+  uploaded.set(asset.sha256, fileId);
   await upsert('pearl_media_assets', 'internal_name', `${ITEM_PREFIX} · ${asset.sha256.slice(0, 12)}`, {
     status: 'published',
     internal_name: `${ITEM_PREFIX} · ${asset.sha256.slice(0, 12)}`,
     source_url: asset.source_url,
-    file: file.id,
+    file: fileId,
     alt_text: asset.alt || '',
   });
-  return file.id;
+  return fileId;
 }
 
 function validateRequired(spec, item, internalName) {
