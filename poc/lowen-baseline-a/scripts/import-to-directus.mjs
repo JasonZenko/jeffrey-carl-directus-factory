@@ -30,11 +30,21 @@ async function raw(path, {method = 'GET', body, token} = {}) {
     const headers = {Accept: 'application/json'};
     if (token) headers.Authorization = `Bearer ${token}`;
     if (body !== undefined && !(body instanceof FormData)) headers['Content-Type'] = 'application/json';
-    const response = await fetch(`${BASE}${path}`, {
-      method,
-      headers,
-      body: body instanceof FormData ? body : body === undefined ? undefined : JSON.stringify(body),
-    });
+    let response;
+    try {
+      response = await fetch(`${BASE}${path}`, {
+        method,
+        headers,
+        body: body instanceof FormData ? body : body === undefined ? undefined : JSON.stringify(body),
+        signal: AbortSignal.timeout(60_000),
+      });
+    } catch (error) {
+      if (attempt < 6 && ['AbortError', 'TimeoutError'].includes(error?.name)) {
+        await new Promise(resolvePromise => setTimeout(resolvePromise, 500 * (attempt + 1)));
+        continue;
+      }
+      throw new Error(`${method} ${path} failed before a response: ${error?.message || error}`);
+    }
     const payload = response.status === 204 ? {} : await response.json().catch(() => ({}));
     if (response.status === 429 && attempt < 6) {
       await new Promise(resolvePromise => setTimeout(resolvePromise, 500 * (attempt + 1)));

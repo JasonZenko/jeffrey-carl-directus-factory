@@ -15,6 +15,7 @@ async function raw(path, {method = 'GET', body, token} = {}) {
     method,
     headers: {Accept: 'application/json', ...(token ? {Authorization: `Bearer ${token}`} : {}), ...(body === undefined ? {} : {'Content-Type': 'application/json'})},
     body: body === undefined ? undefined : JSON.stringify(body),
+    signal: AbortSignal.timeout(60_000),
   });
   const payload = response.status === 204 ? {} : await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(`${method} ${path} -> ${response.status}: ${JSON.stringify(payload).slice(0, 1200)}`);

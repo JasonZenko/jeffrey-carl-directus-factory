@@ -15,7 +15,10 @@ const mapping = JSON.parse(await readFile(resolve(BASELINE, 'migration/mapping-r
 if (!process.env.PEARL_PUBLIC_ASSET_FOLDER_ID) throw new Error('PEARL_PUBLIC_ASSET_FOLDER_ID is required');
 
 async function request(path, token) {
-  const response = await fetch(`${BASE}${path}`, {headers: {Accept: 'application/json', Authorization: `Bearer ${token}`}});
+  const response = await fetch(`${BASE}${path}`, {
+    headers: {Accept: 'application/json', Authorization: `Bearer ${token}`},
+    signal: AbortSignal.timeout(60_000),
+  });
   const payload = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(`GET ${path} -> ${response.status}: ${JSON.stringify(payload).slice(0, 900)}`);
   return payload.data;
@@ -24,7 +27,12 @@ async function request(path, token) {
 async function login() {
   if (process.env.DIRECTUS_ADMIN_TOKEN) return process.env.DIRECTUS_ADMIN_TOKEN;
   if (!process.env.DIRECTUS_ADMIN_EMAIL || !process.env.DIRECTUS_ADMIN_PASSWORD) throw new Error('Directus administrator credentials are required');
-  const response = await fetch(`${BASE}/auth/login`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({email: process.env.DIRECTUS_ADMIN_EMAIL, password: process.env.DIRECTUS_ADMIN_PASSWORD})});
+  const response = await fetch(`${BASE}/auth/login`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({email: process.env.DIRECTUS_ADMIN_EMAIL, password: process.env.DIRECTUS_ADMIN_PASSWORD}),
+    signal: AbortSignal.timeout(60_000),
+  });
   const payload = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(`Administrator login failed: ${response.status}`);
   return payload.data.access_token;
@@ -59,12 +67,12 @@ async function snapshot() {
 
 const importer = resolve(BASELINE, 'scripts/import-to-directus.mjs');
 const env = {...process.env, DIRECTUS_URL: BASE, PEARL_BASELINE: 'Final B', PEARL_RECEIPTS_DIR: resolve(HERE, 'receipts')};
-const dry = spawnSync('node', [importer], {cwd: REPO, env, encoding: 'utf8'});
-if (dry.status !== 0) throw new Error(`Final B dry-run failed: ${dry.stderr || dry.stdout}`);
+const dry = spawnSync('node', [importer], {cwd: REPO, env, encoding: 'utf8', timeout: 60_000});
+if (dry.status !== 0) throw new Error(`Final B dry-run failed: ${dry.error?.message || dry.stderr || dry.stdout}`);
 const dryReceipt = JSON.parse(dry.stdout);
 const before = await snapshot();
-const apply = spawnSync('node', [importer, '--apply'], {cwd: REPO, env, encoding: 'utf8'});
-if (apply.status !== 0) throw new Error(`Final B idempotent apply failed: ${apply.stderr || apply.stdout}`);
+const apply = spawnSync('node', [importer, '--apply'], {cwd: REPO, env, encoding: 'utf8', timeout: 10 * 60_000});
+if (apply.status !== 0) throw new Error(`Final B idempotent apply failed: ${apply.error?.message || apply.stderr || apply.stdout}`);
 const after = await snapshot();
 const stable = JSON.stringify(before) === JSON.stringify(after);
 const receipt = {

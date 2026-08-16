@@ -31,6 +31,7 @@ async function request(path, {method = 'GET', body, token} = {}) {
     method,
     headers: {Accept: 'application/json', ...(token ? {Authorization: `Bearer ${token}`} : {}), ...(body ? {'Content-Type': 'application/json'} : {})},
     body: body ? JSON.stringify(body) : undefined,
+    signal: AbortSignal.timeout(60_000),
   });
   const payload = response.status === 204 ? {} : await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(`${method} ${path} -> ${response.status}: ${JSON.stringify(payload).slice(0, 800)}`);

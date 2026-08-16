@@ -14,6 +14,7 @@ on:
 jobs:
   final-b:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     environment: noindex-preview
     permissions:
       contents: read
@@ -56,6 +57,7 @@ jobs:
           jq -e '.ok and .pg_restore_list_verified and .uploads_archive_verified and .temporary_database_restore_verified and (.source_counts == .restored_counts)' poc/lowen-final-b/receipts/backup-restore-receipt.json
 
       - name: Apply the reviewed Pearl 1.2 contract and exact frozen object map
+        timeout-minutes: 15
         run: |
           node poc/lowen-final-b/provision-feedback-schema.mjs --apply
           node poc/lowen-baseline-a/scripts/import-to-directus.mjs --apply
@@ -79,6 +81,7 @@ jobs:
           DOM_ADMIN_PASSWORD: ${{ secrets.PEARL_LOWEN_DOM_ADMIN_PASSWORD }}
 
       - name: Prove dry-run and importer idempotence
+        timeout-minutes: 15
         run: node poc/lowen-final-b/idempotence-gate.mjs
         env:
           DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
