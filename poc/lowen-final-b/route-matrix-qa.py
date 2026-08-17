@@ -227,6 +227,13 @@ def main():
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(receipt, indent=2) + "\n")
     print(json.dumps({key: receipt[key] for key in ("ok", "target", "routes", "route_families", "viewports", "checks", "passed", "failed")}, indent=2))
+    if receipt["failed"]:
+        failed_checks = {}
+        for item in results:
+            for check, passed in item["checks"].items():
+                if not passed:
+                    failed_checks[check] = failed_checks.get(check, 0) + 1
+        print(json.dumps({"failed_checks": failed_checks}, indent=2))
     raise SystemExit(1 if receipt["failed"] else 0)
 
 
