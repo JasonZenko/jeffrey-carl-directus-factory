@@ -100,7 +100,20 @@ check(JSON.stringify(stableObject(actualNested)) === JSON.stringify(stableObject
 const pageRowCounts = new Map();
 for (const row of rows) pageRowCounts.set(row.page.slug, (pageRowCounts.get(row.page.slug) || 0) + 1);
 check([...pageRowCounts.entries()].every(([slug, count]) => count === pagesSource.find(page => page.slug === slug).blocks.length), 'one or more page Builder counts diverged from the source map');
-check([...pageRowCounts.entries()].filter(([slug, count]) => slug !== 'home' && count < 2).length === 0, 'one or more inner pages collapsed into a single block');
+const innerPageHeroEvidence = {};
+for (const page of pages.filter(item => item.slug !== 'home')) {
+  const pageRows = rows
+    .filter(row => row.page.slug === page.slug)
+    .sort((left, right) => Number(left.sort) - Number(right.sort));
+  const heroRows = pageRows.filter(row => row.collection === 'pearl_inner_hero_standard');
+  innerPageHeroEvidence[page.slug] = {
+    blocks: pageRows.length,
+    leading_collection: pageRows[0]?.collection || null,
+    inner_heroes: heroRows.length,
+  };
+  check(heroRows.length === 1, `${page.slug} must have exactly one Inner Hero`);
+  check(pageRows[0]?.collection === 'pearl_inner_hero_standard', `${page.slug} must lead with its Inner Hero`);
+}
 
 const orphanEvidence = {};
 for (const [collection, expected] of Object.entries(expectedCounts)) {
@@ -152,7 +165,7 @@ if (process.env.DOM_ADMIN_EMAIL && process.env.DOM_ADMIN_PASSWORD) {
   check(domIdentity?.administrator === true, 'Dom user does not have effective Administrator access');
 }
 
-const receipt = {ok: failures.length === 0, baseline: 'Final B', cms: BASE, sites: sites.length, pages: pages.length, builder_rows: rows.length, navigation_records: navigation.length, navigation_roots: rootNavigation.length, navigation_children: childNavigation.length, component_counts: actualCounts, nested_counts: actualNested, page_builder_counts: Object.fromEntries(pageRowCounts), orphan_evidence: orphanEvidence, provider_records: forms.length, provider_exceptions: runs[0]?.summary?.exceptions, build_reader_isolated: denied.status === 403, dom_admin_login_verified: Boolean(domIdentity), dom_admin_identity_verified: Boolean(domIdentity?.email && domIdentity?.administrator), failures};
+const receipt = {ok: failures.length === 0, baseline: 'Final B', cms: BASE, sites: sites.length, pages: pages.length, builder_rows: rows.length, navigation_records: navigation.length, navigation_roots: rootNavigation.length, navigation_children: childNavigation.length, component_counts: actualCounts, nested_counts: actualNested, page_builder_counts: Object.fromEntries(pageRowCounts), inner_page_hero_evidence: innerPageHeroEvidence, orphan_evidence: orphanEvidence, provider_records: forms.length, provider_exceptions: runs[0]?.summary?.exceptions, build_reader_isolated: denied.status === 403, dom_admin_login_verified: Boolean(domIdentity), dom_admin_identity_verified: Boolean(domIdentity?.email && domIdentity?.administrator), failures};
 await mkdir(resolve(HERE, 'receipts'), {recursive: true});
 await writeFile(resolve(HERE, 'receipts/authoring-gate.json'), JSON.stringify(receipt, null, 2) + '\n');
 console.log(JSON.stringify(receipt, null, 2));
