@@ -115,7 +115,7 @@ def main():
                             blockRects: rects,
                             maxBlockGap: Math.max(0, ...gaps),
                             mainText: blocks.map(node => node.innerText || '').join(' '),
-                            accessibleLabels: [...document.querySelectorAll('.pearl-snippet-quote [aria-label]')].map(node => node.getAttribute('aria-label') || '').join(' '),
+                            accessibleLabels: [...document.querySelectorAll('.pearl-snippet-quote [aria-label]')].map(node => node.getAttribute('aria-label') || ''),
                             documentHeight: document.documentElement.scrollHeight,
                             overflow: document.documentElement.scrollWidth - window.innerWidth,
                             brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.src),
@@ -141,7 +141,10 @@ def main():
                           };
                         }
                     """)
-                    rendered_text = f'{evidence["mainText"]} {evidence["accessibleLabels"]}'
+                    # Visible source copy and replacement accessibility semantics are
+                    # separate contracts. Counting an aria-label as visible copy makes
+                    # the exact-copy gate reject the very label it requires.
+                    rendered_text = evidence["mainText"]
                     rendered_tokens = len(TOKEN.findall(rendered_text))
                     rendered_counter = {}
                     for token in TOKEN.findall(rendered_text):
@@ -191,7 +194,9 @@ def main():
 
                     semantic_dom_fidelity = len(evidence["ctaIndexes"]) <= 1 and (not evidence["ctaIndexes"] or evidence["ctaIndexes"][0] == len(evidence["blocks"]) - 1)
                     if source_page["slug"] == "home":
-                        semantic_dom_fidelity = semantic_dom_fidelity and evidence["overlayIconBodies"] == 0 and evidence["iconMarks"] > 0 and evidence["iconLinkTitles"] == evidence["iconMarks"] and evidence["servicesBackgroundPresent"] and evidence["snippetBeforeQuote"] and len(evidence["paragraphButtons"]) >= 2
+                        semantic_dom_fidelity = semantic_dom_fidelity and evidence["overlayIconBodies"] == 0 and evidence["iconMarks"] > 0 and evidence["iconLinkTitles"] == evidence["iconMarks"] and evidence["servicesBackgroundPresent"] and evidence["snippetBeforeQuote"] and evidence["accessibleLabels"] == ["Read Lowen Perio reviews on Google"] and len(evidence["paragraphButtons"]) >= 2
+                    else:
+                        semantic_dom_fidelity = semantic_dom_fidelity and not evidence["accessibleLabels"]
                     if source_page["slug"] == "about-us":
                         semantic_dom_fidelity = semantic_dom_fidelity and evidence["highlightLinks"] == ["Meet Dr. Krista Lowen", "Meet Dr. Lillian Nguyen", "Testimonials"]
 
@@ -227,7 +232,7 @@ def main():
                         "missing_content_tokens": missing_content, "unsupported_content_tokens": unsupported_content,
                         "overflow_pixels": evidence["overflow"], "invalid_internal_links": invalid_internal, "broken_images": evidence["brokenImages"], "missing_alt": evidence["missingAlt"],
                         "console_errors": console_errors, "page_errors": page_errors, "first_party_http_errors": response_errors, "accessibility_violations": violations, "blocking_accessibility_violations": blocking_violations, "navigation_evidence": nav_behavior,
-                        "semantic_evidence": {key: evidence[key] for key in ("ctaIndexes", "paragraphButtons", "highlightLinks", "iconMarks", "iconLinkTitles", "overlayIconBodies", "servicesBackgroundPresent", "snippetBeforeQuote")},
+                        "semantic_evidence": {key: evidence[key] for key in ("ctaIndexes", "paragraphButtons", "highlightLinks", "iconMarks", "iconLinkTitles", "overlayIconBodies", "servicesBackgroundPresent", "snippetBeforeQuote", "accessibleLabels")},
                     })
                     page.close()
         browser.close()
