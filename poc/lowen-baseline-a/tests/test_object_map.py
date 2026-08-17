@@ -2,6 +2,7 @@
 """Focused regression fixtures for Dom's final Lowen migration findings."""
 
 import importlib.util
+import json
 import unittest
 from pathlib import Path
 
@@ -28,6 +29,24 @@ def mapping(block_type, item):
 
 
 class ObjectMapRegressionTests(unittest.TestCase):
+    def test_source_header_social_and_contact_links_are_owned_by_theme(self):
+        source = MAPPER_PATH.read_text()
+        self.assertIn('"map_url": engine.normalize_url', source)
+        self.assertIn('"instagram_url": engine.normalize_url', source)
+        self.assertIn('"google_url": engine.normalize_url', source)
+
+    def test_lowen_theme_preserves_source_palette_and_type_contract(self):
+        site = json.loads((MAPPER_PATH.parents[1] / "migration/site.json").read_text())
+        theme = site["theme"]
+        self.assertEqual(theme["primary_color"], "#e36966")
+        self.assertEqual(theme["secondary_color"], "#dae5f1")
+        self.assertEqual(theme["accent_color"], "#282d77")
+        self.assertEqual(theme["ink_color"], "#16324a")
+        self.assertEqual(theme["heading_font"], "playfair")
+        self.assertEqual(theme["body_font"], "jost")
+        self.assertEqual(theme["heading_scale"], "source-faithful")
+        self.assertEqual(theme["body_line_height"], "source-faithful")
+
     def test_inner_hero_consumes_opening_prose_without_promoting_bold_copy(self):
         soup = BeautifulSoup(
             '<td id="ArtID1"><span class="TPtitle"><h1>What is a Periodontist?</h1></span>'

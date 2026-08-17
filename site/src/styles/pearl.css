@@ -14,9 +14,9 @@
 .pearl-preview h1,
 .pearl-preview h2,
 .pearl-preview h3 { display: block; margin: 0; font-family: var(--pearl-font-heading); letter-spacing: 0; line-height: var(--pearl-leading-heading); text-wrap: balance; }
-.pearl-preview h1 { color: inherit; font-size: clamp(40px, 5vw, 60px); font-weight: var(--pearl-weight-h1); }
-.pearl-preview h2 { color: inherit; font-size: clamp(30px, 4vw, 45px); font-weight: var(--pearl-weight-h2); }
-.pearl-preview h3 { color: inherit; font-size: clamp(22px, 3vw, 30px); font-weight: var(--pearl-weight-h3); }
+.pearl-preview h1 { color: inherit; font-size: clamp(40px, 5vw, var(--pearl-size-h1-max)); font-weight: var(--pearl-weight-h1); }
+.pearl-preview h2 { color: inherit; font-size: clamp(30px, 4vw, var(--pearl-size-h2-max)); font-weight: var(--pearl-weight-h2); }
+.pearl-preview h3 { color: inherit; font-size: clamp(22px, 3vw, var(--pearl-size-h3-max)); font-weight: var(--pearl-weight-h3); }
 .pearl-preview p { text-wrap: pretty; }
 
 .pearl-wrap { width: min(calc(100% - 40px), var(--pearl-wrap)); margin-inline: auto; }

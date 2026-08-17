@@ -25,13 +25,113 @@ const sectionStyle = background_image ? `--pearl-icons-background:url('${backgro
   .pearl-heading-row { display: grid; justify-items: center; gap: 14px; margin-bottom: 48px; text-align: center; }
   .pearl-heading-row > p { max-width: 58ch; margin: 0; color: var(--pearl-muted); }
   .pearl-icons__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(18px, 3vw, 40px); margin: 0; padding: 0; list-style: none; }
-  .pearl-icons__list li { text-align: center; }
+  .pearl-icons__list li { min-width: 0; text-align: center; }
   .pearl-icons__mark { box-sizing: border-box; display: grid; grid-template-rows: minmax(38px, .55fr) auto; place-content: center; justify-items: center; gap: clamp(8px, 1.2vw, 12px); width: clamp(148px, 17vw, 218px); aspect-ratio: 1; margin: 0 auto; padding: clamp(24px, 3vw, 40px) clamp(18px, 2.4vw, 32px); border: 2px solid rgb(255 255 255 / .92); outline: 2px solid rgb(255 255 255 / .62); outline-offset: 6px; border-radius: 50%; background: var(--pearl-circle); color: #fff; text-align: center; text-decoration: none; overflow: hidden; transition: transform .25s cubic-bezier(.22,1,.36,1), background-color .2s ease-out; }
   .pearl-icons__mark span { display: grid; place-items: center; width: clamp(42px, 5vw, 62px); height: clamp(36px, 4.4vw, 52px); align-self: end; }
   .pearl-icons__mark img { width: 100%; height: 100%; object-fit: contain; }
   .pearl-icons__mark strong { max-width: 14ch; font-family: var(--pearl-font-body); font-size: clamp(.72rem, 1.2vw, .92rem); font-weight: 700; letter-spacing: .045em; line-height: 1.25; text-transform: uppercase; }
   .pearl-icons__mark:hover { background: color-mix(in srgb, var(--pearl-circle) 88%, #111); transform: translateY(-7px); }
   .pearl-icons__list li > p { max-width: 24ch; margin: 18px auto 0; }
+
+  /* The homepage's four source CTAs use deliberately different icon scales. */
+  .pearl-icons--overlay .pearl-icons__mark {
+    position: relative;
+    grid-template-rows: 108px auto;
+    gap: 2px;
+    width: clamp(196px, 19.55vw, 250px);
+    padding: 34px 32px 30px;
+    border: 0;
+    outline: 0;
+    background: #282d77;
+    color: #fde4d7;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -2px rgb(0 0 0 / .05);
+  }
+  .pearl-icons--overlay .pearl-icons__mark::before {
+    content: '';
+    position: absolute;
+    inset: 9px;
+    border: 1px solid #dae5f1;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  .pearl-icons--overlay .pearl-icons__mark span {
+    width: 92px;
+    height: 92px;
+    align-self: center;
+    transform: translateY(-7px);
+  }
+  .pearl-icons--overlay .pearl-icons__list li:nth-child(1) .pearl-icons__mark span { width: 104px; height: 102px; }
+  .pearl-icons--overlay .pearl-icons__list li:nth-child(2) .pearl-icons__mark span { width: 48px; height: 82px; }
+  .pearl-icons--overlay .pearl-icons__list li:nth-child(3) .pearl-icons__mark span { width: 96px; height: 98px; }
+  .pearl-icons--overlay .pearl-icons__list li:nth-child(4) .pearl-icons__mark span { width: 98px; height: 98px; }
+  .pearl-icons--overlay .pearl-icons__mark strong {
+    max-width: 12ch;
+    color: #dae5f1;
+    font-size: clamp(.88rem, 1.4vw, 1.125rem);
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 1.25;
+    white-space: normal;
+    transform: translateY(-7px);
+  }
+  .pearl-icons--overlay .pearl-icons__list li:nth-child(2) .pearl-icons__mark strong { max-width: none; white-space: nowrap; }
+  .pearl-icons--overlay .pearl-icons__mark:hover { background: #3b42af; }
+
+  /* The source services grid gives the artwork a fixed upper field so tall
+     SVGs cannot push into their labels. */
+  .pearl-icons--services .pearl-heading-row h2 {
+    font-family: var(--pearl-font-heading);
+    font-size: clamp(2.6rem, 4.2vw, 3.45rem);
+    font-weight: 600;
+    line-height: 1.08;
+  }
+  .pearl-icons--services .pearl-icons__mark {
+    position: relative;
+    grid-template-rows: minmax(118px, 2fr) minmax(44px, 1fr);
+    place-content: stretch;
+    gap: 4px;
+    width: clamp(196px, 19.55vw, 250px);
+    padding: 31px 30px 28px;
+    border: 0;
+    outline: 0;
+    background: #282d77;
+    color: #fde4d7;
+  }
+  .pearl-icons--services .pearl-icons__mark::before {
+    content: '';
+    position: absolute;
+    inset: 9px;
+    border: 1px solid #dae5f1;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  .pearl-icons--services .pearl-icons__mark span {
+    width: 100%;
+    height: 100%;
+    max-width: 102px;
+    max-height: 96px;
+    align-self: center;
+  }
+  .pearl-icons--services .pearl-icons__mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .pearl-icons--services .pearl-icons__list li:nth-child(1) .pearl-icons__mark span { width: 70px; height: 90px; }
+  .pearl-icons--services .pearl-icons__list li:nth-child(2) .pearl-icons__mark span { width: 50px; height: 60px; }
+  .pearl-icons--services .pearl-icons__list li:nth-child(4) .pearl-icons__mark span { width: 72px; height: 88px; }
+  .pearl-icons--services .pearl-icons__list li:nth-child(5) .pearl-icons__mark span { width: 76px; height: 88px; }
+  .pearl-icons--services .pearl-icons__mark strong {
+    display: grid;
+    place-items: start center;
+    max-width: 15ch;
+    color: #dae5f1;
+    font-size: clamp(.78rem, 1.25vw, 1rem);
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 1.22;
+  }
+  .pearl-icons--services .pearl-icons__mark:hover { background: #3b42af; }
 
   @media (max-width: 800px) {
     .pearl-icons--overlay { margin-top: -72px; }
@@ -43,6 +143,26 @@ const sectionStyle = background_image ? `--pearl-icons-background:url('${backgro
     .pearl-icons__mark { width: min(39vw, 152px); }
     .pearl-icons__mark { padding: 22px 18px; }
     .pearl-icons__mark span { width: 44px; height: 38px; }
+    .pearl-icons--overlay .pearl-icons__mark { grid-template-rows: 62px auto; width: min(39vw, 152px); padding: 22px 14px 24px; }
+    .pearl-icons--overlay .pearl-icons__mark span { width: 56px; height: 56px; transform: translateY(-4px); }
+    .pearl-icons--overlay .pearl-icons__list li:nth-child(1) .pearl-icons__mark span { width: 62px; height: 60px; }
+    .pearl-icons--overlay .pearl-icons__list li:nth-child(2) .pearl-icons__mark span { width: 30px; height: 52px; }
+    .pearl-icons--overlay .pearl-icons__list li:nth-child(3) .pearl-icons__mark span { width: 58px; height: 60px; }
+    .pearl-icons--overlay .pearl-icons__list li:nth-child(4) .pearl-icons__mark span { width: 60px; height: 60px; }
+    .pearl-icons--overlay .pearl-icons__mark strong { transform: translateY(-4px); }
+    .pearl-icons--overlay .pearl-icons__mark strong { font-size: clamp(.62rem, 2.8vw, .78rem); }
+    .pearl-icons--overlay .pearl-icons__list li:nth-child(2) .pearl-icons__mark strong { font-size: .62rem; }
+    .pearl-icons--services .pearl-icons__mark {
+      grid-template-rows: minmax(70px, 2fr) minmax(34px, 1fr);
+      width: min(39vw, 152px);
+      padding: 22px 18px 20px;
+    }
+    .pearl-icons--services .pearl-icons__mark span { max-width: 62px; max-height: 58px; }
+    .pearl-icons--services .pearl-icons__list li:nth-child(1) .pearl-icons__mark span { width: 42px; height: 54px; }
+    .pearl-icons--services .pearl-icons__list li:nth-child(2) .pearl-icons__mark span { width: 26px; height: 30px; }
+    .pearl-icons--services .pearl-icons__list li:nth-child(4) .pearl-icons__mark span { width: 42px; height: 54px; }
+    .pearl-icons--services .pearl-icons__list li:nth-child(5) .pearl-icons__mark span { width: 44px; height: 54px; }
+    .pearl-icons--services .pearl-icons__mark strong { font-size: clamp(.58rem, 2.6vw, .72rem); }
   }
 
   @media (prefers-reduced-motion: reduce) { .pearl-icons__mark { transition: none; } }

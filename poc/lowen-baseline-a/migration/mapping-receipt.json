@@ -31,8 +31,8 @@
   "navigation_root_items": 6,
   "theme_mapping": {
     "source_primary_color": "#e36966",
-    "mapped_primary_color": "#bc5755",
-    "white_text_contrast": 4.533,
+    "mapped_primary_color": "#e36966",
+    "white_text_contrast": 3.241,
     "minimum_contrast": 4.5
   },
   "exceptions": 3,

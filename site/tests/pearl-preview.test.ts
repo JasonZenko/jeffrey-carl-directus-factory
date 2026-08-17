@@ -56,7 +56,7 @@ describe('Pearl official block surface', () => {
     expect(images.length).toBeGreaterThan(0);
     expect(images.every(image=>/\balt="[^"]*"/.test(image))).toBe(true);
     expect(html).toContain('aria-label="Contact links"');
-    expect(html).toContain('aria-label="Footer navigation"');
+    expect(html).not.toContain('aria-label="Footer navigation"');
     const navigation=html.match(/<nav id="pearl-primary-navigation"[\s\S]*?<\/nav>/)?.[0]??'';
     const links=[...navigation.matchAll(/<a href="([^"]+)"[^>]*>([^<]+)<\/a>/g)];
     expect(links.length).toBeGreaterThan(0);
@@ -73,10 +73,86 @@ describe('Pearl official block surface', () => {
     expect(header).toContain('.pearl-brand img { width: 120%; max-width: none; height: auto; max-height: none;');
     expect(header).toContain('transform: translateY(-9%)');
     expect(header).not.toContain('.pearl-site-header--scrolled .pearl-brand img');
+    expect(header).toContain('class="pearl-header-contact__map"');
+    expect(header).toContain('class="pearl-header-contact__phone"');
+    expect(header).toContain('aria-label="Lowen Perio on Instagram"');
+    expect(header).toContain('aria-label="Lowen Perio on Google"');
+    expect(header).toContain('.pearl-header-contact { width: min(100%, 330px);');
+    expect(header).toContain('justify-items: end; gap: 5px; text-align: right;');
+    expect(header).toContain('class="pearl-header-cta__icon"');
+    expect(header).toContain('.pearl-header-cta span, .pearl-header-cta__icon { color: #fff !important; }');
+    expect(header).toContain('font-size: 18px; font-weight: 400;');
+    expect(header).toContain('letter-spacing: 1px;');
+    expect(header).toContain('text-transform: uppercase;');
+    expect(header).toContain('font-size: 14px; font-weight: 400;');
+    expect(header).toContain('text-transform: none;');
+    expect(header).toContain('padding-left: 190px;');
+    expect(header).toContain('padding: 8px 0;');
+
+    const layout=readFileSync(join(SITE_ROOT,'src/layouts/pearl/BaseLayout.astro'),'utf8');
+    expect(layout).toContain('slug={slug}');
+
+    const footer=readFileSync(join(SITE_ROOT,'src/components/pearl/PearlFooter.astro'),'utf8');
+    expect(footer).toContain("const isHomepage = slug === 'home';");
+    expect(footer).toContain("const isContactPage = slug === 'contact-us';");
+    expect(footer).toContain('!isHomepage && mapEmbedUrl');
+    expect(footer).toContain('!isHomepage && <div class="pearl-wrap pearl-site-footer__contact">');
+    expect(footer).toContain('theme.office_hours');
+    expect(footer).toContain('Follow Us:');
+    expect(footer).toContain('background: #fbc9af');
+    expect(footer).toContain('font-size: 25px');
+    expect(footer).toContain('Copyright © 2010-2026');
+    expect(footer).toContain('aria-label="Footer navigation"');
+    expect(footer).toContain('background: var(--pearl-accent);');
 
     const icons=readFileSync(join(SITE_ROOT,'src/components/pearl/blocks/IconCircles.astro'),'utf8');
     expect(icons).toContain('grid-template-rows: minmax(38px, .55fr) auto');
     expect(icons).toContain('overflow: hidden');
     expect(icons).toContain('width: clamp(42px, 5vw, 62px)');
+    expect(icons).toContain('.pearl-icons--overlay .pearl-icons__mark::before');
+    expect(icons).toContain('grid-template-rows: 108px auto;');
+    expect(icons).toContain('width: 104px; height: 102px;');
+    expect(icons).toContain('transform: translateY(-7px);');
+    expect(icons).toContain('inset: 9px;');
+    expect(icons).toContain('color: #dae5f1;');
+    expect(icons).toContain('font-weight: 400;');
+    expect(icons).toContain('li:nth-child(2) .pearl-icons__mark strong { max-width: none; white-space: nowrap; }');
+    expect(icons).toContain('width: min(39vw, 152px);');
+    expect(icons).toContain('li:nth-child(2) .pearl-icons__mark span { width: 48px; height: 82px; }');
+    expect(icons).toContain('.pearl-icons--services .pearl-icons__mark {');
+    expect(icons).toContain('grid-template-rows: minmax(118px, 2fr) minmax(44px, 1fr);');
+    expect(icons).toContain('max-width: 102px;');
+    expect(icons).toContain('max-height: 96px;');
+    expect(icons).toContain('.pearl-icons--services .pearl-icons__mark::before');
+    expect(icons).toContain('li:nth-child(2) .pearl-icons__mark span { width: 50px; height: 60px; }');
+
+    const welcome=readFileSync(join(SITE_ROOT,'src/components/pearl/blocks/FlexContentImage.astro'),'utf8');
+    expect(welcome).toContain('tone="welcome"');
+    expect(welcome).toContain('font-family: var(--pearl-font-body);');
+    expect(welcome).toContain('white-space: nowrap;');
+
+    const button=readFileSync(join(SITE_ROOT,'src/components/pearl/ui/Button.astro'),'utf8');
+    expect(button).toContain("tone?: 'contrast' | 'light' | 'welcome'");
+    expect(button).toContain('.pearl-button--welcome');
+    expect(button).toContain('border-radius: 0;');
+    expect(button).toContain('outline: 1px solid #b9cde2;');
+    expect(button).toContain('font-weight: 400;');
+
+    const reviewBand=readFileSync(join(SITE_ROOT,'src/components/pearl/blocks/HighlightSnippetQuote.astro'),'utf8');
+    expect(reviewBand).toContain("background: #e36966;");
+    expect(reviewBand).toContain('sourceGoogleMatch');
+    expect(reviewBand).toContain('aria-label="Read Lowen Perio reviews on Google"');
+    expect(reviewBand).toContain('<svg viewBox="0 0 34.4 35"');
+    expect(reviewBand).toContain('new IntersectionObserver');
+    expect(reviewBand).toContain("window.matchMedia('(prefers-reduced-motion: reduce)')");
+    expect(reviewBand).not.toContain("content: 'G'");
+
+    const doctors=readFileSync(join(SITE_ROOT,'src/components/pearl/blocks/FlexContentSection.astro'),'utf8');
+    expect(doctors).toContain("section_header?.trim().toLowerCase() === 'meet the doctors'");
+    expect(doctors).toContain('/More About Dr\\./i.test(body_content)');
+    expect(doctors).toContain('border-bottom: 2px solid #9bb5c4');
+    expect(doctors).toContain('border-radius: 0;');
+    expect(doctors).toContain("new IntersectionObserver");
+    expect(doctors).toContain("window.matchMedia('(prefers-reduced-motion: reduce)')");
   });
 });

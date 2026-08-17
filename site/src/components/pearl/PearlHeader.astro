@@ -16,9 +16,33 @@ const { theme, navigation, logo, visual } = Astro.props;
         : <><strong>{theme.brand_name}</strong>{theme.brand_descriptor && <span>{theme.brand_descriptor}</span>}</>}
     </a>
     <div class="pearl-site-header__details">
-      {theme.appointment_label && theme.appointment_url && <a class="pearl-header-cta" href={theme.appointment_url}>{theme.appointment_label}</a>}
-      {theme.address && <span>{theme.address}</span>}
-      {theme.phone && <a href={`tel:${theme.phone.replace(/[^+\d]/g, '')}`}>{theme.phone}</a>}
+      <div class="pearl-header-actions">
+      {theme.appointment_label && theme.appointment_url && <a class="pearl-header-cta" href={theme.appointment_url}>
+        <svg class="pearl-header-cta__icon" viewBox="0 0 95.9 106.4" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M84.9 14.1h-9.6v5c0 3.5-2.9 6.4-6.5 6.4a6.5 6.5 0 0 1-6.5-6.4v-5H33.6v5c0 3.5-2.8 6.4-6.4 6.4h-.1a6.5 6.5 0 0 1-6.5-6.4v-5H11A7.8 7.8 0 0 0 3.3 22v73.4c0 4.3 3.5 7.8 7.9 7.8h73.8c4.3 0 7.8-3.5 7.8-7.8V22c0-4.3-3.5-7.9-7.8-7.9Z" />
+          <rect x="20.6" y="3.2" width="13" height="22.3" rx="6.5" ry="6.5" />
+          <rect x="62.3" y="3.2" width="13" height="22.3" rx="6.5" ry="6.5" />
+          <path d="M3.2 37.2h89.5M30 67.3l12.8 12.9h.5L68 55.6" />
+        </svg>
+        <span>{theme.appointment_label}</span>
+      </a>}
+      {theme.instagram_url && <a class="pearl-header-social" href={theme.instagram_url} target="_blank" rel="noreferrer" aria-label="Lowen Perio on Instagram">
+        <svg viewBox="0 0 35 35" aria-hidden="true"><path d="M17.5 8.5a9 9 0 1 0 9 9 9 9 0 0 0-9-9Zm0 14.8a5.8 5.8 0 1 1 5.8-5.8 5.8 5.8 0 0 1-5.8 5.8ZM28.9 8.2A2.1 2.1 0 1 1 27 6a2 2 0 0 1 2 2Zm6 2.1C34.7 7.5 34 5 32 3S27.5.3 24.7 0 13.2 0 10.3.1 5 1 2.9 3 .3 7.5.1 10.3 0 21.8.1 24.7 1 30 3 32.1s4.6 2.7 7.4 2.8 11.5.2 14.4 0 5.3-.8 7.3-2.8 2.7-4.6 2.9-7.4.1-11.5 0-14.4ZM31 27.8a6 6 0 0 1-3.3 3.4c-2.3.9-7.8.7-10.3.7s-8 .2-10.3-.7a6 6 0 0 1-3.3-3.3c-1-2.3-.7-7.8-.7-10.4s-.3-8 .7-10.3A6 6 0 0 1 7.2 4c2.3-1 7.8-.7 10.3-.7s8-.2 10.3.7a6 6 0 0 1 3.3 3.3c1 2.3.7 7.7.7 10.3s.3 8-.7 10.3Z"/></svg>
+      </a>}
+      {theme.google_url && <a class="pearl-header-social" href={theme.google_url} target="_blank" rel="noreferrer" aria-label="Lowen Perio on Google">
+        <svg viewBox="0 0 34.4 35" aria-hidden="true"><path d="M34.4 18c0 10-6.8 17-16.9 17a17.5 17.5 0 1 1 0-35 16.8 16.8 0 0 1 11.7 4.6l-4.8 4.6c-6.2-6-17.8-1.5-17.8 8.3a11 11 0 0 0 10.9 11c7 0 9.5-5 10-7.5h-10v-6H34a15.4 15.4 0 0 1 .3 3Z"/></svg>
+      </a>}
+      </div>
+      <div class="pearl-header-contact">
+        {theme.address && <a href={theme.map_url || undefined} target={theme.map_url ? '_blank' : undefined} rel={theme.map_url ? 'noreferrer' : undefined}>
+          <svg class="pearl-header-contact__map" viewBox="0 0 16 22" aria-hidden="true"><path d="M8 0a8.1 8.1 0 0 0-8 8.2C0 13.6 8 22 8 22s8-8.4 8-13.7A8.1 8.1 0 0 0 8 0Zm0 12a3.8 3.8 0 1 1 3.7-3.8A3.8 3.8 0 0 1 8 12.1Z"/></svg>
+          <span>{theme.address}</span>
+        </a>}
+        {theme.phone && <a href={`tel:${theme.phone.replace(/[^+\d]/g, '')}`}>
+          <svg class="pearl-header-contact__phone" viewBox="0 0 512 512" aria-hidden="true"><path d="M352 320c-32 32-32 64-64 64s-64-32-96-64-64-64-64-96 32-32 64-64-64-128-96-128-96 96-96 96c0 64 65.75 193.75 128 256s192 128 256 128c0 0 96-64 96-96s-96-128-128-96Z"/></svg>
+          <span>{theme.phone}</span>
+        </a>}
+      </div>
     </div>
     <button
       class="pearl-menu-toggle"
@@ -139,19 +163,28 @@ const { theme, navigation, logo, visual } = Astro.props;
   .pearl-brand strong { display: block; font-family: var(--pearl-font-heading); font-size: 3.15rem; font-weight: 400; line-height: .85; transition: font-size .38s cubic-bezier(.22,1,.36,1); }
   .pearl-brand img { width: 120%; max-width: none; height: auto; max-height: none; object-fit: contain; transform: translateY(-9%); }
   .pearl-brand span { display: block; margin-top: 12px; font-size: .72rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; }
-  .pearl-site-header__details { min-width: min(100%, 390px); display: grid; grid-template-columns: auto auto; align-items: center; justify-content: end; justify-items: end; gap: 9px 20px; color: var(--pearl-muted); font-size: .88rem; }
-  .pearl-site-header__details > span { grid-column: 1 / -1; max-width: 42ch; text-align: right; }
+  .pearl-site-header__details { min-width: min(100%, 540px); display: grid; justify-items: end; gap: 6px; color: var(--pearl-primary); font-family: var(--pearl-font-body); font-size: 14px; }
   .pearl-site-header__details a { color: inherit; }
-  .pearl-header-cta { padding: 7px 13px; background: var(--pearl-primary); color: #fff !important; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
+  .pearl-header-actions { display: flex; align-items: stretch; justify-content: flex-end; gap: 4px; }
+  .pearl-header-cta, .pearl-header-cta:visited { min-height: 38px; padding: 7px 12px; display: inline-flex; align-items: center; gap: 9px; background: var(--pearl-primary); color: #fff !important; font-family: var(--pearl-font-body); font-size: 14px; font-weight: 400; line-height: 20px; letter-spacing: 0; text-decoration: none; text-transform: none; }
+  .pearl-header-cta span, .pearl-header-cta__icon { color: #fff !important; }
+  .pearl-header-cta__icon { width: 19px; height: 21px; flex: 0 0 auto; stroke: currentColor; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+  .pearl-header-social { width: 38px; min-height: 38px; display: grid; place-items: center; background: var(--pearl-accent); color: #fff !important; }
+  .pearl-header-social svg { width: 15px; height: 15px; fill: currentColor; }
+  .pearl-header-social:hover { background: var(--pearl-primary); }
+  .pearl-header-contact { width: min(100%, 330px); display: grid; justify-items: end; gap: 5px; text-align: right; }
+  .pearl-header-contact a { width: fit-content; max-width: 100%; display: grid; grid-template-columns: 18px minmax(0, auto); align-items: start; gap: 8px; justify-content: end; font-weight: 600; line-height: 1.35; text-align: right; text-decoration: none; }
+  .pearl-header-contact svg { width: 15px; height: 18px; margin-top: 1px; fill: currentColor; }
+  .pearl-header-contact__phone { height: 15px !important; }
   .pearl-menu-toggle { display: none; }
   .pearl-site-header nav { background: var(--pearl-accent); }
-  .pearl-site-header nav .pearl-wrap { min-height: 42px; }
+  .pearl-site-header nav .pearl-wrap { min-height: 42px; padding-left: 190px; }
   .pearl-nav-root,
   .pearl-submenu { margin: 0; padding: 0; list-style: none; }
   .pearl-nav-root { min-height: 42px; display: flex; align-items: center; justify-content: center; gap: clamp(18px, 3vw, 34px); }
   .pearl-nav-item { position: relative; }
   .pearl-nav-row { display: flex; align-items: center; }
-  .pearl-site-header nav a { color: #fff; font-size: .86rem; font-weight: 600; text-decoration: none; }
+  .pearl-site-header nav a { color: #fff; font-family: var(--pearl-font-body); font-size: 18px; font-weight: 400; line-height: 1.6; letter-spacing: 1px; text-decoration: none; text-transform: uppercase; }
   .pearl-site-header nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
   .pearl-submenu-toggle { display: none; }
   .pearl-submenu { position: absolute; top: calc(100% + 13px); left: 50%; width: max-content; min-width: 250px; padding-block: 9px; border-top: 3px solid var(--pearl-primary); background: var(--pearl-accent); box-shadow: 0 16px 30px rgb(17 17 17 / .18); opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, 8px); transition: opacity .18s ease, transform .18s ease, visibility .18s ease; }
@@ -163,15 +196,14 @@ const { theme, navigation, logo, visual } = Astro.props;
   .pearl-site-header--scrolled .pearl-brand { width: 116px; min-height: 74px; margin-bottom: -10px; transform: translateY(4px); }
   .pearl-site-header--scrolled .pearl-brand strong { font-size: 2rem; }
   .pearl-site-header--scrolled .pearl-brand span { margin-top: 7px; font-size: .55rem; }
-  .pearl-site-header--scrolled .pearl-site-header__details > span { display: none; }
+  .pearl-site-header--scrolled .pearl-header-contact { display: none; }
   .pearl-site-header--scrolled .pearl-site-header__details { min-width: 0; display: flex; gap: 14px; }
 
   @media (max-width: 900px) {
     .pearl-site-header__top { min-height: 92px; gap: 18px; }
     .pearl-brand { width: 142px; min-height: 118px; }
     .pearl-brand strong { font-size: 2.45rem; }
-    .pearl-site-header__details { min-width: 0; display: flex; gap: 12px; }
-    .pearl-site-header__details span { display: none; }
+    .pearl-site-header__details { display: none; }
     .pearl-site-header--menu-ready .pearl-menu-toggle { width: 48px; height: 48px; padding: 0; display: grid; place-content: center; gap: 5px; border: 0; border-radius: 50%; background: var(--pearl-accent); color: #fff; cursor: pointer; }
     .pearl-menu-toggle span { width: 21px; height: 2px; display: block; border-radius: 999px; background: currentColor; transform-origin: center; transition: transform .24s cubic-bezier(.22,1,.36,1), opacity .16s ease; }
     .pearl-menu-toggle:hover { background: var(--pearl-primary); }
@@ -179,7 +211,7 @@ const { theme, navigation, logo, visual } = Astro.props;
     .pearl-site-header--menu-open .pearl-menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .pearl-site-header--menu-open .pearl-menu-toggle span:nth-child(2) { opacity: 0; }
     .pearl-site-header--menu-open .pearl-menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .pearl-site-header nav .pearl-wrap { min-height: auto; padding-block: 8px; }
+    .pearl-site-header nav .pearl-wrap { min-height: auto; padding: 8px 0; }
     .pearl-nav-root { min-height: auto; display: flex; flex-direction: column; align-items: stretch; gap: 0; }
     .pearl-nav-row { border-bottom: 1px solid rgb(255 255 255 / .22); }
     .pearl-site-header nav .pearl-nav-row > a { min-height: 48px; flex: 1; display: flex; align-items: center; padding-inline: 4px; font-size: 1rem; }
@@ -194,7 +226,6 @@ const { theme, navigation, logo, visual } = Astro.props;
   }
 
   @media (max-width: 480px) {
-    .pearl-site-header__details { display: none; }
     .pearl-site-header__top { min-height: 82px; }
     .pearl-brand { width: 124px; min-height: 102px; }
   }

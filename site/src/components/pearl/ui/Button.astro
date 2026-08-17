@@ -2,7 +2,7 @@
 interface Props {
   label: string;
   url: string;
-  tone?: 'contrast' | 'light';
+  tone?: 'contrast' | 'light' | 'welcome';
 }
 
 const { label, url, tone = 'contrast' } = Astro.props;
@@ -32,6 +32,21 @@ const { label, url, tone = 'contrast' } = Astro.props;
 
   .pearl-button--light { background: var(--pearl-secondary); color: var(--pearl-ink); }
   .pearl-button--light:hover { background: color-mix(in srgb, var(--pearl-secondary) 70%, #000); }
+
+  .pearl-button--welcome {
+    position: relative;
+    min-height: 44px;
+    margin: 31px 0 6px 6px;
+    padding: 10px 18px;
+    border-radius: 0;
+    outline: 1px solid #b9cde2;
+    outline-offset: 5px;
+    background: var(--pearl-primary);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  .pearl-button--welcome:hover { background: color-mix(in srgb, var(--pearl-primary) 82%, #000); }
 
   @media (prefers-reduced-motion: reduce) {
     .pearl-button { transition-duration: .01ms; }

@@ -71,6 +71,18 @@ await ensureField('pearl_navigation_items', {
   meta: {interface: 'select-dropdown-m2o', special: ['m2o'], width: 'half', note: 'Optional parent item. Leave empty for primary navigation; select a primary item for subnavigation.'},
   schema: {is_nullable: true},
 });
+for (const [field, note] of [
+  ['map_url', 'Source-backed map destination used by the header address link.'],
+  ['instagram_url', 'Source-backed Instagram profile used by the header social control.'],
+  ['google_url', 'Source-backed Google profile or map destination used by the header social control.'],
+  ['office_hours', 'Source-backed office hours rendered in the internal-page contact footer.'],
+]) {
+  await ensureField('pearl_theme_settings', {
+    field, type: 'string',
+    meta: {interface: 'input', width: 'full', note},
+    schema: {is_nullable: true, max_length: 2048},
+  });
+}
 
 const relations = await api('/relations?limit=-1');
 let parentRelation = relations.find(item => item.collection === 'pearl_navigation_items' && item.field === 'parent');
@@ -95,6 +107,9 @@ const verifiedFields = await Promise.all([
   getField('pearl_icon_feature_card_items', 'link_title'),
   getField('pearl_highlight_snippet_quote', 'snippet'),
   getField('pearl_navigation_items', 'parent'),
+  getField('pearl_theme_settings', 'map_url'),
+  getField('pearl_theme_settings', 'instagram_url'),
+  getField('pearl_theme_settings', 'google_url'),
 ]);
 if (APPLY) {
   const finalRelations = await api('/relations?limit=-1');

@@ -1,16 +1,16 @@
 export interface PearlTheme {
   brand_name: string;
   brand_descriptor?: string;
-  heading_font: 'forum' | 'jost' | 'georgia';
+  heading_font: 'forum' | 'playfair' | 'jost' | 'georgia';
   body_font: 'jost' | 'arial' | 'georgia';
   h1_weight: '400' | '500' | '600' | '700';
   h2_weight: '400' | '500' | '600' | '700';
   h3_weight: '400' | '500' | '600' | '700';
   body_weight: '400' | '500' | '600';
-  heading_scale: 'restrained' | 'standard' | 'expressive';
+  heading_scale: 'restrained' | 'standard' | 'expressive' | 'source-faithful';
   body_scale: 'compact' | 'standard' | 'large';
   heading_line_height: 'tight' | 'standard' | 'relaxed';
-  body_line_height: 'compact' | 'standard' | 'relaxed';
+  body_line_height: 'compact' | 'standard' | 'relaxed' | 'source-faithful';
   primary_color: string;
   secondary_color: string;
   accent_color: string;
@@ -26,6 +26,10 @@ export interface PearlTheme {
   phone?: string;
   address?: string;
   email?: string;
+  map_url?: string;
+  instagram_url?: string;
+  google_url?: string;
+  office_hours?: string;
  
 }
 
@@ -58,6 +62,7 @@ export const defaultPearlTheme: PearlTheme = {
 
 const FONT_STACK = {
   forum: "'Forum', Georgia, serif",
+  playfair: "'Playfair Display', Georgia, serif",
   jost: "'Jost', Helvetica, Arial, sans-serif",
   georgia: "Georgia, 'Times New Roman', serif",
   arial: "Arial, Helvetica, sans-serif",
@@ -67,10 +72,11 @@ const HEADING_SCALE = {
   restrained: ['4.6rem', '3.2rem', '1.55rem'],
   standard: ['5.5rem', '3.8rem', '1.7rem'],
   expressive: ['6rem', '4.4rem', '1.9rem'],
+  'source-faithful': ['65px', '40px', '30px'],
 } as const;
 const BODY_SCALE = { compact: '16px', standard: '18px', large: '20px' } as const;
 const HEADING_LINE_HEIGHT = { tight: '1', standard: '1.1', relaxed: '1.2' } as const;
-const BODY_LINE_HEIGHT = { compact: '1.5', standard: '1.65', relaxed: '1.8' } as const;
+const BODY_LINE_HEIGHT = { compact: '1.5', standard: '1.65', relaxed: '1.8', 'source-faithful': '1.6' } as const;
 const SPACING = { compact: '.82', standard: '1', generous: '1.18' } as const;
 const WIDTH = { standard: '1170px', wide: '1320px' } as const;
 const RADIUS = { square: '0px', soft: '8px', pill: '999px' } as const;

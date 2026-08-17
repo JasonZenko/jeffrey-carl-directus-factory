@@ -928,20 +928,27 @@ def main(mode: str = "presentation"):
     ) if appointment_node else ""
     email_node = home_soup.find("a", href=re.compile(r"^mailto:", re.I))
     email = email_node.get("href", "").split(":", 1)[-1].strip() if email_node else ""
+    map_node = home_soup.select_one(".TPcontact-info a[href*='maps'],.TPcontact-info a[href*='goo.gl']")
+    instagram_node = home_soup.select_one(".TPsocial-top a[href*='instagram.com']")
+    google_node = home_soup.select_one(".TPsocial-top a[href*='maps'],.TPsocial-top a[href*='goo.gl']")
     source_primary_color = css_value(css, r"H1\s+a:link", "color", "#e36966")
-    mapped_primary_color = accessible_source_color(source_primary_color)
+    mapped_primary_color = source_primary_color
     theme = {
         "brand_name": "Lowen Perio", "brand_descriptor": "Periodontics & Implant Dentistry",
-        "heading_font": "georgia", "body_font": "jost", "h1_weight": "700", "h2_weight": "600", "h3_weight": "600", "body_weight": "400",
-        "heading_scale": "standard", "body_scale": "standard", "heading_line_height": "standard", "body_line_height": "standard",
+        "heading_font": "playfair", "body_font": "jost", "h1_weight": "700", "h2_weight": "500", "h3_weight": "700", "body_weight": "400",
+        "heading_scale": "source-faithful", "body_scale": "large", "heading_line_height": "relaxed", "body_line_height": "source-faithful",
         "primary_color": mapped_primary_color,
-        "secondary_color": css_value(css, r"\.TPcontactbackground", "background-color", "#d3e2ec"),
+        "secondary_color": "#dae5f1",
         "accent_color": css_value(css, r"H2", "color", "#282d77"),
         "ink_color": css_value(css, r"P", "color", "#16324a"),
         "muted_color": "#526273", "surface_color": "#ffffff", "circle_color": css_value(css, r"H2", "color", "#282d77"),
         "spacing_scale": "standard", "content_width": "standard", "button_radius": "soft",
         "appointment_label": "Request an Appointment", "appointment_url": appointment_url,
         "phone": phone, "address": address, "email": email,
+        "map_url": engine.normalize_url(map_node.get("href"), home_source["sitemapUrl"]) if map_node else "",
+        "instagram_url": engine.normalize_url(instagram_node.get("href"), home_source["sitemapUrl"]) if instagram_node else "",
+        "google_url": engine.normalize_url(google_node.get("href"), home_source["sitemapUrl"]) if google_node else "",
+        "office_hours": "Mon: 7am-4pm\nTue: 7am-4pm\nWed: By Appointment\nThu: 7am-4pm\nFri: 7am-1pm",
     }
     site = {"name": "Lowen Perio", "slug": "lowen-perio", "source_url": home_source["sitemapUrl"], "logo": logo, "navigation": navigation, "theme": theme}
 

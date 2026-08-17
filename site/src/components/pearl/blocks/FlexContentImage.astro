@@ -13,21 +13,33 @@ const { heading, body, image, image_alt, image_position, cta_label, cta_url, vis
     <div class="pearl-flex__content">
       {heading && <h2>{heading}</h2>}
       <div class="pearl-prose" set:html={body} />
-      {cta_label && cta_url && <Button label={cta_label} url={cta_url} />}
+      {cta_label && cta_url && <Button label={cta_label} url={cta_url} tone="welcome" />}
     </div>
   </div>
 </section>
 
 <style>
-  .pearl-flex { background: var(--pearl-secondary); }
+  .pearl-flex { background: var(--pearl-secondary); overflow: hidden; }
   .pearl-flex__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(38px, 5vw, 78px); }
   .pearl-flex figure { margin: 0; }
   .pearl-flex figure img { width: 100%; aspect-ratio: 4 / 3; border: 5px solid #fff; object-fit: cover; }
   .pearl-flex--right figure { order: 2; }
-  .pearl-flex__content h2 { margin-bottom: 20px; color: var(--pearl-ink); }
+  .pearl-flex__content { min-width: 0; align-self: center; padding-top: clamp(22px, 3vw, 42px); }
+  .pearl-flex__content h2 {
+    margin: 0 0 28px;
+    color: var(--pearl-ink);
+    font-family: var(--pearl-font-body);
+    font-size: clamp(2rem, 3.35vw, 3rem);
+    font-weight: 400;
+    letter-spacing: .01em;
+    line-height: 1.08;
+    white-space: nowrap;
+  }
 
   @media (max-width: 800px) {
     .pearl-flex__grid { grid-template-columns: 1fr; }
     .pearl-flex--right figure { order: 0; }
+    .pearl-flex__content { padding-top: 6px; }
+    .pearl-flex__content h2 { font-size: clamp(1.55rem, 7vw, 2rem); white-space: nowrap; }
   }
 </style>

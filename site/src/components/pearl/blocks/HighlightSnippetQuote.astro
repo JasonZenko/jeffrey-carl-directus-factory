@@ -4,6 +4,9 @@ import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
 
 type Props = PearlRecordByBlock['highlight_snippet_quote'] & { visual?: PearlVisualRef };
 const { snippet, quote, attribution, tone, facebook_url, x_url, visual } = Astro.props;
+const sourceGoogleMatch = quote.match(/<p class=["']pearl-source-social["']>[\s\S]*?<a[^>]+href=["']([^"']+)["'][^>]*>[\s\S]*?<\/a>[\s\S]*?<\/p>/i);
+const sourceGoogleUrl = sourceGoogleMatch?.[1];
+const quoteBody = sourceGoogleMatch ? quote.replace(sourceGoogleMatch[0], '') : quote;
 ---
 
 <section
@@ -11,11 +14,16 @@ const { snippet, quote, attribution, tone, facebook_url, x_url, visual } = Astro
   data-pearl-block="highlight_snippet_quote"
   data-directus={pearlVisualAttr(visual)}
 >
-  <span class="pearl-snippet-quote__mark pearl-snippet-quote__mark--open" aria-hidden="true">“</span>
+  <span class="pearl-snippet-quote__mark pearl-snippet-quote__mark--open" aria-hidden="true">
+    <svg viewBox="0 0 150 107.4"><path d="M9.1 95.6C3.2 87.9 0 77.9 0 65.7c0-14.5 4.1-27.2 11.8-39s19-20.4 34-26.7l24 17.2C48 25.4 34.4 37.2 29 52.1l1.4.9c2.7-2.3 6.3-3.6 10-3.6 7.3 0 13.6 2.3 19 7.3s8.2 11.8 8.2 20.4c0 9.5-3.2 17.2-9.1 22.2-5.9 5.4-14 8.2-23.6 8.2-11.3-.1-19.9-3.7-25.8-11.9zm79.7 0c-5.9-7.7-9.1-17.7-9.1-29.9 0-14.5 4.1-27.2 11.8-39s19-20.4 34-26.7L150 17.2c-21.8 8.6-35.3 19.9-40.3 34.9l.9.9c2.7-2.3 6.3-3.6 10-3.6 7.3 0 13.6 2.3 19 7.3s8.2 11.8 8.2 20.4c0 9.5-3.2 17.2-9.1 22.2-5.9 5.4-14 8.2-23.6 8.2-11.3-.1-19.9-3.7-26.3-11.9z" /></svg>
+  </span>
 
   <div class="pearl-wrap">
-    {snippet && <h2 class="pearl-snippet-quote__snippet">{snippet}</h2>}
-    <blockquote set:html={quote} />
+    <div class="pearl-snippet-quote__reveal">
+      {snippet && <h2 class="pearl-snippet-quote__snippet">{snippet}</h2>}
+      <blockquote set:html={quoteBody} />
+      {sourceGoogleUrl && <a class="pearl-snippet-quote__google" href={sourceGoogleUrl} target="_blank" rel="noreferrer" aria-label="Read Lowen Perio reviews on Google"><svg viewBox="0 0 34.4 35" aria-hidden="true"><path d="M34.4 18c0 10-6.8 17-16.9 17a17.5 17.5 0 1 1 0-35 16.8 16.8 0 0 1 11.7 4.6l-4.8 4.6c-6.2-6-17.8-1.5-17.8 8.3a11 11 0 0 0 10.9 11c7 0 9.5-5 10-7.5h-10v-6H34a15.4 15.4 0 0 1 .3 3Z" /></svg></a>}
+    </div>
     {attribution && <cite>{attribution}</cite>}
     {(facebook_url || x_url) && (
       <nav aria-label="Social media">
@@ -25,22 +33,43 @@ const { snippet, quote, attribution, tone, facebook_url, x_url, visual } = Astro
     )}
   </div>
 
-  <span class="pearl-snippet-quote__mark pearl-snippet-quote__mark--close" aria-hidden="true">”</span>
+  <span class="pearl-snippet-quote__mark pearl-snippet-quote__mark--close" aria-hidden="true">
+    <svg viewBox="0 0 150 107.4"><path d="M9.1 95.6C3.2 87.9 0 77.9 0 65.7c0-14.5 4.1-27.2 11.8-39s19-20.4 34-26.7l24 17.2C48 25.4 34.4 37.2 29 52.1l1.4.9c2.7-2.3 6.3-3.6 10-3.6 7.3 0 13.6 2.3 19 7.3s8.2 11.8 8.2 20.4c0 9.5-3.2 17.2-9.1 22.2-5.9 5.4-14 8.2-23.6 8.2-11.3-.1-19.9-3.7-25.8-11.9zm79.7 0c-5.9-7.7-9.1-17.7-9.1-29.9 0-14.5 4.1-27.2 11.8-39s19-20.4 34-26.7L150 17.2c-21.8 8.6-35.3 19.9-40.3 34.9l.9.9c2.7-2.3 6.3-3.6 10-3.6 7.3 0 13.6 2.3 19 7.3s8.2 11.8 8.2 20.4c0 9.5-3.2 17.2-9.1 22.2-5.9 5.4-14 8.2-23.6 8.2-11.3-.1-19.9-3.7-26.3-11.9z" /></svg>
+  </span>
 </section>
+
+<script>
+  const reviewBands = document.querySelectorAll('.pearl-snippet-quote');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    reviewBands.forEach((band) => band.classList.add('pearl-snippet-quote--visible'));
+  } else {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('pearl-snippet-quote--visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    reviewBands.forEach((band) => observer.observe(band));
+  }
+</script>
 
 <style>
   .pearl-snippet-quote {
     position: relative;
     z-index: 3;
     isolation: isolate;
-    padding-block: clamp(112px, 12vw, 154px);
+    padding-block: clamp(72px, 8vw, 96px);
+    background: #e36966;
     text-align: center;
     overflow: visible;
   }
 
   .pearl-snippet-quote--brand,
   .pearl-snippet-quote--dark {
-    background: var(--pearl-primary);
+    background: #e36966;
     color: #fff;
   }
 
@@ -52,41 +81,30 @@ const { snippet, quote, attribution, tone, facebook_url, x_url, visual } = Astro
   .pearl-snippet-quote blockquote {
     max-width: 75ch;
     margin: 0 auto;
-    font-size: clamp(1rem, 1.45vw, 1.2rem);
-    line-height: 1.7;
+    font-family: var(--pearl-font-body);
+    font-size: clamp(.96rem, 1.35vw, 1.1rem);
+    line-height: 1.65;
   }
 
   .pearl-snippet-quote__snippet {
     max-width: 32ch;
-    margin: 0 auto 28px;
+    margin: 0 auto 24px;
     color: inherit;
+    font-family: var(--pearl-font-heading);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.12;
   }
 
   .pearl-snippet-quote blockquote :global(p) {
     margin: 0;
   }
 
-  .pearl-snippet-quote blockquote :global(.pearl-source-social) {
-    margin-top: 20px;
-  }
-
-  .pearl-snippet-quote blockquote :global(.pearl-source-social a) {
-    display: inline-grid;
-    place-items: center;
-    width: 34px;
-    height: 34px;
-    overflow: hidden;
-    border-radius: 50%;
-    background: #fff;
-    color: var(--pearl-primary);
-    font-size: 0;
-    text-decoration: none;
-  }
-
-  .pearl-snippet-quote blockquote :global(.pearl-source-social a::before) {
-    content: 'G';
-    font: 700 16px/1 Arial, sans-serif;
-  }
+  .pearl-snippet-quote__reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s cubic-bezier(.22, 1, .36, 1); }
+  .pearl-snippet-quote--visible .pearl-snippet-quote__reveal { opacity: 1; transform: none; }
+  .pearl-snippet-quote__google { display: inline-flex; margin-top: 18px; color: #fbc9af; transition: color .2s ease; }
+  .pearl-snippet-quote__google:hover { color: #d3e2ec; }
+  .pearl-snippet-quote__google svg { width: 20px; height: 20px; fill: currentColor; }
 
   .pearl-snippet-quote cite {
     display: block;
@@ -99,27 +117,35 @@ const { snippet, quote, attribution, tone, facebook_url, x_url, visual } = Astro
     left: 50%;
     display: grid;
     place-items: center;
-    width: 84px;
-    height: 84px;
+    width: 140px;
+    height: 128px;
     border-radius: 50%;
-    background: var(--pearl-primary);
-    color: #fff;
-    font-family: Georgia, serif;
-    font-size: 8rem;
-    line-height: 1;
+    background: #e36966;
+    color: #fbc9af;
     transform: translateX(-50%);
   }
 
   .pearl-snippet-quote__mark--open {
     top: 0;
-    padding-top: 12px;
-    transform: translate(-50%, -30%);
+    transform: translate(-50%, -58%);
   }
 
   .pearl-snippet-quote__mark--close {
     bottom: 0;
-    padding-top: 10px;
-    transform: translate(-50%, 30%);
+    transform: translate(-50%, 58%);
+  }
+
+  .pearl-snippet-quote__mark svg { width: 84px; height: auto; fill: currentColor; }
+  .pearl-snippet-quote__mark--close svg { transform: scaleX(-1); }
+
+  @media (max-width: 600px) {
+    .pearl-snippet-quote { padding-block: 72px; }
+    .pearl-snippet-quote__mark { width: 104px; height: 96px; }
+    .pearl-snippet-quote__mark svg { width: 64px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pearl-snippet-quote__reveal { opacity: 1; transform: none; transition: none; }
   }
 
   .pearl-snippet-quote nav {
