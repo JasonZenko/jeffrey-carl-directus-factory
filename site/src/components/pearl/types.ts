@@ -14,10 +14,10 @@ export interface PearlImageGalleryGridRecord { section_heading?: string; grid_co
 export interface PearlTestimonialItem { quote: string; patient_name?: string; sort: number; }
 export interface PearlTestimonialListStandardRecord { section_heading?: string; intro_text?: string; reviews: PearlTestimonialItem[]; }
 export interface PearlMainHeroStandardRecord { heading: string; supporting_text?: string; background_image?: string; background_video_url?: string; primary_cta_label?: string; primary_cta_url?: string; }
-export interface PearlIconFeatureItem { icon: string; title: string; body?: string; url?: string; sort: number; }
+export interface PearlIconFeatureItem { icon: string; title: string; body?: string; link_title?: string; url?: string; sort: number; }
 export interface PearlIconFeatureCardsRecord { section_heading?: string; intro_text?: string; background_image?: string; display_variant?: 'overlay'|'services'; items: PearlIconFeatureItem[]; }
 export interface PearlFeatureImageContentRecord { heading: string; subheading?: string; body: string; image: string; image_alt: string; image_position: 'left'|'right'; cta_label?: string; cta_url?: string; }
-export interface PearlHighlightSnippetQuoteRecord { quote: string; attribution?: string; tone: 'light'|'brand'|'dark'; facebook_url?: string; x_url?: string; }
+export interface PearlHighlightSnippetQuoteRecord { snippet?: string; quote: string; attribution?: string; tone: 'light'|'brand'|'dark'; facebook_url?: string; x_url?: string; }
 export interface PearlCtaSectionStandardRecord { heading: string; body?: string; background_image?: string; cta_label: string; cta_url: string; }
 export interface PearlContactInfoStandardRecord { heading?: string; address: string; phone?: string; email?: string; map_url?: string; }
 export interface PearlAreaLinkItem { link_label: string; link_url: string; sort: number; }
@@ -56,7 +56,7 @@ export const PEARL_FIELD_KEYS = {
   main_hero_standard: ['heading','supporting_text','background_image','background_video_url','primary_cta_label','primary_cta_url'],
   icon_feature_cards: ['section_heading','intro_text','background_image','display_variant','items'],
   feature_image_content: ['heading','subheading','body','image','image_alt','image_position','cta_label','cta_url'],
-  highlight_snippet_quote: ['quote','attribution','tone','facebook_url','x_url'],
+  highlight_snippet_quote: ['snippet','quote','attribution','tone','facebook_url','x_url'],
   cta_section_standard: ['heading','body','background_image','cta_label','cta_url'],
   contact_info_standard: ['heading','address','phone','email','map_url'],
   areas_served_links: ['section_heading','intro_text','areas'],

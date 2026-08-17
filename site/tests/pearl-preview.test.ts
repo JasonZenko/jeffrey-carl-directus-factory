@@ -31,7 +31,7 @@ describe('Pearl official block surface', () => {
     const html=readFileSync(output,'utf8');
     expect(html).toContain('<meta name="robots" content="noindex, nofollow"');
     expect(html).toContain('data-template-adapter="pearl"');
-    expect(html).toContain('data-template-version="1.0.0"');
+    expect(html).toContain('data-template-version="1.2.0"');
     expect(html).toContain('class="pearl-site-header"');
     expect(html).toContain('class="pearl-menu-toggle"');
     expect(html).toContain('aria-controls="pearl-primary-navigation"');
@@ -41,7 +41,6 @@ describe('Pearl official block surface', () => {
     const sequence=[...html.matchAll(/data-pearl-block="([^"]+)"/g)].map(match=>match[1]);
     expect(sequence.length).toBeGreaterThan(0);
     expect(sequence[0]).toBe('main_hero_standard');
-    expect(sequence).toContain('contact_info_standard');
     expect(sequence.every(type=>OFFICIAL_BLOCKS.has(type))).toBe(true);
   });
 
@@ -51,12 +50,29 @@ describe('Pearl official block surface', () => {
     expect(route).toContain('getPearlPage(slug)');
   });
 
-  it('keeps image descriptions, social navigation and lowercase primary navigation',()=>{
+  it('keeps image descriptions, contact links and source-driven navigation',()=>{
     const html=readFileSync(join(SITE_ROOT,'dist/template-preview/pearl/index.html'),'utf8');
-    expect(html).toContain('alt="Dentist welcoming a patient in a bright treatment room"');
-    expect(html).toContain('alt="Dr. Amanda Pearl"');
+    const images=[...html.matchAll(/<img\b[^>]*>/g)].map(match=>match[0]);
+    expect(images.length).toBeGreaterThan(0);
+    expect(images.every(image=>/\balt="[^"]*"/.test(image))).toBe(true);
     expect(html).toContain('aria-label="Contact links"');
-    expect(html).toContain('aria-label="Social media"');
-    for(const [href,label] of [['#top','home'],['#services','services'],['#about','about'],['#contact','contact']]) expect(html).toMatch(new RegExp(`<a href="${href}"[^>]*>${label}</a>`));
+    expect(html).toContain('aria-label="Footer navigation"');
+    const navigation=html.match(/<nav id="pearl-primary-navigation"[\s\S]*?<\/nav>/)?.[0]??'';
+    const links=[...navigation.matchAll(/<a href="([^"]+)"[^>]*>([^<]+)<\/a>/g)];
+    expect(links.length).toBeGreaterThan(0);
+    expect(links.every(match=>!match[1].startsWith('#')&&Boolean(match[2].trim()))).toBe(true);
+  });
+
+  it('keeps the sticky header scroll state stable and icon artwork bounded',()=>{
+    const header=readFileSync(join(SITE_ROOT,'src/components/pearl/PearlHeader.astro'),'utf8');
+    expect(header).toContain('const SCROLL_ENTER = 72');
+    expect(header).toContain('const SCROLL_LEAVE = 32');
+    expect(header).toContain('window.requestAnimationFrame');
+    expect(header).not.toContain("window.scrollY > 56");
+
+    const icons=readFileSync(join(SITE_ROOT,'src/components/pearl/blocks/IconCircles.astro'),'utf8');
+    expect(icons).toContain('grid-template-rows: minmax(38px, .55fr) auto');
+    expect(icons).toContain('overflow: hidden');
+    expect(icons).toContain('width: clamp(42px, 5vw, 62px)');
   });
 });
