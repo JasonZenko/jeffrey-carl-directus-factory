@@ -19,11 +19,11 @@ const { page_title, intro_paragraph, featured_image, image_alt, cta_label, cta_u
 </section>
 
 <style>
-  .pearl-inner-standard { padding-block: 60px; background: #fff; }
+  .pearl-inner-standard { padding-block: 50px; background: color-mix(in srgb, var(--pearl-secondary) 84%, var(--pearl-primary)); }
   .pearl-inner-standard__grid { display: grid; grid-template-columns: minmax(0,2fr) minmax(240px,1fr); gap: clamp(30px,6vw,80px); align-items: center; }
   .pearl-inner-standard--no-image .pearl-inner-standard__grid { grid-template-columns: 1fr; }
   .pearl-inner-standard h1 { margin: 0 0 28px; color: var(--pearl-accent); font-family: var(--pearl-font-heading); font-size: clamp(36px, 5vw, 45px); font-weight: 700; line-height: 1.2; text-transform: none; }
   .pearl-inner-standard .pearl-prose { max-width: none; color: #333; font-family: var(--pearl-font-body); font-size: 18px; line-height: 1.65; }
   .pearl-inner-standard img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 5px solid #fff; }
-  @media (max-width: 800px) { .pearl-inner-standard { padding-block: 48px; } .pearl-inner-standard__grid { grid-template-columns: 1fr; } }
+  @media (max-width: 800px) { .pearl-inner-standard { padding-block: 42px; } .pearl-inner-standard__grid { grid-template-columns: 1fr; } }
 </style>

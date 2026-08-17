@@ -21,6 +21,12 @@
 
 .pearl-wrap { width: min(calc(100% - 40px), var(--pearl-wrap)); margin-inline: auto; }
 .pearl-section { padding: clamp(24px, 4vw, 48px) 0; }
+
+/* Inner routes use a tighter reading rhythm than the homepage showcase.
+   Deliberately immersive bands retain their component-owned spacing. */
+.pearl-preview:not([data-page-slug="home"]) main > .pearl-section:not(.pearl-inner-standard):not(.pearl-icons--services):not(.pearl-snippet-quote):not(.pearl-reviews) {
+  padding-block: clamp(32px, 4vw, 48px);
+}
 .pearl-prose > :first-child { margin-top: 0; }
 .pearl-prose > :last-child { margin-bottom: 0; }
 
@@ -87,6 +93,7 @@
 @media (max-width: 480px) {
   .pearl-wrap { width: min(calc(100% - 28px), var(--pearl-wrap)); }
   .pearl-section { padding-block: 58px; }
+  .pearl-preview:not([data-page-slug="home"]) main > .pearl-section:not(.pearl-inner-standard):not(.pearl-icons--services):not(.pearl-snippet-quote):not(.pearl-reviews) { padding-block: 38px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

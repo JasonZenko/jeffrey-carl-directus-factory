@@ -172,7 +172,7 @@ const { theme, navigation, logo, visual } = Astro.props;
   .pearl-header-social { width: 38px; min-height: 38px; display: grid; place-items: center; background: var(--pearl-accent); color: #fff !important; }
   .pearl-header-social svg { width: 15px; height: 15px; fill: currentColor; }
   .pearl-header-social:hover { background: var(--pearl-primary); }
-  .pearl-header-contact { width: min(100%, 330px); display: grid; justify-items: end; gap: 5px; text-align: right; }
+  .pearl-header-contact { max-width: 100%; display: grid; justify-items: end; gap: 5px; text-align: right; }
   .pearl-header-contact a { width: fit-content; max-width: 100%; display: grid; grid-template-columns: 18px minmax(0, auto); align-items: start; gap: 8px; justify-content: end; font-weight: 600; line-height: 1.35; text-align: right; text-decoration: none; }
   .pearl-header-contact svg { width: 15px; height: 18px; margin-top: 1px; fill: currentColor; }
   .pearl-header-contact__phone { height: 15px !important; }

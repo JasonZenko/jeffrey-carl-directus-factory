@@ -82,7 +82,8 @@ describe('Pearl official block surface', () => {
     expect(header).toContain('class="pearl-header-contact__phone"');
     expect(header).toContain('aria-label="Lowen Perio on Instagram"');
     expect(header).toContain('aria-label="Lowen Perio on Google"');
-    expect(header).toContain('.pearl-header-contact { width: min(100%, 330px);');
+    expect(header).toContain('.pearl-header-contact { max-width: 100%;');
+    expect(header).not.toContain('width: min(100%, 330px)');
     expect(header).toContain('justify-items: end; gap: 5px; text-align: right;');
     expect(header).toContain('class="pearl-header-cta__icon"');
     expect(header).toContain('.pearl-header-cta span, .pearl-header-cta__icon { color: #fff !important; }');
@@ -142,6 +143,15 @@ describe('Pearl official block surface', () => {
     expect(button).toContain('border-radius: 0;');
     expect(button).toContain('outline: 1px solid #b9cde2;');
     expect(button).toContain('font-weight: 400;');
+
+    const innerHero=readFileSync(join(SITE_ROOT,'src/components/pearl/blocks/InnerHeroStandard.astro'),'utf8');
+    expect(innerHero).toContain('background: color-mix(in srgb, var(--pearl-secondary) 84%, var(--pearl-primary));');
+    expect(innerHero).toContain('.pearl-inner-standard { padding-block: 50px;');
+
+    const pearlCss=readFileSync(join(SITE_ROOT,'src/styles/pearl.css'),'utf8');
+    expect(pearlCss).toContain('.pearl-preview:not([data-page-slug="home"]) main > .pearl-section');
+    expect(pearlCss).toContain('padding-block: clamp(32px, 4vw, 48px);');
+    expect(pearlCss).toContain('padding-block: 38px;');
 
     const reviewBand=readFileSync(join(SITE_ROOT,'src/components/pearl/blocks/HighlightSnippetQuote.astro'),'utf8');
     expect(reviewBand).toContain("background: #e36966;");
