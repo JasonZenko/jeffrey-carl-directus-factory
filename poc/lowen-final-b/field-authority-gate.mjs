@@ -29,6 +29,7 @@ const mutationFields = {
   pearl_feature_image_content: 'heading',
   pearl_highlight_snippet_quote: 'snippet',
   pearl_testimonial_list_standard: 'section_heading',
+  pearl_contact_info_standard: 'heading',
   pearl_icon_feature_card_items: 'link_title',
   pearl_testimonial_items: 'patient_name',
 };
