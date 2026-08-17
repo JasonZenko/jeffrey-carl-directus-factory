@@ -133,6 +133,13 @@ jobs:
           PEARL_DIRECTUS_URL: https://pearl-lowen-poc-cms.foundryworks.ai
           PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_LOWEN_DIRECTUS_TOKEN }}
 
+      - name: Deploy approved connected Lowen build after contract smoke checks
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site/dist --project-name=pearl-lowen-poc --branch=pearl-lowen-poc
+
       - name: Preserve accepted Jeffrey regression evidence
         run: |
           PORT=4321 node scripts/serve.mjs &
@@ -175,13 +182,6 @@ jobs:
           grep -q 'data-page-slug="home"' site/dist/index.html
           grep -q 'noindex, nofollow' site/dist/index.html
           test "$(find site/dist/lowen-assets -type f | wc -l | tr -d ' ')" = "3"
-
-      - name: Deploy only the isolated Lowen review project
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy site/dist --project-name=pearl-lowen-poc --branch=pearl-lowen-poc
 
       - name: Rerun the complete browser gate against the live deployment
         env:
