@@ -31,7 +31,7 @@
 
 /* ===== RICH TEXT LINKS — fallback (bare <a>, no class) ===== */
 .pearl-prose a {
-  color: var(--pearl-primary);
+  color: color-mix(in srgb, var(--pearl-primary) 70%, #000);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -42,7 +42,7 @@
 
 /* ===== RICH TEXT LINKS — explicit migration classes ===== */
 .pearl-prose .paragraph-link {
-  color: var(--pearl-primary);
+  color: color-mix(in srgb, var(--pearl-primary) 70%, #000);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
