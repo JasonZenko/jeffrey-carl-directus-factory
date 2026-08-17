@@ -62,4 +62,17 @@ describe('Pearl official block surface', () => {
     expect(links.length).toBeGreaterThan(0);
     expect(links.every(match=>!match[1].startsWith('#')&&Boolean(match[2].trim()))).toBe(true);
   });
+
+  it('keeps the sticky header scroll state stable and icon artwork bounded',()=>{
+    const header=readFileSync(join(SITE_ROOT,'src/components/pearl/PearlHeader.astro'),'utf8');
+    expect(header).toContain('const SCROLL_ENTER = 72');
+    expect(header).toContain('const SCROLL_LEAVE = 32');
+    expect(header).toContain('window.requestAnimationFrame');
+    expect(header).not.toContain("window.scrollY > 56");
+
+    const icons=readFileSync(join(SITE_ROOT,'src/components/pearl/blocks/IconCircles.astro'),'utf8');
+    expect(icons).toContain('grid-template-rows: minmax(38px, .55fr) auto');
+    expect(icons).toContain('overflow: hidden');
+    expect(icons).toContain('width: clamp(42px, 5vw, 62px)');
+  });
 });
