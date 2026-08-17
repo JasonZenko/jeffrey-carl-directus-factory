@@ -1,0 +1,16 @@
+---
+import BlockRenderer from '../../components/pearl/blocks/BlockRenderer.astro';
+import { pearlFixture } from '../../components/pearl/fixtures';
+import BaseLayout from '../../layouts/pearl/BaseLayout.astro';
+import { getPearlPage } from '../../lib/pearl/directus';
+import { defaultPearlTheme } from '../../lib/pearl/theme';
+
+const connected = (process.env.PEARL_CONTENT_MODE ?? 'connected') === 'connected';
+const page = connected
+  ? await getPearlPage()
+  : { title: 'Pearl template component workshop', description: 'Explicit disconnected fixture mode', blocks: pearlFixture, theme: defaultPearlTheme, navigation: [{label: 'Home', url: '/', sort: 1}], logo: undefined, pageVisual: undefined, themeVisual: undefined };
+---
+
+<BaseLayout slug="home" title={page.title} description={page.description} theme={page.theme} navigation={page.navigation} logo={page.logo} pageVisual={page.pageVisual} themeVisual={page.themeVisual}>
+  {page.blocks.map((block) => <BlockRenderer block={block} />)}
+</BaseLayout>

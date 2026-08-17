@@ -1,0 +1,39 @@
+---
+interface Props {
+  label: string;
+  url: string;
+  tone?: 'contrast' | 'light';
+}
+
+const { label, url, tone = 'contrast' } = Astro.props;
+---
+
+<a class:list={['pearl-button', `pearl-button--${tone}`]} href={url}>{label}</a>
+
+<style>
+  .pearl-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    margin-top: 24px;
+    padding: 11px 20px;
+    border: 0;
+    border-radius: var(--pearl-button-radius);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 180ms ease-out;
+  }
+
+  .pearl-button--contrast { background: var(--pearl-primary); }
+  .pearl-button--contrast:hover { background: color-mix(in srgb, var(--pearl-primary) 70%, #000); }
+
+  .pearl-button--light { background: var(--pearl-secondary); color: var(--pearl-ink); }
+  .pearl-button--light:hover { background: color-mix(in srgb, var(--pearl-secondary) 70%, #000); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pearl-button { transition-duration: .01ms; }
+  }
+</style>

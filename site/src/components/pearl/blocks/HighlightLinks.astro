@@ -1,0 +1,11 @@
+---
+import type {PearlRecordByBlock, PearlVisualRef} from '../types';
+import {pearlVisualAttr} from '../../../lib/pearl/visual-editing';
+type Props = PearlRecordByBlock['highlight_links'] & {visual?: PearlVisualRef};
+const {section_heading, links, visual} = Astro.props;
+const ordered = [...links].sort((a,b)=>a.sort-b.sort);
+---
+{ordered.length > 0 && <section class="pearl-section pearl-highlight-links" data-pearl-block="highlight_links" data-directus={pearlVisualAttr(visual)}><div class="pearl-wrap">{section_heading && <h2>{section_heading}</h2>}<nav aria-label={section_heading ?? 'Highlight links'}><ul>{ordered.map(link=><li><a href={link.link_url}>{link.link_label}<span aria-hidden="true">↗</span></a></li>)}</ul></nav></div></section>}
+<style>
+  .pearl-highlight-links{background:var(--pearl-secondary)}.pearl-highlight-links ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:30px 0 0;padding:0;list-style:none}.pearl-highlight-links a{display:flex;justify-content:space-between;align-items:center;min-height:64px;padding:12px 18px;border:1px solid color-mix(in srgb,var(--pearl-primary) 30%,transparent);background:#fff;color:var(--pearl-ink);font-weight:700;text-decoration:none}
+</style>

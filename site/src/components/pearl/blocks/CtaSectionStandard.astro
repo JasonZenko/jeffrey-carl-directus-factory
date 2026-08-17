@@ -1,0 +1,40 @@
+---
+import Button from '../ui/Button.astro';
+import type { PearlRecordByBlock, PearlVisualRef } from '../types';
+import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
+
+type Props = PearlRecordByBlock['cta_section_standard'] & { visual?: PearlVisualRef };
+const { heading, body, background_image, cta_label, cta_url, visual } = Astro.props;
+const style = background_image ? `--pearl-cta-image:url('${background_image}')` : undefined;
+---
+
+<section
+  class:list={['pearl-section', 'pearl-cta-standard', { 'pearl-cta-standard--image': background_image }]}
+  style={style}
+  data-pearl-block="cta_section_standard"
+  data-directus={pearlVisualAttr(visual)}
+>
+  <div class="pearl-wrap">
+    <h2>{heading}</h2>
+    {body && <div class="pearl-prose" set:html={body} />}
+    <Button label={cta_label} url={cta_url} tone="light" />
+  </div>
+</section>
+
+<style>
+  .pearl-cta-standard {
+    width: 100%;
+    background: var(--pearl-primary);
+    color: #fff;
+  }
+
+  .pearl-cta-standard--image {
+    background-image: linear-gradient(90deg, rgb(20 32 25 / .84), rgb(20 32 25 / .22)), var(--pearl-cta-image);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .pearl-cta-standard h2 { color: #fff; }
+ .pearl-cta-standard .pearl-prose :global(a),
+.pearl-cta-standard .pearl-prose :global(a:visited) { color: #fff; text-decoration: underline; }
+</style>

@@ -4,12 +4,13 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "set -a; [ -f .env ] && . ./.env; set +a; astro dev",
     "build": "astro build",
     "serve": "node ../scripts/serve.mjs",
     "test": "vitest run"
   },
   "dependencies": {
+    "@directus/visual-editing": "^2.1.0",
     "astro": "^7.2.0"
   },
   "devDependencies": {

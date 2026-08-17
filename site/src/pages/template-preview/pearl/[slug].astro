@@ -1,0 +1,20 @@
+---
+import BlockRenderer from '../../../components/pearl/blocks/BlockRenderer.astro';
+import BaseLayout from '../../../layouts/pearl/BaseLayout.astro';
+import { getPearlPage, getPublishedPearlPageRoutes } from '../../../lib/pearl/directus';
+
+export async function getStaticPaths() {
+  const connected = (process.env.PEARL_CONTENT_MODE ?? 'connected') === 'connected';
+  if (!connected) return [];
+  const pages = await getPublishedPearlPageRoutes();
+  return pages.map(({slug}) => ({params: {slug}}));
+}
+
+const slug = Astro.params.slug;
+if (!slug) throw new Error('Pearl page slug is required');
+const page = await getPearlPage(slug);
+---
+
+<BaseLayout slug={slug} title={page.title} description={page.description} theme={page.theme} navigation={page.navigation} logo={page.logo} pageVisual={page.pageVisual} themeVisual={page.themeVisual}>
+  {page.blocks.map((block) => <BlockRenderer block={block} />)}
+</BaseLayout>

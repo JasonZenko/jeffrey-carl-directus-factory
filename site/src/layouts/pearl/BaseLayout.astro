@@ -1,0 +1,45 @@
+---
+import PearlFooter from '../../components/pearl/PearlFooter.astro';
+import PearlHeader from '../../components/pearl/PearlHeader.astro';
+import VisualEditing from '../../components/pearl/VisualEditing.astro';
+import type { PearlVisualRef } from '../../components/pearl/types';
+import type { PearlTheme } from '../../lib/pearl/theme';
+import type { PearlNavigationItem } from '../../lib/pearl/directus';
+import { pearlThemeStyle } from '../../lib/pearl/theme';
+import { pearlVisualAttr } from '../../lib/pearl/visual-editing';
+import '../../styles/pearl.css';
+
+interface Props {
+  slug?: string;
+  title: string;
+  description?: string;
+  theme: PearlTheme;
+  navigation: PearlNavigationItem[];
+  logo?: string;
+  pageVisual?: PearlVisualRef;
+  themeVisual?: PearlVisualRef;
+}
+
+const { slug = 'home', title, description = 'Pearl template component workshop', theme, navigation, logo, pageVisual, themeVisual } = Astro.props;
+const tokenStyle = pearlThemeStyle(theme);
+---
+
+<!doctype html>
+<html lang="en-GB" style={tokenStyle}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="pearl-preview" data-template-adapter="pearl" data-template-version="1.2.0" data-page-slug={slug}>
+    <PearlHeader theme={theme} navigation={navigation} logo={logo} visual={themeVisual} />
+    <main id="top" data-directus={pearlVisualAttr(pageVisual)}><slot /></main>
+    <PearlFooter theme={theme} navigation={navigation} logo={logo} />
+    <VisualEditing />
+  </body>
+</html>

@@ -1,0 +1,34 @@
+---
+import type {PearlBlock} from '../types';
+import MainHero from './MainHero.astro';
+import InnerHeroStandard from './InnerHeroStandard.astro';
+import FlexContentSection from './FlexContentSection.astro';
+import HighlightLinks from './HighlightLinks.astro';
+import ImageGalleryGrid from './ImageGalleryGrid.astro';
+import TestimonialListStandard from './TestimonialListStandard.astro';
+import IconFeatureCards from './IconCircles.astro';
+import FeatureImageContent from './FlexContentImage.astro';
+import HighlightSnippetQuote from './HighlightSnippetQuote.astro';
+import CtaSectionStandard from './CtaSectionStandard.astro';
+import ContactInfoStandard from './ContactInfoStandard.astro';
+import AreasServedLinks from './AreasServedStandard.astro';
+import FaqDropdown from './FaqDropdown.astro';
+import CherryFinancing from './CherryFinancing.astro';
+
+interface Props {block: PearlBlock}
+const {block}=Astro.props;
+---
+{block.type==='inner_hero_standard'&&<InnerHeroStandard {...block.item} visual={block.visual}/>}
+{block.type==='flex_content_section'&&<FlexContentSection {...block.item} visual={block.visual}/>}
+{block.type==='highlight_links'&&<HighlightLinks {...block.item} visual={block.visual}/>}
+{block.type==='image_gallery_grid'&&<ImageGalleryGrid {...block.item} visual={block.visual}/>}
+{block.type==='testimonial_list_standard'&&<TestimonialListStandard {...block.item} visual={block.visual}/>}
+{block.type==='main_hero_standard'&&<MainHero {...block.item} visual={block.visual}/>}
+{block.type==='icon_feature_cards'&&<IconFeatureCards {...block.item} visual={block.visual}/>}
+{block.type==='feature_image_content'&&<FeatureImageContent {...block.item} visual={block.visual}/>}
+{block.type==='highlight_snippet_quote'&&<HighlightSnippetQuote {...block.item} visual={block.visual}/>}
+{block.type==='cta_section_standard'&&<CtaSectionStandard {...block.item} visual={block.visual}/>}
+{block.type==='contact_info_standard'&&<ContactInfoStandard {...block.item} visual={block.visual}/>}
+{block.type==='areas_served_links'&&<AreasServedLinks {...block.item} visual={block.visual}/>}
+{block.type==='faq_dropdown'&&<FaqDropdown {...block.item} visual={block.visual}/>}
+{block.type==='cherry_financing'&&<CherryFinancing {...block.item} visual={block.visual}/>}

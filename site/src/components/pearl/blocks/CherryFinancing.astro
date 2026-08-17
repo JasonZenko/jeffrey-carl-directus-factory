@@ -1,0 +1,5 @@
+---
+import Button from '../ui/Button.astro';import type {PearlRecordByBlock,PearlVisualRef} from '../types';import {pearlVisualAttr} from '../../../lib/pearl/visual-editing';type Props=PearlRecordByBlock['cherry_financing']&{visual?:PearlVisualRef};const{heading,body,merchant_id,cta_label,cta_url,visual}=Astro.props;
+---
+<section class="pearl-section pearl-cherry" data-pearl-block="cherry_financing" data-directus={pearlVisualAttr(visual)} data-merchant-id={merchant_id}><div class="pearl-wrap"><h2>{heading}</h2>{body&&<div class="pearl-prose" set:html={body}/>} {cta_label&&cta_url&&<Button label={cta_label} url={cta_url}/>}</div></section>
+<style>.pearl-cherry{background:var(--pearl-secondary)}.pearl-cherry .pearl-wrap{max-width:860px;text-align:center}</style>

@@ -1,0 +1,33 @@
+---
+import Button from '../ui/Button.astro';
+import type { PearlRecordByBlock, PearlVisualRef } from '../types';
+import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
+
+type Props = PearlRecordByBlock['feature_image_content'] & { visual?: PearlVisualRef };
+const { heading, body, image, image_alt, image_position, cta_label, cta_url, visual } = Astro.props;
+---
+
+<section id="about" class:list={['pearl-section', 'pearl-flex', `pearl-flex--${image_position}`]} data-pearl-block="feature_image_content" data-directus={pearlVisualAttr(visual)}>
+  <div class="pearl-wrap pearl-flex__grid">
+    <figure><img src={image} alt={image_alt} loading="lazy" /></figure>
+    <div class="pearl-flex__content">
+      {heading && <h2>{heading}</h2>}
+      <div class="pearl-prose" set:html={body} />
+      {cta_label && cta_url && <Button label={cta_label} url={cta_url} />}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pearl-flex { background: var(--pearl-secondary); }
+  .pearl-flex__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(38px, 5vw, 78px); }
+  .pearl-flex figure { margin: 0; }
+  .pearl-flex figure img { width: 100%; aspect-ratio: 4 / 3; border: 5px solid #fff; object-fit: cover; }
+  .pearl-flex--right figure { order: 2; }
+  .pearl-flex__content h2 { margin-bottom: 20px; color: var(--pearl-ink); }
+
+  @media (max-width: 800px) {
+    .pearl-flex__grid { grid-template-columns: 1fr; }
+    .pearl-flex--right figure { order: 0; }
+  }
+</style>

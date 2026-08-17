@@ -1,0 +1,292 @@
+{
+  "adapter_id": "pearl",
+  "template_name": "Pearl",
+  "version": "0.1.0",
+  "status": "canonical-integration",
+  "based_on": {
+    "source_site": "https://jeffreycarldmd.com/",
+    "source_freeze": "source-freeze/manifests/capture-summary.json",
+    "review": "Dom Tab 4, 2026-08-12"
+  },
+  "activation": {
+    "active": true,
+    "reason": "Canonical Pearl records, native Builder composition and fail-closed Astro hydration are the approved review baseline. Production, DNS, forms and indexing remain inactive."
+  },
+  "implementation": {
+    "directus_schema_plan": "template-adapters/pearl/directus/pearl-schema.mjs",
+    "directus_provisioner": "template-adapters/pearl/directus/provision-pearl-schema.mjs",
+    "astro_components": "site/src/components/pearl/blocks/",
+    "preview_route": "/template-preview/pearl/",
+    "qa_receipt": "template-adapters/pearl/receipts/fixture-qa.json"
+  },
+  "theme_settings": {
+    "collection": "weo_pearl_theme_settings",
+    "singleton": true,
+    "fields": [
+      { "name": "brand_name", "type": "string", "required": true, "authority": "directus" },
+      { "name": "brand_descriptor", "type": "string", "required": false, "authority": "directus" },
+      { "name": "heading_font", "type": "enum:forum|jost|georgia", "required": true, "authority": "directus" },
+      { "name": "body_font", "type": "enum:jost|arial|georgia", "required": true, "authority": "directus" },
+      { "name": "h1_weight", "type": "enum:400|500|600|700", "required": true, "authority": "directus" },
+      { "name": "h2_weight", "type": "enum:400|500|600|700", "required": true, "authority": "directus" },
+      { "name": "h3_weight", "type": "enum:400|500|600|700", "required": true, "authority": "directus" },
+      { "name": "body_weight", "type": "enum:400|500|600", "required": true, "authority": "directus" },
+      { "name": "heading_scale", "type": "enum:restrained|standard|expressive", "required": true, "authority": "directus" },
+      { "name": "body_scale", "type": "enum:compact|standard|large", "required": true, "authority": "directus" },
+      { "name": "heading_line_height", "type": "enum:tight|standard|relaxed", "required": true, "authority": "directus" },
+      { "name": "body_line_height", "type": "enum:compact|standard|relaxed", "required": true, "authority": "directus" },
+      { "name": "primary_color", "type": "color", "required": true, "authority": "directus" },
+      { "name": "secondary_color", "type": "color", "required": true, "authority": "directus" },
+      { "name": "accent_color", "type": "color", "required": true, "authority": "directus" },
+      { "name": "ink_color", "type": "color", "required": true, "authority": "directus" },
+      { "name": "muted_color", "type": "color", "required": true, "authority": "directus" },
+      { "name": "surface_color", "type": "color", "required": true, "authority": "directus" },
+      { "name": "circle_color", "type": "color", "required": true, "authority": "directus" },
+      { "name": "spacing_scale", "type": "enum:compact|standard|generous", "required": true, "authority": "directus" },
+      { "name": "content_width", "type": "enum:standard|wide", "required": true, "authority": "directus" },
+      { "name": "button_radius", "type": "enum:square|soft|pill", "required": true, "authority": "directus" },
+      { "name": "appointment_label", "type": "string", "required": false, "authority": "directus" },
+      { "name": "appointment_url", "type": "string", "required": false, "authority": "directus" },
+      { "name": "phone", "type": "string", "required": false, "authority": "directus" },
+      { "name": "address", "type": "string", "required": false, "authority": "directus" },
+      { "name": "email", "type": "string", "required": false, "authority": "directus" }
+    ]
+  },
+  "mapping_policy": {
+    "unknown": "manual_review",
+    "ambiguous": "manual_review",
+    "rich_text_fallback_allowed": false,
+    "minimum_auto_map_confidence": 0.9,
+    "require_source_provenance": true
+  },
+  "blocks": [
+    {
+      "key": "main_hero",
+      "label": "Main Hero",
+      "directus": { "collection": "weo_pearl_main_heroes", "carrier_field": "pearl_main_hero" },
+      "renderer": "MainHero.astro",
+      "fields": [
+        { "name": "heading", "type": "string", "required": true, "authority": "directus" },
+        { "name": "supporting_text", "type": "text", "required": false, "authority": "directus" },
+        { "name": "background_image", "type": "file", "required": false, "authority": "directus" },
+        { "name": "background_video_url", "type": "string", "required": false, "authority": "directus" },
+        { "name": "primary_cta_label", "type": "string", "required": false, "authority": "directus" },
+        { "name": "primary_cta_url", "type": "string", "required": false, "authority": "directus" }
+      ],
+      "mapping": {
+        "priority": 10,
+        "required_all": ["page_family:home", "source:primary_hero_region"],
+        "required_any": ["source:hero_background_image", "source:hero_video"],
+        "reject_if": ["source:article_band"],
+        "confidence": 0.98
+      }
+    },
+    {
+      "key": "inner_hero_cta",
+      "label": "Inner Hero + CTA",
+      "directus": { "collection": "weo_pearl_inner_hero_ctas", "carrier_field": "pearl_inner_hero_cta" },
+      "renderer": "InnerHeroCta.astro",
+      "fields": [
+        { "name": "heading", "type": "string", "required": true, "authority": "directus" },
+        { "name": "secondary_heading", "type": "string", "required": false, "authority": "directus" },
+        { "name": "body", "type": "rich_text", "required": false, "authority": "directus" },
+        { "name": "image", "type": "file", "required": false, "authority": "directus" },
+        { "name": "image_alt", "type": "string", "required": false, "authority": "directus" },
+        { "name": "cta_label", "type": "string", "required": false, "authority": "directus" },
+        { "name": "cta_url", "type": "string", "required": false, "authority": "directus" }
+      ],
+      "mapping": {
+        "priority": 20,
+        "required_all": ["page_family:not_home", "source:first_content_region", "source:heading"],
+        "required_any": ["source:cta_link", "source:secondary_heading"],
+        "reject_if": ["source:repeated_items"],
+        "confidence": 0.95
+      }
+    },
+    {
+      "key": "flex_content_image",
+      "label": "Flex Content + Image",
+      "directus": { "collection": "weo_pearl_flex_content_images", "carrier_field": "pearl_flex_content_image" },
+      "renderer": "FlexContentImage.astro",
+      "fields": [
+        { "name": "heading", "type": "string", "required": false, "authority": "directus" },
+        { "name": "body", "type": "rich_text", "required": true, "authority": "directus" },
+        { "name": "image", "type": "file", "required": true, "authority": "directus" },
+        { "name": "image_alt", "type": "string", "required": true, "authority": "directus" },
+        { "name": "image_position", "type": "enum:left|right", "required": true, "authority": "directus" },
+        { "name": "cta_label", "type": "string", "required": false, "authority": "directus" },
+        { "name": "cta_url", "type": "string", "required": false, "authority": "directus" }
+      ],
+      "mapping": {
+        "priority": 30,
+        "required_all": ["source:prose", "source:managed_image"],
+        "required_any": ["source:TPimgRight", "source:TPimgLeft", "source:image_adjacent_to_prose"],
+        "reject_if": ["source:two_equal_columns", "source:repeated_items"],
+        "confidence": 0.93
+      }
+    },
+    {
+      "key": "split_image_content",
+      "label": "Split Image Content",
+      "directus": { "collection": "weo_pearl_split_image_contents", "carrier_field": "pearl_split_image_content" },
+      "renderer": "SplitImageContent.astro",
+      "fields": [
+        { "name": "heading", "type": "string", "required": false, "authority": "directus" },
+        { "name": "body", "type": "rich_text", "required": true, "authority": "directus" },
+        { "name": "image", "type": "file", "required": true, "authority": "directus" },
+        { "name": "image_alt", "type": "string", "required": true, "authority": "directus" },
+        { "name": "image_position", "type": "enum:left|right", "required": true, "authority": "directus" },
+        { "name": "image_width", "type": "enum:half|wide", "required": true, "authority": "directus" },
+        { "name": "background_tone", "type": "enum:white|light|brand", "required": true, "authority": "directus" }
+      ],
+      "mapping": {
+        "priority": 40,
+        "required_all": ["source:two_equal_columns", "source:managed_image", "source:prose"],
+        "required_any": ["source:TPcol-md-6", "source:explicit_split_region"],
+        "reject_if": ["source:repeated_items"],
+        "confidence": 0.94
+      }
+    },
+    {
+      "key": "patient_reviews",
+      "label": "Patient Reviews",
+      "directus": { "collection": "weo_pearl_patient_reviews", "carrier_field": "pearl_patient_reviews", "children": "weo_pearl_patient_review_items" },
+      "renderer": "PatientReviews.astro",
+      "fields": [
+        { "name": "heading", "type": "string", "required": false, "authority": "directus" },
+        { "name": "intro", "type": "text", "required": false, "authority": "directus" },
+        { "name": "facebook_url", "type": "string", "required": false, "authority": "directus" },
+        { "name": "x_url", "type": "string", "required": false, "authority": "directus" },
+        { "name": "reviews", "type": "o2m", "required": true, "authority": "directus" }
+      ],
+      "child_fields": [
+        { "name": "quote", "type": "text", "required": true, "authority": "directus" },
+        { "name": "name", "type": "string", "required": false, "authority": "directus" },
+        { "name": "rating", "type": "integer", "required": false, "authority": "directus" },
+        { "name": "sort", "type": "integer", "required": true, "authority": "directus" }
+      ],
+      "mapping": {
+        "priority": 50,
+        "required_all": ["source:TPquote", "source:quote_text"],
+        "required_any": ["source:TPquote-bottom", "source:review_attribution"],
+        "reject_if": ["source:editorial_pull_quote"],
+        "confidence": 0.98
+      }
+    },
+    {
+      "key": "areas_served_links",
+      "label": "Areas Served Links",
+      "directus": { "collection": "weo_pearl_areas_served", "carrier_field": "pearl_areas_served", "children": "weo_pearl_area_links" },
+      "renderer": "AreasServedLinks.astro",
+      "fields": [
+        { "name": "heading", "type": "string", "required": true, "authority": "directus" },
+        { "name": "intro", "type": "text", "required": false, "authority": "directus" },
+        { "name": "variant", "type": "enum:list|location_bar", "required": true, "authority": "directus" },
+        { "name": "areas", "type": "o2m", "required": true, "authority": "directus" }
+      ],
+      "child_fields": [
+        { "name": "label", "type": "string", "required": true, "authority": "directus" },
+        { "name": "url", "type": "string", "required": true, "authority": "directus" },
+        { "name": "sort", "type": "integer", "required": true, "authority": "directus" }
+      ],
+      "mapping": {
+        "priority": 60,
+        "required_all": ["source:location_link_cluster", "source:internal_links"],
+        "required_any": ["source:heading_areas_served", "source:location_page_siblings"],
+        "reject_if": ["source:primary_navigation", "source:footer_navigation"],
+        "confidence": 0.95
+      }
+    },
+    {
+      "key": "icon_circles",
+      "label": "Icon Circles",
+      "directus": { "collection": "weo_pearl_icon_circles", "carrier_field": "pearl_icon_circles", "children": "weo_pearl_icon_circle_items" },
+      "renderer": "IconCircles.astro",
+      "fields": [
+        { "name": "heading", "type": "string", "required": false, "authority": "directus" },
+        { "name": "intro", "type": "text", "required": false, "authority": "directus" },
+        { "name": "background_image", "type": "file", "required": false, "authority": "directus" },
+        { "name": "variant", "type": "enum:overlay|services", "required": true, "authority": "directus" },
+        { "name": "items", "type": "o2m", "required": true, "authority": "directus" }
+      ],
+      "child_fields": [
+        { "name": "icon", "type": "file_or_svg", "required": true, "authority": "directus" },
+        { "name": "title", "type": "string", "required": true, "authority": "directus" },
+        { "name": "body", "type": "text", "required": false, "authority": "directus" },
+        { "name": "url", "type": "string", "required": false, "authority": "directus" },
+        { "name": "sort", "type": "integer", "required": true, "authority": "directus" }
+      ],
+      "mapping": {
+        "priority": 70,
+        "required_all": ["source:repeated_items", "source:icons"],
+        "required_any": ["source:TPcta-row", "source:TPctas", "source:TPcta"],
+        "reject_if": ["source:plain_link_list"],
+        "confidence": 0.98
+      }
+    },
+    {
+      "key": "highlight_quote",
+      "label": "Highlight Quote",
+      "directus": { "collection": "weo_pearl_highlight_quotes", "carrier_field": "pearl_highlight_quote" },
+      "renderer": "HighlightQuote.astro",
+      "fields": [
+        { "name": "quote", "type": "text", "required": true, "authority": "directus" },
+        { "name": "attribution", "type": "string", "required": false, "authority": "directus" },
+        { "name": "tone", "type": "enum:light|brand|dark", "required": true, "authority": "directus" }
+      ],
+      "mapping": {
+        "priority": 80,
+        "required_all": ["source:editorial_pull_quote", "source:quote_text"],
+        "required_any": ["source:blockquote", "source:highlight_quote_class"],
+        "reject_if": ["source:TPquote", "source:review_attribution"],
+        "confidence": 0.94
+      }
+    },
+    {
+      "key": "content_image",
+      "label": "Content Image",
+      "directus": { "collection": "weo_pearl_content_images", "carrier_field": "pearl_content_image" },
+      "renderer": "ContentImage.astro",
+      "fields": [
+        { "name": "image", "type": "file", "required": true, "authority": "directus" },
+        { "name": "image_alt", "type": "string", "required": true, "authority": "directus" },
+        { "name": "caption", "type": "text", "required": false, "authority": "directus" },
+        { "name": "width", "type": "enum:content|wide|full", "required": true, "authority": "directus" },
+        { "name": "alignment", "type": "enum:left|center|right", "required": true, "authority": "directus" }
+      ],
+      "mapping": {
+        "priority": 90,
+        "required_all": ["source:managed_image", "source:image_without_material_prose"],
+        "required_any": ["source:standalone_image", "source:figure"],
+        "reject_if": ["source:logo", "source:tracking_pixel", "source:navigation_image"],
+        "confidence": 0.96
+      }
+    }
+  ],
+  "page_blueprints": [
+    {
+      "key": "pearl_workshop",
+      "families": ["template-review"],
+      "allowed_blocks": ["main_hero", "inner_hero_cta", "flex_content_image", "split_image_content", "patient_reviews", "areas_served_links", "icon_circles", "highlight_quote", "content_image"],
+      "required_blocks": ["main_hero", "inner_hero_cta"]
+    },
+    {
+      "key": "pearl_home",
+      "families": ["home"],
+      "allowed_blocks": ["main_hero", "icon_circles", "flex_content_image", "split_image_content", "patient_reviews", "areas_served_links", "highlight_quote", "content_image"],
+      "required_blocks": ["main_hero"]
+    },
+    {
+      "key": "pearl_inner",
+      "families": ["service-detail", "about-team", "patient-resource", "conversion", "location"],
+      "allowed_blocks": ["inner_hero_cta", "flex_content_image", "split_image_content", "patient_reviews", "areas_served_links", "icon_circles", "highlight_quote", "content_image"],
+      "required_blocks": ["inner_hero_cta"]
+    }
+  ],
+  "release_gates": [
+    "source_fidelity",
+    "frontend_fidelity",
+    "authoring_fidelity",
+    "field_authority"
+  ]
+}

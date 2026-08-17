@@ -1,0 +1,67 @@
+name: deploy-pearl-review
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [pearl-template-v0.1]
+
+jobs:
+  deploy-pearl-review:
+    runs-on: ubuntu-latest
+    environment: noindex-preview
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+          cd site && npm ci
+
+      - name: Build connected Pearl review
+        working-directory: site
+        run: npm run build
+        env:
+          PEARL_CONTENT_MODE: connected
+          PEARL_DIRECTUS_URL: https://pearlcms.foundryworks.ai
+          PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_DIRECTUS_TOKEN }}
+
+      - name: Run contracts and live connection proof
+        run: |
+          cd site && npm test
+          cd .. && node scripts/verify_pearl_connected.mjs
+        env:
+          PEARL_DIRECTUS_URL: https://pearlcms.foundryworks.ai
+          PEARL_DIRECTUS_TOKEN: ${{ secrets.PEARL_DIRECTUS_TOKEN }}
+
+      - name: Accepted Jeffrey regression gates
+        run: |
+          PORT=4321 node scripts/serve.mjs &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:4321/robots.txt > /dev/null && break; sleep 1; done
+          curl -fsS http://127.0.0.1:4321/template-preview/pearl/ | grep -q 'data-template-adapter="pearl"'
+          python3 auditor/audit_rendered.py --target http://127.0.0.1:4321 --strict
+          python3 qa/browser_matrix.py --target http://127.0.0.1:4321
+          python3 qa/visual_fidelity.py --target http://127.0.0.1:4321
+          python3 qa/pearl_reference_qa.py --target http://127.0.0.1:4321/template-preview/pearl/
+
+      - name: Protect Pearl as the review root
+        run: |
+          cp site/dist/template-preview/pearl/index.html site/dist/index.html
+          grep -q 'data-template-adapter="pearl"' site/dist/index.html
+
+      - name: Deploy separate noindex Pearl review
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site/dist --project-name=pearl-template-review --branch=pearl-template-v0.1

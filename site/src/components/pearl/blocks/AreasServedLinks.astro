@@ -1,0 +1,37 @@
+---
+import type { PearlRecordByBlock, PearlVisualRef } from '../types';
+import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
+
+type Props = Record<string, any> & { visual?: PearlVisualRef };
+const { heading, intro, variant = 'list', areas, visual } = Astro.props;
+const orderedAreas = [...areas].sort((a, b) => a.sort - b.sort);
+---
+
+<section class:list={['pearl-section', 'pearl-areas', `pearl-areas--${variant}`]} data-pearl-block="areas_served_links" data-directus={pearlVisualAttr(visual)}>
+  <div class="pearl-wrap pearl-areas__grid">
+    <div><h2>{heading}</h2>{intro && <p>{intro}</p>}</div>
+    <nav aria-label={heading}><ul>{orderedAreas.map((area) => <li><a href={area.url}>{area.label}<span aria-hidden="true">↗</span></a></li>)}</ul></nav>
+  </div>
+</section>
+
+<style>
+  .pearl-areas { background: var(--pearl-secondary); }
+  .pearl-areas__grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(50px, 10vw, 140px); }
+  .pearl-areas__grid > div p { max-width: 42ch; color: var(--pearl-muted); }
+  .pearl-areas ul { margin: 0; padding: 0; list-style: none; border-top: 1px solid #aab2a6; }
+  .pearl-areas a { display: flex; justify-content: space-between; gap: 20px; min-height: 58px; align-items: center; border-bottom: 1px solid #aab2a6; color: var(--pearl-ink); font-weight: 700; text-decoration: none; }
+  .pearl-areas a:hover { color: var(--pearl-primary); }
+  .pearl-areas--location_bar { position: relative; padding-block: clamp(34px, 5vw, 62px); background: linear-gradient(120deg, var(--pearl-secondary), color-mix(in srgb, var(--pearl-secondary) 78%, #fff)); overflow: hidden; }
+  .pearl-areas--location_bar::before { content: "⌖"; position: absolute; left: max(20px, calc((100vw - var(--pearl-wrap)) / 2)); top: 50%; color: rgb(118 132 149 / .16); font-size: 11rem; line-height: 1; transform: translate(-40%, -50%); }
+  .pearl-areas--location_bar .pearl-areas__grid { position: relative; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); align-items: center; gap: clamp(30px, 6vw, 84px); }
+  .pearl-areas--location_bar .pearl-areas__grid > div p { margin-bottom: 0; }
+  .pearl-areas--location_bar ul { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px; border: 0; }
+  .pearl-areas--location_bar li { display: contents; }
+  .pearl-areas--location_bar a { min-height: 48px; padding: 8px 16px; border: 1px solid var(--pearl-accent); background: rgb(255 255 255 / .64); gap: 12px; }
+
+  @media (max-width: 800px) {
+    .pearl-areas__grid { grid-template-columns: 1fr; }
+    .pearl-areas--location_bar .pearl-areas__grid { grid-template-columns: 1fr; }
+    .pearl-areas--location_bar ul { justify-content: flex-start; }
+  }
+</style>

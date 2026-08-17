@@ -1,0 +1,55 @@
+{
+  "adapter": "pearl@0.1.0",
+  "target": "https://weomcms.foundryworks.ai",
+  "verified_at": "2026-08-12T20:32:00Z",
+  "canonical_page": {
+    "slug": "pearl-component-workshop",
+    "status": "published",
+    "robots_index": false,
+    "robots_follow": false,
+    "builder_blocks": 9,
+    "unique_block_types": 9
+  },
+  "reader_boundary": {
+    "policy": "Pearl Template Build Read Only",
+    "role": "Pearl Template Build",
+    "pearl_page_read": true,
+    "jeffrey_pages_denied": true,
+    "server_only": true
+  },
+  "field_authority": {
+    "collection": "weo_pearl_main_heroes",
+    "record_id": "6b1d9cb2-31e8-4455-b1e6-f3f4cf86f37e",
+    "field": "heading",
+    "original_value": "Jeffrey Carl DMD & Austin Brunson DMD",
+    "temporary_marker": "PEARL_AUTHORITY_20260812_564e0348",
+    "marker_rendered": true,
+    "marker_build_sha256": "6ecc1f627ce601cf914cfc21f787f5288067b2e862a1d20eb12958a417adf357",
+    "exact_revert_applied": true,
+    "marker_absent_after_revert": true,
+    "original_rendered_after_revert": true,
+    "clean_build_sha256": "160082645484db215c38073895668e5db87af88cd8541448c57993e6830f83ef"
+  },
+  "acceptance": {
+    "contract_tests": "51/51",
+    "jeffrey_strict_routes": "78/78",
+    "jeffrey_browser_matrix": "18/18",
+    "jeffrey_visual_matrix": "18/18",
+    "jeffrey_authoring_contract": {
+      "pages": 78,
+      "builder_rows": 508,
+      "failures": 0
+    },
+    "stable_review_url": "https://pearl-template-review.pages.dev/",
+    "immutable_review_url": "https://60fe6893.pearl-template-review.pages.dev/",
+    "x_robots_tag": "noindex, nofollow",
+    "robots_disallow_all": true
+  },
+  "boundaries": {
+    "jeffrey_content_changed": false,
+    "production_changed": false,
+    "dns_changed": false,
+    "forms_changed": false,
+    "indexing_enabled": false
+  }
+}

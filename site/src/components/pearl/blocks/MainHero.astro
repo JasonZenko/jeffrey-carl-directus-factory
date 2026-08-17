@@ -1,0 +1,47 @@
+---
+import Button from '../ui/Button.astro';
+import type { PearlRecordByBlock, PearlVisualRef } from '../types';
+import { pearlVisualAttr } from '../../../lib/pearl/visual-editing';
+
+type Props = PearlRecordByBlock['main_hero_standard'] & { visual?: PearlVisualRef };
+const {
+  heading,
+  supporting_text,
+  background_image,
+  background_video_url,
+  primary_cta_label,
+  primary_cta_url,
+  visual,
+} = Astro.props;
+---
+
+<section class="pearl-main-hero" data-pearl-block="main_hero_standard" data-background-video-url={background_video_url} data-directus={pearlVisualAttr(visual)}>
+  {background_video_url && <video class="pearl-main-hero__video" autoplay muted loop playsinline preload="metadata"><source src={background_video_url} type="video/mp4" /></video>}
+  {background_image && <img class="pearl-main-hero__image" src={background_image} alt="" />}
+  <div class="pearl-main-hero__veil"></div>
+  <div class="pearl-wrap pearl-main-hero__content">
+    <h1>{heading}</h1>
+    {supporting_text && <p>{supporting_text}</p>}
+    {primary_cta_label && primary_cta_url && <Button label={primary_cta_label} url={primary_cta_url} tone="contrast" />}
+  </div>
+</section>
+
+<style>
+  .pearl-main-hero { position: relative; min-height: min(680px, 75vh); display: grid; place-items: center; overflow: hidden; background: var(--pearl-secondary); color: #fff; text-align: center; }
+  .pearl-main-hero__video,
+  .pearl-main-hero__image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .pearl-main-hero__video + .pearl-main-hero__image { display: none; }
+  .pearl-main-hero__veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(0 0 0 / .35), rgb(0 0 0 / .55)); }
+  .pearl-main-hero__content { position: relative; z-index: 1; display: grid; justify-items: center; padding-block: clamp(6rem, 12vw, 10rem); }
+  .pearl-main-hero__content h1 { max-width: none; color: #fff; font-size: clamp(45px, 6vw, 70px); text-transform: none; }
+  .pearl-main-hero__content p { max-width: 34ch; margin: 8px 0 0; font-family: var(--pearl-font-heading); font-size: clamp(1.25rem, 2vw, 1.65rem); }
+
+  @media (max-width: 800px) {
+    .pearl-main-hero { min-height: 540px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pearl-main-hero__video { display: none; }
+    .pearl-main-hero__video + .pearl-main-hero__image { display: block; }
+  }
+</style>
