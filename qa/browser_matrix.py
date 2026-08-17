@@ -22,12 +22,35 @@ IGNORED_THIRD_PARTY_CONSOLE_ERRORS = (
     "Permissions policy violation: compute-pressure is not allowed in this document.",
     "Failed to load resource: the server responded with a status of 404 ()",
 )
+GOOGLE_MAPS_HOSTS = {"maps.googleapis.com", "maps.gstatic.com"}
+
+
+def is_google_maps_embed_error(message):
+    """Ignore only known failures emitted inside Google's third-party map embed."""
+    text = message.text
+    location_url = (message.location or {}).get("url", "")
+    location_host = urlparse(location_url).netloc
+    text_names_google_maps = (
+        "maps.googleapis.com/$rpc/google.internal.maps.mapsjs" in text
+        or "maps.gstatic.com/maps-api-v3/embed/" in text
+    )
+    known_embed_failure = (
+        "google is not defined" in text
+        or "blocked by CORS policy" in text
+        or "net::ERR_FAILED" in text
+        or text.startswith("Failed to load resource:")
+    )
+    return known_embed_failure and (
+        location_host in GOOGLE_MAPS_HOSTS or text_names_google_maps
+    )
 
 
 def record_console_error(message, errors):
     if message.type != "error":
         return
     if message.text in IGNORED_THIRD_PARTY_CONSOLE_ERRORS:
+        return
+    if is_google_maps_embed_error(message):
         return
     errors.append(message.text)
 
