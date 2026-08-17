@@ -47,8 +47,8 @@ def main():
     route_receipt = json.loads((RECEIPTS / "route-matrix-live.json").read_text())
     if not route_receipt.get("ok") or route_receipt.get("passed") != 234 or route_receipt.get("failed") != 0:
         raise SystemExit("The complete 234-check live route receipt is not green")
-    if route_receipt.get("target") != args.target.rstrip("/"):
-        raise SystemExit("The route receipt target does not match the deployment alias")
+    if route_receipt.get("target") != args.deployment_url.rstrip("/"):
+        raise SystemExit("The route receipt target does not match the immutable deployment")
 
     roots = [verify_root(args.target), verify_root(args.deployment_url)]
     source_matches = args.expected_source.startswith(args.source)

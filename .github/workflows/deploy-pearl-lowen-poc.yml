@@ -188,15 +188,22 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          for i in $(seq 1 60); do curl -sf https://pearl-lowen-poc.pages.dev/ >/dev/null && break; sleep 2; done
-          python3 poc/lowen-final-b/route-matrix-qa.py --target https://pearl-lowen-poc.pages.dev
-          mv poc/lowen-final-b/receipts/route-matrix-qa.json poc/lowen-final-b/receipts/route-matrix-live.json
           DEPLOYMENT_JSON="$(curl -fsS \
             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
             "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/pearl-lowen-poc/deployments?per_page=10")"
           DEPLOYMENT_ID="$(printf %s "$DEPLOYMENT_JSON" | python3 -c 'import json,sys; d=json.load(sys.stdin); assert d["success"]; expected=sys.argv[1]; item=next(x for x in d["result"] if expected.startswith(x["deployment_trigger"]["metadata"]["commit_hash"])); print(item["id"])' "$GITHUB_SHA")"
           DEPLOYMENT_SOURCE="$(printf %s "$DEPLOYMENT_JSON" | python3 -c 'import json,sys; d=json.load(sys.stdin); expected=sys.argv[1]; item=next(x for x in d["result"] if expected.startswith(x["deployment_trigger"]["metadata"]["commit_hash"])); print(item["deployment_trigger"]["metadata"]["commit_hash"])' "$GITHUB_SHA")"
           DEPLOYMENT_URL="$(printf %s "$DEPLOYMENT_JSON" | python3 -c 'import json,sys; d=json.load(sys.stdin); expected=sys.argv[1]; item=next(x for x in d["result"] if expected.startswith(x["deployment_trigger"]["metadata"]["commit_hash"])); print(item["url"])' "$GITHUB_SHA")"
+          for i in $(seq 1 60); do curl -sf "$DEPLOYMENT_URL/" >/dev/null && break; sleep 2; done
+          python3 poc/lowen-final-b/route-matrix-qa.py --target "$DEPLOYMENT_URL"
+          mv poc/lowen-final-b/receipts/route-matrix-qa.json poc/lowen-final-b/receipts/route-matrix-live.json
+          IMMUTABLE_ROOT_SHA="$(curl -fsS "$DEPLOYMENT_URL/" | sha256sum | cut -d' ' -f1)"
+          for i in $(seq 1 60); do
+            ALIAS_ROOT_SHA="$(curl -fsS https://pearl-lowen-poc.pages.dev/ | sha256sum | cut -d' ' -f1)"
+            [ "$ALIAS_ROOT_SHA" = "$IMMUTABLE_ROOT_SHA" ] && break
+            sleep 2
+          done
+          test "$ALIAS_ROOT_SHA" = "$IMMUTABLE_ROOT_SHA"
           python3 poc/lowen-final-b/live-deployment-gate.py \
             --target https://pearl-lowen-poc.pages.dev \
             --deployment-id "$DEPLOYMENT_ID" \
