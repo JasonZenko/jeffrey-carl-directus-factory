@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "source": "Dom feedback tab 8",
+  "defects": [
+    {"id":"T8-01","category":"presentation","title":"Header, navigation and scroll state","target":"site-wide","owner":"Pearl frontend","expected":"CMS-driven desktop/mobile navigation with stable hysteresis and no scroll jitter","automated_gate":"existing route matrix plus browser scroll-state fixture","status":"open"},
+    {"id":"T8-02","category":"template","title":"Global theme values have one authority","target":"site-wide","owner":"Pearl theme plumbing","expected":"Brand, address, phone, appointment and social values resolve from canonical theme settings","automated_gate":"contract and clean-template build","status":"open"},
+    {"id":"T8-03","category":"migration","title":"What Is a Periodontist uses two blocks","target":"what-is-a-periodontist","owner":"migration mapper","expected":"Inner Hero with opening paragraph, followed by one Flex Content block; styled phrases remain prose and final medical band is not CTA","automated_gate":"tab8_gate.py","status":"open"},
+    {"id":"T8-04","category":"migration","title":"One Inner Hero per inner page","target":"periodontal-disease-management","owner":"migration mapper","expected":"Exactly one Inner Hero and it is first","automated_gate":"tab8_gate.py","status":"open"},
+    {"id":"T8-05","category":"migration","title":"Paragraph boundaries survive migration","target":"representative-inner-pages","owner":"extractor and renderer","expected":"Source paragraphs remain distinct semantic paragraphs","automated_gate":"source-region gate plus browser paragraph fixture","status":"open"},
+    {"id":"T8-06","category":"migration","title":"Contact page uses Contact Info","target":"contact-us","owner":"migration mapper","expected":"Contact details map to Contact Info rather than disconnected Flex sections","automated_gate":"tab8_gate.py","status":"open"},
+    {"id":"T8-07","category":"migration","title":"Highlight Links retain their heading","target":"our-services","owner":"migration mapper","expected":"Heading is stored in the Highlight Links component and no empty standalone heading block remains","automated_gate":"tab8_gate.py","status":"open"},
+    {"id":"T8-08","category":"presentation","title":"Icon cards cannot collide with copy","target":"site-wide","owner":"Pearl frontend","expected":"Icon mark is constrained inside its container at all supported viewports","automated_gate":"existing visual/browser matrix plus geometry fixture","status":"open"},
+    {"id":"T8-09","category":"template","title":"Subnavigation is CMS-driven and responsive","target":"site-wide","owner":"Pearl frontend and theme plumbing","expected":"Nested navigation renders and remains usable on desktop and mobile","automated_gate":"existing route matrix","status":"open"}
+  ]
+}

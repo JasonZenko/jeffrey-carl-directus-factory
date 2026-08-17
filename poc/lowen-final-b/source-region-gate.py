@@ -66,6 +66,8 @@ def block_visible_strings(block: dict) -> list[str]:
         fields = [item.get("heading"), item.get("body"), item.get("cta_label")]
     elif kind == "cta_section_standard":
         fields = [item.get("heading"), item.get("body"), item.get("cta_label")]
+    elif kind == "contact_info_standard":
+        fields = ["Location:", item.get("address"), item.get("heading"), "Phone:", item.get("phone"), "Email:", item.get("email")]
     elif kind == "icon_feature_cards":
         fields = [item.get("section_heading"), item.get("intro_text")]
         for child in item.get("items") or []:
@@ -102,6 +104,8 @@ def rich_html_values(block: dict) -> list[str]:
 
 def output_urls(block: dict) -> list[str]:
     result = list(walk_strings(block["item"], {"url", "link_url", "cta_url", "primary_cta_url"}))
+    if block["type"] == "contact_info_standard" and block["item"].get("email"):
+        result.append(f"mailto:{block['item']['email']}")
     for value in rich_html_values(block):
         result.extend(anchor["href"] for anchor in BeautifulSoup(value, "html.parser").select("a[href]"))
     return [value for value in result if value]
@@ -145,6 +149,10 @@ def semantic_headings(block: dict) -> list[tuple[str, str]]:
         result.append((item.get("header_tag") or "h2", normalized_text(item["section_header"])))
     elif kind in {"feature_image_content", "cta_section_standard"} and item.get("heading"):
         result.append(("h2", normalized_text(item["heading"])))
+    elif kind == "contact_info_standard":
+        result.append(("h2", "Location:"))
+        if item.get("heading"):
+            result.append(("h2", normalized_text(item["heading"])))
     elif kind == "icon_feature_cards":
         if item.get("section_heading"):
             result.append(("h2", normalized_text(item["section_heading"])))

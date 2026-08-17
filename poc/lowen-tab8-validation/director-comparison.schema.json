@@ -1,0 +1,14 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Pearl normal-versus-utility migration evidence",
+  "type":"object",
+  "required":["schema_version","source_freeze_sha256","production_mutated","arms","jeffrey_regression","recommendation"],
+  "properties":{
+    "schema_version":{"const":"1.0.0"},
+    "source_freeze_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+    "production_mutated":{"const":false},
+    "arms":{"type":"array","minItems":2,"maxItems":2,"items":{"type":"object","required":["mode","source_freeze_sha256","page_count","content_checks_passed","content_checks_total","visual_sample_pages","human_correction_minutes"],"properties":{"mode":{"enum":["normal","utility"]},"source_freeze_sha256":{"type":"string"},"page_count":{"type":"integer","minimum":1},"content_checks_passed":{"type":"integer","minimum":0},"content_checks_total":{"type":"integer","minimum":1},"visual_sample_pages":{"type":"integer","minimum":1},"human_correction_minutes":{"type":"number","minimum":0}}}},
+    "jeffrey_regression":{"type":"object","required":["strict_passed","strict_total","browser_passed","browser_total","visual_passed","visual_total"]},
+    "recommendation":{"type":"string","minLength":1}
+  }
+}

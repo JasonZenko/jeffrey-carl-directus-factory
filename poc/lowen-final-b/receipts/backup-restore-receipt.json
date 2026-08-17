@@ -1,26 +1,26 @@
 {
   "ok": true,
-  "generated_at": "2026-08-16T08:26:52.739753+00:00",
-  "run_id": "final-b-dom-feedback-20260816T082406Z-v2",
-  "backup_dir": "/opt/pearl-lowen-poc-cms/backups/final-b-dom-feedback-20260816T082406Z-v2",
-  "database_dump_sha256": "402e4e6c4a95cd136c750b5d941dd33dd44d36034097539322969195d8f2a596",
-  "uploads_archive_sha256": "946b3a55ba59ede60a1141c1aad0cefec6754daaff9afdf106636f638115e946",
+  "generated_at": "2026-08-17T11:16:24.856621+00:00",
+  "run_id": "tab8-pre-20260817T1220Z",
+  "backup_dir": "/opt/pearl-lowen-poc-cms/backups/tab8-pre-20260817T1220Z",
+  "database_dump_sha256": "edd31b2ce99eb7b71034fca52963f006b681e6b3261e4f399d917b5fef7ee8b2",
+  "uploads_archive_sha256": "93fba604b798e12d059b7d227b9d1db73b78c628cd8f4524e3b5f4f6d86cd113",
   "pg_restore_list_verified": true,
   "uploads_archive_verified": true,
   "temporary_database_restore_verified": true,
   "source_counts": {
     "pearl_pages": 39,
-    "pearl_page_builder": 132,
+    "pearl_page_builder": 134,
     "pearl_sites": 2,
-    "pearl_navigation_items": 10,
-    "directus_files": 57
+    "pearl_navigation_items": 32,
+    "directus_files": 58
   },
   "restored_counts": {
     "pearl_pages": 39,
-    "pearl_page_builder": 132,
+    "pearl_page_builder": 134,
     "pearl_sites": 2,
-    "pearl_navigation_items": 10,
-    "directus_files": 57
+    "pearl_navigation_items": 32,
+    "directus_files": 58
   },
   "temporary_database_removed_on_exit": true
 }

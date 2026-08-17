@@ -1,0 +1,178 @@
+/* 
+ //============================================================================================
+ //Copyright (c) 2008-2026 <a href='https://weomedia.com' class='TPcopyright' target='_blank'>WEO Media - Dental Marketing</a> (Touchpoint Communications LLC). All rights reserved.
+ //   UNAUTHORIZED USE IS STRICTLY PROHIBITED                                                       
+ //   FOR QUESTIONS AND APPROPRIATE LICENSING PLEASE CONTACT:                              
+ //   info@weomedia.com | www.weomedia.com                                                         
+ //                                                                                                 
+ //   Some portions of the CSS code (modified and unmodified) have been included from public,       
+ //   or open source, sources. Included individual images, videos, documents,                       
+ //   scripts, embedded code, and referenced code files may have additional copyright               
+ //   holders and additional restrictions on licensing.                                             
+ //                                                                                                 
+ //	  ***** LIMITATION OF LIABILITY *****                                                           
+ //   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,         
+ //   INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR      
+ //   PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE            
+ //   LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,           
+ //   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE         
+ //   OR OTHER DEALINGS IN THE SOFTWARE.                                                            
+ //   ***********************************                                                           
+ //============================================================================================     
+ */
+
+
+/* CSS:[C] 4-407-762-20240403155255 *//* CSS TOP */
+/* MAIN: 762 */
+a[href^=tel] {
+ color: inherit;
+}
+.tpCN{display:none;}
+.TPRelatedTerms{margin:30px auto 10px auto;width:600px;}
+.VertAlign{position: relative;top: 50%;transform: translateY(-50%);}
+.TPvertCenter{position: relative;top: 50%;transform: translateY(-50%);}
+.TPverifyImg{vertical-align:top;}
+.TPartListContainer{position:relative;width:100%;height:100%}
+.TPartListBox{position:absolute;top:0;left:0;width:100%;height:100%}
+.TPartListBoxShow{position:relative;opacity:1.0;transition: opacity 2s;z-index:1000 !important}
+.TPartListBoxHide{position:absolute;opacity:0.0;transition: opacity 2s;}
+.TPmb0{}
+.TPcontactCol{text-align:center;padding:10px;}
+.TPcopyrightCol{text-align:center;padding:10px;}
+.TPmobiLink{color:#aaa}
+a.TPmobiLink:link{color:#aaa;text-decoration:none;}
+a.TPmobiLink:visited{color:#aaa;text-decoration:none;}
+a.TPmobiLink:hover{color:#555;text-decoration:underline;}
+
+/* P style */
+P {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 18px; line-height:22px; color: #363636;} 
+P a:link {color:#03223f;text-decoration:underline;} 
+P a:visited {color:#03223f;text-decoration:underline;} 
+P a:hover {color:#03223f;text-decoration:none;} 
+
+A {}
+A:link {}
+A:hover { text-decoration: none;}
+A:visited {}
+H1 {font-family:Verdana, Arial, sans-serif;font-size:14px;font-weight:bold;color:#000;padding:0;margin:0;} 
+
+H2 {font-family: Verdana, Arial, sans-serif; font-size: 12px; font-weight: bold; color: #000000;padding:0;margin:0;} 
+
+H3 {font-family: Verdana, Arial, sans-serif; font-size: 11px; font-weight: bold; color: #000000;padding:0;margin:0;} 
+
+H4 {font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold; color: #000000;padding:0;margin:0;} 
+
+.TPH1 {font-family:Verdana, Arial, sans-serif;font-size:14px;font-weight:bold;color:#000;padding:0;margin:0;} 
+
+.TPH2 {font-family: Verdana, Arial, sans-serif; font-size: 12px; font-weight: bold; color: #000000;padding:0;margin:0;} 
+
+.TPH3 {font-family: Verdana, Arial, sans-serif; font-size: 11px; font-weight: bold; color: #000000;padding:0;margin:0;} 
+
+.TPH4 {font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold; color: #000000;padding:0;margin:0;} 
+
+.TPtitle {padding-bottom:15px;font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 22px; font-weight: bold; color: #03223f;} 
+a.TPtitle:link {color:#03223f; text-decoration:none;} 
+a.TPtitle:visited {color:#03223f; text-decoration:none;} 
+a.TPtitle:hover {color:#234b70; text-decoration:none;} 
+
+.TPsubtitle {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; color: #363636;} 
+a.TPsubtitle:link {color:#363636;text-decoration:none;} 
+a.TPsubtitle:visited {color:#363636;text-decoration:none;} 
+a.TPsubtitle:hover {color:#464646;text-decoration:underline;} 
+
+.TParticle {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 18px; line-height:22px; color: #363636;} 
+a.TParticle:link {color:#03223f;text-decoration:underline;} 
+a.TParticle:visited {color:#03223f;text-decoration:underline;} 
+a.TParticle:hover {color:#03223f;text-decoration:none;} 
+
+.TPblogPostLine{padding-bottom:12px;font-size:80%;}
+.TPblogReadMoreLine{padding-top:12px;font-size:80%;text-decoration:underline;}
+.TPblogReadMoreLine:hover{text-decoration:none;color:blue;}
+.TPblogIntroBox{transition:background-color 1s;cursor:pointer;padding:4px;}
+.TPblogIntroBox:hover{background-color:#cccccc;}
+.TPBand {width:100%;} 
+.TPBandCol {width:1000px;margin-left:auto;margin-right:auto;} 
+.TPctoa {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; line-height:16px; color: #333333;} 
+
+.TPcontact {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; line-height:16px; color: #333333;} 
+a.TPcontact:link {text-decoration: none;} 
+a.TPcontact:visited {text-decoration: none;} 
+a.TPcontact:hover {text-decoration: underline;} 
+
+.TPoptlinks {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; line-height:16px; color: #333333;} 
+
+.TPcopyright {font-family: Verdana, Arial, Helvetica, sans-serif; color:#FFF; font-size: 10px; font-weight:normal;} 
+a.TPcopyright:link {color:#666666; text-decoration:none;} 
+a.TPcopyright:visited {color:#666666; text-decoration:none;} 
+a.TPcopyright:hover {color:#333333; text-decoration:underline;} 
+
+.TPnav {font-family: Verdana, Arial, Helvetica, sans-serif; color:#02223f; font-size: 14px; font-weight:bold;white-space:pre;} 
+a.TPnav:link {color:#02223f;text-decoration:none;} 
+a.TPnav:visited {color:#02223f;text-decoration:none;} 
+a.TPnav:hover {color:#234b70;text-decoration:none;} 
+
+.TPnavTable {height:67px;margin-left:auto;margin-right:auto;padding-left:12px;} 
+.TPnavCell {width:10px;vertical-align:middle;} 
+.TPnavSep {padding-left:7px;padding-right:7px;} 
+.TPpopnavSepLI {width:100%;} 
+.TPnavBot {font-family:verdana, sans-serif;font-size:10px;color:#666666;line-height:14px;white-space:pre;} 
+a.TPnavBot:link {color:#666666;text-decoration:none;} 
+a.TPnavBot:visited {color:#666666;text-decoration:none;} 
+a.TPnavBot:hover {color:#666666;text-decoration:underline;} 
+
+.TPnavBotSep {padding-left:3px;padding-right:3px;} 
+.TPdtbar {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; color: #999999;} 
+.TPpagebody {background-color:#02223f;margin:0px;} 
+.TPpageTitle {font-family: Verdana, Arial, sans-serif; font-size: 18px; font-weight: bold; color: #000000;width:300px;border-bottom:solid 1px #ccc;padding-bottom:6px;margin-bottom:20px;} 
+.TPpageAnnouncement {font-family:Verdana,Arial,sans-serif;font-size:14px;line-height:18px;color:#000000;border:dotted 1px #444;background-color:#eee;margin:20px;padding:10px;} 
+.TPcontentTable {background-color:#ffffff;} 
+.TPcontactbackground {background-color:#ffffff;} 
+.TPcopyrightbackground {background-color:#02223F;} 
+.TPHR {display:none;} 
+.TPvertSep {margin:10px;border-left:solid 1px #ccc;height:100%;} 
+.TPstyle2 {border:solid 3px #03223F; margin-right:12px;} 
+.TPstyle3 {border:solid 3px #03223F; margin-left:12px;} 
+.TPstyle4 {color:#669f55;font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 28px; font-weight: bold;line-height:75px;display:block;text-align:center;} 
+.TPstyle5 {color:#ffffff;font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 20px; font-weight: bold;line-height:36px;} 
+.TPstyle6 {color:#ffffff;font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 30px; font-weight: bold;line-height:36px;} 
+a.TPstyle6:link {color:#ffffff;text-decoration:none;} 
+a.TPstyle6:visited {color:#ffffff;text-decoration:none;} 
+a.TPstyle6:hover {color:#ffffff;text-decoration:none;} 
+
+.TPstyle7 {color:#ffffff;font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal;line-height:36px;} 
+a.TPstyle7:link {color:#ffffff;text-decoration:none;} 
+a.TPstyle7:visited {color:#ffffff;text-decoration:none;} 
+a.TPstyle7:hover {color:#ffffff;text-decoration:none;} 
+
+.TPlinkbox {background-color:#eeeeee;padding:10px;} 
+.TPtextBtn {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; text-align:center;font-weight: bold; color: #000000;} 
+a.TPtextBtn:link {color:#000000;text-decoration:none;} 
+a.TPtextBtn:visited {color:#000000;text-decoration:none;} 
+a.TPtextBtn:hover {color:#ffffff;text-decoration:none;} 
+
+.TPstylePM {font-family: Verdana, Arial, Helvetica, sans-serif; color:#02223f; font-size: 14px; font-weight:bold;white-space:pre;margin-left:auto;margin-right:auto;width:100%;} 
+a.TPstylePM:link {color:#02223f;text-decoration:none;} 
+a.TPstylePM:visited {color:#02223f;text-decoration:none;} 
+a.TPstylePM:hover {color:#234b70;text-decoration:none;} 
+
+.TPpopMenuBox {background-color:#b2b3b5;border-color:#363636;} 
+.TPpopMenuTop {padding-top:5px; padding-bottom:5px;margin-left:auto;margin-right:auto;width:100%;} 
+.TPnavBar {margin-top:5px;margin-bottom:17px;width:100%;height:67px;} 
+.TPvertContentBox {width:300px;} 
+.TPdisclaimer {font-family:verdana,arial,sanserif;font-size:10px;color:#666666;} 
+a.TPdisclaimer:link {text-decoration:none;} 
+a.TPdisclaimer:visited {text-decoration:none;} 
+a.TPdisclaimer:hover {text-decoration:underline;} 
+
+.TPdisclaimerBox {width:500px;padding:12px;border:solid 1px #999999;} 
+.TPimgLeft {margin-right:12px;margin-bottom:10px;} 
+.TPimgRight {margin-left:12px;margin-bottom:10px;} 
+.TPimgCenter {margin-right:12px;margin-left:12px;margin-bottom:10px;} 
+.TPDnav{}
+A.TPDnav:link {text-decoration: none;}
+A.TPDnav:hover {text-decoration: underline;}
+A.TPDnav:visited {text-decoration: none;}
+.TPmenuBox li a { white-space: normal; }
+
+
+/* Copyright (c) 2008-2026 <a href='https://weomedia.com' class='TPcopyright' target='_blank'>WEO Media - Dental Marketing</a> (Touchpoint Communications LLC). All Rights Reserved.  Duplication or unauthorized usage prohibited. [3/c407 - 8/17/2026 4:18:28 AM] */

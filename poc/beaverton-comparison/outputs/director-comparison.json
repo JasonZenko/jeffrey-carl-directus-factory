@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "source_freeze_sha256": "f3c4aa287153a6e858f496baa87c70e1198d631da610f5e1b4fd2350a1df702a",
+  "production_mutated": false,
+  "arms": [
+    {
+      "mode": "normal",
+      "arm_label": "presentation",
+      "source_freeze_sha256": "f3c4aa287153a6e858f496baa87c70e1198d631da610f5e1b4fd2350a1df702a",
+      "page_count": 28,
+      "content_checks_passed": 26,
+      "content_checks_total": 28,
+      "visual_sample_pages": 8,
+      "visual_sample_completed": 0,
+      "human_correction_minutes": 0,
+      "human_correction_measured": false,
+      "route_count": 28,
+      "inner_page_count": 26,
+      "block_count": 35,
+      "exception_count": 2,
+      "exception_routes": [
+        "https://www.beaverton-endodontist.com/p/Root-Canal-Beaverton-OR-:-p74763.asp",
+        "https://www.beaverton-endodontist.com/p/Root-Canal-Beaverton-OR-:-p75864.asp"
+      ],
+      "limitations": [
+        "No browser render or human correction pass has been performed; correction minutes are an unmeasured schema placeholder, not a timing result."
+      ]
+    },
+    {
+      "mode": "utility",
+      "arm_label": "utility",
+      "source_freeze_sha256": "f3c4aa287153a6e858f496baa87c70e1198d631da610f5e1b4fd2350a1df702a",
+      "page_count": 28,
+      "content_checks_passed": 26,
+      "content_checks_total": 28,
+      "visual_sample_pages": 8,
+      "visual_sample_completed": 0,
+      "human_correction_minutes": 0,
+      "human_correction_measured": false,
+      "route_count": 28,
+      "inner_page_count": 26,
+      "block_count": 32,
+      "exception_count": 2,
+      "exception_routes": [
+        "https://www.beaverton-endodontist.com/p/Root-Canal-Beaverton-OR-:-p74763.asp",
+        "https://www.beaverton-endodontist.com/p/Root-Canal-Beaverton-OR-:-p75864.asp"
+      ],
+      "limitations": [
+        "No browser render or human correction pass has been performed; correction minutes are an unmeasured schema placeholder, not a timing result."
+      ]
+    }
+  ],
+  "jeffrey_regression": {
+    "strict_passed": 78,
+    "strict_total": 78,
+    "browser_passed": 18,
+    "browser_total": 18,
+    "visual_passed": 18,
+    "visual_total": 18,
+    "status": "carried forward from current validated Jeffrey evidence; not rerun by this isolated builder"
+  },
+  "recommendation": "Use utility mode as the low-risk fidelity baseline for inner pages; use presentation classification only where a dedicated component is supported by unambiguous source evidence.",
+  "limitations": [
+    "This comparison validates deterministic structure and frozen-source coverage, not rendered visual parity.",
+    "The eight-page visual sample is planned but zero pages were captured in this isolated build.",
+    "Human correction time remains unmeasured; the numeric zero is a schema placeholder, not a result.",
+    "Two sitemap routes ending p74763 and p75864 return HTTP 200 but their frozen primary-content wrappers contain no meaningful prose, links or images; both are explicit exceptions in each arm."
+  ]
+}

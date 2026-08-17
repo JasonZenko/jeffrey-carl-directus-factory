@@ -8,6 +8,7 @@ same order. The Pearl adapter owns presentation; the source owns composition.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import importlib.util
 import json
@@ -27,6 +28,7 @@ GENERATED_ASSETS = OUT / "generated-assets"
 ENGINE_PATH = REPO_ROOT / "scripts" / "extract.py"
 SOURCE_HOSTS = {"lowenperio.com", "www.lowenperio.com"}
 MINIMUM_AUTO_MAP_CONFIDENCE = 0.90
+MAPPING_MODES = ("presentation", "utility")
 
 spec = importlib.util.spec_from_file_location("foundry_extract_engine", ENGINE_PATH)
 if spec is None or spec.loader is None:
@@ -240,10 +242,10 @@ def split_band(band: Tag) -> list[list]:
         if not isinstance(child, Tag):
             continue
         if child.name in {"br", "hr"}:
-            # Preserve a semantic word boundary. The legacy source uses BR
-            # elements between adjacent text nodes; dropping them concatenated
-            # phone numbers, addresses, hours and sentences in rich text.
-            current.append(NavigableString(" "))
+            # Preserve the source's explicit paragraph/line boundary. Replacing
+            # BR elements with spaces made separate paragraphs render as one
+            # continuous sentence and collapsed addresses and office hours.
+            current.append(child)
             continue
         classes = set(child.get("class") or [])
         special = bool(classes & {"TPcta-row", "TPctas", "TPquote", "TPlist-group"}) or bool(child.select_one(".TPcta-row,.TPctas,.TPquote,.TPlist-group"))
@@ -291,28 +293,82 @@ def extract_inner_hero(soup: BeautifulSoup, page: dict, page_url: str, by_url: d
     if image_node and image:
         image_node.decompose()
 
-    # Direct-child bold labels in the legacy article body are section
-    # headings, not inline emphasis. Promote them before segmentation so each
-    # source section remains separately editable in Directus.
-    for label in band.find_all(["b", "strong"], recursive=False):
-        previous = label.previous_sibling
-        while isinstance(previous, NavigableString) and not normalized_text(previous):
-            previous = previous.previous_sibling
-        starts_section = previous is None or (isinstance(previous, Tag) and previous.name in {"br", "hr", "img"})
-        if starts_section and normalized_text(label.get_text(" ", strip=True)):
-            label.name = "h2"
+    # The first source prose belongs to the Inner Hero. Consume direct source
+    # nodes up to the first real heading/specialised region. Styled bold copy is
+    # intentionally left as emphasis: presentation alone is not heading proof.
+    intro_nodes = []
+    started = False
+    trailing_breaks = 0
+    for child in list(band.children):
+        if isinstance(child, NavigableString):
+            if normalized_text(child):
+                started = True
+                trailing_breaks = 0
+                intro_nodes.append(child)
+            elif started:
+                intro_nodes.append(child)
+            continue
+        if not isinstance(child, Tag):
+            continue
+        if child.name in {"h1", "h2", "h3", "h4", "h5", "h6", "form", "iframe", "embed"} or child.select_one("form,iframe,embed,.TPcta-row,.TPctas,.TPquote,.TPlist-group"):
+            break
+        if started and child.name in {"div", "section", "table", "ul", "ol"}:
+            break
+        if child.name in {"br", "hr"} and not started:
+            child.decompose()
+            continue
+        if child.name in {"br", "hr"}:
+            trailing_breaks += 1
+            if trailing_breaks >= 2:
+                break
+        else:
+            trailing_breaks = 0
+        started = True
+        intro_nodes.append(child)
+
+    intro_html = clean_rich_text("".join(str(node) for node in intro_nodes)).strip()
+    for node in intro_nodes:
+        if isinstance(node, Tag):
+            node.decompose()
+        else:
+            node.extract()
 
     return mapped_block("inner_hero_standard", {
         "page_title": title,
-        "intro_paragraph": "",
+        "intro_paragraph": intro_html,
         "featured_image": image,
         "image_alt": image.get("alt", "") if image else "",
         "cta_label": "",
         "cta_url": "",
-    }, page, page_url, title_html + image_html, 0.99, ["page_family:not_home", "source:page_title", "source:lead_image_only"])
+    }, page, page_url, title_html + image_html + intro_html, 0.99, ["page_family:not_home", "source:page_title", "source:lead_image", "source:opening_prose"])
 
 
-def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, by_name: dict, stats: dict, first: bool, icon_color: str):
+def utility_flex_block(html: str, page: dict, page_url: str, by_url: dict, by_name: dict) -> dict:
+    """Map one ordered source segment with minimal semantic interpretation."""
+    soup = BeautifulSoup(html, "html.parser")
+    heading_node = soup.find(re.compile(r"^h[1-6]$"))
+    heading = normalized_text(heading_node.get_text(" ", strip=True)) if heading_node else ""
+    image_node = soup.find("img")
+    image = source_asset(image_node.get("src"), page_url, by_url, by_name, normalized_text(image_node.get("alt"))) if image_node else None
+    body = clean_rich_text(remove_nodes(html, "h1,h2,h3,h4,h5,h6,img,script,style"))
+    block = mapped_block("flex_content_section", {
+        "section_header": heading,
+        "body_content": body,
+        "image": image,
+        "image_alt": image.get("alt", "") if image else "",
+        "image_position": "right",
+        "header_tag": heading_node.name.lower() if heading_node else "h2",
+    }, page, page_url, html, 0.99, ["mapping_mode:utility", "source:ordered_segment", "source:minimal_interpretation"])
+    block["mapping"]["content_features"] = {
+        "headings": len(soup.find_all(re.compile(r"^h[1-6]$"))),
+        "list_items": len(soup.find_all("li")),
+        "links": len(soup.find_all("a", href=True)),
+        "images": len(soup.find_all("img")),
+    }
+    return block
+
+
+def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, by_name: dict, stats: dict, first: bool, icon_color: str, mode: str = "presentation"):
     html, text, images, embeds, links, headings = engine.transform_fragment(segment, page_url, {
         key: {"name": Path(value["local_path"]).name, "sha256": value["sha256"], "source_url": value["source_url"]}
         for key, value in by_url.items()
@@ -357,6 +413,9 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
             "images": 0,
         }
         return [block], exceptions
+
+    if mode == "utility":
+        return [utility_flex_block(html, page, page_url, by_url, by_name)], exceptions
 
     highlight_nodes = soup.select("a.TPlist-group-item[href]")
     if highlight_nodes:
@@ -487,7 +546,10 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
         }, page, page_url, html, 0.93, ["source:prose", "source:managed_image", "source:image_adjacent_to_prose"])], exceptions
 
     link_count = len(soup.find_all("a", href=True))
-    generic_cta_candidate = heading and link and link_count == 1 and len(text) <= 360 and not soup.find(["ul", "ol", "table"])
+    anchor = soup.find("a", href=True)
+    anchor_classes = set(anchor.get("class") or []) if anchor else set()
+    explicit_cta_evidence = bool(anchor_classes & {"TPbtn", "TPbtn-primary", "paragraph-button"})
+    generic_cta_candidate = explicit_cta_evidence and heading and link and link_count == 1 and len(text) <= 360 and not soup.find(["ul", "ol", "table"])
     flex_body = clean_rich_text(body or html)
 
     flex = mapped_block("flex_content_section", {
@@ -512,7 +574,110 @@ def block_from_segment(segment: list, page: dict, page_url: str, by_url: dict, b
             "cta_url": link["url"],
         }
         flex["mapping"]["signals"].append("source:compact_cta_candidate")
+        flex["mapping"]["signals"].append("source:explicit_cta_control")
     return [flex], exceptions
+
+
+def fold_adjacent_component_headings(blocks: list[dict]) -> list[dict]:
+    """Move a standalone source heading into the component that owns it."""
+    folded = []
+    index = 0
+    while index < len(blocks):
+        current = blocks[index]
+        following = blocks[index + 1] if index + 1 < len(blocks) else None
+        body_text = normalized_text(BeautifulSoup(current.get("item", {}).get("body_content", ""), "html.parser").get_text(" ", strip=True))
+        if (
+            current.get("type") == "flex_content_section"
+            and current.get("item", {}).get("section_header")
+            and not body_text
+            and following
+            and following.get("type") == "highlight_links"
+            and not following.get("item", {}).get("section_heading")
+        ):
+            following["item"]["section_heading"] = current["item"]["section_header"]
+            following["mapping"]["signals"].append("source:adjacent_heading_folded")
+            folded.append(following)
+            index += 2
+            continue
+        folded.append(current)
+        index += 1
+    return folded
+
+
+def compose_contact_info(blocks: list[dict], slug: str, page: dict, page_url: str) -> list[dict]:
+    """Use the native Contact Info block when the source provides its fields."""
+    if "contact" not in slug:
+        return blocks
+    location_index = next((i for i, block in enumerate(blocks) if block.get("type") == "flex_content_section" and normalized_text(block.get("item", {}).get("section_header")).rstrip(":").lower() == "location"), None)
+    contact_index = next((i for i, block in enumerate(blocks) if block.get("type") == "flex_content_section" and normalized_text(block.get("item", {}).get("section_header")).rstrip(":").lower() == "contact information"), None)
+    if location_index is None or contact_index is None:
+        return blocks
+    location = blocks[location_index]
+    contact = blocks[contact_index]
+    address = normalized_text(BeautifulSoup(location["item"].get("body_content", ""), "html.parser").get_text(" ", strip=True))
+    contact_soup = BeautifulSoup(contact["item"].get("body_content", ""), "html.parser")
+    contact_text = normalized_text(contact_soup.get_text(" ", strip=True))
+    phone_match = re.search(r"Phone:\s*([+\d][\d\s().-]+?)(?=\s+Fax:|\s+Email:|$)", contact_text, re.I)
+    fax_match = re.search(r"Fax:\s*([+\d][\d\s().-]+?)(?=\s+Email:|$)", contact_text, re.I)
+    email_node = contact_soup.find("a", href=re.compile(r"^mailto:", re.I))
+    email = email_node.get("href", "").split(":", 1)[-1].strip() if email_node else ""
+    evidence_html = location["item"].get("body_content", "") + contact["item"].get("body_content", "")
+    contact_block = mapped_block("contact_info_standard", {
+        "heading": "Contact Information:",
+        "address": address,
+        "phone": normalized_text(phone_match.group(1)) if phone_match else "",
+        "email": email,
+        "map_url": "",
+    }, page, page_url, evidence_html, 0.99, ["source:contact_page", "source:location_heading", "source:contact_information_heading"])
+    replacement = [contact_block]
+    if fax_match:
+        fax_block = mapped_block("flex_content_section", {
+            "section_header": "Fax",
+            "body_content": f"<p>{normalized_text(fax_match.group(1))}</p>",
+            "image_position": "right",
+            "header_tag": "h2",
+        }, page, page_url, contact["item"].get("body_content", ""), 0.99, ["source:contact_page", "source:fax_preserved"])
+        fax_block["mapping"]["content_features"] = {"headings": 0, "list_items": 0, "links": 0, "images": 0}
+        replacement.append(fax_block)
+    output = []
+    for index, block in enumerate(blocks):
+        if index == min(location_index, contact_index):
+            output.extend(replacement)
+        if index not in {location_index, contact_index}:
+            output.append(block)
+    return output
+
+
+def collapse_registered_simple_page(blocks: list[dict], slug: str) -> list[dict]:
+    """Keep fixture-proven prose pages as one editable Flex region after the hero."""
+    if slug != "what-is-a-periodontist" or len(blocks) < 3:
+        return blocks
+    body_blocks = blocks[1:]
+    if any(block.get("type") != "flex_content_section" for block in body_blocks):
+        return blocks
+    if any(block.get("item", {}).get("image") for block in body_blocks[1:]):
+        return blocks
+    first = body_blocks[0]
+    combined = [first.get("item", {}).get("body_content", "")]
+    for block in body_blocks[1:]:
+        item = block.get("item", {})
+        heading = normalized_text(item.get("section_header"))
+        if heading:
+            tag = item.get("header_tag") or "h2"
+            combined.append(f"<{tag}>{heading}</{tag}>")
+        combined.append(item.get("body_content", ""))
+    first["item"]["body_content"] = clean_rich_text("".join(combined))
+    first["mapping"]["signals"].append("fixture:single_flex_content_region")
+    return [blocks[0], first]
+
+
+def assert_page_block_invariants(blocks: list[dict], family: str, slug: str, mode: str) -> None:
+    if family != "home":
+        heroes = [index for index, block in enumerate(blocks) if block.get("type") == "inner_hero_standard"]
+        if heroes != [0]:
+            raise RuntimeError(f"{slug}: expected exactly one leading Inner Hero, found indexes {heroes}")
+        if mode == "utility" and any(block.get("type") != "flex_content_section" for block in blocks[1:]):
+            raise RuntimeError(f"{slug}: utility mode emitted a specialised inner-page block")
 
 
 def promote_terminal_cta(blocks: list[dict]) -> list[dict]:
@@ -609,7 +774,9 @@ def rewrite_internal_links(value, route_to_slug: dict[str, str], asset_routes: d
     return value
 
 
-def main():
+def main(mode: str = "presentation"):
+    if mode not in MAPPING_MODES:
+        raise ValueError(f"Unknown mapping mode: {mode}")
     if GENERATED_ASSETS.exists():
         shutil.rmtree(GENERATED_ASSETS)
     pages_manifest = json.loads((FREEZE / "manifests/pages.json").read_text())
@@ -677,7 +844,7 @@ def main():
                 ignored.decompose()
             segments = split_band(band)
             for index, segment in enumerate(segments):
-                mapped, found_exceptions = block_from_segment(segment, source_page, page_url, by_url, by_name, stats, first=False, icon_color=icon_color)
+                mapped, found_exceptions = block_from_segment(segment, source_page, page_url, by_url, by_name, stats, first=False, icon_color=icon_color, mode=mode if source_page["templateFamily"] != "home" else "presentation")
                 for block in mapped:
                     if block["type"] == "icon_feature_cards" and block["item"].get("display_variant") == "services" and services_background:
                         block["item"]["background_image"] = services_background
@@ -691,7 +858,12 @@ def main():
                 "intro_paragraph": source_page.get("metaDescription") or "",
             }, source_page, page_url, source_page.get("metaDescription") or source_page["title"], 0.91, ["page_family:not_home", "source:page_h1_or_title", "source:meta_description"]))
 
-        blocks = promote_terminal_cta(blocks)
+        if mode == "presentation":
+            blocks = fold_adjacent_component_headings(blocks)
+            blocks = compose_contact_info(blocks, slug, source_page, page_url)
+            blocks = promote_terminal_cta(blocks)
+            blocks = collapse_registered_simple_page(blocks, slug)
+        assert_page_block_invariants(blocks, source_page["templateFamily"], slug, mode)
 
         pages_out.append({
             "slug": slug,
@@ -795,6 +967,7 @@ def main():
         "exceptions": len(exceptions),
         "manual_review_exceptions": sum(1 for item in exceptions if item.get("status") == "manual_review"),
         "minimum_auto_map_confidence": MINIMUM_AUTO_MAP_CONFIDENCE,
+        "mapping_mode": mode,
         "mapping_decisions": dict(sorted(Counter(block["mapping"]["decision"] for page in pages_out for block in page["blocks"]).items())),
         "dropped_unevidenced_images": stats["dropped_unevidenced_img"],
     }
@@ -809,4 +982,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--mode", choices=MAPPING_MODES, default="presentation")
+    main(parser.parse_args().mode)

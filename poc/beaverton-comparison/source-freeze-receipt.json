@@ -1,0 +1,15 @@
+{
+  "source": "https://beaverton-endodontist.com/",
+  "sitemap_route_count": 28,
+  "http_200_pages": 28,
+  "page_failure_count": 0,
+  "asset_count": 105,
+  "local_hash_failure_count": 0,
+  "all_local_hashes_verified": true,
+  "source_freeze_sha256": "f3c4aa287153a6e858f496baa87c70e1198d631da610f5e1b4fd2350a1df702a",
+  "comparison_contract": {
+    "presentation_mode_source_freeze_sha256": "f3c4aa287153a6e858f496baa87c70e1198d631da610f5e1b4fd2350a1df702a",
+    "utility_mode_source_freeze_sha256": "f3c4aa287153a6e858f496baa87c70e1198d631da610f5e1b4fd2350a1df702a",
+    "identical_source_required": true
+  }
+}

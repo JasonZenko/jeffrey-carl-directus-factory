@@ -1,0 +1,30 @@
+{
+  "source": "https://beaverton-endodontist.com/",
+  "startedAt": "2026-08-17T11:17:34.759118+00:00",
+  "completedAt": "2026-08-17T11:18:33.813334+00:00",
+  "sitemapUrls": 28,
+  "pagesCaptured": 28,
+  "http200Pages": 28,
+  "non200Pages": 0,
+  "pageFailures": 0,
+  "assetRecords": 105,
+  "assetFailures": 0,
+  "assetBytes": 6153445,
+  "videoEmbedOccurrences": 0,
+  "uniqueVideoEmbedUrls": 0,
+  "hostedVideoFilesDownloaded": 0,
+  "thirdPartyOccurrences": 666,
+  "uniqueThirdPartyUrls": 22,
+  "templateFamilies": {
+    "service-detail": 11,
+    "conversion": 4,
+    "patient-resource": 5,
+    "home": 2,
+    "about-team": 6
+  },
+  "missingTitles": 0,
+  "missingDescriptions": 0,
+  "missingCanonicals": 0,
+  "zeroH1Pages": 3,
+  "multiH1Pages": 21
+}

@@ -1,0 +1,683 @@
+/*** Skeleton/Super CSS ***/
+/** Font-Smoothing **/
+html {
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+.TPRelatedTerms {
+  width: auto !important;
+}
+
+/** Prints webpage out nicely **/
+@media print {
+  a[href]:after {
+    content: none;
+  }
+}
+
+/** Moves ADA button to bottom **/
+div#ADAhover,
+.TPadaBtn {
+  bottom: 10px;
+  top: initial !important;
+}
+
+/* Lets email break wherever it needs to */
+@media screen and (max-width: 480px) {
+  a[href^="mailto"] {
+    -ms-word-break: break-all;
+    word-break: break-all;
+  }
+}
+/*** RESPONSIVE REQUEST APPOINTMENT PAGE ***/
+table.vsfBlock input[type="text"],
+input[type="text"],
+.vsfBlock textarea,
+textarea,
+.vsfSubmitBtn input[type="submit"],
+input[type="submit"] {
+  border: solid 1px #ccc;
+  width: 100%;
+  border-radius: 3px;
+  padding: 0 8px;
+}
+
+@media screen and (min-width: 480px) {
+  table.vsfBlock input[type="text"],
+  input[type="text"],
+  .vsfBlock textarea,
+  textarea,
+  .vsfSubmitBtn input[type="submit"],
+  input[type="submit"],
+  select[name^="EF"] {
+    margin: 5px 0px 5px 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  table[id^="ef"] {
+    width: 100%;
+  }
+
+  /* Labels full width on mobile */
+  table.vsfBlock>tbody>tr>td, /*secure form*/
+    form[id^="ef"] td /*email form*/ {
+    display: block;
+    width: 100%;
+    line-height: 1.8;
+    margin-bottom: 0;
+  }
+
+  table.vsfBlock > tbody > tr > td:nth-child(even),
+  form[id^="ef"] td:nth-child(even) {
+    margin-bottom: 10px;
+  }
+
+  td[class^="vsfSubmit"] {
+    display: inline-block;
+    width: 100%;
+  }
+  table.vsfBlock input[type="radio"] {
+    margin: 0.5em;
+  }
+}
+/* end request appointment page */
+
+/* RESPONSIVE EMAIL FORM */
+.TPrequestForm input,
+.TPrequestForm select {
+  margin: 5px 0 10px 0;
+  border-radius: 0;
+  width: 100%;
+  padding: 5px;
+}
+
+.TPrequestForm table tr {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  float: left;
+}
+
+.TPrequestForm table tr td {
+  display: inherit;
+  width: 100%;
+}
+
+.TPrequestForm table input[type="text"],
+.TPrequestForm select,
+.TPrequestForm textarea {
+  width: 100%;
+  border-width: 1px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.TPrequestForm table input[type="text"]:focus,
+.TPrequestForm select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px hsla(220, 90%, 56%, 0.2);
+}
+
+.TPrequestForm table input[type="submit"] {
+  color: #fff;
+  width: 100%;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border-width: 1px;
+  white-space: nowrap;
+  padding: 10px;
+  border-radius: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  transition: ease all 0.5s;
+  margin: 1em 0;
+}
+
+.TPrequestForm table input[type="submit"]:hover,
+.TPrequestForm table input[type="submit"]:focus {
+  transform: translateY(-2px);
+  -webkit-transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  border-width: 1px;
+}
+
+input[type="text"],
+textarea {
+  color: #3e3e3e;
+}
+
+/** margin-bottom for all vids **/
+.TPembed-responsive.TPembed-responsive-16by9 {
+  margin-bottom: 15px;
+}
+
+/** TPimgRight and video-right and Left and center unfloat for small screen **/
+img[align="center"] {
+  margin: 0 auto 15px;
+} /* fixes center align images */
+.TPimgRight {
+  margin: 0 0 15px 15px;
+}
+.TPimgLeft {
+  margin: 0 15px 15px 0;
+}
+.TPimgCenter {
+  margin: 0 15px 15px;
+}
+.TPvideo-right,
+.TPvideo-left {
+  max-width: 560px;
+  width: 100%;
+}
+.TPvideo-right {
+  float: right;
+  margin-left: 15px;
+}
+.TPvideo-left {
+  float: left;
+  margin-right: 15px;
+}
+@media screen and (max-width: 767px) {
+  .TPimgRight,
+  .TPimgLeft,
+  .TPimgCenter {
+    width: 100% !important;
+    height: auto !important;
+    float: none;
+    margin: 0 0 15px !important;
+  }
+  .TPimg-responsive {
+    width: 100%;
+  }
+  .TPvideo-right,
+  .TPvideo-left {
+    max-width: 100% !important;
+    margin: 0 !important;
+    float: none !important;
+  }
+}
+
+/** Vertical image style **/
+@media (max-width: 767px) and (min-width: 500px) {
+  .TPimg-vertical,
+  .TPimg-vertical-center {
+    max-width: 50%;
+  }
+  .TPimg-vertical-center {
+    margin: 0 auto 15px !important;
+  }
+}
+
+/** Standard styles **/
+.TPtext-white {
+  color: #fff !important;
+}
+a.TPtext-white:hover,
+a.TPtext-white:focus,
+a.TPtext-white:active {
+  color: inherit !important;
+}
+.TPtext-black {
+  color: #000 !important;
+}
+a.TPtext-black:hover,
+a.TPtext-black:focus,
+a.TPtext-black:active {
+  color: inherit !important;
+}
+.TPbtn,
+.TPbtn-text-wrap {
+  white-space: normal;
+}
+a,
+a:link,
+a:active,
+a:hover,
+a:visited,
+.TPbtn,
+.TPbtn:link,
+.TPbtn:active,
+.TPbtn:hover,
+.TPbtn:visited,
+.TPbtn:before,
+.TPbtn:after {
+  transition: all 0.25s;
+}
+
+/*** RESPONSIVE NAVBAR ***/
+.TPnav:before,
+.TPnav:after {
+  display: none;
+}
+
+.TPwebNavBand {
+  z-index: 9;
+  box-shadow: none;
+  width: 100%;
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.TPnavbar {
+  border: none;
+  margin-bottom: 0px;
+}
+
+.TPnavbar-default {
+  background-color: transparent;
+}
+
+.TPnavBar > .TPnavTable > tbody > tr {
+  display: inline-block;
+}
+
+@media (max-width: 1198px) {
+  .TPnavbar-mobile {
+    display: block;
+  }
+  .TPnavbar-header,
+  .TPnavbar {
+    display: none;
+  }
+}
+
+@media (min-width: 1199px) {
+  .TPnavbar-mobile,
+  .TPnavbar-brand-alt {
+    display: none;
+  }
+}
+
+.TPnavbar-brand {
+  padding: 8px !important;
+  display: block;
+  background: transparent;
+  height: auto !important;
+}
+
+.TPnavbar-brand:hover,
+.TPnavbar-brand:focus {
+  background-color: transparent !important;
+}
+
+.TPnavbar-brand > img {
+  max-width: 100%;
+  width: 100%;
+}
+
+.TPnavbar-right {
+  margin-right: 0px !important;
+}
+
+/* Targets only WEBSITE_NAVIGATION_ULBOOTSTRAP */
+.TPnavbar > ul[id^="NB"] {
+  float: left;
+  margin: 0;
+  list-style: none;
+  padding: 0px;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.TPnavbar > ul[id^="NB"] > li {
+  float: left;
+  position: relative;
+  display: block;
+}
+
+.TPnavbar > ul[id^="NB"] > li > a {
+  position: relative;
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+}
+
+.TPnavbar > ul[id^="NB"] > li:hover > ul[id$="sb"] {
+  display: block;
+}
+
+.TPnavbar > ul[id^="NB"] > li > ul[id$="sb"] {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 0px;
+  margin: 0 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  transition: 0.5s 0.15s all cubic-bezier(0.75, 0, 0.5, 1), 0s top linear;
+  -webkit-transition: 0.5s 0.15s all cubic-bezier(0.75, 0, 0.5, 1),
+    0s top linear;
+  -moz-transition: 0.5s 0.15s all cubic-bezier(0.75, 0, 0.5, 1), 0s top linear;
+  -ms-transition: 0.5s 0.15s all cubic-bezier(0.75, 0, 0.5, 1), 0s top linear;
+  -o-transition: 0.5s 0.15s all cubic-bezier(0.75, 0, 0.5, 1), 0s top linear;
+}
+
+.TPnavbar > ul[id^="NB"] > li > ul[id$="sb"] > li > a {
+  display: block;
+  padding: 10px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  white-space: nowrap;
+}
+
+.TPnavbar > ul[id^="NB"] > li > ul[id$="sb"] > li:last-child > a {
+  border-bottom: none;
+}
+
+.TPnav,
+#MenuDiv1 {
+  transition: 0.5s 0.15s all cubic-bezier(0.75, 0, 0.5, 1), 0s top linear;
+  -webkit-transition: 0.5s 0.15s all cubic-bezier(0.75, 0, 0.5, 1),
+    0s top linear;
+  -moz-transition: 0.5s 0.15s all cubic-bezier(0.75, 0, 0.5, 1), 0s top linear;
+  -ms-transition: 0.5s 0.15s all cubic-bezier(0.75, 0, 0.5, 1), 0s top linear;
+  -o-transition: 0.5s 0.15s all cubic-bezier(0.75, 0, 0.5, 1), 0s top linear;
+}
+
+.TPwebNav {
+  width: 100%;
+  max-width: 100%;
+}
+/* end responsive navbar */
+
+/*** RESPONSIVE MOBILE NAVIGATION ***/
+.TPmb,
+.TPmbSub {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 2;
+  list-style: none;
+  color: #444;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* menu button */
+.TPmenuBtn {
+  background: #eee;
+  padding: 10px 15px;
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+.TPmenuBtn:hover,
+.TPmenuBtn:focus,
+.TPmenuBtn.TPfocus,
+.TPmenuBtn:active {
+  filter: brightness(97%);
+}
+
+/* hamburger button lines */
+.icon-bar {
+  display: block;
+  width: 26px;
+  height: 2px;
+  border-radius: 1px;
+  background: #444;
+}
+.icon-bar + .icon-bar {
+  width: 22px;
+  margin-top: 4px;
+}
+.icon-bar + .icon-bar + .icon-bar {
+  width: 15px;
+}
+
+/* menu open and close sizes */
+#MenuDiv1[adopen="false"] {
+  height: 0px !important;
+}
+#MenuDiv1[adopen="true"] {
+  height: calc(100vh) !important;
+}
+
+/* add scroll if menu is larger than screen */
+#MenuDiv1 {
+  overflow: scroll !important;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+#MenuDiv1::-webkit-scrollbar {
+  display: none;
+}
+
+/* mobile nav width fix */
+#MenuDiv1,
+[id^="TPsbm"][adopen="true"],
+[id^="TPsbm"][adopen="false"] {
+  width: auto !important;
+}
+
+/* menu inner box size */
+.TPmenuBox,
+.TPmenuSubBox {
+  width: 100%;
+}
+
+/* menu size & padding */
+.TPmenuList {
+  width: 100%;
+  padding: 20px 0;
+}
+.TPmenuSubList {
+  width: 100%;
+  padding: 0;
+}
+
+/* divider between links */
+.TPmenuList li {
+  border-bottom: 1px solid #eee;
+}
+.TPmenuList li:last-child {
+  border-bottom: 0;
+}
+.TPmenuList > li,
+.TPmenuSubList > li {
+  position: relative;
+}
+
+/* main level link padding */
+.TPmenuLink,
+.TPmenuSubLink {
+  width: 100%;
+  padding: 0 40px;
+}
+
+/* sub level link padding */
+.TPmenuSubLink {
+  padding-left: 55px;
+}
+
+/* link hover style */
+.TPmenuLink:active,
+.TPmenuLink:focus,
+.TPmenuLink:hover {
+  background: #eee;
+  color: #aaa;
+}
+
+/* sub level link hover style */
+.TPmenuSubLink:active,
+.TPmenuSubLink:focus,
+.TPmenuSubLink:hover {
+  background: #eee;
+  color: #aaa;
+}
+
+/* sub level dropdown arrow */
+.TPmbSubBtn {
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  border: 0;
+  padding: 5px 20px;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.TPmbSubBtn::after {
+  content: "";
+  position: relative;
+  width: 1em;
+  height: 1em;
+  transform: rotate(-45deg);
+  top: 0;
+  display: inline-block;
+  margin-left: 0;
+  border-left: 0.1em solid;
+  border-bottom: 0.1em solid;
+}
+/* end mobile menu */
+
+/** Flexible nav link style - MOBILE **/
+@media (max-width: 1200px) {
+  a.TPnav-flex,
+  a.TPnav-flex-child {
+    color: #333;
+    display: inline-block;
+    font-size: 20px;
+    line-height: 2;
+    width: 100%;
+    padding: 0 40px;
+  }
+  a.TPnav-flex-child {
+    padding: 0 40px 0 55px;
+  }
+  a.TPnav-flex:hover,
+  a.TPnav-flex-child:hover {
+    background: #eee;
+    color: #aaa;
+  }
+}
+
+/** LIST STYLE (adapted from Bootstrap) **/
+.TPlist-group {
+  max-width: 400px;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 0px;
+}
+.TPlist-group-item {
+  padding: 10px;
+  background: transparent;
+}
+.TPlist-group-item,
+.TPlist-group-item:first-child,
+.TPlist-group-item:last-child {
+  border-width: 0px 0px 1px;
+  border-radius: 0;
+}
+.TPlist-group-item::before {
+  content: "\26AC"; /* icon */
+  padding: 0px 10px 0px 0px;
+}
+.TPlist-group-item + br {
+  display: none;
+}
+/* end list group */
+
+/** Override Bootstrap HR so [[[HR]]] can work **/
+hr {
+  height: 1px;
+  border: none;
+  background: #eeeeee;
+}
+
+/* ANIMATE ON SCROLL SETTINGS */
+@media (max-width: 1350px) {
+  .TPoverflow {
+    overflow: hidden;
+    height: initial;
+  }
+}
+@media (max-width: 991px) {
+  .aos-animate {
+    transition-delay: 0s !important;
+  }
+}
+
+/* Adjust Link to Page Section */
+a[id]:before {
+  content: "";
+  display: block;
+  position: relative;
+  width: 1px;
+  height: 4em;
+  margin-top: -4em;
+}
+
+/* FANCY ICONS */
+.TPsm svg,
+.TPicon svg {
+  transition: 150ms all;
+  height: 25px;
+  width: 25px;
+  padding: 8px 5px;
+  vertical-align: middle;
+  overflow: visible;
+  box-sizing: content-box;
+}
+
+/* Breadcrumb Styles */
+.TPbcBand {
+  background-color: [C11];
+}
+
+.TPbcNav {
+  padding-top: 40px;
+  display: block;
+  font-size: 2rem;
+}
+
+.TPbcNavItem a {
+  color: [C12];
+}
+
+.TPbcNavItem a:hover {
+  filter: brightness(50%);
+}
+
+.TPbcNavSep {
+  color: [C12];
+}
+
+.TPbcNav .TPbcNavItem:last-child a {
+  font-weight: 900;
+}
