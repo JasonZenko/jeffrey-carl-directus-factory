@@ -69,6 +69,10 @@ describe('Pearl official block surface', () => {
     expect(header).toContain('const SCROLL_LEAVE = 32');
     expect(header).toContain('window.requestAnimationFrame');
     expect(header).not.toContain("window.scrollY > 56");
+    expect(header).toContain('overflow: hidden; display: grid; place-items: center');
+    expect(header).toContain('.pearl-brand img { width: 120%; max-width: none; height: auto; max-height: none;');
+    expect(header).toContain('transform: translateY(-9%)');
+    expect(header).not.toContain('.pearl-site-header--scrolled .pearl-brand img');
 
     const icons=readFileSync(join(SITE_ROOT,'src/components/pearl/blocks/IconCircles.astro'),'utf8');
     expect(icons).toContain('grid-template-rows: minmax(38px, .55fr) auto');

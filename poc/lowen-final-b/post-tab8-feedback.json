@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "source": "Jason sequential Lowen review after Dom tab 8",
+  "items": [
+    {
+      "id": "POST-T8-01",
+      "received_at": "2026-08-17T14:59:09+01:00",
+      "category": "presentation",
+      "title": "Enlarge and optically centre the top-left logo",
+      "target": "site-wide Pearl header",
+      "owner": "Pearl frontend",
+      "acceptance": "The visible Lowen logo is larger and optically centred inside the existing coloured square at desktop, mobile and scrolled header sizes without changing the square or header geometry.",
+      "implementation": "Clip the source asset's oversized white canvas inside the existing brand container, scale the visible artwork, and compensate for the source canvas's asymmetric whitespace.",
+      "automated_gate": "Pearl preview header source contract plus connected desktop, mobile and scrolled visual verification",
+      "status": "verified_local_pending_deployment"
+    }
+  ]
+}
