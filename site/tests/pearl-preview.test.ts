@@ -52,10 +52,15 @@ describe('Pearl official block surface', () => {
 
   it('keeps image descriptions, contact links and source-driven navigation',()=>{
     const html=readFileSync(join(SITE_ROOT,'dist/template-preview/pearl/index.html'),'utf8');
+    const footer=readFileSync(join(SITE_ROOT,'src/components/pearl/PearlFooter.astro'),'utf8');
+    const renderedFooter=html.match(/<footer\b[\s\S]*?<\/footer>/)?.[0]??'';
     const images=[...html.matchAll(/<img\b[^>]*>/g)].map(match=>match[0]);
     expect(images.length).toBeGreaterThan(0);
     expect(images.every(image=>/\balt="[^"]*"/.test(image))).toBe(true);
-    expect(html).toContain('aria-label="Contact links"');
+    expect(renderedFooter).not.toContain('aria-label="Contact links"');
+    expect(footer).toContain('aria-label="Contact links"');
+    expect(footer).toContain("const isHomepage = slug === 'home';");
+    expect(footer).toContain('{!isHomepage && <div class="pearl-wrap pearl-site-footer__contact">');
     expect(html).not.toContain('aria-label="Footer navigation"');
     const navigation=html.match(/<nav id="pearl-primary-navigation"[\s\S]*?<\/nav>/)?.[0]??'';
     const links=[...navigation.matchAll(/<a href="([^"]+)"[^>]*>([^<]+)<\/a>/g)];
